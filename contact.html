@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pull Up a Chair · Approchez-vous — Luxe Studio NB</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+.contact-hero {
+  padding: 200px 48px 60px;
+  position: relative;
+  background:
+    radial-gradient(ellipse 60% 70% at 50% 0%, rgba(232, 201, 160, 0.10) 0%, transparent 60%),
+    var(--obsidian);
+}
+.contact-hero-inner { max-width: 1320px; margin: 0 auto; }
+.contact-hero-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  color: var(--bone-mute);
+  text-transform: uppercase;
+}
+.contact-hero-meta .v { color: var(--brass); }
+.contact-hero h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(60px, 9vw, 132px);
+  letter-spacing: -0.03em;
+  line-height: 0.92;
+  margin-bottom: 24px;
+}
+.contact-hero h1 em {
+  font-family: var(--serif-italic);
+  font-style: italic;
+  color: var(--champagne);
+}
+.contact-hero h1 .fr {
+  display: block;
+  font-family: var(--serif-italic);
+  font-style: italic;
+  color: var(--rose);
+  font-size: 0.42em;
+  letter-spacing: -0.005em;
+  margin-top: 14px;
+}
+.contact-hero .lede {
+  max-width: 720px;
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--bone-dim);
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+/* Form section */
+.contact-section {
+  padding: 80px 48px 140px;
+}
+.contact-grid {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* Left column */
+.sidebar {
+  position: sticky;
+  top: 110px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.sidebar-block {
+  border-top: 1px solid var(--hairline-soft);
+  padding-top: 24px;
+}
+.sidebar-block:first-child { border-top: 0; padding-top: 0; }
+.sidebar-block h4 {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.26em;
+  color: var(--brass);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  font-weight: 400;
+}
+.sidebar-block p {
+  font-size: 15px;
+  color: var(--bone-dim);
+  line-height: 1.6;
+}
+.sidebar-block p strong { color: var(--bone); font-weight: 400; }
+.sidebar-block .row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--hairline-soft);
+  font-size: 14px;
+  color: var(--bone-dim);
+}
+.sidebar-block .row:last-child { border-bottom: 0; }
+.sidebar-block .row .k { color: var(--bone); }
+.sidebar-block .row .v { color: var(--champagne); font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; }
+
+.sidebar .address {
+  font-family: var(--serif);
+  font-size: 22px;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+  margin-bottom: 14px;
+}
+.sidebar .address .fr {
+  display: block;
+  font-family: var(--serif-italic);
+  font-style: italic;
+  color: var(--rose);
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+/* Map */
+.contact-map {
+  position: relative;
+  aspect-ratio: 4/3;
+  background:
+    radial-gradient(ellipse 60% 50% at 60% 40%, rgba(232, 201, 160, 0.10) 0%, transparent 60%),
+    linear-gradient(165deg, #14110f 0%, #0a0807 100%);
+  border: 1px solid var(--hairline);
+  margin-bottom: 0;
+  overflow: hidden;
+}
+.contact-map .grid-lines {
+  position: absolute; inset: 0;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 40px, rgba(244, 239, 232, 0.03) 40px 41px),
+    repeating-linear-gradient(90deg, transparent 0 40px, rgba(244, 239, 232, 0.03) 40px 41px);
+}
+.contact-map .road {
+  position: absolute;
+  background: rgba(244, 239, 232, 0.08);
+}
+.contact-map .road.r1 { left: 0; right: 0; top: 35%; height: 1px; }
+.contact-map .road.r2 { left: 0; right: 0; top: 70%; height: 1px; }
+.contact-map .road.r3 { top: 0; bottom: 0; left: 30%; width: 1px; }
+.contact-map .road.r4 { top: 0; bottom: 0; left: 75%; width: 1px; }
+.contact-map .main {
+  position: absolute;
+  left: 0; right: 0;
+  top: 50%;
+  height: 2px;
+  background: rgba(232, 201, 160, 0.22);
+  box-shadow: 0 0 12px rgba(232, 201, 160, 0.3);
+}
+.contact-map .main-label {
+  position: absolute;
+  top: 51%;
+  left: 4%;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: var(--brass);
+  text-transform: uppercase;
+}
+.contact-map .pin {
+  position: absolute;
+  top: 48%; left: 56%;
+  width: 14px; height: 14px;
+  background: var(--champagne);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 4px rgba(232, 201, 160, 0.25), 0 0 30px rgba(232, 201, 160, 0.7);
+  z-index: 3;
+}
+.contact-map .pin::after {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border: 1px solid var(--champagne);
+  border-radius: 50%;
+  animation: pinPulse 2.5s ease-out infinite;
+}
+@keyframes pinPulse {
+  0% { transform: scale(0.6); opacity: 1; }
+  100% { transform: scale(3.5); opacity: 0; }
+}
+.contact-map .pin-lbl {
+  position: absolute;
+  top: 50%; left: calc(56% + 18px);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: var(--champagne);
+  text-transform: uppercase;
+  white-space: nowrap;
+  z-index: 3;
+}
+.contact-map .pin-lbl .sub { display: block; color: var(--bone-mute); margin-top: 2px; }
+.contact-map .compass {
+  position: absolute;
+  top: 12px; right: 12px;
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: 0.22em;
+  color: var(--bone-mute);
+}
+
+/* Right column — form */
+.form-frame {
+  background: var(--charcoal);
+  border: 1px solid var(--hairline-soft);
+  padding: 60px 56px 48px;
+  position: relative;
+}
+.form-frame::before, .form-frame::after {
+  content: "";
+  position: absolute;
+  width: 24px; height: 24px;
+  border: 1px solid var(--hairline);
+}
+.form-frame::before { top: 12px; left: 12px; border-right: 0; border-bottom: 0; }
+.form-frame::after { bottom: 12px; right: 12px; border-left: 0; border-top: 0; }
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--hairline-soft);
+  margin-bottom: 36px;
+}
+.form-header h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 44px;
+  letter-spacing: -0.025em;
+  line-height: 1;
+}
+.form-header h2 .fr {
+  display: block;
+  font-size: 20px;
+  color: var(--rose);
+  font-family: var(--serif-italic);
+  font-style: italic;
+  margin-top: 8px;
+}
+.form-header .stamp {
+  text-align: right;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: var(--bone-mute);
+  text-transform: uppercase;
+}
+.form-header .stamp .v { color: var(--champagne); display: block; margin-bottom: 4px; }
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px 28px;
+}
+.form-field {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.form-field.full { grid-column: span 2; }
+.form-field label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  color: var(--brass);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+.form-field label .opt {
+  color: var(--bone-mute);
+  font-style: italic;
+  font-family: var(--serif-italic);
+  letter-spacing: 0;
+  text-transform: none;
+  font-size: 12px;
+}
+.form-field input,
+.form-field select,
+.form-field textarea {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--hairline-soft);
+  color: var(--bone);
+  font-family: var(--serif);
+  font-size: 22px;
+  padding: 8px 0 14px;
+  outline: none;
+  transition: border-color 0.4s;
+  width: 100%;
+  letter-spacing: -0.005em;
+}
+.form-field textarea {
+  resize: vertical;
+  min-height: 110px;
+  line-height: 1.5;
+  font-size: 18px;
+  font-family: var(--sans);
+  font-weight: 300;
+}
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+  border-bottom-color: var(--champagne);
+}
+.form-field input::placeholder, .form-field textarea::placeholder {
+  color: var(--bone-mute);
+  font-family: var(--serif-italic);
+  font-style: italic;
+  font-size: 18px;
+}
+
+.form-field select {
+  appearance: none; -webkit-appearance: none; cursor: pointer;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--brass) 50%),
+    linear-gradient(135deg, var(--brass) 50%, transparent 50%);
+  background-position: calc(100% - 14px) calc(50% - 2px), calc(100% - 9px) calc(50% - 2px);
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+}
+.form-field select option { background: var(--charcoal); color: var(--bone); font-family: var(--sans); font-size: 15px; }
+
+/* Service radio cards */
+.service-pick {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding-top: 4px;
+}
+.service-pick label {
+  display: block;
+  padding: 18px 16px;
+  border: 1px solid var(--hairline-soft);
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.3s, background 0.3s;
+  font-family: var(--sans);
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--bone-dim);
+  margin: 0;
+}
+.service-pick label:hover { border-color: var(--brass-dim); color: var(--bone); }
+.service-pick input[type="radio"] { display: none; }
+.service-pick input:checked + label {
+  border-color: var(--champagne);
+  background: rgba(232, 201, 160, 0.04);
+  color: var(--bone);
+}
+.service-pick input:checked + label::after {
+  content: "";
+  position: absolute;
+  top: 14px; right: 14px;
+  width: 8px; height: 8px;
+  background: var(--champagne);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--champagne);
+}
+.service-pick .ico {
+  display: block;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: var(--brass);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.service-pick .name {
+  display: block;
+  font-family: var(--serif);
+  font-size: 19px;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+.service-pick .name .fr {
+  display: block;
+  font-family: var(--serif-italic);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--rose);
+  margin-top: 4px;
+}
+
+/* Day picker */
+.day-pick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 4px;
+}
+.day {
+  padding: 10px 16px;
+  border: 1px solid var(--hairline-soft);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: var(--bone-dim);
+  text-transform: uppercase;
+  cursor: pointer;
+  background: transparent;
+  border-radius: 1px;
+  transition: border-color 0.3s, color 0.3s, background 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 78px;
+}
+.day .num {
+  font-family: var(--serif);
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  color: var(--bone);
+}
+.day:hover { border-color: var(--brass-dim); color: var(--bone); }
+.day.on {
+  border-color: var(--champagne);
+  color: var(--champagne);
+  background: rgba(232, 201, 160, 0.06);
+}
+.day.on .num { color: var(--champagne); }
+.day.closed {
+  opacity: 0.3;
+  pointer-events: none;
+}
+.day .lbl { font-size: 9px; }
+
+/* Time chips */
+.time-pick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 4px;
+}
+.time {
+  padding: 9px 14px;
+  border: 1px solid var(--hairline-soft);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--bone-dim);
+  text-transform: uppercase;
+  cursor: pointer;
+  background: transparent;
+  border-radius: 1px;
+  transition: border-color 0.3s, color 0.3s, background 0.3s;
+  font-feature-settings: "tnum";
+}
+.time:hover { border-color: var(--brass-dim); color: var(--bone); }
+.time.on {
+  border-color: var(--champagne);
+  color: var(--champagne);
+  background: rgba(232, 201, 160, 0.06);
+}
+
+.form-foot {
+  margin-top: 44px;
+  padding-top: 28px;
+  border-top: 1px solid var(--hairline-soft);
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.form-foot .note {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: var(--bone-mute);
+  text-transform: uppercase;
+  line-height: 1.8;
+  max-width: 320px;
+}
+.form-foot .note .v { color: var(--champagne); }
+.submit-btn {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 22px 36px;
+  background: linear-gradient(180deg, #F1D5A8 0%, var(--champagne) 35%, var(--brass) 100%);
+  color: var(--obsidian);
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  border: 0;
+  border-radius: 2px;
+  cursor: pointer;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 230, 190, 0.6),
+    inset 0 -1px 0 rgba(80, 50, 20, 0.3),
+    0 14px 40px -10px rgba(232, 201, 160, 0.35);
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+.submit-btn:hover { transform: translateY(-2px); }
+.submit-btn .fr {
+  color: rgba(10, 9, 8, 0.55);
+  font-family: var(--serif-italic);
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.submit-btn .arrow { font-size: 14px; }
+
+/* Concierge demo — open-state panel as a "screenshot" */
+.concierge-demo {
+  padding: 140px 48px;
+  background:
+    radial-gradient(ellipse 50% 80% at 100% 50%, rgba(232, 201, 160, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 80% at 0% 50%, rgba(212, 165, 160, 0.08) 0%, transparent 50%),
+    var(--obsidian);
+  border-top: 1px solid var(--hairline-soft);
+}
+.cd-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.cd-copy .num {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  color: var(--brass);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.cd-copy h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(40px, 5vw, 68px);
+  letter-spacing: -0.025em;
+  line-height: 0.98;
+  margin-bottom: 18px;
+}
+.cd-copy h2 em { font-family: var(--serif-italic); font-style: italic; color: var(--champagne); }
+.cd-copy h2 .fr {
+  display: block;
+  font-family: var(--serif-italic);
+  font-style: italic;
+  color: var(--rose);
+  font-size: 0.42em;
+  margin-top: 14px;
+}
+.cd-copy p {
+  font-size: 16px;
+  color: var(--bone-dim);
+  line-height: 1.65;
+  margin-bottom: 16px;
+  max-width: 460px;
+}
+.cd-copy ul {
+  list-style: none;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--hairline-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.cd-copy li {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: var(--bone);
+  text-transform: uppercase;
+}
+.cd-copy li::before { content: "◇ "; color: var(--champagne); margin-right: 6px; }
+
+/* Static concierge panel mockup (not interactive) */
+.cd-panel {
+  position: relative;
+  width: 460px;
+  max-width: 100%;
+  margin: 0 auto;
+  background:
+    radial-gradient(ellipse 100% 40% at 50% 0%, rgba(232, 201, 160, 0.12) 0%, transparent 60%),
+    linear-gradient(180deg, #14110f 0%, #0a0807 100%);
+  border: 1px solid var(--hairline);
+  border-radius: 16px;
+  box-shadow:
+    0 40px 100px -10px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(232, 201, 160, 0.08);
+  overflow: hidden;
+  font-family: var(--sans);
+}
+.cd-panel .cd-head {
+  padding: 22px 22px 18px;
+  border-bottom: 1px solid var(--hairline-soft);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.cd-panel .av {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #F6E2BD 0%, var(--champagne) 35%, var(--brass) 75%, #5b462a 100%);
+  box-shadow: 0 0 16px rgba(232, 201, 160, 0.45);
+}
+.cd-panel .id .name {
+  font-family: var(--serif);
+  font-size: 17px;
+}
+.cd-panel .id .role {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: var(--brass);
+  text-transform: uppercase;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.cd-panel .id .role .live {
+  width: 6px; height: 6px;
+  background: #6BCB77;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #6BCB77;
+}
+.cd-panel .cd-body {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.cd-msg {
+  font-size: 14px;
+  line-height: 1.55;
+  padding: 13px 16px;
+  border-radius: 14px;
+  max-width: 88%;
+}
+.cd-msg.them {
+  background: rgba(232, 201, 160, 0.06);
+  border: 1px solid var(--hairline-soft);
+  color: var(--bone);
+  border-bottom-left-radius: 4px;
+  align-self: flex-start;
+}
+.cd-msg.them em { font-family: var(--serif-italic); color: var(--rose); }
+.cd-msg.you {
+  background: linear-gradient(180deg, #F1D5A8 0%, var(--champagne) 100%);
+  color: var(--obsidian);
+  border-bottom-right-radius: 4px;
+  align-self: flex-end;
+}
+.cd-chips {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-top: 4px;
+}
+.cd-chip {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 7px 11px;
+  background: rgba(232, 201, 160, 0.04);
+  border: 1px solid var(--hairline-soft);
+  color: var(--bone-dim);
+  border-radius: 999px;
+}
+.cd-input {
+  padding: 14px 16px;
+  border-top: 1px solid var(--hairline-soft);
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.25);
+  font-family: var(--serif-italic);
+  font-style: italic;
+  color: var(--bone-mute);
+  font-size: 14px;
+}
+.cd-input .dot {
+  width: 6px; height: 6px;
+  background: var(--champagne);
+  border-radius: 50%;
+  margin-right: 10px;
+  animation: blink 1.4s ease-in-out infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+.cd-foot {
+  padding: 10px 16px;
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: 0.22em;
+  color: var(--bone-mute);
+  text-transform: uppercase;
+  text-align: center;
+  border-top: 1px solid var(--hairline-soft);
+  background: rgba(0,0,0,0.15);
+}
+
+@media (max-width: 1100px) {
+  .contact-grid { grid-template-columns: 1fr; }
+  .sidebar { position: static; }
+  .form-frame { padding: 36px 24px 32px; }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-field.full { grid-column: span 1; }
+  .service-pick { grid-template-columns: 1fr; }
+  .cd-inner { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <span class="mark"></span>
+    <span>LUXE STUDIO</span>
+    <span class="sup">NB</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="work.html">Work</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="experiences.html">Experiences</a>
+    <a href="contact.html" class="active">Contact</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-switch">
+      <span class="knob"></span>
+      <button class="on" data-lang="en">EN</button>
+      <button data-lang="fr">FR</button>
+    </div>
+    <a href="contact.html" class="nav-cta"><span>Book Your Ritual</span><span class="arrow">→</span></a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="contact-hero" data-screen-label="01 Contact Hero">
+  <div class="contact-hero-inner">
+    <div class="contact-hero-meta">
+      <span><span class="v">◇ The chair</span> · 214 Rue Main · Suite 201</span>
+      <span>Page <span class="v">06 / 06</span></span>
+    </div>
+    <h1>
+      Pull up<br>
+      a <em>chair.</em>
+      <span class="fr">Approchez-vous — la porte est ouverte.</span>
+    </h1>
+    <p class="lede">Send your invitation below — pick the room you'd like to begin in, the day, the hour. We'll write back the same day with the artist's name, a small confirmation, and what to bring.</p>
+  </div>
+</section>
+
+<!-- FORM SECTION -->
+<section class="contact-section" data-screen-label="02 Booking Form">
+  <div class="contact-grid">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="contact-map">
+        <div class="grid-lines"></div>
+        <div class="road r1"></div>
+        <div class="road r2"></div>
+        <div class="road r3"></div>
+        <div class="road r4"></div>
+        <div class="main"></div>
+        <div class="main-label">Rue Main Street</div>
+        <div class="pin"></div>
+        <div class="pin-lbl">◇ Luxe Studio NB<span class="sub">214 · Suite 201</span></div>
+        <div class="compass">N 46.0878°<br>W 64.7782°</div>
+        <span class="placeholder-label" style="bottom: 14px; left: 14px;">Map · 214 Rue Main · brass door</span>
+      </div>
+
+      <div class="sidebar-block">
+        <h4>The Atelier · L'atelier</h4>
+        <div class="address">
+          214 Rue Main Street<br>Suite 201, Moncton<br>New Brunswick · E1C 1B8
+          <span class="fr">Au deuxième étage, derrière la porte de laiton.</span>
+        </div>
+      </div>
+
+      <div class="sidebar-block">
+        <h4>Hours · Heures</h4>
+        <div class="row"><span class="k">Tue — Thu</span><span class="v">10 — 18</span></div>
+        <div class="row"><span class="k">Fri</span><span class="v">10 — 22</span></div>
+        <div class="row"><span class="k">Sat</span><span class="v">09 — 18</span></div>
+        <div class="row"><span class="k">Sun — Mon</span><span class="v">Closed · Fermé</span></div>
+      </div>
+
+      <div class="sidebar-block">
+        <h4>Direct · Directement</h4>
+        <p>
+          <a href="tel:+15065550187" style="color: var(--champagne); border-bottom: 1px solid var(--hairline); padding-bottom: 2px;">(506) 555 — 0187</a><br>
+          <a href="mailto:hello@luxestudionb.com" style="color: var(--champagne); border-bottom: 1px solid var(--hairline); padding-bottom: 2px; display: inline-block; margin-top: 8px;">hello@luxestudionb.com</a><br>
+          <a href="https://instagram.com/luxestudionb" style="color: var(--bone); display: inline-block; margin-top: 10px;">@luxestudionb</a>
+        </p>
+      </div>
+
+      <div class="sidebar-block">
+        <h4>The cadence · La cadence</h4>
+        <p>Twelve guests per day across six rooms. We're taking new appointments through the summer of <strong>2026</strong>. The first ten minutes are always yours, before anything begins.</p>
+      </div>
+    </aside>
+
+    <!-- FORM -->
+    <form class="form-frame" id="booking" onsubmit="return submitBooking(event)">
+      <div class="form-header">
+        <h2>Book Your Ritual<span class="fr">Réservez votre rituel</span></h2>
+        <div class="stamp">
+          <span class="v">№ — Rendez-vous</span>
+          <span>Réf. · LSN-BOOK</span>
+        </div>
+      </div>
+
+      <div class="form-grid">
+
+        <div class="form-field">
+          <label>Your name <span class="opt">votre nom</span></label>
+          <input type="text" placeholder="Émilie Doiron" required>
+        </div>
+
+        <div class="form-field">
+          <label>The pronouns we'll use <span class="opt">pronoms — optional</span></label>
+          <input type="text" placeholder="elle · she · they">
+        </div>
+
+        <div class="form-field">
+          <label>Email <span class="opt">courriel</span></label>
+          <input type="email" placeholder="bonjour@luxestudionb.com" required>
+        </div>
+
+        <div class="form-field">
+          <label>Phone <span class="opt">téléphone</span></label>
+          <input type="tel" placeholder="+1 (506) 555 — 0187">
+        </div>
+
+        <div class="form-field full">
+          <label>Which room? <span class="opt">la pièce — choose one</span></label>
+          <div class="service-pick">
+            <input type="radio" id="srv-hair" name="srv" checked>
+            <label for="srv-hair">
+              <span class="ico">N° 01</span>
+              <span class="name">Hair Rituals<span class="fr">Cheveux</span></span>
+            </label>
+
+            <input type="radio" id="srv-barber" name="srv">
+            <label for="srv-barber">
+              <span class="ico">N° 02</span>
+              <span class="name">Barbering<span class="fr">Barbier</span></span>
+            </label>
+
+            <input type="radio" id="srv-nail" name="srv">
+            <label for="srv-nail">
+              <span class="ico">N° 03</span>
+              <span class="name">Nail Couture<span class="fr">Ongles</span></span>
+            </label>
+
+            <input type="radio" id="srv-lash" name="srv">
+            <label for="srv-lash">
+              <span class="ico">N° 04</span>
+              <span class="name">Lash &amp; Brow<span class="fr">Cils &amp; sourcils</span></span>
+            </label>
+
+            <input type="radio" id="srv-face" name="srv">
+            <label for="srv-face">
+              <span class="ico">N° 05</span>
+              <span class="name">Skin Alchemy<span class="fr">Esthétique</span></span>
+            </label>
+
+            <input type="radio" id="srv-spa" name="srv">
+            <label for="srv-spa">
+              <span class="ico">N° 06</span>
+              <span class="name">Wellness &amp; Body<span class="fr">Bien-être</span></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-field full">
+          <label>Preferred day <span class="opt">choisissez un jour — next ten days</span></label>
+          <div class="day-pick" id="day-pick">
+            <button type="button" class="day"><span class="num">27</span><span class="lbl">Wed</span></button>
+            <button type="button" class="day"><span class="num">28</span><span class="lbl">Thu</span></button>
+            <button type="button" class="day on"><span class="num">29</span><span class="lbl">Fri</span></button>
+            <button type="button" class="day"><span class="num">30</span><span class="lbl">Sat</span></button>
+            <button type="button" class="day closed"><span class="num">31</span><span class="lbl">Sun · Fermé</span></button>
+            <button type="button" class="day closed"><span class="num">01</span><span class="lbl">Mon · Fermé</span></button>
+            <button type="button" class="day"><span class="num">02</span><span class="lbl">Tue</span></button>
+            <button type="button" class="day"><span class="num">03</span><span class="lbl">Wed</span></button>
+            <button type="button" class="day"><span class="num">04</span><span class="lbl">Thu</span></button>
+            <button type="button" class="day"><span class="num">05</span><span class="lbl">Fri</span></button>
+          </div>
+        </div>
+
+        <div class="form-field full">
+          <label>Preferred hour <span class="opt">l'heure — Fri 29 May</span></label>
+          <div class="time-pick" id="time-pick">
+            <button type="button" class="time">10:00</button>
+            <button type="button" class="time">11:30</button>
+            <button type="button" class="time on">13:00</button>
+            <button type="button" class="time">14:30</button>
+            <button type="button" class="time">16:00</button>
+            <button type="button" class="time">17:30</button>
+            <button type="button" class="time">19:00</button>
+            <button type="button" class="time">20:30</button>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label>Have you visited before? <span class="opt">déjà venue?</span></label>
+          <select required>
+            <option>First visit · première visite</option>
+            <option selected>I'm a regular · habituée</option>
+            <option>A guest brought me · invitée d'une habituée</option>
+            <option>Returning after a long time</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label>How you heard of us <span class="opt">comment nous avez-vous trouvés?</span></label>
+          <select>
+            <option>A friend at the chair · une amie</option>
+            <option>Instagram · @luxestudionb</option>
+            <option>Press · article</option>
+            <option>Search · Google</option>
+            <option>Other · autre</option>
+          </select>
+        </div>
+
+        <div class="form-field full">
+          <label>The note <span class="opt">le mot — anything we should know at the door</span></label>
+          <textarea placeholder="A reference, an allergy, a hope for the room — anything you'd say at the chair before we begin." required></textarea>
+        </div>
+
+      </div>
+
+      <div class="form-foot">
+        <div class="note">
+          <span class="v">◇ Quiet handling</span><br>
+          One reply, the same day.<br>
+          No follow-up newsletters · pas de courriels insistants.
+        </div>
+
+        <button type="submit" class="submit-btn">
+          <span>Send Your Invitation</span>
+          <span class="fr">Envoyer l'invitation</span>
+          <span class="arrow">→</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- CONCIERGE DEMO -->
+<section class="concierge-demo" data-screen-label="03 Concierge Demo">
+  <div class="cd-inner">
+    <div class="cd-copy">
+      <div class="num">§ 02 — The concierge · La concierge</div>
+      <h2>If a chair is easier<br>than a form, <em>write</em> us.<span class="fr">Si le fauteuil est plus simple — écrivez.</span></h2>
+      <p>Élise, our house concierge, sits at the door from 09:00 to 22:00. She speaks French and English, holds appointments at her desk on a paper book, and will thread you to the artist most for the hour you're imagining.</p>
+      <p>Open her at the bottom-right of any page — or simply call. We answer the phone before the second ring; that's the only thing we time at this address.</p>
+      <ul>
+        <li>Replies within the hour</li>
+        <li>Bilingue · EN · FR</li>
+        <li>One paper book, no algorithms</li>
+        <li>09:00 — 22:00 · seven days</li>
+      </ul>
+    </div>
+
+    <!-- Static concierge mockup -->
+    <div class="cd-panel">
+      <div class="cd-head">
+        <div class="av"></div>
+        <div class="id">
+          <div class="name">Élise — Concierge</div>
+          <div class="role"><span class="live"></span>Atelier · Moncton · open</div>
+        </div>
+      </div>
+      <div class="cd-body">
+        <div class="cd-msg them"><em>Bonsoir.</em> Welcome to the atelier. I'm Élise — I tend the room when the artists are at the chair. How may I make the next hour yours?</div>
+        <div class="cd-chips">
+          <span class="cd-chip">◇ Book a ritual</span>
+          <span class="cd-chip">◇ The menu</span>
+          <span class="cd-chip">◇ Gift card</span>
+        </div>
+        <div class="cd-msg you">A long bath, Friday evening — for two?</div>
+        <div class="cd-msg them">A pleasure. I have Friday 29 May at 19:00 in Room N° 07, with Marc-André &amp; Léa. <em>Voulez-vous que je tienne l'heure?</em></div>
+        <div class="cd-chips">
+          <span class="cd-chip">◇ Yes, please hold it</span>
+          <span class="cd-chip">◇ Other times</span>
+        </div>
+      </div>
+      <div class="cd-input">
+        <span class="dot"></span>A note, in EN or FR…
+      </div>
+      <div class="cd-foot"><span style="color: var(--brass);">◇</span> Replies within the hour · réponse sous une heure</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-mark">
+    <div class="word">LUXE STUDIO<span class="sup">NB</span></div>
+    <div class="nl">
+      <h4>The newsletter · La lettre</h4>
+      <p>Once a season — solstice, equinox. New rituals, soft openings, the hour the door is open.</p>
+      <form onsubmit="event.preventDefault(); this.querySelector('button').textContent='✓ MERCI'; this.querySelector('input').value='';">
+        <input type="email" placeholder="your address · votre courriel" required>
+        <button type="submit">Subscribe →</button>
+      </form>
+    </div>
+  </div>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-tag">
+        Where beauty becomes ritual.
+        <span class="fr">Où la beauté devient rituel.</span>
+      </div>
+      <p style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; color: var(--bone-mute); text-transform: uppercase; margin-top: 24px; line-height: 2;">
+        <span style="color: var(--brass);">◇ The Atelier</span><br>
+        214 Rue Main Street, Suite 201<br>
+        Moncton · New Brunswick<br>
+        E1C 1B8 · Canada
+      </p>
+    </div>
+    <div>
+      <h4>The House</h4>
+      <ul>
+        <li><a href="index.html">Home · Accueil</a></li>
+        <li><a href="work.html">Work · Transformations</a></li>
+        <li><a href="services.html">Services · Le menu</a></li>
+        <li><a href="about.html">About · L'atelier</a></li>
+        <li><a href="experiences.html">Experiences</a></li>
+        <li><a href="contact.html">Contact · Rendez-vous</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>The Room · La pièce</h4>
+      <ul>
+        <li style="color: var(--bone);">Tue — Thu · 10 — 18</li>
+        <li style="color: var(--bone);">Fri · 10 — 22</li>
+        <li style="color: var(--bone);">Sat · 09 — 18</li>
+        <li style="color: var(--bone);">Sun — Mon · Closed</li>
+        <li style="margin-top: 14px;"><a href="https://instagram.com/luxestudionb" target="_blank" rel="noopener">@luxestudionb</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Direct · Directement</h4>
+      <ul>
+        <li><a href="tel:+15065550187">(506) 555 — 0187</a></li>
+        <li><a href="mailto:hello@luxestudionb.com">hello@luxestudionb.com</a></li>
+        <li style="margin-top: 16px;"><a href="contact.html" style="color: var(--champagne); border-bottom: 1px solid var(--hairline); padding-bottom: 3px;">Book Your Ritual →</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© MMXXVI · Luxe Studio NB</span>
+    <span><a href="#">Mentions légales · Legal</a></span>
+    <span>Crafted in Moncton · E1C 1B8</span>
+  </div>
+</footer>
+
+<script src="common.js"></script>
+<script>
+  // Day picker
+  document.querySelectorAll('#day-pick .day').forEach(d => {
+    d.addEventListener('click', () => {
+      document.querySelectorAll('#day-pick .day').forEach(x => x.classList.remove('on'));
+      d.classList.add('on');
+    });
+  });
+  // Time picker
+  document.querySelectorAll('#time-pick .time').forEach(t => {
+    t.addEventListener('click', () => {
+      document.querySelectorAll('#time-pick .time').forEach(x => x.classList.remove('on'));
+      t.classList.add('on');
+    });
+  });
+  // Submit stub
+  function submitBooking(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.submit-btn');
+    btn.innerHTML = '<span>✓ Invitation reçue</span><span class="fr">A reply within the hour</span>';
+    btn.style.pointerEvents = 'none';
+    return false;
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transformations · Métamorphoses — Luxe Studio NB</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+.work-hero {
+  padding: 200px 48px 80px;
+  position: relative;
+  background:
+    radial-gradient(ellipse 60% 70% at 50% 0%, rgba(232, 201, 160, 0.10) 0%, transparent 60%),
+    var(--obsidian);
+  overflow: hidden;
+}
+.work-hero-inner { max-width: 1320px; margin: 0 auto; }
+.work-hero-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  color: var(--bone-mute);
+  text-transform: uppercase;
+}
+.work-hero-meta .v { color: var(--brass); }
+.work-hero h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(72px, 11vw, 156px);
+  letter-spacing: -0.035em;
+  line-height: 0.9;
+  margin-bottom: 24px;
+}
+.work-hero h1 .fr {
+  display: block;
+  font-family: var(--serif-italic);
+  font-style: italic;
+  color: var(--rose);
+  font-size: 0.5em;
+  letter-spacing: -0.01em;
+  margin-top: 14px;
+}
+.work-hero-blurb {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  max-width: 1100px;
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 1px solid var(--hairline-soft);
+}
+.work-hero-blurb p {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--bone-dim);
+}
+.work-hero-blurb p strong { color: var(--bone); font-weight: 400; }
+
+/* Filter strip */
+.filter-strip {
+  position: sticky;
+  top: 92px;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 16px 48px;
+  background: rgba(10, 9, 8, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--hairline-soft);
+  border-bottom: 1px solid var(--hairline-soft);
+}
+.filter {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--bone-dim);
+  padding: 9px 14px;
+  background: transparent;
+  border: 1px solid var(--hairline-soft);
+  border-radius: 1px;
+  cursor: pointer;
+  transition: border-color 0.3s, color 0.3s, background 0.3s;
+}
+.filter:hover { border-color: var(--brass-dim); color: var(--bone); }
+.filter.on {
+  border-color: var(--champagne);
+  color: var(--champagne);
+  background: rgba(232, 201, 160, 0.06);
+}
+.filter .fr {
+  font-family: var(--serif-italic);
+  font-style: italic;
+  color: var(--rose);
+  text-transform: none;
+  letter-spacing: 0;
+  margin-left: 6px;
+  font-size: 11px;
+}
+
+/* Before / After hero piece */
+.ba-section { padding: 120px 48px; }
+.ba-list {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+.ba-row {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 60px;
+  align-items: start;
+}
+.ba-row.flip { grid-template-columns: 1fr 320px; }
+.ba-row.flip .ba-side { order: 2; }
+
+.ba-side .idx {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  color: var(--brass);
+  margin-bottom: 24px;
+}
+.ba-side h3 {
+  font-family: var(--serif);
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+}
+.ba-side .sub {
+  font-family: var(--serif-italic);
+  font-style: italic;
+  font-size: 20px;
+  color: var(--rose);
+  margin-bottom: 24px;
+}
+.ba-side p {
+  font-size: 14px;
+  color: var(--bone-dim);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+.ba-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.ba-tag {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: var(--bone-dim);
+  text-transform: uppercase;
+  padding: 6px 10px;
+  border: 1px solid var(--hairline-soft);
+}
+.ba-tag.gold { color: var(--champagne); border-color: var(--hairline); }
+
+.ba-frame {
+  position: relative;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  background: var(--charcoal);
+  border: 1px solid var(--hairline-soft);
+  user-select: none;
+  cursor: ew-resize;
+}
+.ba-pane { position: absolute; inset: 0; overflow: hidden; }
+.ba-pane img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.ba-pane.before img { filter: brightness(0.55) contrast(0.85) saturate(0.4) sepia(0.2); }
+.ba-pane.after img { filter: brightness(0.85) contrast(1.08) saturate(0.95); }
+.ba-pane.after { clip-path: inset(0 0 0 var(--clip, 50%)); }
+.ba-pane.before { clip-path: inset(0 var(--clip-rev, 50%) 0 0); }
+
+.ba-label {
+  position: absolute;
+  top: 20px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  color: var(--bone);
+  text-transform: uppercase;
+  padding: 6px 10px;
+  background: rgba(10, 9, 8, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--hairline-soft);
+  z-index: 4;
+}
+.ba-label.before { left: 20px; color: var(--bone-dim); }
+.ba-label.after { right: 20px; color: var(--champagne); border-color: var(--hairline); }
+.ba-label .dot {
+  display: inline-block;
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: middle;
+  transform: translateY(-1px);
+}
+.ba-label.before .dot { background: var(--bone-mute); }
+.ba-label.after .dot { background: var(--champagne); }
+
+.ba-handle {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: var(--clip, 50%);
+  width: 2px;
+  background: var(--champagne);
+  box-shadow: 0 0 20px rgba(232, 201, 160, 0.6);
+  z-index: 5;
+  transform: translateX(-50%);
+}
+.ba-handle::before, .ba-handle::after {
+  content: "";
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+}
+.ba-handle::before {
+  width: 56px; height: 56px;
+  background: linear-gradient(180deg, #F4DDB2 0%, var(--champagne) 50%, var(--brass) 100%);
+  border-radius: 50%;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.5),
+    inset 0 -1px 0 rgba(80, 50, 20, 0.4),
+    0 8px 24px rgba(232, 201, 160, 0.4);
+}
+.ba-handle::after {
+  width: 14px; height: 2px;
+  background:
+    linear-gradient(90deg, var(--obsidian) 0 2px, transparent 2px 5px, var(--obsidian) 5px 7px, transparent 7px 10px, var(--obsidian) 10px 12px, transparent 12px 14px),
+    var(--obsidian);
+  box-shadow: 0 4px 0 -1px var(--obsidian), 0 -4px 0 -1px var(--obsidian);
+}
+
+/* Gallery */
+.gallery-section {
+  padding: 140px 48px;
+  background: var(--obsidian);
+  border-top: 1px solid var(--hairline-soft);
+}
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 140px;
+  gap: 18px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.tile {
+  position: relative;
+  overflow: hidden;
+  background: var(--charcoal);
+  border: 1px solid var(--hairline-soft);
+  cursor: pointer;
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.tile:hover { transform: translateY(-6px); }
+.tile img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: brightness(0.78) contrast(1.05) saturate(0.85);
+  transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.6s;
+}
+.tile:hover img { transform: scale(1.06); filter: brightness(0.88) contrast(1.08) saturate(0.95); }
+.tile::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(10, 9, 8, 0.9) 100%);
+  z-index: 1; pointer-events: none;
+}
+.tile .meta {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 18px 20px 16px;
+  z-index: 2;
+}
+.tile .meta .top {
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: 0.24em;
+  color: var(--champagne);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.tile .meta h4 {
+  font-family: var(--serif);
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--bone);
+}
+.tile .meta .fr {
+  font-family: var(--serif-italic);
+  font-style: italic;
+  color: var(--rose);
+  font-size: 12px;
+  display: block;
+  margin-top: 3px;
+}
+.tile .num {
+  position: absolute;
+  top: 16px; right: 18px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.24em;
+  color: var(--bone-mute);
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+/* Gallery grid spans (asymmetric editorial) */
+.t-1 { grid-column: span 5; grid-row: span 3; }
+.t-2 { grid-column: span 4; grid-row: span 2; }
+.t-3 { grid-column: span 3; grid-row: span 2; }
+.t-4 { grid-column: span 4; grid-row: span 3; }
+.t-5 { grid-column: span 3; grid-row: span 3; }
+.t-6 { grid-column: span 5; grid-row: span 2; }
+.t-7 { grid-column: span 4; grid-row: span 2; }
+.t-8 { grid-column: span 3; grid-row: span 2; }
+.t-9 { grid-column: span 5; grid-row: span 3; }
+.t-10 { grid-column: span 4; grid-row: span 2; }
+.t-11 { grid-column: span 6; grid-row: span 3; }
+.t-12 { grid-column: span 6; grid-row: span 3; }
+
+/* Vitrine (editorial case study) */
+.vitrine {
+  padding: 140px 48px;
+  background:
+    radial-gradient(ellipse 50% 50% at 0% 100%, rgba(212, 165, 160, 0.10) 0%, transparent 50%),
+    var(--obsidian);
+  border-top: 1px solid var(--hairline-soft);
+}
+.vitrine-inner { max-width: 1440px; margin: 0 auto; }
+.vitrine-row {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 0.8fr;
+  gap: 36px;
+  align-items: end;
+  margin-bottom: 36px;
+}
+.vitrine-row .big {
+  position: relative;
+  aspect-ratio: 4/5;
+  background: var(--charcoal);
+  overflow: hidden;
+}
+.vitrine-row .big img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: brightness(0.82) contrast(1.05);
+}
+.vitrine-row .mid {
+  position: relative;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background: var(--charcoal);
+}
+.vitrine-row .mid img { width:100%; height:100%; object-fit:cover; filter: brightness(0.82) contrast(1.05); }
+.vitrine-row .copy {
+  padding-right: 12px;
+  padding-bottom: 20px;
+}
+.vitrine-row .copy .idx {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  color: var(--brass);
+  margin-bottom: 18px;
+  text-transform: uppercase;
+}
+.vitrine-row .copy h3 {
+  font-family: var(--serif);
+  font-size: 44px;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.vitrine-row .copy h3 .fr {
+  display: block;
+  font-family: var(--serif-italic);
+  font-style: italic;
+  font-size: 0.5em;
+  color: var(--rose);
+  margin-top: 10px;
+}
+.vitrine-row .copy p {
+  font-size: 14px;
+  color: var(--bone-dim);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.vitrine-row .copy .credits {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: var(--bone-mute);
+  text-transform: uppercase;
+  line-height: 2;
+  border-top: 1px solid var(--hairline-soft);
+  padding-top: 16px;
+}
+.vitrine-row .copy .credits .v { color: var(--champagne); }
+
+/* alternate layout */
+.vitrine-row.flip { grid-template-columns: 0.8fr 1fr 1.2fr; }
+.vitrine-row.flip .copy { order: -1; padding-right: 0; padding-left: 12px; }
+
+@media (max-width: 1100px) {
+  .ba-row, .ba-row.flip { grid-template-columns: 1fr; }
+  .ba-row.flip .ba-side { order: 0; }
+  .vitrine-row, .vitrine-row.flip { grid-template-columns: 1fr; }
+  .gallery { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 220px; }
+  .gallery .tile { grid-column: span 1; grid-row: span 1; }
+  .work-hero-blurb { grid-template-columns: 1fr; gap: 24px; }
+}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <span class="mark"></span>
+    <span>LUXE STUDIO</span>
+    <span class="sup">NB</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="work.html" class="active">Work</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="experiences.html">Experiences</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-switch">
+      <span class="knob"></span>
+      <button class="on" data-lang="en">EN</button>
+      <button data-lang="fr">FR</button>
+    </div>
+    <a href="contact.html" class="nav-cta"><span>Book Your Ritual</span><span class="arrow">→</span></a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="work-hero" data-screen-label="01 Work Hero">
+  <div class="work-hero-inner">
+    <div class="work-hero-meta">
+      <span><span class="v">◇ La vitrine</span> · From the chair</span>
+      <span>Page <span class="v">02 / 06</span></span>
+    </div>
+
+    <h1>
+      Transformations
+      <span class="fr">Métamorphoses — du fauteuil, en silence.</span>
+    </h1>
+
+    <div class="work-hero-blurb">
+      <p><strong>Each frame below was made at the chair</strong> — late afternoon, north light, no retouching. We photograph at the end of every ritual; the guest decides if it joins the vitrine.</p>
+      <p>Slide the gold handle on a reveal to see the before. <em class="italic" style="color: var(--rose);">Faites glisser pour voir l'avant — puis lisez la suite.</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- FILTERS -->
+<div class="filter-strip" data-screen-label="02 Filters">
+  <button class="filter on" data-cat="all">All<span class="fr">Tout</span></button>
+  <button class="filter" data-cat="hair">Hair<span class="fr">Cheveux</span></button>
+  <button class="filter" data-cat="barber">Barber<span class="fr">Barbier</span></button>
+  <button class="filter" data-cat="nail">Nails<span class="fr">Ongles</span></button>
+  <button class="filter" data-cat="lash">Lash &amp; Brow<span class="fr">Cils</span></button>
+  <button class="filter" data-cat="spa">Spa<span class="fr">Bien-être</span></button>
+  <button class="filter" data-cat="face">Esthetics<span class="fr">Esthétique</span></button>
+</div>
+
+<!-- BEFORE / AFTER -->
+<section class="ba-section" data-screen-label="03 Before After">
+  <div class="ba-list">
+
+    <div class="ba-row">
+      <div class="ba-side">
+        <div class="idx">◇ Reveal 01 / 03 · Hair</div>
+        <h3>Élise — Slow colour, three sittings</h3>
+        <div class="sub">Hair ritual · 6 hours over 3 visits</div>
+        <p>Eight years of box dye, unwound in three sittings. A bone-blonde lifted in low concentration with bond therapy at every wash, then re-warmed with the lightest hand of amber gloss. The fringe was kept; everything else was forgiven.</p>
+        <div class="ba-tags">
+          <span class="ba-tag gold">Colour</span>
+          <span class="ba-tag">Olaplex</span>
+          <span class="ba-tag">Treatment</span>
+          <span class="ba-tag">Cut</span>
+        </div>
+      </div>
+      <div class="ba-frame" data-ba data-clip="55">
+        <div class="ba-pane before"><img src="img/hair-3.jpg" alt="Before"></div>
+        <div class="ba-pane after"><img src="img/hair-1.jpg" alt="After"></div>
+        <div class="ba-label before"><span class="dot"></span>Avant · Before</div>
+        <div class="ba-label after"><span class="dot"></span>Après · After</div>
+        <div class="ba-handle"></div>
+      </div>
+    </div>
+
+    <div class="ba-row flip">
+      <div class="ba-side">
+        <div class="idx">◇ Reveal 02 / 03 · Barber</div>
+        <h3>Marc — The Saturday cut</h3>
+        <div class="sub">Atelier du barbier · 1h30</div>
+        <p>A scissor cut taken low and tight, beard sculpted with a straight razor under hot towel. No clipper above the temple. Cedar after-balm, a finger of single malt, the kind of quiet that doesn't apologise for itself.</p>
+        <div class="ba-tags">
+          <span class="ba-tag gold">Hot towel</span>
+          <span class="ba-tag">Straight razor</span>
+          <span class="ba-tag">Beard</span>
+        </div>
+      </div>
+      <div class="ba-frame" data-ba data-clip="42">
+        <div class="ba-pane before"><img src="img/barber-4.jpg" alt="Before"></div>
+        <div class="ba-pane after"><img src="img/barber-2.jpg" alt="After"></div>
+        <div class="ba-label before"><span class="dot"></span>Avant · Before</div>
+        <div class="ba-label after"><span class="dot"></span>Après · After</div>
+        <div class="ba-handle"></div>
+      </div>
+    </div>
+
+    <div class="ba-row">
+      <div class="ba-side">
+        <div class="idx">◇ Reveal 03 / 03 · Skin</div>
+        <h3>Renée — Ninety minutes of skin</h3>
+        <div class="sub">Esthetics · HydraFacial &amp; LED</div>
+        <p>A two-part HydraFacial, dermaplaning at the brow line, then a quiet half-hour under red light. The skin was first read — sebum, hydration, the small map of the week — and only then approached. The glow holds for two weeks; the routine that follows for longer.</p>
+        <div class="ba-tags">
+          <span class="ba-tag gold">HydraFacial</span>
+          <span class="ba-tag">LED</span>
+          <span class="ba-tag">Dermaplane</span>
+        </div>
+      </div>
+      <div class="ba-frame" data-ba data-clip="50">
+        <div class="ba-pane before"><img src="img/face-2.jpg" alt="Before"></div>
+        <div class="ba-pane after"><img src="img/face-1.jpg" alt="After"></div>
+        <div class="ba-label before"><span class="dot"></span>Avant · Before</div>
+        <div class="ba-label after"><span class="dot"></span>Après · After</div>
+        <div class="ba-handle"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDITORIAL VITRINE -->
+<section class="vitrine" data-screen-label="04 Vitrine">
+  <div class="vitrine-inner">
+    <div class="section-head">
+      <div class="num">§ 02 — La vitrine<br>Editorial</div>
+      <h2>Six rituals, six rooms,<br>one careful afternoon.</h2>
+    </div>
+
+    <!-- Row 1 — Hair -->
+    <div class="vitrine-row">
+      <div class="big tonal warm"><img src="img/hair-2.jpg" alt="Hair ritual"></div>
+      <div class="mid tonal"><img src="img/hair-4.jpg" alt="Hair detail"></div>
+      <div class="copy">
+        <div class="idx">N° 01 · Hair · Cheveux</div>
+        <h3>Signature Hair Rituals<span class="fr">Le rituel des cheveux</span></h3>
+        <p>Slow colour, custom dimensional work, and Olaplex-led repair — performed by senior stylists who treat your head of hair like an heirloom.</p>
+        <div class="credits">
+          <span class="v">◇ Stylist</span> Émilie D.<br>
+          <span class="v">◇ Light</span> North window, 17:42<br>
+          <span class="v">◇ Hour</span> 2h30 — 4h
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2 — Barber (flipped) -->
+    <div class="vitrine-row flip">
+      <div class="copy">
+        <div class="idx">N° 02 · Barber · Barbier</div>
+        <h3>The Barbering Atelier<span class="fr">L'atelier du barbier</span></h3>
+        <p>Hot-towel shaves, beard architecture, and the cut your grandfather used to take an hour to get right — straight razor, cedar after-balm, a tumbler of something dark.</p>
+        <div class="credits">
+          <span class="v">◇ Barbier</span> Jean-Luc A.<br>
+          <span class="v">◇ Tools</span> Straight razor, hot towel<br>
+          <span class="v">◇ Hour</span> 1h15
+        </div>
+      </div>
+      <div class="mid tonal"><img src="img/barber-5.jpg" alt="Beard work"></div>
+      <div class="big tonal"><img src="img/barber-1.jpg" alt="Barber"></div>
+    </div>
+
+    <!-- Row 3 — Nails -->
+    <div class="vitrine-row">
+      <div class="big tonal"><img src="img/nails-5.jpg" alt="Gold nails"></div>
+      <div class="mid tonal"><img src="img/nails-3.jpg" alt="Nails"></div>
+      <div class="copy">
+        <div class="idx">N° 03 · Nails · Ongles</div>
+        <h3>Nail Couture Studio<span class="fr">Couture des ongles</span></h3>
+        <p>Builder-gel manicures, sculpted forms, custom inlays. A glass of pét-nat, ninety minutes off the phone, hands you'll catch yourself glancing at all week.</p>
+        <div class="credits">
+          <span class="v">◇ Artist</span> Camille B.<br>
+          <span class="v">◇ Finish</span> Builder gel, sculpted<br>
+          <span class="v">◇ Hour</span> 1h30
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 4 — Lash (flipped) -->
+    <div class="vitrine-row flip">
+      <div class="copy">
+        <div class="idx">N° 04 · Lash · Cils</div>
+        <h3>Lash &amp; Brow Sanctuary<span class="fr">Sanctuaire des cils</span></h3>
+        <p>Hand-mapped lash extensions, a quiet brow lamination room, lash lift &amp; tint by senior artists. Forty-five minutes that change the rest of your week.</p>
+        <div class="credits">
+          <span class="v">◇ Artist</span> Sophie L.<br>
+          <span class="v">◇ Mapping</span> Hand-drawn, per eye<br>
+          <span class="v">◇ Hour</span> 2h
+        </div>
+      </div>
+      <div class="mid tonal"><img src="img/lash-3.jpg" alt="Lash detail"></div>
+      <div class="big tonal"><img src="img/lash-1.jpg" alt="Lash ritual"></div>
+    </div>
+
+    <!-- Row 5 — Esthetics -->
+    <div class="vitrine-row">
+      <div class="big tonal warm"><img src="img/face-1.jpg" alt="Facial"></div>
+      <div class="mid tonal"><img src="img/face-2.jpg" alt="Face detail"></div>
+      <div class="copy">
+        <div class="idx">N° 05 · Esthetics · Esthétique</div>
+        <h3>Skin Alchemy<span class="fr">L'alchimie de la peau</span></h3>
+        <p>HydraFacials, dermaplaning, retinol-sequenced peels, LED rooms in their own low light. We read the skin first, then we treat it. Always in that order.</p>
+        <div class="credits">
+          <span class="v">◇ Aesthetician</span> Renée L.<br>
+          <span class="v">◇ Protocol</span> Read, treat, send home<br>
+          <span class="v">◇ Hour</span> 1h45
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 6 — Spa (flipped) -->
+    <div class="vitrine-row flip">
+      <div class="copy">
+        <div class="idx">N° 06 · Spa · Bien-être</div>
+        <h3>Wellness &amp; Body Rituals<span class="fr">Rituels du corps</span></h3>
+        <p>Lymphatic drainage, body contouring, scalp rituals, and the kind of massage that resets the week. Heated stone, eucalyptus, low light, no phone.</p>
+        <div class="credits">
+          <span class="v">◇ Therapist</span> Marc-André D.<br>
+          <span class="v">◇ Room</span> The long bath, north-facing<br>
+          <span class="v">◇ Hour</span> 2h
+        </div>
+      </div>
+      <div class="mid tonal"><img src="img/spa-2.jpg" alt="Spa detail"></div>
+      <div class="big tonal"><img src="img/spa-3.jpg" alt="Long bath"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section" data-screen-label="05 Gallery">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="num">§ 03 — La galerie<br>Twenty-four frames</div>
+      <h2>The room, in fragments.</h2>
+    </div>
+
+    <div class="gallery" id="gallery">
+      <div class="tile t-1" data-cat="hair">
+        <img src="img/hair-5.jpg" alt="Hair">
+        <div class="num">N° 01</div>
+        <div class="meta"><div class="top">◇ Hair · Cheveux</div><h4>The slow lift<span class="fr">Le lent éclaircissement</span></h4></div>
+      </div>
+      <div class="tile t-2" data-cat="nail">
+        <img src="img/nails-1.jpg" alt="Nails">
+        <div class="num">N° 02</div>
+        <div class="meta"><div class="top">◇ Nails · Ongles</div><h4>Almond, almost ivory<span class="fr">Amande, presque ivoire</span></h4></div>
+      </div>
+      <div class="tile t-3" data-cat="lash">
+        <img src="img/lash-4.jpg" alt="Lash">
+        <div class="num">N° 03</div>
+        <div class="meta"><div class="top">◇ Lash</div><h4>Doll lash<span class="fr">Cils-poupée</span></h4></div>
+      </div>
+      <div class="tile t-4" data-cat="barber">
+        <img src="img/barber-3.jpg" alt="Barber">
+        <div class="num">N° 04</div>
+        <div class="meta"><div class="top">◇ Barber · Barbier</div><h4>Side-part, ungelled<span class="fr">Raie, sans gel</span></h4></div>
+      </div>
+      <div class="tile t-5" data-cat="spa">
+        <img src="img/massage-1.jpg" alt="Massage">
+        <div class="num">N° 05</div>
+        <div class="meta"><div class="top">◇ Spa</div><h4>Heated stone<span class="fr">Pierre chaude</span></h4></div>
+      </div>
+      <div class="tile t-6" data-cat="hair">
+        <img src="img/hair-4.jpg" alt="Hair">
+        <div class="num">N° 06</div>
+        <div class="meta"><div class="top">◇ Hair · Cheveux</div><h4>Cinnamon undone<span class="fr">Cannelle dénouée</span></h4></div>
+      </div>
+      <div class="tile t-7" data-cat="face">
+        <img src="img/face-2.jpg" alt="Face">
+        <div class="num">N° 07</div>
+        <div class="meta"><div class="top">◇ Esthetics</div><h4>Skin, post-LED<span class="fr">Peau, post-LED</span></h4></div>
+      </div>
+      <div class="tile t-8" data-cat="nail">
+        <img src="img/nails-4.jpg" alt="Nails">
+        <div class="num">N° 08</div>
+        <div class="meta"><div class="top">◇ Nails · Ongles</div><h4>Inlay, gold leaf<span class="fr">Feuille d'or</span></h4></div>
+      </div>
+      <div class="tile t-9" data-cat="spa">
+        <img src="img/spa-4.jpg" alt="Spa">
+        <div class="num">N° 09</div>
+        <div class="meta"><div class="top">◇ Spa</div><h4>The long bath<span class="fr">Le long bain</span></h4></div>
+      </div>
+      <div class="tile t-10" data-cat="barber">
+        <img src="img/barber-4.jpg" alt="Beard">
+        <div class="num">N° 10</div>
+        <div class="meta"><div class="top">◇ Barber · Barbier</div><h4>The shape, by hand<span class="fr">La ligne, à la main</span></h4></div>
+      </div>
+      <div class="tile t-11" data-cat="hair">
+        <img src="img/hair-2.jpg" alt="Hair">
+        <div class="num">N° 11</div>
+        <div class="meta"><div class="top">◇ Hair · Cheveux</div><h4>Warm honey gloss<span class="fr">Glaçage miel</span></h4></div>
+      </div>
+      <div class="tile t-12" data-cat="lash">
+        <img src="img/lash-2.jpg" alt="Lash">
+        <div class="num">N° 12</div>
+        <div class="meta"><div class="top">◇ Lash · Cils</div><h4>Hand-mapped, soft<span class="fr">Tracé à la main</span></h4></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" data-screen-label="06 CTA" style="padding: 160px 48px;">
+  <div class="eyebrow cta-eyebrow"><span class="dot"></span>Twelve guests per day · Douze invités par jour</div>
+  <h2>The next chair could<br>have your name on it.<span class="fr">Le prochain fauteuil — peut-être le vôtre.</span></h2>
+  <a href="contact.html" class="btn-gold">
+    <span>Explore the Rituals</span>
+    <span class="fr">Explorer les rituels</span>
+    <span class="arrow">→</span>
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-mark">
+    <div class="word">LUXE STUDIO<span class="sup">NB</span></div>
+    <div class="nl">
+      <h4>The newsletter · La lettre</h4>
+      <p>Once a season — solstice, equinox. New rituals, soft openings, the hour the door is open.</p>
+      <form onsubmit="event.preventDefault(); this.querySelector('button').textContent='✓ MERCI'; this.querySelector('input').value='';">
+        <input type="email" placeholder="your address · votre courriel" required>
+        <button type="submit">Subscribe →</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="footer-grid">
+    <div>
+      <div class="footer-tag">
+        Where beauty becomes ritual.
+        <span class="fr">Où la beauté devient rituel.</span>
+      </div>
+      <p style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; color: var(--bone-mute); text-transform: uppercase; margin-top: 24px; line-height: 2;">
+        <span style="color: var(--brass);">◇ The Atelier</span><br>
+        214 Rue Main Street, Suite 201<br>
+        Moncton · New Brunswick<br>
+        E1C 1B8 · Canada
+      </p>
+    </div>
+    <div>
+      <h4>The House</h4>
+      <ul>
+        <li><a href="index.html">Home · Accueil</a></li>
+        <li><a href="work.html">Work · Transformations</a></li>
+        <li><a href="services.html">Services · Le menu</a></li>
+        <li><a href="about.html">About · L'atelier</a></li>
+        <li><a href="experiences.html">Experiences</a></li>
+        <li><a href="contact.html">Contact · Rendez-vous</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>The Room · La pièce</h4>
+      <ul>
+        <li style="color: var(--bone);">Tue — Thu · 10 — 18</li>
+        <li style="color: var(--bone);">Fri · 10 — 22</li>
+        <li style="color: var(--bone);">Sat · 09 — 18</li>
+        <li style="color: var(--bone);">Sun — Mon · Closed</li>
+        <li style="margin-top: 14px;"><a href="https://instagram.com/luxestudionb" target="_blank" rel="noopener">@luxestudionb</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Direct · Directement</h4>
+      <ul>
+        <li><a href="tel:+15065550187">(506) 555 — 0187</a></li>
+        <li><a href="mailto:hello@luxestudionb.com">hello@luxestudionb.com</a></li>
+        <li style="margin-top: 16px;"><a href="contact.html" style="color: var(--champagne); border-bottom: 1px solid var(--hairline); padding-bottom: 3px;">Book Your Ritual →</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© MMXXVI · Luxe Studio NB</span>
+    <span><a href="#">Mentions légales · Legal</a></span>
+    <span>Crafted in Moncton · E1C 1B8</span>
+  </div>
+</footer>
+
+<script src="common.js"></script>
+<script>
+  // Before/after drag slider
+  document.querySelectorAll('[data-ba]').forEach(frame => {
+    const initial = parseFloat(frame.dataset.clip || '50');
+    const update = (pct) => {
+      const clamped = Math.max(2, Math.min(98, pct));
+      frame.style.setProperty('--clip', clamped + '%');
+      frame.style.setProperty('--clip-rev', (100 - clamped) + '%');
+    };
+    update(initial);
+
+    let dragging = false;
+    const move = (clientX) => {
+      const rect = frame.getBoundingClientRect();
+      update(((clientX - rect.left) / rect.width) * 100);
+    };
+    frame.addEventListener('pointerdown', (e) => {
+      dragging = true;
+      frame.setPointerCapture(e.pointerId);
+      move(e.clientX);
+    });
+    frame.addEventListener('pointermove', (e) => {
+      if (dragging) move(e.clientX);
+    });
+    frame.addEventListener('pointerup', () => dragging = false);
+    frame.addEventListener('pointercancel', () => dragging = false);
+  });
+
+  // Filter chips
+  document.querySelectorAll('.filter').forEach(f => {
+    f.addEventListener('click', () => {
+      document.querySelectorAll('.filter').forEach(x => x.classList.remove('on'));
+      f.classList.add('on');
+      const cat = f.dataset.cat;
+      document.querySelectorAll('.tile').forEach(t => {
+        if (cat === 'all' || t.dataset.cat === cat) {
+          t.style.display = '';
+        } else {
+          t.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>

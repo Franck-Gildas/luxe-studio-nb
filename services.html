@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Beauty Menu · Le Menu — Luxe Studio NB</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Hero */
+.menu-hero {
+  padding: 200px 48px 60px;
+  background:
+    radial-gradient(ellipse 60% 70% at 50% 0%, rgba(232, 201, 160, 0.10) 0%, transparent 60%),
+    var(--obsidian);
+}
+.menu-hero-inner { max-width: 1320px; margin: 0 auto; }
+.menu-hero-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  color: var(--bone-mute);
+  text-transform: uppercase;
+}
+.menu-hero-meta .v { color: var(--brass); }
+.menu-hero h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(72px, 11vw, 156px);
+  letter-spacing: -0.035em;
+  line-height: 0.9;
+  margin-bottom: 24px;
+}
+.menu-hero h1 em {
+  font-family: var(--serif-italic);
+  font-style: italic;
+  color: var(--champagne);
+}
+.menu-hero h1 .fr {
+  display: block;
+  font-family: var(--serif-italic);
+  font-style: italic;
+  color: var(--rose);
+  font-size: 0.42em;
+  margin-top: 18px;
+  letter-spacing: -0.005em;
+}
+.menu-hero .lede {
+  max-width: 720px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--bone-dim);
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid var(--hairline-soft);
+}
+
+/* Index (table of contents) */
+.menu-index {
+  padding: 30px 48px 80px;
+  border-bottom: 1px solid var(--hairline-soft);
+}
+.menu-index-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--hairline-soft);
+}
+.menu-index-item {
+  padding: 26px 22px;
+  border-right: 1px solid var(--hairline-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.5s;
+  position: relative;
+}
+.menu-index-item:last-child { border-right: 0; }
+.menu-index-item:hover { background: rgba(232, 201, 160, 0.04); }
+.menu-index-item .n {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  color: var(--brass);
+  text-transform: uppercase;
+}
+.menu-index-item h4 {
+  font-family: var(--serif);
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.005em;
+  color: var(--bone);
+}
+.menu-index-item .price {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: var(--champagne);
+  margin-top: auto;
+}
+.menu-index-item .price .from {
+  color: var(--bone-mute);
+  font-size: 9px;
+  display: block;
+  margin-bottom: 2px;
+}
+
+/* Category section */
+.cat {
+  padding: 140px 48px;
+  position: relative;
+  border-bottom: 1px solid var(--hairline-soft);
+}
+.cat:nth-child(odd) {
+  background:
+    radial-gradient(ellipse 60% 50% at 100% 0%, rgba(232, 201, 160, 0.06) 0%, transparent 50%),
+    var(--obsidian);
+}
+.cat:nth-child(even) {
+  background:
+    radial-gradient(ellipse 60% 50% at 0% 100%, rgba(212, 165, 160, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 40% at 100% 100%, rgba(42, 24, 64, 0.20) 0%, transparent 50%),
+    #0c0a08;
+}
+.cat-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.cat.flip .cat-inner { grid-template-columns: 1fr 1fr; }
+.cat.flip .cat-copy { order: 2; }
+
+.cat-copy { padding-top: 40px; position: sticky; top: 110px; }
+.cat-copy .num {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  color: var(--brass);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.cat-copy .num::before {
+  content: "";
+  width: 6px; height: 6px;
+  background: var(--champagne);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--champagne);
+}
+.cat-copy h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(48px, 6vw, 88px);
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  margin-bottom: 18px;
+}
+.cat-copy h2 .fr {
+  display: block;
+  font-family: var(--serif-italic);
+  font-style: italic;
+  color: var(--rose);
+  font-size: 0.48em;
+  margin-top: 14px;
+  letter-spacing: -0.005em;
+}
+.cat-copy .sensory {
+  font-family: var(--serif-italic);
+  font-style: italic;
+  font-size: 19px;
+  color: var(--bone);
+  line-height: 1.55;
+  max-width: 460px;
+  margin-bottom: 24px;
+  text-wrap: pretty;
+}
+.cat-copy .body {
+  font-size: 15px;
+  color: var(--bone-dim);
+  line-height: 1.7;
+  max-width: 460px;
+  margin-bottom: 24px;
+}
+.cat-copy .room {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border: 1px solid var(--hairline-soft);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: var(--bone-dim);
+  text-transform: uppercase;
+}
+.cat-copy .room .dot { width: 6px; height: 6px; background: var(--rose); border-radius: 50%; }
+
+/* Visual side: hero image + items */
+.cat-right { display: flex; flex-direction: column; gap: 24px; }
+.cat-img {
+  position: relative;
+  aspect-ratio: 5/6;
+  overflow: hidden;
+  background: var(--charcoal);
+  border: 1px solid var(--hairline-soft);
+}
+.cat-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: brightness(0.82) contrast(1.05) saturate(0.9);
+}
+.cat-img::after {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 30%, rgba(232, 201, 160, 0.10) 0%, transparent 60%),
+    linear-gradient(180deg, transparent 60%, rgba(10, 9, 8, 0.6) 100%);
+  pointer-events: none;
+}
+.cat-img .label {
+  position: absolute;
+  bottom: 16px; left: 18px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: var(--bone-mute);
+  text-transform: uppercase;
+  z-index: 2;
+}
+.cat-img .label::before { content: "◇ "; color: var(--brass); margin-right: 4px; }
+
+/* Service list (the menu rows) */
+.cat-list {
+  display: flex;
+  flex-direction: column;
+}
+.cat-list .row {
+  display: grid;
+  grid-template-columns: 1fr 90px 110px;
+  gap: 24px;
+  align-items: baseline;
+  padding: 22px 0;
+  border-top: 1px solid var(--hairline-soft);
+  transition: background 0.4s;
+}
+.cat-list .row:hover { background: rgba(232, 201, 160, 0.03); }
+.cat-list .row:last-child { border-bottom: 1px solid var(--hairline-soft); }
+.cat-list .row .name {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+.cat-list .row .name .fr {
+  display: block;
+  font-family: var(--serif-italic);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--rose);
+  margin-top: 4px;
+}
+.cat-list .row .name .desc {
+  display: block;
+  font-family: var(--sans);
+  font-style: normal;
+  color: var(--bone-mute);
+  font-size: 12px;
+  margin-top: 8px;
+  letter-spacing: 0;
+  line-height: 1.5;
+  max-width: 380px;
+}
+.cat-list .row .dur {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: var(--bone-dim);
+  text-transform: uppercase;
+  text-align: right;
+}
+.cat-list .row .price {
+  font-family: var(--serif);
+  font-size: 24px;
+  letter-spacing: -0.01em;
+  color: var(--champagne);
+  text-align: right;
+}
+.cat-list .row .price .from {
+  display: block;
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--bone-mute);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+/* Add-ons strip */
+.addons {
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px dashed var(--hairline-soft);
+}
+.addons h5 {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  color: var(--brass);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  font-weight: 400;
+}
+.addons .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 10px 0;
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--bone-dim);
+}
+.addons .row .name { color: var(--bone); }
+.addons .row .name .fr {
+  font-family: var(--serif-italic);
+  font-style: italic;
+  color: var(--rose);
+  margin-left: 8px;
+  font-size: 13px;
+}
+.addons .row .v { color: var(--champagne); font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; }
+
+/* House note (bottom of each cat) */
+.house-note {
+  padding: 90px 48px;
+  text-align: center;
+  background: var(--obsidian);
+  border-bottom: 1px solid var(--hairline-soft);
+}
+.house-note p {
+  font-family: var(--serif-italic);
+  font-style: italic;
+  font-size: clamp(24px, 2.6vw, 34px);
+  color: var(--bone);
+  line-height: 1.4;
+  max-width: 900px;
+  margin: 0 auto;
+  text-wrap: pretty;
+}
+.house-note p .gold { color: var(--champagne); font-style: normal; font-family: var(--serif); }
+.house-note p .fr {
+  display: block;
+  font-size: 0.65em;
+  color: var(--rose);
+  margin-top: 16px;
+}
+
+@media (max-width: 1100px) {
+  .menu-index-inner { grid-template-columns: 1fr 1fr; }
+  .menu-index-item { border-right: 0; border-bottom: 1px solid var(--hairline-soft); }
+  .cat-inner, .cat.flip .cat-inner { grid-template-columns: 1fr; gap: 48px; }
+  .cat.flip .cat-copy { order: 0; }
+  .cat-copy { position: static; padding-top: 0; }
+  .cat-list .row { grid-template-columns: 1fr auto; }
+  .cat-list .row .dur { grid-column: 1; text-align: left; margin-top: 6px; }
+  .cat-list .row .price { grid-row: 1; }
+}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <span class="mark"></span>
+    <span>LUXE STUDIO</span>
+    <span class="sup">NB</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="work.html">Work</a>
+    <a href="services.html" class="active">Services</a>
+    <a href="about.html">About</a>
+    <a href="experiences.html">Experiences</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-switch">
+      <span class="knob"></span>
+      <button class="on" data-lang="en">EN</button>
+      <button data-lang="fr">FR</button>
+    </div>
+    <a href="contact.html" class="nav-cta"><span>Book Your Ritual</span><span class="arrow">→</span></a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="menu-hero" data-screen-label="01 Menu Hero">
+  <div class="menu-hero-inner">
+    <div class="menu-hero-meta">
+      <span><span class="v">◇ Le menu</span> · Six houses, one roof</span>
+      <span>Page <span class="v">03 / 06</span></span>
+    </div>
+    <h1>
+      The Beauty<br>
+      <em>Menu.</em>
+      <span class="fr">Le menu — six maisons, une seule porte.</span>
+    </h1>
+    <p class="lede">Every ritual below is performed by a senior artist, in a private room, on the cadence of an actual visit — never to a clock visible from where you sit. Prices in Canadian dollars; gratuity is included in every service.</p>
+  </div>
+</section>
+
+<!-- INDEX -->
+<nav class="menu-index" data-screen-label="02 Menu Index">
+  <div class="menu-index-inner">
+    <a href="#hair" class="menu-index-item">
+      <span class="n">01 · Hair</span>
+      <h4>Signature Hair Rituals</h4>
+      <span class="price"><span class="from">From</span>$185 · 2h30</span>
+    </a>
+    <a href="#barber" class="menu-index-item">
+      <span class="n">02 · Barber</span>
+      <h4>The Barbering Atelier</h4>
+      <span class="price"><span class="from">From</span>$95 · 1h15</span>
+    </a>
+    <a href="#nail" class="menu-index-item">
+      <span class="n">03 · Nails</span>
+      <h4>Nail Couture Studio</h4>
+      <span class="price"><span class="from">From</span>$110 · 1h30</span>
+    </a>
+    <a href="#lash" class="menu-index-item">
+      <span class="n">04 · Lash</span>
+      <h4>Lash &amp; Brow Sanctuary</h4>
+      <span class="price"><span class="from">From</span>$140 · 2h</span>
+    </a>
+    <a href="#face" class="menu-index-item">
+      <span class="n">05 · Esthetics</span>
+      <h4>Skin Alchemy</h4>
+      <span class="price"><span class="from">From</span>$215 · 1h45</span>
+    </a>
+    <a href="#spa" class="menu-index-item">
+      <span class="n">06 · Wellness</span>
+      <h4>Body Rituals</h4>
+      <span class="price"><span class="from">From</span>$245 · 2h</span>
+    </a>
+  </div>
+</nav>
+
+<!-- 01 HAIR -->
+<section class="cat" id="hair" data-screen-label="03 Hair">
+  <div class="cat-inner">
+    <div class="cat-copy">
+      <div class="num">N° 01 — Hair · Cheveux</div>
+      <h2>Signature<br>Hair Rituals<span class="fr">Le rituel des cheveux</span></h2>
+      <p class="sensory">"Slow colour, custom dimensional work, and bond therapy at every wash. Your head of hair, treated like an heirloom."</p>
+      <p class="body">All colour is mixed at the chair, by the artist who'll apply it. Cuts are dry-finished and re-checked at standing height. Olaplex No. 0 + No. 3 are folded into every chemical service at no extra cost.</p>
+      <span class="room"><span class="dot"></span>Room N° 02 — North light, two chairs</span>
+    </div>
+
+    <div class="cat-right">
+      <div class="cat-img">
+        <img src="img/hair-1.jpg" alt="Hair ritual">
+        <span class="label">Hair · The slow colour, three sittings</span>
+      </div>
+      <div class="cat-list">
+        <div class="row">
+          <span class="name">The Signature Cut<span class="fr">La coupe maison</span><span class="desc">Consultation, wash, scalp massage, dry-finished cut, in-chair coffee.</span></span>
+          <span class="dur">1h30</span>
+          <span class="price"><span class="from">From</span>$185</span>
+        </div>
+        <div class="row">
+          <span class="name">Slow Colour, Single Process<span class="fr">Couleur lente, un procédé</span><span class="desc">Mixed at the chair, applied in layers, bond therapy at every wash.</span></span>
+          <span class="dur">2h30</span>
+          <span class="price"><span class="from">From</span>$225</span>
+        </div>
+        <div class="row">
+          <span class="name">Dimensional Highlights<span class="fr">Balayage dimensionnel</span><span class="desc">Hand-painted, free-hand. Veil-fine for first-timers, dense for the return guest.</span></span>
+          <span class="dur">3h30</span>
+          <span class="price"><span class="from">From</span>$345</span>
+        </div>
+        <div class="row">
+          <span class="name">The Restoration<span class="fr">La restauration</span><span class="desc">Three-stage Olaplex with steam, glaze, and a heavy mask. For hair that's been through it.</span></span>
+          <span class="dur">1h45</span>
+          <span class="price"><span class="from">From</span>$165</span>
+        </div>
+        <div class="row">
+          <span class="name">Bridal — The Morning Of<span class="fr">Le matin du mariage</span><span class="desc">Style consultation, on-site or in-room. Includes touch-up kit + a quiet champagne.</span></span>
+          <span class="dur">3h</span>
+          <span class="price"><span class="from">From</span>$420</span>
+        </div>
+      </div>
+
+      <div class="addons">
+        <h5>◇ House additions · Petits ajouts</h5>
+        <div class="row"><span class="name">Olaplex No. 0 + No. 3 mask <span class="fr">masque-soin</span></span><span class="v">+ $32</span></div>
+        <div class="row"><span class="name">Hot oil &amp; steam scalp ritual <span class="fr">cuir chevelu</span></span><span class="v">+ $48</span></div>
+        <div class="row"><span class="name">In-room glass of wine <span class="fr">verre de vin</span></span><span class="v">complimentary</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 BARBER -->
+<section class="cat flip" id="barber" data-screen-label="04 Barber">
+  <div class="cat-inner">
+    <div class="cat-copy">
+      <div class="num">N° 02 — Barber · Barbier</div>
+      <h2>The Barbering<br>Atelier<span class="fr">L'atelier du barbier</span></h2>
+      <p class="sensory">"Hot-towel shaves, beard architecture, and the cut your grandfather used to take an hour to get right."</p>
+      <p class="body">A single-chair atelier behind its own door. Straight razor, badger brush, cedar after-balm. The cut takes the time it takes; the conversation is yours to set the tempo of. A tumbler of something dark, on request.</p>
+      <span class="room"><span class="dot"></span>Room N° 04 — The barbier, single chair</span>
+    </div>
+
+    <div class="cat-right">
+      <div class="cat-img">
+        <img src="img/barber-1.jpg" alt="Barber atelier">
+        <span class="label">Barber · The chair, single seat</span>
+      </div>
+      <div class="cat-list">
+        <div class="row">
+          <span class="name">The Saturday Cut<span class="fr">La coupe du samedi</span><span class="desc">Scissor over comb, dry-checked, finished with a hot towel and cedar after-balm.</span></span>
+          <span class="dur">1h15</span>
+          <span class="price"><span class="from">From</span>$95</span>
+        </div>
+        <div class="row">
+          <span class="name">Beard Architecture<span class="fr">L'architecture du visage</span><span class="desc">Hand-shaped with straight razor, balm-conditioned, finished with cedar.</span></span>
+          <span class="dur">45 min</span>
+          <span class="price"><span class="from">From</span>$65</span>
+        </div>
+        <div class="row">
+          <span class="name">Hot-Towel Royal Shave<span class="fr">Rasage royal</span><span class="desc">Three hot towels, two passes, balm-and-balm finish. The Saturday morning fix.</span></span>
+          <span class="dur">1h</span>
+          <span class="price"><span class="from">From</span>$110</span>
+        </div>
+        <div class="row">
+          <span class="name">Father &amp; Son<span class="fr">Père et fils</span><span class="desc">Two chairs, two cuts, one quiet hour. For the boy whose first chair is yours.</span></span>
+          <span class="dur">1h30</span>
+          <span class="price"><span class="from">From</span>$155</span>
+        </div>
+      </div>
+
+      <div class="addons">
+        <h5>◇ House additions · Petits ajouts</h5>
+        <div class="row"><span class="name">Brow &amp; ear groom <span class="fr">détails</span></span><span class="v">+ $18</span></div>
+        <div class="row"><span class="name">Cedar after-balm massage <span class="fr">baume cèdre</span></span><span class="v">+ $25</span></div>
+        <div class="row"><span class="name">A finger of single malt <span class="fr">whisky de la maison</span></span><span class="v">complimentary</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 NAILS -->
+<section class="cat" id="nail" data-screen-label="05 Nails">
+  <div class="cat-inner">
+    <div class="cat-copy">
+      <div class="num">N° 03 — Nails · Ongles</div>
+      <h2>Nail<br>Couture Studio<span class="fr">Couture des ongles</span></h2>
+      <p class="sensory">"Builder gel, sculpted forms, custom inlays. Ninety minutes off the phone, hands you'll catch yourself glancing at all week."</p>
+      <p class="body">A two-chair atelier behind a curtain of smoked glass. Every set is sculpted, not extended — the form is built fresh from gel, sanded by hand, and finished under cold light. We don't do quick fixes here; we do hands you'll forget aren't part of you.</p>
+      <span class="room"><span class="dot"></span>Room N° 03 — Smoked glass, two chairs</span>
+    </div>
+
+    <div class="cat-right">
+      <div class="cat-img">
+        <img src="img/nails-5.jpg" alt="Nail couture">
+        <span class="label">Nails · Gilded almond, builder gel</span>
+      </div>
+      <div class="cat-list">
+        <div class="row">
+          <span class="name">The Couture Manicure<span class="fr">La manucure couture</span><span class="desc">Cuticle work, hand &amp; arm massage, builder-gel polish or BIAB structure.</span></span>
+          <span class="dur">1h30</span>
+          <span class="price"><span class="from">From</span>$110</span>
+        </div>
+        <div class="row">
+          <span class="name">Sculpted Set, Custom Form<span class="fr">Ongles sculptés sur mesure</span><span class="desc">Free-hand from gel, sanded and shaped by eye. Custom inlays on request.</span></span>
+          <span class="dur">2h30</span>
+          <span class="price"><span class="from">From</span>$185</span>
+        </div>
+        <div class="row">
+          <span class="name">Pedicure, Slow<span class="fr">Pédicure lente</span><span class="desc">Salt soak, callus work, paraffin wrap, hot stone foot massage.</span></span>
+          <span class="dur">1h45</span>
+          <span class="price"><span class="from">From</span>$135</span>
+        </div>
+        <div class="row">
+          <span class="name">Gold-leaf Inlay<span class="fr">Feuille d'or, à la main</span><span class="desc">Hand-laid 24k leaf, sealed under top coat. Sold by the digit.</span></span>
+          <span class="dur">30 min</span>
+          <span class="price"><span class="from">From</span>$28<span style="color: var(--bone-mute); font-size: 12px;">/nail</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 LASH -->
+<section class="cat flip" id="lash" data-screen-label="06 Lash">
+  <div class="cat-inner">
+    <div class="cat-copy">
+      <div class="num">N° 04 — Lash · Cils &amp; Sourcils</div>
+      <h2>Lash &amp; Brow<br>Sanctuary<span class="fr">Le sanctuaire des cils</span></h2>
+      <p class="sensory">"Hand-mapped lash extensions, a quiet brow lamination room, lash lift &amp; tint by senior artists."</p>
+      <p class="body">Every lash set begins with a paper map — one for each eye. We measure, we draw, we choose the curl by hand, then we lay each extension under low light, in our own quiet pacing. Forty-five minutes that change the rest of your week.</p>
+      <span class="room"><span class="dot"></span>Room N° 05 — Low light, reclining chair</span>
+    </div>
+
+    <div class="cat-right">
+      <div class="cat-img">
+        <img src="img/lash-1.jpg" alt="Lash sanctuary">
+        <span class="label">Lash · Doll lash, hand-mapped</span>
+      </div>
+      <div class="cat-list">
+        <div class="row">
+          <span class="name">Classic Lash Set<span class="fr">Pose classique</span><span class="desc">One-to-one, hand-mapped per eye. Veil-soft, holds three weeks.</span></span>
+          <span class="dur">2h</span>
+          <span class="price"><span class="from">From</span>$185</span>
+        </div>
+        <div class="row">
+          <span class="name">Volume Set, Russian<span class="fr">Volume russe</span><span class="desc">Fan-built at the chair, 2D–6D depending on natural lash. Editorial finish.</span></span>
+          <span class="dur">2h30</span>
+          <span class="price"><span class="from">From</span>$245</span>
+        </div>
+        <div class="row">
+          <span class="name">Lash Lift &amp; Tint<span class="fr">Rehaussement &amp; teinture</span><span class="desc">Keratin lift, six-week hold. The morning-after look, without effort.</span></span>
+          <span class="dur">1h15</span>
+          <span class="price"><span class="from">From</span>$140</span>
+        </div>
+        <div class="row">
+          <span class="name">Brow Lamination &amp; Shape<span class="fr">Lamination des sourcils</span><span class="desc">Set, tint, hand-shape, finish. The brow you wake up wanting.</span></span>
+          <span class="dur">1h</span>
+          <span class="price"><span class="from">From</span>$125</span>
+        </div>
+      </div>
+
+      <div class="addons">
+        <h5>◇ House additions · Petits ajouts</h5>
+        <div class="row"><span class="name">Two-week lash fill <span class="fr">remplissage</span></span><span class="v">$95</span></div>
+        <div class="row"><span class="name">Brow tint only <span class="fr">teinture sourcils</span></span><span class="v">$48</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 ESTHETICS -->
+<section class="cat" id="face" data-screen-label="07 Esthetics">
+  <div class="cat-inner">
+    <div class="cat-copy">
+      <div class="num">N° 05 — Esthetics · Esthétique</div>
+      <h2>Esthetics &amp;<br>Skin Alchemy<span class="fr">L'alchimie de la peau</span></h2>
+      <p class="sensory">"We read the skin first, then we treat it. Always in that order — never in reverse."</p>
+      <p class="body">A dedicated skin room with its own dimmable light, an LED canopy, and a HydraFacial unit kept in clinical condition. Every facial begins with a fifteen-minute read — sebum, hydration, surface map — by an aesthetician trained at IDI Montréal. Then, and only then, do we begin.</p>
+      <span class="room"><span class="dot"></span>Room N° 06 — Dimmable, LED canopy</span>
+    </div>
+
+    <div class="cat-right">
+      <div class="cat-img">
+        <img src="img/face-1.jpg" alt="Skin alchemy">
+        <span class="label">Esthetics · Skin, read first</span>
+      </div>
+      <div class="cat-list">
+        <div class="row">
+          <span class="name">The Signature HydraFacial<span class="fr">L'HydraFacial signature</span><span class="desc">Cleanse, extract, hydrate, plump. Sixty quiet minutes, no needles.</span></span>
+          <span class="dur">1h15</span>
+          <span class="price"><span class="from">From</span>$215</span>
+        </div>
+        <div class="row">
+          <span class="name">Dermaplane &amp; Glow<span class="fr">Dermaplane &amp; éclat</span><span class="desc">Scalpel-fine exfoliation, vitamin-C infusion, ten minutes of cryo-globe.</span></span>
+          <span class="dur">1h</span>
+          <span class="price"><span class="from">From</span>$165</span>
+        </div>
+        <div class="row">
+          <span class="name">Retinol-Sequenced Peel<span class="fr">Peeling à séquence</span><span class="desc">A four-week course of light peels, sequenced to your skin's cadence.</span></span>
+          <span class="dur">1h30</span>
+          <span class="price"><span class="from">From</span>$295</span>
+        </div>
+        <div class="row">
+          <span class="name">LED &amp; Lymphatic, Quiet<span class="fr">LED &amp; drainage</span><span class="desc">Red-light canopy with manual lymphatic drainage. Pure recovery, no extractions.</span></span>
+          <span class="dur">1h45</span>
+          <span class="price"><span class="from">From</span>$245</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 SPA -->
+<section class="cat flip" id="spa" data-screen-label="08 Spa">
+  <div class="cat-inner">
+    <div class="cat-copy">
+      <div class="num">N° 06 — Wellness · Bien-être</div>
+      <h2>Wellness &amp;<br>Body Rituals<span class="fr">Les rituels du corps</span></h2>
+      <p class="sensory">"Lymphatic drainage, body contouring, scalp rituals, and the kind of massage that resets the week."</p>
+      <p class="body">The long bath room sits at the back of the atelier, north-facing, behind two doors and a curtain of heavy linen. Heated stone, eucalyptus, candle-light. We don't take phones in this room — they wait, in a small linen pouch, on a teak shelf, by the door.</p>
+      <span class="room"><span class="dot"></span>Room N° 07 — The long bath, two doors</span>
+    </div>
+
+    <div class="cat-right">
+      <div class="cat-img">
+        <img src="img/spa-3.jpg" alt="Wellness ritual">
+        <span class="label">Wellness · The long bath, north-facing</span>
+      </div>
+      <div class="cat-list">
+        <div class="row">
+          <span class="name">The Long Bath<span class="fr">Le long bain</span><span class="desc">Eucalyptus steam, hot stone, scalp ritual, herbal infusion to finish.</span></span>
+          <span class="dur">2h</span>
+          <span class="price"><span class="from">From</span>$245</span>
+        </div>
+        <div class="row">
+          <span class="name">Lymphatic Drainage<span class="fr">Drainage lymphatique</span><span class="desc">Full-body manual technique. Two cushions, low light, a long exhale.</span></span>
+          <span class="dur">1h30</span>
+          <span class="price"><span class="from">From</span>$195</span>
+        </div>
+        <div class="row">
+          <span class="name">The Reset Massage<span class="fr">Massage de remise</span><span class="desc">Deep-tissue, by request only firmer. The end-of-week prescription.</span></span>
+          <span class="dur">1h30</span>
+          <span class="price"><span class="from">From</span>$175</span>
+        </div>
+        <div class="row">
+          <span class="name">Body Contour &amp; Glow<span class="fr">Contour &amp; éclat</span><span class="desc">Dry-brush, vacuum massage, body oil ritual. Visible, gradual, gentle.</span></span>
+          <span class="dur">1h45</span>
+          <span class="price"><span class="from">From</span>$285</span>
+        </div>
+        <div class="row">
+          <span class="name">Two-Person Ritual<span class="fr">Le rituel à deux</span><span class="desc">Twin beds, two therapists, side by side. For the visit you take together.</span></span>
+          <span class="dur">2h</span>
+          <span class="price"><span class="from">From</span>$485</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOUSE NOTE -->
+<section class="house-note" data-screen-label="09 House note">
+  <p>
+    Every visit includes a fifteen-minute <span class="gold">welcome</span>, a robe of heavy linen, a spritz of the house élixir at the end, and a small linen pouch of what you'll need at home for the next two weeks.
+    <span class="fr">Chaque visite inclut un accueil de quinze minutes, un peignoir de lin lourd, un voile d'élixir maison, et une petite pochette en lin pour la maison.</span>
+  </p>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" data-screen-label="10 CTA" style="padding: 160px 48px;">
+  <div class="eyebrow cta-eyebrow"><span class="dot"></span>Twelve guests per day · Douze invités par jour</div>
+  <h2>The brass door is open<br>for the menu you choose.<span class="fr">La porte est ouverte — pour le menu que vous choisissez.</span></h2>
+  <a href="contact.html" class="btn-gold">
+    <span>Book Your Ritual</span>
+    <span class="fr">Réservez votre rituel</span>
+    <span class="arrow">→</span>
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-mark">
+    <div class="word">LUXE STUDIO<span class="sup">NB</span></div>
+    <div class="nl">
+      <h4>The newsletter · La lettre</h4>
+      <p>Once a season — solstice, equinox. New rituals, soft openings, the hour the door is open.</p>
+      <form onsubmit="event.preventDefault(); this.querySelector('button').textContent='✓ MERCI'; this.querySelector('input').value='';">
+        <input type="email" placeholder="your address · votre courriel" required>
+        <button type="submit">Subscribe →</button>
+      </form>
+    </div>
+  </div>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-tag">
+        Where beauty becomes ritual.
+        <span class="fr">Où la beauté devient rituel.</span>
+      </div>
+      <p style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; color: var(--bone-mute); text-transform: uppercase; margin-top: 24px; line-height: 2;">
+        <span style="color: var(--brass);">◇ The Atelier</span><br>
+        214 Rue Main Street, Suite 201<br>
+        Moncton · New Brunswick<br>
+        E1C 1B8 · Canada
+      </p>
+    </div>
+    <div>
+      <h4>The House</h4>
+      <ul>
+        <li><a href="index.html">Home · Accueil</a></li>
+        <li><a href="work.html">Work · Transformations</a></li>
+        <li><a href="services.html">Services · Le menu</a></li>
+        <li><a href="about.html">About · L'atelier</a></li>
+        <li><a href="experiences.html">Experiences</a></li>
+        <li><a href="contact.html">Contact · Rendez-vous</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>The Room · La pièce</h4>
+      <ul>
+        <li style="color: var(--bone);">Tue — Thu · 10 — 18</li>
+        <li style="color: var(--bone);">Fri · 10 — 22</li>
+        <li style="color: var(--bone);">Sat · 09 — 18</li>
+        <li style="color: var(--bone);">Sun — Mon · Closed</li>
+        <li style="margin-top: 14px;"><a href="https://instagram.com/luxestudionb" target="_blank" rel="noopener">@luxestudionb</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Direct · Directement</h4>
+      <ul>
+        <li><a href="tel:+15065550187">(506) 555 — 0187</a></li>
+        <li><a href="mailto:hello@luxestudionb.com">hello@luxestudionb.com</a></li>
+        <li style="margin-top: 16px;"><a href="contact.html" style="color: var(--champagne); border-bottom: 1px solid var(--hairline); padding-bottom: 3px;">Book Your Ritual →</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© MMXXVI · Luxe Studio NB</span>
+    <span><a href="#">Mentions légales · Legal</a></span>
+    <span>Crafted in Moncton · E1C 1B8</span>
+  </div>
+</footer>
+
+<script src="common.js"></script>
+</body>
+</html>
