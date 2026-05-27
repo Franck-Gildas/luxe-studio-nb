@@ -1,1110 +1,1357 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Experiences · Le Rituel — Luxe Studio NB</title>
-<link rel="stylesheet" href="styles.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-/* Hero */
-.exp-hero {
-  padding: 200px 48px 60px;
-  position: relative;
-  background:
-    radial-gradient(ellipse 70% 60% at 50% 10%, rgba(232, 201, 160, 0.12) 0%, transparent 60%),
-    var(--obsidian);
-}
-.exp-hero-inner { max-width: 1320px; margin: 0 auto; }
-.exp-hero-meta {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 40px;
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.24em;
-  color: var(--bone-mute);
-  text-transform: uppercase;
-}
-.exp-hero-meta .v { color: var(--brass); }
-.exp-hero h1 {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: clamp(72px, 11vw, 156px);
-  letter-spacing: -0.035em;
-  line-height: 0.9;
-  margin-bottom: 24px;
-}
-.exp-hero h1 em {
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--champagne);
-}
-.exp-hero h1 .fr {
-  display: block;
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--rose);
-  font-size: 0.42em;
-  margin-top: 18px;
-}
-.exp-hero .lede {
-  font-size: 18px;
-  line-height: 1.6;
-  color: var(--bone-dim);
-  margin-top: 32px;
-  padding-top: 28px;
-  border-top: 1px solid var(--hairline-soft);
-}
-.exp-hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px 80px;
-  align-items: center;
-}
-.hero-timeline {
-  position: relative;
-  padding-left: 52px;
-  min-height: 420px;
-  list-style: none;
-}
-.hero-timeline::before {
-  content: "";
-  position: absolute;
-  left: 11px;
-  top: 12px;
-  bottom: 12px;
-  width: 1px;
-  background: linear-gradient(180deg, var(--champagne) 0%, var(--brass) 55%, transparent 100%);
-}
-.hero-timeline-item {
-  position: relative;
-  padding: 28px 0;
-  opacity: 0.4;
-  transition: opacity 0.3s ease;
-}
-.hero-timeline-item::before {
-  content: "";
-  position: absolute;
-  left: -47px;
-  top: 34px;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--champagne);
-}
-.hero-timeline-item.is-active {
-  opacity: 1;
-}
-.hero-timeline-item.is-active::before {
-  box-shadow: 0 0 0 4px rgba(232, 201, 160, 0.2), 0 0 14px rgba(232, 201, 160, 0.45);
-}
-.hero-timeline-item .phase-num {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--brass);
-  display: block;
-  margin-bottom: 8px;
-}
-.hero-timeline-item .phase-name {
-  font-family: var(--serif);
-  font-size: clamp(22px, 2.4vw, 32px);
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  line-height: 1.05;
-}
-.hero-timeline-item .phase-name .fr {
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--rose);
-  display: block;
-  font-size: 0.5em;
-  margin-top: 4px;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experiences · Le Rituel — Luxe Studio NB</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    /* Hero */
+    .exp-hero {
+      padding: 200px 48px 60px;
+      position: relative;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 10%, rgba(232, 201, 160, 0.12) 0%, transparent 60%),
+        var(--obsidian);
+    }
 
-/* The Ritual — 5 movements, vertical timeline */
-.ritual-section {
-  padding: 140px 48px;
-  background:
-    radial-gradient(ellipse 50% 50% at 100% 0%, rgba(42, 24, 64, 0.30) 0%, transparent 50%),
-    var(--obsidian);
-  border-top: 1px solid var(--hairline-soft);
-}
-.ritual-stage {
-  max-width: 1440px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 80px;
-  align-items: start;
-}
-.ritual-copy { position: sticky; top: 110px; }
-.ritual-copy .num {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.24em;
-  color: var(--brass);
-  text-transform: uppercase;
-  margin-bottom: 24px;
-}
-.ritual-copy h2 {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: clamp(40px, 5vw, 76px);
-  letter-spacing: -0.025em;
-  line-height: 0.98;
-  margin-bottom: 24px;
-}
-.ritual-copy h2 .fr {
-  display: block;
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--rose);
-  font-size: 0.42em;
-  margin-top: 16px;
-}
-.ritual-copy p {
-  font-family: var(--serif-italic);
-  font-style: italic;
-  font-size: 19px;
-  color: var(--bone);
-  line-height: 1.55;
-  max-width: 420px;
-  margin-bottom: 18px;
-}
-.ritual-copy .totals {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-  margin-top: 36px;
-  padding-top: 28px;
-  border-top: 1px solid var(--hairline-soft);
-}
-.ritual-copy .totals .item {
-  padding: 14px 0;
-}
-.ritual-copy .totals .item .n {
-  font-family: var(--serif);
-  font-size: 38px;
-  color: var(--champagne);
-  line-height: 1;
-  margin-bottom: 6px;
-}
-.ritual-copy .totals .item .l {
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.22em;
-  color: var(--bone-mute);
-  text-transform: uppercase;
-}
+    .exp-hero-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+    }
 
-/* Movements as a vertical timeline */
-.movements {
-  position: relative;
-  padding-left: 60px;
-}
-.movements::before {
-  content: "";
-  position: absolute;
-  left: 22px;
-  top: 12px;
-  bottom: 12px;
-  width: 1px;
-  background: linear-gradient(180deg, var(--champagne) 0%, var(--brass) 50%, transparent 100%);
-}
-.movement {
-  position: relative;
-  padding: 32px 0 32px 0;
-  display: grid;
-  grid-template-columns: 1fr 200px;
-  gap: 32px;
-  align-items: start;
-}
-.movement::before {
-  content: "";
-  position: absolute;
-  left: -49px;
-  top: 38px;
-  width: 14px; height: 14px;
-  border-radius: 50%;
-  background: var(--champagne);
-  box-shadow: 0 0 0 4px rgba(232, 201, 160, 0.2), 0 0 18px rgba(232, 201, 160, 0.5);
-}
-.movement + .movement { border-top: 1px solid var(--hairline-soft); }
-.movement .phase {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.24em;
-  color: var(--brass);
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-.movement h3 {
-  font-family: var(--serif);
-  font-size: 36px;
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  line-height: 1.0;
-  margin-bottom: 8px;
-}
-.movement h3 .fr {
-  display: block;
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--rose);
-  font-size: 0.5em;
-  margin-top: 6px;
-}
-.movement p {
-  font-size: 15px;
-  color: var(--bone-dim);
-  line-height: 1.65;
-  margin-top: 14px;
-  max-width: 500px;
-}
-.movement .sensory {
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.22em;
-  color: var(--bone-mute);
-  text-transform: uppercase;
-  margin-top: 16px;
-  display: flex;
-  gap: 18px;
-  flex-wrap: wrap;
-}
-.movement .sensory span::before { content: "◇ "; color: var(--brass); margin-right: 4px; }
-.movement .img {
-  position: relative;
-  aspect-ratio: 3/4;
-  overflow: hidden;
-  border: 1px solid var(--hairline-soft);
-  background: var(--charcoal);
-}
-.movement .img img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  filter: brightness(0.82) contrast(1.05) saturate(0.85);
-}
-.movement .img::after {
-  content: "";
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 80% 50% at 50% 30%, rgba(232, 201, 160, 0.10) 0%, transparent 60%),
-    linear-gradient(180deg, transparent 60%, rgba(10, 9, 8, 0.55) 100%);
-}
-.movement .img .duration {
-  position: absolute;
-  bottom: 12px; left: 14px;
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.22em;
-  color: var(--champagne);
-  text-transform: uppercase;
-  z-index: 2;
-}
+    .exp-hero-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 40px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      color: var(--bone-mute);
+      text-transform: uppercase;
+    }
 
-/* Gift cards */
-.giftcards {
-  padding: 140px 48px;
-  background:
-    radial-gradient(ellipse 60% 60% at 0% 100%, rgba(212, 165, 160, 0.10) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 60% at 100% 0%, rgba(232, 201, 160, 0.06) 0%, transparent 50%),
-    #0c0a08;
-  border-top: 1px solid var(--hairline-soft);
-}
-.gc-head {
-  max-width: 1320px;
-  margin: 0 auto 80px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: end;
-}
-.gc-head .num {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.24em;
-  color: var(--brass);
-  text-transform: uppercase;
-  margin-bottom: 18px;
-}
-.gc-head h2 {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: clamp(44px, 6vw, 88px);
-  letter-spacing: -0.03em;
-  line-height: 0.96;
-}
-.gc-head h2 em {
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--champagne);
-}
-.gc-head h2 .fr {
-  display: block;
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--rose);
-  font-size: 0.42em;
-  margin-top: 14px;
-}
-.gc-head p {
-  font-size: 17px;
-  line-height: 1.65;
-  color: var(--bone-dim);
-  text-wrap: pretty;
-}
-.gc-head p strong { color: var(--bone); font-weight: 400; }
+    .exp-hero-meta .v {
+      color: var(--brass);
+    }
 
-/* The cards: editorial */
-.gc-grid {
-  max-width: 1440px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-.gc-card {
-  position: relative;
-  aspect-ratio: 5/7;
-  padding: 36px 30px 30px;
-  border-radius: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  overflow: hidden;
-  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
-  cursor: pointer;
-  border: 1px solid rgba(232, 201, 160, 0.25);
-}
-.gc-card:hover { transform: translateY(-10px) rotate(-0.4deg); }
-.gc-card.bronze {
-  background:
-    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(232, 201, 160, 0.35) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 100% 100%, rgba(184, 153, 104, 0.30) 0%, transparent 60%),
-    linear-gradient(160deg, #2a201a 0%, #14100c 100%);
-  box-shadow: 0 30px 60px -20px rgba(232, 201, 160, 0.35);
-}
-.gc-card.rose {
-  background:
-    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(212, 165, 160, 0.35) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 100% 100%, rgba(184, 124, 124, 0.28) 0%, transparent 60%),
-    linear-gradient(160deg, #2a1c1c 0%, #140e0e 100%);
-  box-shadow: 0 30px 60px -20px rgba(212, 165, 160, 0.28);
-  border-color: rgba(212, 165, 160, 0.25);
-}
-.gc-card.smoke {
-  background:
-    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(232, 201, 160, 0.18) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 100% 100%, rgba(42, 24, 64, 0.50) 0%, transparent 60%),
-    linear-gradient(160deg, #181620 0%, #0a080c 100%);
-  box-shadow: 0 30px 60px -20px rgba(42, 24, 64, 0.40);
-}
-.gc-card::after {
-  content: "";
-  position: absolute; inset: 0;
-  background:
-    repeating-linear-gradient(110deg, transparent 0 90px, rgba(244, 239, 232, 0.04) 90px 91px, transparent 91px 180px);
-  pointer-events: none;
-}
-.gc-card .top {
-  display: flex;
-  justify-content: space-between;
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.24em;
-  color: var(--bone-dim);
-  text-transform: uppercase;
-}
-.gc-card .top .v { color: var(--champagne); }
-.gc-card .amt {
-  font-family: var(--serif);
-  font-size: 88px;
-  letter-spacing: -0.04em;
-  line-height: 1;
-  margin-top: 18px;
-  color: var(--bone);
-}
-.gc-card .amt .cur {
-  font-family: var(--mono);
-  font-size: 14px;
-  letter-spacing: 0.18em;
-  color: var(--brass);
-  vertical-align: top;
-  margin-right: 4px;
-}
-.gc-card h3 {
-  font-family: var(--serif);
-  font-size: 28px;
-  font-weight: 400;
-  letter-spacing: -0.015em;
-  line-height: 1;
-}
-.gc-card h3 .fr {
-  display: block;
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--rose);
-  font-size: 15px;
-  margin-top: 6px;
-}
-.gc-card p {
-  font-size: 13px;
-  color: var(--bone-dim);
-  line-height: 1.55;
-  flex: 1;
-}
-.gc-card .seal {
-  position: absolute;
-  top: 24px; right: 24px;
-  width: 48px; height: 48px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #F6E2BD 0%, var(--champagne) 35%, var(--brass) 75%, #5b462a 100%);
-  box-shadow: 0 0 22px rgba(232, 201, 160, 0.55), inset 0 -2px 4px rgba(0,0,0,0.4);
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--obsidian);
-  font-size: 13px;
-}
-.gc-card .foot {
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.22em;
-  color: var(--bone-mute);
-  text-transform: uppercase;
-  padding-top: 14px;
-  border-top: 1px solid rgba(244, 239, 232, 0.12);
-  display: flex;
-  justify-content: space-between;
-}
+    .exp-hero h1 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(72px, 11vw, 156px);
+      letter-spacing: -0.035em;
+      line-height: 0.9;
+      margin-bottom: 24px;
+    }
 
-/* Seasonal */
-.seasonal {
-  padding: 140px 48px;
-  background: var(--obsidian);
-  border-top: 1px solid var(--hairline-soft);
-}
-.seasonal-inner { max-width: 1440px; margin: 0 auto; }
-.season-grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 36px;
-  margin-bottom: 36px;
-}
-.season-card {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid var(--hairline-soft);
-  background: var(--charcoal);
-  min-height: 480px;
-  display: flex;
-  align-items: end;
-}
-.season-card img {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%; object-fit: cover;
-  filter: brightness(0.6) contrast(1.05) saturate(0.85);
-  transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-.season-card:hover img { transform: scale(1.05); }
-.season-card::after {
-  content: "";
-  position: absolute; inset: 0;
-  background: linear-gradient(180deg, transparent 30%, rgba(10, 9, 8, 0.85) 100%);
-}
-.season-card .info {
-  position: relative;
-  z-index: 2;
-  padding: 36px 32px 30px;
-  max-width: 540px;
-}
-.season-card .tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 7px 12px;
-  border: 1px solid var(--hairline);
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.24em;
-  color: var(--champagne);
-  text-transform: uppercase;
-  margin-bottom: 18px;
-  background: rgba(10, 9, 8, 0.5);
-  backdrop-filter: blur(8px);
-}
-.season-card .tag .dot { width: 6px; height: 6px; background: var(--champagne); border-radius: 50%; box-shadow: 0 0 8px var(--champagne); }
-.season-card h3 {
-  font-family: var(--serif);
-  font-size: clamp(32px, 3.4vw, 52px);
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  line-height: 1;
-  margin-bottom: 12px;
-}
-.season-card h3 em { font-family: var(--serif-italic); font-style: italic; color: var(--champagne); }
-.season-card h3 .fr {
-  display: block;
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--rose);
-  font-size: 0.5em;
-  margin-top: 8px;
-}
-.season-card .desc {
-  font-size: 15px;
-  color: var(--bone-dim);
-  line-height: 1.6;
-  margin-bottom: 20px;
-  max-width: 480px;
-}
-.season-card .meta {
-  display: flex;
-  gap: 32px;
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  color: var(--bone-mute);
-  text-transform: uppercase;
-}
-.season-card .meta .v { color: var(--champagne); display: block; margin-top: 4px; }
+    .exp-hero h1 em {
+      font-family: var(--serif-italic);
+      font-style: italic;
+      color: var(--champagne);
+    }
 
-.season-grid.alt { grid-template-columns: 1fr 1.4fr; }
+    .exp-hero h1 .fr {
+      display: block;
+      font-family: var(--serif-italic);
+      font-style: italic;
+      color: var(--rose);
+      font-size: 0.42em;
+      margin-top: 18px;
+    }
 
-/* Memberships strip */
-.memberships {
-  padding: 120px 48px;
-  background:
-    radial-gradient(ellipse 60% 80% at 50% 50%, rgba(232, 201, 160, 0.08) 0%, transparent 60%),
-    var(--obsidian);
-  border-top: 1px solid var(--hairline-soft);
-}
-.mem-head {
-  text-align: center;
-  margin-bottom: 60px;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.mem-head .num {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.24em;
-  color: var(--brass);
-  text-transform: uppercase;
-  margin-bottom: 18px;
-}
-.mem-head h2 {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: clamp(40px, 5vw, 64px);
-  letter-spacing: -0.025em;
-  line-height: 1;
-}
-.mem-head h2 .fr {
-  display: block;
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--rose);
-  font-size: 0.5em;
-  margin-top: 14px;
-}
-.mem-grid {
-  max-width: 1320px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--hairline-soft);
-  border: 1px solid var(--hairline-soft);
-}
-.mem {
-  background: var(--charcoal);
-  padding: 44px 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-.mem.featured {
-  background: #1d1814;
-  position: relative;
-}
-.mem.featured::before {
-  content: "Most chosen";
-  position: absolute;
-  top: -1px; left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(180deg, var(--champagne) 0%, var(--brass) 100%);
-  color: var(--obsidian);
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  padding: 6px 14px;
-  border-radius: 0 0 4px 4px;
-}
-.mem .tier {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.26em;
-  color: var(--brass);
-  text-transform: uppercase;
-}
-.mem h3 {
-  font-family: var(--serif);
-  font-size: 36px;
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  line-height: 1;
-}
-.mem h3 .fr {
-  display: block;
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--rose);
-  font-size: 15px;
-  margin-top: 4px;
-}
-.mem .price {
-  font-family: var(--serif);
-  font-size: 44px;
-  color: var(--champagne);
-  letter-spacing: -0.02em;
-  line-height: 1;
-}
-.mem .price .month {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  color: var(--bone-mute);
-  text-transform: uppercase;
-  display: block;
-  margin-top: 4px;
-}
-.mem ul {
-  list-style: none;
-  margin-top: 12px;
-  padding-top: 18px;
-  border-top: 1px solid var(--hairline-soft);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-size: 14px;
-  color: var(--bone-dim);
-  line-height: 1.55;
-}
-.mem ul li {
-  display: flex;
-  gap: 12px;
-}
-.mem ul li::before {
-  content: "◇";
-  color: var(--champagne);
-  flex-shrink: 0;
-}
-.mem .cta {
-  margin-top: auto;
-  padding-top: 18px;
-}
+    .exp-hero .lede {
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--bone-dim);
+      margin-top: 32px;
+      padding-top: 28px;
+      border-top: 1px solid var(--hairline-soft);
+    }
 
-@media (max-width: 1100px) {
-  .exp-hero-grid { grid-template-columns: 1fr; gap: 40px; }
-  .hero-timeline { margin-top: 8px; padding-left: 44px; }
-  .ritual-stage { grid-template-columns: 1fr; gap: 40px; }
-  .ritual-copy { position: static; }
-  .movement { grid-template-columns: 1fr; gap: 18px; }
-  .gc-grid { grid-template-columns: 1fr; gap: 18px; }
-  .gc-head { grid-template-columns: 1fr; gap: 24px; }
-  .season-grid, .season-grid.alt { grid-template-columns: 1fr; }
-  .mem-grid { grid-template-columns: 1fr; }
-}
-@media (max-width: 640px) {
-  .hero-timeline-item .phase-name { font-size: clamp(20px, 5vw, 26px); }
-}
-</style>
+    .exp-hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px 80px;
+      align-items: flex-start;
+    }
+
+    .hero-timeline {
+      position: relative;
+      padding-left: 52px;
+      min-height: 420px;
+      list-style: none;
+    }
+
+    .hero-timeline::before {
+      content: "";
+      position: absolute;
+      left: 11px;
+      top: 12px;
+      bottom: 12px;
+      width: 1px;
+      background: linear-gradient(180deg, var(--champagne) 0%, var(--brass) 55%, transparent 100%);
+    }
+
+    .hero-timeline-item {
+      position: relative;
+      padding: 28px 0;
+      opacity: 0.4;
+      transition: opacity 0.3s ease;
+    }
+
+    .hero-timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -47px;
+      top: 34px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--champagne);
+    }
+
+    .hero-timeline-item.is-active {
+      opacity: 1;
+    }
+
+    .hero-timeline-item.is-active::before {
+      box-shadow: 0 0 0 4px rgba(232, 201, 160, 0.2), 0 0 14px rgba(232, 201, 160, 0.45);
+    }
+
+    .hero-timeline-item .phase-num {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--brass);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .hero-timeline-item .phase-name {
+      font-family: var(--serif);
+      font-size: clamp(22px, 2.4vw, 32px);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+    }
+
+    .hero-timeline-item .phase-name .fr {
+      font-family: var(--serif-italic);
+      font-style: italic;
+      color: var(--rose);
+      display: block;
+      font-size: 0.5em;
+      margin-top: 4px;
+    }
+
+    /* The Ritual — 5 movements, vertical timeline */
+    .ritual-section {
+      padding: 140px 48px;
+      background:
+        radial-gradient(ellipse 50% 50% at 100% 0%, rgba(42, 24, 64, 0.30) 0%, transparent 50%),
+        var(--obsidian);
+      border-top: 1px solid var(--hairline-soft);
+    }
+
+    .ritual-stage {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .ritual-copy {
+      position: sticky;
+      top: 120px;
+      height: fit-content;
+    }
+
+    .ritual-copy .num {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      color: var(--brass);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .ritual-copy h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(40px, 5vw, 76px);
+      letter-spacing: -0.025em;
+      line-height: 0.98;
+      margin-bottom: 24px;
+    }
+
+    .ritual-copy h2 .fr {
+      display: block;
+      font-family: var(--serif-italic);
+      font-style: italic;
+      color: var(--rose);
+      font-size: 0.42em;
+      margin-top: 16px;
+    }
+
+    .ritual-copy p {
+      font-family: var(--serif-italic);
+      font-style: italic;
+      font-size: 19px;
+      color: var(--bone);
+      line-height: 1.55;
+      max-width: 420px;
+      margin-bottom: 18px;
+    }
+
+    .ritual-copy .totals {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 36px;
+      padding-top: 28px;
+      border-top: 1px solid var(--hairline-soft);
+    }
+
+    .ritual-copy .totals .item {
+      padding: 14px 0;
+    }
+
+    .ritual-copy .totals .item .n {
+      font-family: var(--serif);
+      font-size: 38px;
+      color: var(--champagne);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .ritual-copy .totals .item .l {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      color: var(--bone-mute);
+      text-transform: uppercase;
+    }
+
+    /* Movements as a vertical timeline */
+    .movements {
+      position: relative;
+      padding-left: 60px;
+    }
+
+    .movements::before {
+      content: "";
+      position: absolute;
+      left: 22px;
+      top: 12px;
+      bottom: 12px;
+      width: 1px;
+      background: linear-gradient(180deg, var(--champagne) 0%, var(--brass) 50%, transparent 100%);
+    }
+
+    .movement {
+      position: relative;
+      padding: 32px 0 32px 0;
+      display: grid;
+      grid-template-columns: 1fr 200px;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .movement::before {
+      content: "";
+      position: absolute;
+      left: -49px;
+      top: 38px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--champagne);
+      box-shadow: 0 0 0 4px rgba(232, 201, 160, 0.2), 0 0 18px rgba(232, 201, 160, 0.5);
+    }
+
+    .movement+.movement {
+      border-top: 1px solid var(--hairline-soft);
+    }
+
+    .movement .phase {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      color: var(--brass);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .movement h3 {
+      font-family: var(--serif);
+      font-size: 36px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.0;
+      margin-bottom: 8px;
+    }
+
+    .movement h3 .fr {
+      display: block;
+      font-family: var(--serif-italic);
+      font-style: italic;
+      color: var(--rose);
+      font-size: 0.5em;
+      margin-top: 6px;
+    }
+
+    .movement p {
+      font-size: 15px;
+      color: var(--bone-dim);
+      line-height: 1.65;
+      margin-top: 14px;
+      max-width: 500px;
+    }
+
+    .movement .sensory {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      color: var(--bone-mute);
+      text-transform: uppercase;
+      margin-top: 16px;
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .movement .sensory span::before {
+      content: "◇ ";
+      color: var(--brass);
+      margin-right: 4px;
+    }
+
+    .movement .img {
+      position: relative;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      border: 1px solid var(--hairline-soft);
+      background: var(--charcoal);
+    }
+
+    .movement .img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.82) contrast(1.05) saturate(0.85);
+    }
+
+    .movement .img::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% 30%, rgba(232, 201, 160, 0.10) 0%, transparent 60%),
+        linear-gradient(180deg, transparent 60%, rgba(10, 9, 8, 0.55) 100%);
+    }
+
+    .movement .img .duration {
+      position: absolute;
+      bottom: 12px;
+      left: 14px;
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      color: var(--champagne);
+      text-transform: uppercase;
+      z-index: 2;
+    }
+
+    /* Gift cards */
+    .giftcards {
+      padding: 140px 48px;
+      background:
+        radial-gradient(ellipse 60% 60% at 0% 100%, rgba(212, 165, 160, 0.10) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 60% at 100% 0%, rgba(232, 201, 160, 0.06) 0%, transparent 50%),
+        #0c0a08;
+      border-top: 1px solid var(--hairline-soft);
+    }
+
+    .gc-head {
+      max-width: 1320px;
+      margin: 0 auto 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+    }
+
+    .gc-head .num {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      color: var(--brass);
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .gc-head h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(44px, 6vw, 88px);
+      letter-spacing: -0.03em;
+      line-height: 0.96;
+    }
+
+    .gc-head h2 em {
+      font-family: var(--serif-italic);
+      font-style: italic;
+      color: var(--champagne);
+    }
+
+    .gc-head h2 .fr {
+      display: block;
+      font-family: var(--serif-italic);
+      font-style: italic;
+      color: var(--rose);
+      font-size: 0.42em;
+      margin-top: 14px;
+    }
+
+    .gc-head p {
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--bone-dim);
+      text-wrap: pretty;
+    }
+
+    .gc-head p strong {
+      color: var(--bone);
+      font-weight: 400;
+    }
+
+    /* The cards: editorial */
+    .gc-grid {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .gc-card {
+      position: relative;
+      aspect-ratio: 5/7;
+      padding: 36px 30px 30px;
+      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      overflow: hidden;
+      transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+      cursor: pointer;
+      border: 1px solid rgba(232, 201, 160, 0.25);
+    }
+
+    .gc-card:hover {
+      transform: translateY(-10px) rotate(-0.4deg);
+    }
+
+    .gc-card.bronze {
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(232, 201, 160, 0.35) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 100% 100%, rgba(184, 153, 104, 0.30) 0%, transparent 60%),
+        linear-gradient(160deg, #2a201a 0%, #14100c 100%);
+      box-shadow: 0 30px 60px -20px rgba(232, 201, 160, 0.35);
+    }
+
+    .gc-card.rose {
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(212, 165, 160, 0.35) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 100% 100%, rgba(184, 124, 124, 0.28) 0%, transparent 60%),
+        linear-gradient(160deg, #2a1c1c 0%, #140e0e 100%);
+      box-shadow: 0 30px 60px -20px rgba(212, 165, 160, 0.28);
+      border-color: rgba(212, 165, 160, 0.25);
+    }
+
+    .gc-card.smoke {
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(232, 201, 160, 0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 100% 100%, rgba(42, 24, 64, 0.50) 0%, transparent 60%),
+        linear-gradient(160deg, #181620 0%, #0a080c 100%);
+      box-shadow: 0 30px 60px -20px rgba(42, 24, 64, 0.40);
+    }
+
+    .gc-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(110deg, transparent 0 90px, rgba(244, 239, 232, 0.04) 90px 91px, transparent 91px 180px);
+      pointer-events: none;
+    }
+
+    .gc-card .top {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.24em;
+      color: var(--bone-dim);
+      text-transform: uppercase;
+    }
+
+    .gc-card .top .v {
+      color: var(--champagne);
+    }
+
+    .gc-card .amt {
+      font-family: var(--serif);
+      font-size: 88px;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-top: 18px;
+      color: var(--bone);
+    }
+
+    .gc-card .amt .cur {
+      font-family: var(--mono);
+      font-size: 14px;
+      letter-spacing: 0.18em;
+      color: var(--brass);
+      vertical-align: top;
+      margin-right: 4px;
+    }
+
+    .gc-card h3 {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: -0.015em;
+      line-height: 1;
+    }
+
+    .gc-card h3 .fr {
+      display: block;
+      font-family: var(--serif-italic);
+      font-style: italic;
+      color: var(--rose);
+      font-size: 15px;
+      margin-top: 6px;
+    }
+
+    .gc-card p {
+      font-size: 13px;
+      color: var(--bone-dim);
+      line-height: 1.55;
+      flex: 1;
+    }
+
+    .gc-card .seal {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #F6E2BD 0%, var(--champagne) 35%, var(--brass) 75%, #5b462a 100%);
+      box-shadow: 0 0 22px rgba(232, 201, 160, 0.55), inset 0 -2px 4px rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif-italic);
+      font-style: italic;
+      color: var(--obsidian);
+      font-size: 13px;
+    }
+
+    .gc-card .foot {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      color: var(--bone-mute);
+      text-transform: uppercase;
+      padding-top: 14px;
+      border-top: 1px solid rgba(244, 239, 232, 0.12);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Seasonal */
+    .seasonal {
+      padding: 140px 48px;
+      background: var(--obsidian);
+      border-top: 1px solid var(--hairline-soft);
+    }
+
+    .seasonal-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .season-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 36px;
+      margin-bottom: 36px;
+    }
+
+    .season-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--hairline-soft);
+      background: var(--charcoal);
+      min-height: 480px;
+      display: flex;
+      align-items: end;
+    }
+
+    .season-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.6) contrast(1.05) saturate(0.85);
+      transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+
+    .season-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .season-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 30%, rgba(10, 9, 8, 0.85) 100%);
+    }
+
+    .season-card .info {
+      position: relative;
+      z-index: 2;
+      padding: 36px 32px 30px;
+      max-width: 540px;
+    }
+
+    .season-card .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border: 1px solid var(--hairline);
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.24em;
+      color: var(--champagne);
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      background: rgba(10, 9, 8, 0.5);
+      backdrop-filter: blur(8px);
+    }
+
+    .season-card .tag .dot {
+      width: 6px;
+      height: 6px;
+      background: var(--champagne);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--champagne);
+    }
+
+    .season-card h3 {
+      font-family: var(--serif);
+      font-size: clamp(32px, 3.4vw, 52px);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .season-card h3 em {
+      font-family: var(--serif-italic);
+      font-style: italic;
+      color: var(--champagne);
+    }
+
+    .season-card h3 .fr {
+      display: block;
+      font-family: var(--serif-italic);
+      font-style: italic;
+      color: var(--rose);
+      font-size: 0.5em;
+      margin-top: 8px;
+    }
+
+    .season-card .desc {
+      font-size: 15px;
+      color: var(--bone-dim);
+      line-height: 1.6;
+      margin-bottom: 20px;
+      max-width: 480px;
+    }
+
+    .season-card .meta {
+      display: flex;
+      gap: 32px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      color: var(--bone-mute);
+      text-transform: uppercase;
+    }
+
+    .season-card .meta .v {
+      color: var(--champagne);
+      display: block;
+      margin-top: 4px;
+    }
+
+    .season-grid.alt {
+      grid-template-columns: 1fr 1.4fr;
+    }
+
+    /* Memberships strip */
+    .memberships {
+      padding: 120px 48px;
+      background:
+        radial-gradient(ellipse 60% 80% at 50% 50%, rgba(232, 201, 160, 0.08) 0%, transparent 60%),
+        var(--obsidian);
+      border-top: 1px solid var(--hairline-soft);
+    }
+
+    .mem-head {
+      text-align: center;
+      margin-bottom: 60px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .mem-head .num {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      color: var(--brass);
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .mem-head h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(40px, 5vw, 64px);
+      letter-spacing: -0.025em;
+      line-height: 1;
+    }
+
+    .mem-head h2 .fr {
+      display: block;
+      font-family: var(--serif-italic);
+      font-style: italic;
+      color: var(--rose);
+      font-size: 0.5em;
+      margin-top: 14px;
+    }
+
+    .mem-grid {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--hairline-soft);
+      border: 1px solid var(--hairline-soft);
+    }
+
+    .mem {
+      background: var(--charcoal);
+      padding: 44px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .mem.featured {
+      background: #1d1814;
+      position: relative;
+    }
+
+    .mem.featured::before {
+      content: "Most chosen";
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(180deg, var(--champagne) 0%, var(--brass) 100%);
+      color: var(--obsidian);
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 0 0 4px 4px;
+    }
+
+    .mem .tier {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.26em;
+      color: var(--brass);
+      text-transform: uppercase;
+    }
+
+    .mem h3 {
+      font-family: var(--serif);
+      font-size: 36px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .mem h3 .fr {
+      display: block;
+      font-family: var(--serif-italic);
+      font-style: italic;
+      color: var(--rose);
+      font-size: 15px;
+      margin-top: 4px;
+    }
+
+    .mem .price {
+      font-family: var(--serif);
+      font-size: 44px;
+      color: var(--champagne);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .mem .price .month {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      color: var(--bone-mute);
+      text-transform: uppercase;
+      display: block;
+      margin-top: 4px;
+    }
+
+    .mem ul {
+      list-style: none;
+      margin-top: 12px;
+      padding-top: 18px;
+      border-top: 1px solid var(--hairline-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--bone-dim);
+      line-height: 1.55;
+    }
+
+    .mem ul li {
+      display: flex;
+      gap: 12px;
+    }
+
+    .mem ul li::before {
+      content: "◇";
+      color: var(--champagne);
+      flex-shrink: 0;
+    }
+
+    .mem .cta {
+      margin-top: auto;
+      padding-top: 18px;
+    }
+
+    @media (max-width: 1100px) {
+      .exp-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .hero-timeline {
+        margin-top: 8px;
+        padding-left: 44px;
+      }
+
+      .ritual-stage {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .ritual-copy {
+        position: static;
+      }
+
+      .movement {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .gc-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .gc-head {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .season-grid,
+      .season-grid.alt {
+        grid-template-columns: 1fr;
+      }
+
+      .mem-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-timeline-item .phase-name {
+        font-size: clamp(20px, 5vw, 26px);
+      }
+    }
+  </style>
 </head>
+
 <body>
-<div class="grain"></div>
+  <div class="grain"></div>
 
-<!-- NAV -->
-<nav class="nav">
-  <a href="index.html" class="nav-logo">
-    <span class="mark"></span>
-    <span>LUXE STUDIO</span>
-    <span class="sup">NB</span>
-  </a>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="work.html">Work</a>
-    <a href="services.html">Services</a>
-    <a href="about.html">About</a>
-    <a href="experiences.html" class="active">Experiences</a>
-    <a href="contact.html">Contact</a>
-  </div>
-  <div class="nav-right">
-    <div class="lang-switch">
-      <span class="knob"></span>
-      <button class="on" data-lang="en">EN</button>
-      <button data-lang="fr">FR</button>
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">
+      <span class="mark"></span>
+      <span>LUXE STUDIO</span>
+      <span class="sup">NB</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="work.html">Work</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="experiences.html" class="active">Experiences</a>
+      <a href="contact.html">Contact</a>
     </div>
-    <a href="contact.html" class="nav-cta"><span>Book Your Ritual</span><span class="arrow">→</span></a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="exp-hero" data-screen-label="01 Experiences Hero">
-  <div class="exp-hero-inner">
-    <div class="exp-hero-meta">
-      <span><span class="v">◇ Le rituel</span> · Five quiet movements</span>
-      <span>Page <span class="v">05 / 06</span></span>
-    </div>
-    <div class="exp-hero-grid">
-      <div class="exp-hero-copy">
-        <h1>
-          The<br>
-          <em>Ritual.</em>
-          <span class="fr">Le rituel — cinq mouvements lents.</span>
-        </h1>
-        <p class="lede">Every visit, regardless of which menu you've chosen, follows the same five quiet movements. They were not invented; they were noticed — across fifteen years of work in other people's rooms, in the moments we'd return to in our minds.</p>
+    <div class="nav-right">
+      <div class="lang-switch">
+        <span class="knob"></span>
+        <button class="on" data-lang="en">EN</button>
+        <button data-lang="fr">FR</button>
       </div>
-      <ol class="hero-timeline" aria-label="Five ritual phases">
-        <li class="hero-timeline-item is-active">
-          <span class="phase-num">01</span>
-          <h2 class="phase-name">The Welcome<span class="fr">L'accueil</span></h2>
-        </li>
-        <li class="hero-timeline-item">
-          <span class="phase-num">02</span>
-          <h2 class="phase-name">The Consultation<span class="fr">La consultation</span></h2>
-        </li>
-        <li class="hero-timeline-item">
-          <span class="phase-num">03</span>
-          <h2 class="phase-name">The Ritual<span class="fr">Le rituel</span></h2>
-        </li>
-        <li class="hero-timeline-item">
-          <span class="phase-num">04</span>
-          <h2 class="phase-name">The Finish<span class="fr">La touche finale</span></h2>
-        </li>
-        <li class="hero-timeline-item">
-          <span class="phase-num">05</span>
-          <h2 class="phase-name">The After<span class="fr">L'après</span></h2>
-        </li>
-      </ol>
+      <a href="contact.html" class="nav-cta"><span>Book Your Ritual</span><span class="arrow">→</span></a>
     </div>
-  </div>
-</section>
+  </nav>
 
-<!-- THE RITUAL — 5 MOVEMENTS -->
-<section class="ritual-section" data-screen-label="02 The Ritual">
-  <div class="ritual-stage">
-    <div class="ritual-copy">
-      <div class="num">§ 01 — The Ritual · Le rituel</div>
-      <h2>The same five<br>quiet movements.<span class="fr">Les cinq mouvements de la maison.</span></h2>
-      <p>"Whatever the room, whichever the artist, however quick or long the menu — the cadence does not change. The room holds the cadence; the artist holds the room."</p>
-      <div class="totals">
-        <div class="item"><div class="n">5</div><div class="l">Movements<br>Mouvements</div></div>
-        <div class="item"><div class="n">~15</div><div class="l">Welcome &amp; after<br>Accueil &amp; après</div></div>
-        <div class="item"><div class="n">1:1</div><div class="l">Artist · guest<br>Artiste : invité</div></div>
-        <div class="item"><div class="n">0</div><div class="l">Phones at the chair<br>Sans téléphone</div></div>
+  <!-- HERO -->
+  <section class="exp-hero" data-screen-label="01 Experiences Hero">
+    <div class="exp-hero-inner">
+      <div class="exp-hero-meta">
+        <span><span class="v">◇ Le rituel</span> · Five quiet movements</span>
+        <span>Page <span class="v">05 / 06</span></span>
       </div>
-    </div>
-
-    <div class="movements">
-      <div class="movement">
-        <div>
-          <div class="phase">Phase 01 · L'accueil</div>
-          <h3>The Welcome<span class="fr">L'accueil</span></h3>
-          <p>You arrive ten minutes early to nothing. A robe of heavy linen, a glass of cucumber water, low Erik Satie. The door closes; the city ends. Your phone is offered a small linen pouch on a teak shelf, by the door.</p>
-          <div class="sensory"><span>Linen</span><span>Cucumber water</span><span>Satie</span><span>Low light</span></div>
+      <div class="exp-hero-grid">
+        <div class="exp-hero-copy">
+          <h1>
+            The<br>
+            <em>Ritual.</em>
+            <span class="fr">Le rituel — cinq mouvements lents.</span>
+          </h1>
+          <p class="lede">Every visit, regardless of which menu you've chosen, follows the same five quiet movements.
+            They were not invented; they were noticed — across fifteen years of work in other people's rooms, in the
+            moments we'd return to in our minds.</p>
         </div>
-        <div class="img"><img src="img/atelier-interior.jpg" alt="The welcome"><span class="duration">— 10 min</span></div>
-      </div>
-
-      <div class="movement">
-        <div>
-          <div class="phase">Phase 02 · La consultation</div>
-          <h3>The Consultation<span class="fr">La consultation</span></h3>
-          <p>Your artist sits across from you, not behind you. We talk about the week, the light at your kitchen window, the photograph in your phone you almost showed. Notes are kept; the routine that follows you home is built here.</p>
-          <div class="sensory"><span>Across</span><span>Notebook</span><span>The reference</span><span>The plan</span></div>
-        </div>
-        <div class="img"><img src="img/staff-customer.jpg" alt="The consultation"><span class="duration">15 min</span></div>
-      </div>
-
-      <div class="movement">
-        <div>
-          <div class="phase">Phase 03 · Le rituel</div>
-          <h3>The Ritual<span class="fr">Le rituel</span></h3>
-          <p>The treatment itself, performed slowly, by hands that have done this fifteen thousand times. No upsell at the chair, no clock visible from where you sit. Coffee or champagne, on the small marble side-table. Music chosen for the room, not the playlist.</p>
-          <div class="sensory"><span>60 — 180 min</span><span>Marble side-table</span><span>House élixir</span><span>No clock</span></div>
-        </div>
-        <div class="img"><img src="img/hair-1.jpg" alt="The ritual"><span class="duration">60 — 180 min</span></div>
-      </div>
-
-      <div class="movement">
-        <div>
-          <div class="phase">Phase 04 · La touche finale</div>
-          <h3>The Finish<span class="fr">La touche finale</span></h3>
-          <p>The mirror is turned, the light is changed once, twice. A spritz of the house élixir on the linen of your robe, a final brush, a photograph for your records — only if you'd like. The artist asks the only question that matters: <em>is it yours?</em></p>
-          <div class="sensory"><span>Mirror</span><span>House élixir</span><span>Soft photograph</span><span>One question</span></div>
-        </div>
-        <div class="img"><img src="img/face-1.jpg" alt="The finish"><span class="duration">10 min</span></div>
-      </div>
-
-      <div class="movement">
-        <div>
-          <div class="phase">Phase 05 · L'après</div>
-          <h3>The After<span class="fr">L'après</span></h3>
-          <p>Tea on the velvet bench by the brass door. A small linen pouch of what you'll need at home for the next two weeks. Your next visit, already softly held — in the artist's calendar, in your name, at the hour we both know is yours.</p>
-          <div class="sensory"><span>Velvet bench</span><span>Tea</span><span>Linen pouch</span><span>Held appointment</span></div>
-        </div>
-        <div class="img"><img src="img/spa-5.jpg" alt="The after"><span class="duration">— 15 min</span></div>
+        <ol class="hero-timeline" aria-label="Five ritual phases">
+          <li class="hero-timeline-item is-active">
+            <span class="phase-num">01</span>
+            <h2 class="phase-name">The Welcome<span class="fr">L'accueil</span></h2>
+          </li>
+          <li class="hero-timeline-item">
+            <span class="phase-num">02</span>
+            <h2 class="phase-name">The Consultation<span class="fr">La consultation</span></h2>
+          </li>
+          <li class="hero-timeline-item">
+            <span class="phase-num">03</span>
+            <h2 class="phase-name">The Ritual<span class="fr">Le rituel</span></h2>
+          </li>
+          <li class="hero-timeline-item">
+            <span class="phase-num">04</span>
+            <h2 class="phase-name">The Finish<span class="fr">La touche finale</span></h2>
+          </li>
+          <li class="hero-timeline-item">
+            <span class="phase-num">05</span>
+            <h2 class="phase-name">The After<span class="fr">L'après</span></h2>
+          </li>
+        </ol>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- GIFT CARDS -->
-<section class="giftcards" data-screen-label="03 Gift Cards">
-  <div class="gc-head">
-    <div>
-      <div class="num">§ 02 — Gift cards · Cartes-cadeaux</div>
-      <h2>Give the <em>hour</em>,<br>not the thing.<span class="fr">Offrez l'heure — pas la chose.</span></h2>
-    </div>
-    <p><strong>House cards are presented in a linen envelope</strong>, hand-addressed by Émilie, and delivered by post or in person at the brass door. The recipient books at their cadence — the card holds for two years from the date of issue. <em class="italic" style="color: var(--rose);">Vous pouvez aussi nous écrire pour un montant sur mesure.</em></p>
-  </div>
-
-  <div class="gc-grid">
-    <article class="gc-card bronze">
-      <div class="seal">N°</div>
-      <div class="top"><span>Carte cadeau N° 01</span><span class="v">Bronze</span></div>
-      <div class="amt"><span class="cur">CAD</span>185</div>
-      <h3>The Hour<span class="fr">Une heure</span></h3>
-      <p>One signature service, by the artist of their choosing. A welcome, a robe, a quiet hour, the house élixir to take home.</p>
-      <div class="foot"><span>◇ Holds for 24 months</span><span>Linen envelope</span></div>
-    </article>
-
-    <article class="gc-card rose">
-      <div class="seal">N°</div>
-      <div class="top"><span>Carte cadeau N° 02</span><span class="v">Rose</span></div>
-      <div class="amt"><span class="cur">CAD</span>385</div>
-      <h3>The Long Afternoon<span class="fr">Le long après-midi</span></h3>
-      <p>Two services, paired by the house — hair &amp; lash, esthetics &amp; long bath. With a chilled bottle, on the marble side-table.</p>
-      <div class="foot"><span>◇ Holds for 24 months</span><span>Hand-addressed</span></div>
-    </article>
-
-    <article class="gc-card smoke">
-      <div class="seal">N°</div>
-      <div class="top"><span>Carte cadeau N° 03</span><span class="v">Obsidian</span></div>
-      <div class="amt"><span class="cur">CAD</span>785</div>
-      <h3>The Whole Day<span class="fr">La journée entière</span></h3>
-      <p>The full house — every room visited, with a quiet lunch in between. Four artists, six hours, the brass door closed behind you.</p>
-      <div class="foot"><span>◇ Holds for 24 months</span><span>By hand, by post</span></div>
-    </article>
-  </div>
-
-  <div style="text-align: center; margin-top: 56px;">
-    <a href="contact.html" class="btn-ghost"><span>Order a Card</span><span class="arrow" style="margin-left: 8px;">→</span></a>
-  </div>
-</section>
-
-<!-- SEASONAL -->
-<section class="seasonal" data-screen-label="04 Seasonal">
-  <div class="seasonal-inner">
-    <div class="section-head">
-      <div class="num">§ 03 — Seasonal · Saisonnier</div>
-      <h2>What is offered now,<br>and only now.</h2>
-    </div>
-
-    <div class="season-grid">
-      <article class="season-card">
-        <img src="img/spa-1.jpg" alt="Solstice ritual">
-        <div class="info">
-          <span class="tag"><span class="dot"></span>Now · Spring '26</span>
-          <h3>The <em>Solstice</em> Bath<span class="fr">Le bain du solstice</span></h3>
-          <p class="desc">A two-hour ritual built around the lengthening of the days — eucalyptus steam, lavender oil sourced from the Memramcook valley, a small almond cake at the end. Available only through the end of June.</p>
-          <div class="meta">
-            <span>Duration<span class="v">2h</span></span>
-            <span>Investment<span class="v">From $295</span></span>
-            <span>Until<span class="v">21 June</span></span>
+  <!-- THE RITUAL — 5 MOVEMENTS -->
+  <section class="ritual-section" data-screen-label="02 The Ritual">
+    <div class="ritual-stage">
+      <div class="ritual-copy">
+        <div class="num">§ 01 — The Ritual · Le rituel</div>
+        <h2>The same five<br>quiet movements.<span class="fr">Les cinq mouvements de la maison.</span></h2>
+        <p>"Whatever the room, whichever the artist, however quick or long the menu — the cadence does not change. The
+          room holds the cadence; the artist holds the room."</p>
+        <div class="totals">
+          <div class="item">
+            <div class="n">5</div>
+            <div class="l">Movements<br>Mouvements</div>
+          </div>
+          <div class="item">
+            <div class="n">~15</div>
+            <div class="l">Welcome &amp; after<br>Accueil &amp; après</div>
+          </div>
+          <div class="item">
+            <div class="n">1:1</div>
+            <div class="l">Artist · guest<br>Artiste : invité</div>
+          </div>
+          <div class="item">
+            <div class="n">0</div>
+            <div class="l">Phones at the chair<br>Sans téléphone</div>
           </div>
         </div>
+      </div>
+
+      <div class="movements">
+        <div class="movement">
+          <div>
+            <div class="phase">Phase 01 · L'accueil</div>
+            <h3>The Welcome<span class="fr">L'accueil</span></h3>
+            <p>You arrive ten minutes early to nothing. A robe of heavy linen, a glass of cucumber water, low Erik
+              Satie. The door closes; the city ends. Your phone is offered a small linen pouch on a teak shelf, by the
+              door.</p>
+            <div class="sensory"><span>Linen</span><span>Cucumber water</span><span>Satie</span><span>Low light</span>
+            </div>
+          </div>
+          <div class="img"><img src="img/atelier-interior.jpg" alt="The welcome"><span class="duration">— 10 min</span>
+          </div>
+        </div>
+
+        <div class="movement">
+          <div>
+            <div class="phase">Phase 02 · La consultation</div>
+            <h3>The Consultation<span class="fr">La consultation</span></h3>
+            <p>Your artist sits across from you, not behind you. We talk about the week, the light at your kitchen
+              window, the photograph in your phone you almost showed. Notes are kept; the routine that follows you home
+              is built here.</p>
+            <div class="sensory"><span>Across</span><span>Notebook</span><span>The reference</span><span>The plan</span>
+            </div>
+          </div>
+          <div class="img"><img src="img/staff-customer.jpg" alt="The consultation"><span class="duration">15 min</span>
+          </div>
+        </div>
+
+        <div class="movement">
+          <div>
+            <div class="phase">Phase 03 · Le rituel</div>
+            <h3>The Ritual<span class="fr">Le rituel</span></h3>
+            <p>The treatment itself, performed slowly, by hands that have done this fifteen thousand times. No upsell at
+              the chair, no clock visible from where you sit. Coffee or champagne, on the small marble side-table. Music
+              chosen for the room, not the playlist.</p>
+            <div class="sensory"><span>60 — 180 min</span><span>Marble side-table</span><span>House
+                élixir</span><span>No clock</span></div>
+          </div>
+          <div class="img"><img src="img/hair-1.jpg" alt="The ritual"><span class="duration">60 — 180 min</span></div>
+        </div>
+
+        <div class="movement">
+          <div>
+            <div class="phase">Phase 04 · La touche finale</div>
+            <h3>The Finish<span class="fr">La touche finale</span></h3>
+            <p>The mirror is turned, the light is changed once, twice. A spritz of the house élixir on the linen of your
+              robe, a final brush, a photograph for your records — only if you'd like. The artist asks the only question
+              that matters: <em>is it yours?</em></p>
+            <div class="sensory"><span>Mirror</span><span>House élixir</span><span>Soft photograph</span><span>One
+                question</span></div>
+          </div>
+          <div class="img"><img src="img/face-1.jpg" alt="The finish"><span class="duration">10 min</span></div>
+        </div>
+
+        <div class="movement">
+          <div>
+            <div class="phase">Phase 05 · L'après</div>
+            <h3>The After<span class="fr">L'après</span></h3>
+            <p>Tea on the velvet bench by the brass door. A small linen pouch of what you'll need at home for the next
+              two weeks. Your next visit, already softly held — in the artist's calendar, in your name, at the hour we
+              both know is yours.</p>
+            <div class="sensory"><span>Velvet bench</span><span>Tea</span><span>Linen pouch</span><span>Held
+                appointment</span></div>
+          </div>
+          <div class="img"><img src="img/spa-5.jpg" alt="The after"><span class="duration">— 15 min</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GIFT CARDS -->
+  <section class="giftcards" data-screen-label="03 Gift Cards">
+    <div class="gc-head">
+      <div>
+        <div class="num">§ 02 — Gift cards · Cartes-cadeaux</div>
+        <h2>Give the <em>hour</em>,<br>not the thing.<span class="fr">Offrez l'heure — pas la chose.</span></h2>
+      </div>
+      <p><strong>House cards are presented in a linen envelope</strong>, hand-addressed by Émilie, and delivered by post
+        or in person at the brass door. The recipient books at their cadence — the card holds for two years from the
+        date of issue. <em class="italic" style="color: var(--rose);">Vous pouvez aussi nous écrire pour un montant sur
+          mesure.</em></p>
+    </div>
+
+    <div class="gc-grid">
+      <article class="gc-card bronze">
+        <div class="seal">N°</div>
+        <div class="top"><span>Carte cadeau N° 01</span><span class="v">Bronze</span></div>
+        <div class="amt"><span class="cur">CAD</span>185</div>
+        <h3>The Hour<span class="fr">Une heure</span></h3>
+        <p>One signature service, by the artist of their choosing. A welcome, a robe, a quiet hour, the house élixir to
+          take home.</p>
+        <div class="foot"><span>◇ Holds for 24 months</span><span>Linen envelope</span></div>
       </article>
 
-      <article class="season-card">
-        <img src="img/hair-5.jpg" alt="The colour study">
-        <div class="info">
-          <span class="tag"><span class="dot"></span>Spring '26</span>
-          <h3>The Colour Study<span class="fr">L'étude des couleurs</span></h3>
-          <p class="desc">A three-sitting hair-colour deep-dive — for the guest who wants to understand the why, not only the how. Includes a hand-painted reference card kept at the chair, your name on it.</p>
-          <div class="meta">
-            <span>Sessions<span class="v">×3</span></span>
-            <span>From<span class="v">$485</span></span>
-          </div>
-        </div>
+      <article class="gc-card rose">
+        <div class="seal">N°</div>
+        <div class="top"><span>Carte cadeau N° 02</span><span class="v">Rose</span></div>
+        <div class="amt"><span class="cur">CAD</span>385</div>
+        <h3>The Long Afternoon<span class="fr">Le long après-midi</span></h3>
+        <p>Two services, paired by the house — hair &amp; lash, esthetics &amp; long bath. With a chilled bottle, on the
+          marble side-table.</p>
+        <div class="foot"><span>◇ Holds for 24 months</span><span>Hand-addressed</span></div>
+      </article>
+
+      <article class="gc-card smoke">
+        <div class="seal">N°</div>
+        <div class="top"><span>Carte cadeau N° 03</span><span class="v">Obsidian</span></div>
+        <div class="amt"><span class="cur">CAD</span>785</div>
+        <h3>The Whole Day<span class="fr">La journée entière</span></h3>
+        <p>The full house — every room visited, with a quiet lunch in between. Four artists, six hours, the brass door
+          closed behind you.</p>
+        <div class="foot"><span>◇ Holds for 24 months</span><span>By hand, by post</span></div>
       </article>
     </div>
 
-    <div class="season-grid alt">
-      <article class="season-card">
-        <img src="img/lash-3.jpg" alt="Wedding atelier">
-        <div class="info">
-          <span class="tag"><span class="dot"></span>Wedding season '26</span>
-          <h3>The Atelier on the morning of<span class="fr">L'atelier le matin du mariage</span></h3>
-          <p class="desc">Hair, lash, brow, and skin — all four artists, all four rooms, opened privately for one party from 06:00. Includes a chilled bottle, a small linen breakfast, and a touch-up kit by post the day before.</p>
-          <div class="meta">
-            <span>Party<span class="v">Up to 6</span></span>
-            <span>Hour<span class="v">06 — 10</span></span>
-            <span>Investment<span class="v">From $2,400</span></span>
-          </div>
-        </div>
-      </article>
-
-      <article class="season-card">
-        <img src="img/nails-2.jpg" alt="Mother's day">
-        <div class="info">
-          <span class="tag"><span class="dot"></span>Mother's Day · May '26</span>
-          <h3>For the mother<span class="fr">Pour la mère</span></h3>
-          <p class="desc">A two-person ritual: hands together at the manicure bar, then twin beds for the long bath. Tea between, lavender after, a linen pouch each.</p>
-          <div class="meta">
-            <span>Duration<span class="v">3h</span></span>
-            <span>For two<span class="v">$485</span></span>
-          </div>
-        </div>
-      </article>
+    <div style="text-align: center; margin-top: 56px;">
+      <a href="contact.html" class="btn-ghost"><span>Order a Card</span><span class="arrow"
+          style="margin-left: 8px;">→</span></a>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- MEMBERSHIPS -->
-<section class="memberships" data-screen-label="05 Memberships">
-  <div class="mem-head">
-    <div class="num">§ 04 — La maison · The house circle</div>
-    <h2>For the regulars,<br>quietly held.<span class="fr">Pour les habituées — un soin discret.</span></h2>
-  </div>
-
-  <div class="mem-grid">
-    <div class="mem">
-      <div class="tier">N° 01 · L'invitée</div>
-      <h3>The Invited<span class="fr">L'invitée</span></h3>
-      <div class="price">$185<span class="month">per month · par mois</span></div>
-      <ul>
-        <li>One signature service of your choosing, per month</li>
-        <li>Priority booking — Tuesdays, twenty-four hours ahead of the house</li>
-        <li>House élixir, refilled at every visit</li>
-        <li>Hold the same hour, in the same chair</li>
-      </ul>
-      <div class="cta"><a href="contact.html" class="btn-ghost" style="width: 100%; justify-content: center;">Join · S'inscrire</a></div>
-    </div>
-
-    <div class="mem featured">
-      <div class="tier">N° 02 · La maison</div>
-      <h3>The House<span class="fr">La maison</span></h3>
-      <div class="price">$365<span class="month">per month · par mois</span></div>
-      <ul>
-        <li>Two services per month, paired by the house</li>
-        <li>Priority booking — Tuesdays, forty-eight hours ahead</li>
-        <li>Quarterly long-bath ritual, complimentary</li>
-        <li>15 % off any third service in any month</li>
-        <li>A linen pouch of essentials, posted each solstice</li>
-      </ul>
-      <div class="cta"><a href="contact.html" class="btn-gold" style="width: 100%; justify-content: center; padding: 16px 20px;">Join · S'inscrire <span class="arrow" style="margin-left: 8px;">→</span></a></div>
-    </div>
-
-    <div class="mem">
-      <div class="tier">N° 03 · L'atelier</div>
-      <h3>The Atelier<span class="fr">L'atelier</span></h3>
-      <div class="price">$685<span class="month">per month · par mois</span></div>
-      <ul>
-        <li>Four services per month, any room of the house</li>
-        <li>First call on every soft opening + seasonal release</li>
-        <li>One whole-day ritual per quarter, included</li>
-        <li>Two guest passes per year, for the people you love</li>
-        <li>Your own number at the chair — and at the door</li>
-      </ul>
-      <div class="cta"><a href="contact.html" class="btn-ghost" style="width: 100%; justify-content: center;">Join · S'inscrire</a></div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-section" data-screen-label="06 CTA" style="padding: 160px 48px;">
-  <div class="eyebrow cta-eyebrow"><span class="dot"></span>The brass door is open</div>
-  <h2>Begin your ritual,<br>at your cadence.<span class="fr">Commencez votre rituel — à votre rythme.</span></h2>
-  <a href="contact.html" class="btn-gold">
-    <span>Begin Your Ritual</span>
-    <span class="fr">Commencez le rituel</span>
-    <span class="arrow">→</span>
-  </a>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-mark">
-    <div class="word">LUXE STUDIO<span class="sup">NB</span></div>
-    <div class="nl">
-      <h4>The newsletter · La lettre</h4>
-      <p>Once a season — solstice, equinox. New rituals, soft openings, the hour the door is open.</p>
-      <form onsubmit="event.preventDefault(); this.querySelector('button').textContent='✓ MERCI'; this.querySelector('input').value='';">
-        <input type="email" placeholder="your address · votre courriel" required>
-        <button type="submit">Subscribe →</button>
-      </form>
-    </div>
-  </div>
-  <div class="footer-grid">
-    <div>
-      <div class="footer-tag">
-        Where beauty becomes ritual.
-        <span class="fr">Où la beauté devient rituel.</span>
+  <!-- SEASONAL -->
+  <section class="seasonal" data-screen-label="04 Seasonal">
+    <div class="seasonal-inner">
+      <div class="section-head">
+        <div class="num">§ 03 — Seasonal · Saisonnier</div>
+        <h2>What is offered now,<br>and only now.</h2>
       </div>
-      <p style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; color: var(--bone-mute); text-transform: uppercase; margin-top: 24px; line-height: 2;">
-        <span style="color: var(--brass);">◇ The Atelier</span><br>
-        214 Rue Main Street, Suite 201<br>
-        Moncton · New Brunswick<br>
-        E1C 1B8 · Canada
-      </p>
-    </div>
-    <div>
-      <h4>The House</h4>
-      <ul>
-        <li><a href="index.html">Home · Accueil</a></li>
-        <li><a href="work.html">Work · Transformations</a></li>
-        <li><a href="services.html">Services · Le menu</a></li>
-        <li><a href="about.html">About · L'atelier</a></li>
-        <li><a href="experiences.html">Experiences</a></li>
-        <li><a href="contact.html">Contact · Rendez-vous</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>The Room · La pièce</h4>
-      <ul>
-        <li style="color: var(--bone);">Tue — Thu · 10 — 18</li>
-        <li style="color: var(--bone);">Fri · 10 — 22</li>
-        <li style="color: var(--bone);">Sat · 09 — 18</li>
-        <li style="color: var(--bone);">Sun — Mon · Closed</li>
-        <li style="margin-top: 14px;"><a href="https://instagram.com/luxestudionb" target="_blank" rel="noopener">@luxestudionb</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>Direct · Directement</h4>
-      <ul>
-        <li><a href="tel:+15065550187">(506) 555 — 0187</a></li>
-        <li><a href="mailto:hello@luxestudionb.com">hello@luxestudionb.com</a></li>
-        <li style="margin-top: 16px;"><a href="contact.html" style="color: var(--champagne); border-bottom: 1px solid var(--hairline); padding-bottom: 3px;">Book Your Ritual →</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© MMXXVI · Luxe Studio NB</span>
-    <span><a href="#">Mentions légales · Legal</a></span>
-    <span>Crafted in Moncton · E1C 1B8</span>
-  </div>
-</footer>
 
-<script src="common.js"></script>
+      <div class="season-grid">
+        <article class="season-card">
+          <img src="img/spa-1.jpg" alt="Solstice ritual">
+          <div class="info">
+            <span class="tag"><span class="dot"></span>Now · Spring '26</span>
+            <h3>The <em>Solstice</em> Bath<span class="fr">Le bain du solstice</span></h3>
+            <p class="desc">A two-hour ritual built around the lengthening of the days — eucalyptus steam, lavender oil
+              sourced from the Memramcook valley, a small almond cake at the end. Available only through the end of
+              June.</p>
+            <div class="meta">
+              <span>Duration<span class="v">2h</span></span>
+              <span>Investment<span class="v">From $295</span></span>
+              <span>Until<span class="v">21 June</span></span>
+            </div>
+          </div>
+        </article>
+
+        <article class="season-card">
+          <img src="img/hair-5.jpg" alt="The colour study">
+          <div class="info">
+            <span class="tag"><span class="dot"></span>Spring '26</span>
+            <h3>The Colour Study<span class="fr">L'étude des couleurs</span></h3>
+            <p class="desc">A three-sitting hair-colour deep-dive — for the guest who wants to understand the why, not
+              only the how. Includes a hand-painted reference card kept at the chair, your name on it.</p>
+            <div class="meta">
+              <span>Sessions<span class="v">×3</span></span>
+              <span>From<span class="v">$485</span></span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="season-grid alt">
+        <article class="season-card">
+          <img src="img/lash-3.jpg" alt="Wedding atelier">
+          <div class="info">
+            <span class="tag"><span class="dot"></span>Wedding season '26</span>
+            <h3>The Atelier on the morning of<span class="fr">L'atelier le matin du mariage</span></h3>
+            <p class="desc">Hair, lash, brow, and skin — all four artists, all four rooms, opened privately for one
+              party from 06:00. Includes a chilled bottle, a small linen breakfast, and a touch-up kit by post the day
+              before.</p>
+            <div class="meta">
+              <span>Party<span class="v">Up to 6</span></span>
+              <span>Hour<span class="v">06 — 10</span></span>
+              <span>Investment<span class="v">From $2,400</span></span>
+            </div>
+          </div>
+        </article>
+
+        <article class="season-card">
+          <img src="img/nails-2.jpg" alt="Mother's day">
+          <div class="info">
+            <span class="tag"><span class="dot"></span>Mother's Day · May '26</span>
+            <h3>For the mother<span class="fr">Pour la mère</span></h3>
+            <p class="desc">A two-person ritual: hands together at the manicure bar, then twin beds for the long bath.
+              Tea between, lavender after, a linen pouch each.</p>
+            <div class="meta">
+              <span>Duration<span class="v">3h</span></span>
+              <span>For two<span class="v">$485</span></span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEMBERSHIPS -->
+  <section class="memberships" data-screen-label="05 Memberships">
+    <div class="mem-head">
+      <div class="num">§ 04 — La maison · The house circle</div>
+      <h2>For the regulars,<br>quietly held.<span class="fr">Pour les habituées — un soin discret.</span></h2>
+    </div>
+
+    <div class="mem-grid">
+      <div class="mem">
+        <div class="tier">N° 01 · L'invitée</div>
+        <h3>The Invited<span class="fr">L'invitée</span></h3>
+        <div class="price">$185<span class="month">per month · par mois</span></div>
+        <ul>
+          <li>One signature service of your choosing, per month</li>
+          <li>Priority booking — Tuesdays, twenty-four hours ahead of the house</li>
+          <li>House élixir, refilled at every visit</li>
+          <li>Hold the same hour, in the same chair</li>
+        </ul>
+        <div class="cta"><a href="contact.html" class="btn-ghost" style="width: 100%; justify-content: center;">Join ·
+            S'inscrire</a></div>
+      </div>
+
+      <div class="mem featured">
+        <div class="tier">N° 02 · La maison</div>
+        <h3>The House<span class="fr">La maison</span></h3>
+        <div class="price">$365<span class="month">per month · par mois</span></div>
+        <ul>
+          <li>Two services per month, paired by the house</li>
+          <li>Priority booking — Tuesdays, forty-eight hours ahead</li>
+          <li>Quarterly long-bath ritual, complimentary</li>
+          <li>15 % off any third service in any month</li>
+          <li>A linen pouch of essentials, posted each solstice</li>
+        </ul>
+        <div class="cta"><a href="contact.html" class="btn-gold"
+            style="width: 100%; justify-content: center; padding: 16px 20px;">Join · S'inscrire <span class="arrow"
+              style="margin-left: 8px;">→</span></a></div>
+      </div>
+
+      <div class="mem">
+        <div class="tier">N° 03 · L'atelier</div>
+        <h3>The Atelier<span class="fr">L'atelier</span></h3>
+        <div class="price">$685<span class="month">per month · par mois</span></div>
+        <ul>
+          <li>Four services per month, any room of the house</li>
+          <li>First call on every soft opening + seasonal release</li>
+          <li>One whole-day ritual per quarter, included</li>
+          <li>Two guest passes per year, for the people you love</li>
+          <li>Your own number at the chair — and at the door</li>
+        </ul>
+        <div class="cta"><a href="contact.html" class="btn-ghost" style="width: 100%; justify-content: center;">Join ·
+            S'inscrire</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" data-screen-label="06 CTA" style="padding: 160px 48px;">
+    <div class="eyebrow cta-eyebrow"><span class="dot"></span>The brass door is open</div>
+    <h2>Begin your ritual,<br>at your cadence.<span class="fr">Commencez votre rituel — à votre rythme.</span></h2>
+    <a href="contact.html" class="btn-gold">
+      <span>Begin Your Ritual</span>
+      <span class="fr">Commencez le rituel</span>
+      <span class="arrow">→</span>
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-mark">
+      <div class="word">LUXE STUDIO<span class="sup">NB</span></div>
+      <div class="nl">
+        <h4>The newsletter · La lettre</h4>
+        <p>Once a season — solstice, equinox. New rituals, soft openings, the hour the door is open.</p>
+        <form
+          onsubmit="event.preventDefault(); this.querySelector('button').textContent='✓ MERCI'; this.querySelector('input').value='';">
+          <input type="email" placeholder="your address · votre courriel" required>
+          <button type="submit">Subscribe →</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-tag">
+          Where beauty becomes ritual.
+          <span class="fr">Où la beauté devient rituel.</span>
+        </div>
+        <p
+          style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; color: var(--bone-mute); text-transform: uppercase; margin-top: 24px; line-height: 2;">
+          <span style="color: var(--brass);">◇ The Atelier</span><br>
+          214 Rue Main Street, Suite 201<br>
+          Moncton · New Brunswick<br>
+          E1C 1B8 · Canada
+        </p>
+      </div>
+      <div>
+        <h4>The House</h4>
+        <ul>
+          <li><a href="index.html">Home · Accueil</a></li>
+          <li><a href="work.html">Work · Transformations</a></li>
+          <li><a href="services.html">Services · Le menu</a></li>
+          <li><a href="about.html">About · L'atelier</a></li>
+          <li><a href="experiences.html">Experiences</a></li>
+          <li><a href="contact.html">Contact · Rendez-vous</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>The Room · La pièce</h4>
+        <ul>
+          <li style="color: var(--bone);">Tue — Thu · 10 — 18</li>
+          <li style="color: var(--bone);">Fri · 10 — 22</li>
+          <li style="color: var(--bone);">Sat · 09 — 18</li>
+          <li style="color: var(--bone);">Sun — Mon · Closed</li>
+          <li style="margin-top: 14px;"><a href="https://instagram.com/luxestudionb" target="_blank"
+              rel="noopener">@luxestudionb</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Direct · Directement</h4>
+        <ul>
+          <li><a href="tel:+15065550187">(506) 555 — 0187</a></li>
+          <li><a href="mailto:hello@luxestudionb.com">hello@luxestudionb.com</a></li>
+          <li style="margin-top: 16px;"><a href="contact.html"
+              style="color: var(--champagne); border-bottom: 1px solid var(--hairline); padding-bottom: 3px;">Book Your
+              Ritual →</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© MMXXVI · Luxe Studio NB</span>
+      <span><a href="#">Mentions légales · Legal</a></span>
+      <span>Crafted in Moncton · E1C 1B8</span>
+    </div>
+  </footer>
+
+  <script src="common.js"></script>
 </body>
+
 </html>
