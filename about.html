@@ -355,16 +355,16 @@
   max-width: 1440px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: stretch;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 72px;
+  align-items: start;
 }
 
 /* Map placeholder (CSS-drawn) */
 .map {
   position: relative;
-  aspect-ratio: 4/5;
-  min-height: 600px;
+  aspect-ratio: 4/3;
+  width: 100%;
   border: 1px solid var(--hairline);
   background:
     radial-gradient(ellipse 60% 50% at 60% 40%, rgba(232, 201, 160, 0.08) 0%, transparent 60%),
@@ -500,14 +500,17 @@
 .map .scale .bar::before { left: 0; }
 .map .scale .bar::after { right: 0; }
 .map .placeholder-label {
-  bottom: 50px;
-  left: 18px;
+  bottom: 18px;
+  left: auto;
+  right: 18px;
+  text-align: right;
 }
 
 .location-copy {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 36px;
+  padding-top: 8px;
 }
 .location-copy .num {
   font-family: var(--mono);
@@ -536,9 +539,11 @@
   padding-top: 28px;
 }
 .address-card .line {
-  display: flex;
-  justify-content: space-between;
-  padding: 12px 0;
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 20px 32px;
+  align-items: start;
+  padding: 14px 0;
   border-bottom: 1px solid var(--hairline-soft);
   font-size: 15px;
 }
@@ -548,15 +553,20 @@
   letter-spacing: 0.24em;
   color: var(--brass);
   text-transform: uppercase;
-  flex-shrink: 0;
-  align-self: center;
+  align-self: start;
 }
 .address-card .line .v {
   color: var(--bone);
-  text-align: right;
+  text-align: left;
   font-family: var(--serif);
   font-size: 18px;
   letter-spacing: -0.005em;
+}
+.address-card .line .v .address-detail {
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--bone-dim);
+  letter-spacing: 0;
 }
 .address-card .line .v .fr {
   display: block;
@@ -567,7 +577,9 @@
   margin-top: 2px;
 }
 .hours-card {
-  padding-top: 18px;
+  border-top: 1px solid var(--hairline-soft);
+  padding-top: 28px;
+  margin-top: 4px;
 }
 .hours-card h5 {
   font-family: var(--mono);
@@ -595,7 +607,9 @@
   .tenets-grid { grid-template-columns: 1fr 1fr; }
   .team-grid { grid-template-columns: 1fr 1fr; }
   .team-card.span-2, .team-card.span-3 { grid-column: span 1; }
-  .location-inner { grid-template-columns: 1fr; }
+  .location-inner { grid-template-columns: 1fr; gap: 40px; }
+  .map { aspect-ratio: 16/10; }
+  .address-card .line { grid-template-columns: 1fr; gap: 6px; }
 }
 </style>
 </head>
@@ -829,7 +843,7 @@
       <div class="address-card">
         <div class="line">
           <span class="k">◇ Address</span>
-          <span class="v">214 Rue Main Street<br><span style="font-family: var(--sans); font-size: 14px; color: var(--bone-dim); letter-spacing: 0;">Suite 201 · second floor</span></span>
+          <span class="v">214 Rue Main Street<br><span class="address-detail">Suite 201 · second floor</span></span>
         </div>
         <div class="line">
           <span class="k">◇ City</span>
