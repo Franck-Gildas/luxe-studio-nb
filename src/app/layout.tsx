@@ -1,0 +1,73 @@
+import type { Metadata } from "next";
+import {
+  Bodoni_Moda,
+  Cormorant_Garamond,
+  Inter,
+  JetBrains_Mono,
+} from "next/font/google";
+import { Navbar } from "@/components/layout/Navbar";
+import { NavSpacer } from "@/components/layout/NavSpacer";
+import { Footer } from "@/components/layout/Footer";
+import { I18nProvider } from "@/components/providers/I18nProvider";
+import { LoadingScreen } from "@/components/ui/LoadingScreen";
+import { CustomCursor } from "@/components/ui/CustomCursor";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import { Concierge } from "@/components/ui/Concierge";
+import "./globals.css";
+import "@/styles/legacy.css";
+
+const bodoni = Bodoni_Moda({
+  variable: "--font-bodoni",
+  subsets: ["latin"],
+  weight: ["400", "500"],
+});
+
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  style: ["normal", "italic"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+});
+
+const jetbrains = JetBrains_Mono({
+  variable: "--font-jetbrains",
+  subsets: ["latin"],
+  weight: ["400", "500"],
+});
+
+export const metadata: Metadata = {
+  title: {
+    default: "Luxe Studio NB",
+    template: "%s · Luxe Studio NB",
+  },
+  description: "Where beauty becomes ritual. Où la beauté devient rituel.",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" className={`${bodoni.variable} ${cormorant.variable} ${inter.variable} ${jetbrains.variable}`}>
+      <body className="flex min-h-full flex-col">
+        <I18nProvider>
+          <LoadingScreen />
+          <CustomCursor />
+          <ScrollProgress />
+          <Navbar />
+          <NavSpacer />
+          {children}
+          <Footer />
+          <Concierge />
+        </I18nProvider>
+      </body>
+    </html>
+  );
+}
