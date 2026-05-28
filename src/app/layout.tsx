@@ -9,6 +9,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { NavSpacer } from "@/components/layout/NavSpacer";
 import { Footer } from "@/components/layout/Footer";
 import { I18nProvider } from "@/components/providers/I18nProvider";
+import { LanguageProvider } from "@/lib/LanguageContext";
 import { LoadingScreen } from "@/components/ui/LoadingScreen";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
@@ -55,18 +56,31 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${bodoni.variable} ${cormorant.variable} ${inter.variable} ${jetbrains.variable}`}>
-      <body className="flex min-h-full flex-col">
-        <I18nProvider>
-          <LoadingScreen />
-          <CustomCursor />
-          <ScrollProgress />
-          <Navbar />
-          <NavSpacer />
-          {children}
-          <Footer />
-          <Concierge />
-        </I18nProvider>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${bodoni.variable} ${cormorant.variable} ${inter.variable} ${jetbrains.variable}`}
+    >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var l=localStorage.getItem('luxe-lang');if(l==='fr'){document.documentElement.lang='fr';document.body.classList.add('lang-fr');}})();`,
+          }}
+        />
+      </head>
+      <body className="flex min-h-full flex-col" suppressHydrationWarning>
+        <LanguageProvider>
+          <I18nProvider>
+            <LoadingScreen />
+            <CustomCursor />
+            <ScrollProgress />
+            <Navbar />
+            <NavSpacer />
+            {children}
+            <Footer />
+            <Concierge />
+          </I18nProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

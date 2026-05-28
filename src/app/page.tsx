@@ -156,7 +156,9 @@ export default function HomePage() {
             <span className="dot"></span>The House
           </div>
           <h2>
-            We craft <em>unforgettable</em> beauty rituals in New Brunswick — slow, sensorial, made for the way you live now.
+            <span className="en-only">
+              We craft <em>unforgettable</em> beauty rituals in New Brunswick — slow, sensorial, made for the way you live now.
+            </span>
             <span className="fr">
               Un atelier dédié aux rituels de beauté du Nouveau‑Brunswick — lent, sensuel, fait pour vous.
             </span>
@@ -195,7 +197,8 @@ export default function HomePage() {
                 </svg>
               </div>
               <h3>
-                Signature Hair Rituals<span className="fr">Rituels de cheveux signature</span>
+                <span className="en-only">Signature Hair Rituals</span>
+                <span className="fr">Rituels de cheveux signature</span>
               </h3>
               <p>
                 Slow colour, custom dimensional work, and Olaplex‑led repair — performed by senior stylists who treat your head of hair like an heirloom.
@@ -218,7 +221,8 @@ export default function HomePage() {
                 </svg>
               </div>
               <h3>
-                Barbering Atelier<span className="fr">L&apos;atelier du barbier</span>
+                <span className="en-only">Barbering Atelier</span>
+                <span className="fr">L&apos;atelier du barbier</span>
               </h3>
               <p>
                 Hot‑towel shaves, beard architecture, and the cut your grandfather used to take an hour to get right — straight razor, cedar after‑balm, and a tumbler of something dark.
@@ -245,7 +249,8 @@ export default function HomePage() {
                 </svg>
               </div>
               <h3>
-                Nail Couture<span className="fr">Couture des ongles</span>
+                <span className="en-only">Nail Couture</span>
+                <span className="fr">Couture des ongles</span>
               </h3>
               <p>
                 Builder‑gel manicures, sculpted forms, custom inlays. A glass of pét‑nat, ninety minutes off the phone, hands you&apos;ll catch yourself glancing at all week.
@@ -273,7 +278,8 @@ export default function HomePage() {
                 </svg>
               </div>
               <h3>
-                Lash &amp; Brow Studio<span className="fr">Cils &amp; sourcils</span>
+                <span className="en-only">Lash &amp; Brow Studio</span>
+                <span className="fr">Cils &amp; sourcils</span>
               </h3>
               <p>
                 Hand‑mapped lash extensions, a quiet brow lamination room, lash lift &amp; tint by senior artists. Forty‑five minutes that change the rest of your week.
@@ -296,7 +302,8 @@ export default function HomePage() {
                 </svg>
               </div>
               <h3>
-                Esthetics &amp; Skin<span className="fr">Esthétique &amp; soins de la peau</span>
+                <span className="en-only">Esthetics &amp; Skin</span>
+                <span className="fr">Esthétique &amp; soins de la peau</span>
               </h3>
               <p>
                 HydraFacials, dermaplaning, retinol‑sequenced peels, LED rooms in their own low light. We read the skin first, then we treat it. Always in that order.
@@ -318,7 +325,8 @@ export default function HomePage() {
                 </svg>
               </div>
               <h3>
-                Wellness &amp; Body<span className="fr">Bien‑être &amp; corps</span>
+                <span className="en-only">Wellness &amp; Body</span>
+                <span className="fr">Bien‑être &amp; corps</span>
               </h3>
               <p>
                 Lymphatic drainage, body contouring, scalp rituals, and the kind of massage that resets the week. Heated stone, eucalyptus, low light, no phone.
@@ -356,7 +364,8 @@ export default function HomePage() {
                 <span className="sup">Phase</span>01
               </div>
               <h3>
-                The Welcome<span className="fr">L&apos;accueil</span>
+                <span className="en-only">The Welcome</span>
+                <span className="fr">L&apos;accueil</span>
               </h3>
               <p>
                 You arrive ten minutes early to nothing. A robe of heavy linen, a glass of cucumber water, low Erik Satie. The door closes; the city ends.
@@ -371,7 +380,8 @@ export default function HomePage() {
                 <span className="sup">Phase</span>02
               </div>
               <h3>
-                The Consultation<span className="fr">La consultation</span>
+                <span className="en-only">The Consultation</span>
+                <span className="fr">La consultation</span>
               </h3>
               <p>
                 Your artist sits across from you, not behind you. We talk about the week, the light at your kitchen window, the photograph in your phone you almost showed.
@@ -386,7 +396,8 @@ export default function HomePage() {
                 <span className="sup">Phase</span>03
               </div>
               <h3>
-                The Ritual<span className="fr">Le rituel</span>
+                <span className="en-only">The Ritual</span>
+                <span className="fr">Le rituel</span>
               </h3>
               <p>
                 The treatment itself, performed slowly, by hands that have done this fifteen thousand times. No upsell at the chair, no clock visible from where you sit.
@@ -401,7 +412,8 @@ export default function HomePage() {
                 <span className="sup">Phase</span>04
               </div>
               <h3>
-                The Finish<span className="fr">La touche finale</span>
+                <span className="en-only">The Finish</span>
+                <span className="fr">La touche finale</span>
               </h3>
               <p>
                 The mirror is turned, the light is changed once, twice. A spritz of the house élixir, a final brush, a photograph for your records — only if you like.
@@ -416,7 +428,8 @@ export default function HomePage() {
                 <span className="sup">Phase</span>05
               </div>
               <h3>
-                The After<span className="fr">L&apos;après</span>
+                <span className="en-only">The After</span>
+                <span className="fr">L&apos;après</span>
               </h3>
               <p>
                 Tea on the velvet bench. A small linen pouch of what you&apos;ll need at home for the next two weeks. Your next visit, already softly held.
@@ -437,9 +450,12 @@ export default function HomePage() {
               <span className="dot"></span>The Room · La pièce
             </div>
             <h2>
-              A house of six rooms,
-              <br />
-              arranged around quiet.<span className="fr">Six salles, agencées autour du silence.</span>
+              <span className="en-only">
+                A house of six rooms,
+                <br />
+                arranged around quiet.
+              </span>
+              <span className="fr">Six salles, agencées autour du silence.</span>
             </h2>
             <p>
               The studio sits on a corner of Robinson Street, behind a heavy brass door. <strong>Six private rooms</strong>, a marble apothecary, a velvet bench, and one window facing north — the only window we open.
@@ -531,7 +547,8 @@ export default function HomePage() {
                   <span className="glow">N° 01</span>
                 </div>
                 <h3>
-                  The slow colour, undone and rewritten<span className="fr">Le retour à la lumière</span>
+                  <span className="en-only">The slow colour, undone and rewritten</span>
+                  <span className="fr">Le retour à la lumière</span>
                 </h3>
               </div>
             </article>
@@ -552,7 +569,8 @@ export default function HomePage() {
                   <span className="glow">N° 02</span>
                 </div>
                 <h3>
-                  Gilded almond<span className="fr">Amande dorée</span>
+                  <span className="en-only">Gilded almond</span>
+                  <span className="fr">Amande dorée</span>
                 </h3>
               </div>
             </article>
@@ -573,7 +591,8 @@ export default function HomePage() {
                   <span className="glow">N° 03</span>
                 </div>
                 <h3>
-                  Doll lash, undone<span className="fr">Cils dénoués</span>
+                  <span className="en-only">Doll lash, undone</span>
+                  <span className="fr">Cils dénoués</span>
                 </h3>
               </div>
             </article>
@@ -596,7 +615,8 @@ export default function HomePage() {
                   <span className="glow">N° 04</span>
                 </div>
                 <h3>
-                  The Saturday cut<span className="fr">La coupe du samedi</span>
+                  <span className="en-only">The Saturday cut</span>
+                  <span className="fr">La coupe du samedi</span>
                 </h3>
               </div>
             </article>
@@ -617,7 +637,8 @@ export default function HomePage() {
                   <span className="glow">N° 05</span>
                 </div>
                 <h3>
-                  Skin, read aloud<span className="fr">La peau, lue</span>
+                  <span className="en-only">Skin, read aloud</span>
+                  <span className="fr">La peau, lue</span>
                 </h3>
               </div>
             </article>
@@ -638,7 +659,8 @@ export default function HomePage() {
                   <span className="glow">N° 06</span>
                 </div>
                 <h3>
-                  The long bath<span className="fr">Le long bain</span>
+                  <span className="en-only">The long bath</span>
+                  <span className="fr">Le long bain</span>
                 </h3>
               </div>
             </article>
@@ -714,9 +736,16 @@ export default function HomePage() {
           <span className="dot"></span>The brass door is open
         </div>
         <h2>
-          The hour is yours,
-          <br />
-          when you&apos;re ready.<span className="fr">L&apos;heure vous appartient,<br />quand vous le voulez.</span>
+          <span className="en-only">
+            The hour is yours,
+            <br />
+            when you&apos;re ready.
+          </span>
+          <span className="fr">
+            L&apos;heure vous appartient,
+            <br />
+            quand vous le voulez.
+          </span>
         </h2>
         <p>Twelve guests per day · Douze invités par jour</p>
         <Link href="/contact" className="btn-gold">

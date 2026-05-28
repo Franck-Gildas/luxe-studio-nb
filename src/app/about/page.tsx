@@ -27,8 +27,10 @@ export default function AboutPage() {
             <span>Page <span className="v">04 / 06</span></span>
           </div>
           <h1>
-            A house of <em>quiet</em>,<br />
-            kept on Main Street.
+            <span className="en-only">
+              A house of <em>quiet</em>,<br />
+              kept on Main Street.
+            </span>
             <span className="fr">Une maison du silence, sur la rue Main.</span>
           </h1>
         </div>
@@ -40,7 +42,12 @@ export default function AboutPage() {
         <div className="philo-inner">
           <div className="left">
             <div className="num">§ 01 — The Philosophy · La philosophie</div>
-            <h2>The room first,<br />then the work.<span className="fr">La pièce d&apos;abord, le soin ensuite.</span></h2>
+            <h2>
+              <span className="en-only">
+                The room first,<br />then the work.
+              </span>
+              <span className="fr">La pièce d&apos;abord, le soin ensuite.</span>
+            </h2>
           </div>
           <div className="right">
             <p>We opened a single door on <span className="gold">Rue Main Street</span> in the winter of 2024, after fifteen years of working in other people&apos;s rooms. We had one belief between us: that the room is the treatment, and the treatment is only the most visible part of it.</p>
@@ -61,22 +68,22 @@ export default function AboutPage() {
         <div className="tenets-grid">
           <div className="tenet">
             <div className="roman">I.</div>
-            <h4>By appointment only<span className="fr">Sur rendez-vous</span></h4>
+            <h4><span className="en-only">By appointment only</span><span className="fr">Sur rendez-vous</span></h4>
             <p>We don&apos;t take walk-ins, and we never double-book. Your hour is yours; the room is yours; the artist is yours.</p>
           </div>
           <div className="tenet">
             <div className="roman">II.</div>
-            <h4>Twelve guests per day<span className="fr">Douze invités</span></h4>
+            <h4><span className="en-only">Twelve guests per day</span><span className="fr">Douze invités</span></h4>
             <p>Across all six rooms — a deliberate cap. You will not pass another guest in the hall.</p>
           </div>
           <div className="tenet">
             <div className="roman">III.</div>
-            <h4>Senior artists only<span className="fr">Artistes principaux</span></h4>
+            <h4><span className="en-only">Senior artists only</span><span className="fr">Artistes principaux</span></h4>
             <p>Every artist has spent at least seven years at the chair. No assistants do client work. Ever.</p>
           </div>
           <div className="tenet">
             <div className="roman">IV.</div>
-            <h4>Bilingual, always<span className="fr">Toujours bilingue</span></h4>
+            <h4><span className="en-only">Bilingual, always</span><span className="fr">Toujours bilingue</span></h4>
             <p>Every artist speaks French and English at the chair. We&apos;ve been Acadian since the day we opened.</p>
           </div>
         </div>
@@ -259,7 +266,12 @@ export default function AboutPage() {
 
           <div className="location-copy">
             <div className="num">§ 03 — Visit · La visite</div>
-            <h2>The brass door is on<br />Main Street, second floor.<span className="fr">La porte est sur la rue Main, au deuxième étage.</span></h2>
+            <h2>
+              <span className="en-only">
+                The brass door is on<br />Main Street, second floor.
+              </span>
+              <span className="fr">La porte est sur la rue Main, au deuxième étage.</span>
+            </h2>
 
             <div className="address-card">
               <div className="line">

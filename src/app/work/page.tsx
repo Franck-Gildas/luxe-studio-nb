@@ -9,13 +9,13 @@ type Category = "all" | "hair" | "barber" | "nail" | "lash" | "spa" | "face";
 type FilterCategory = Exclude<Category, "all">;
 
 const FILTERS: { cat: Category; label: React.ReactNode }[] = [
-  { cat: "all", label: <>All<span className="fr">Tout</span></> },
-  { cat: "hair", label: <>Hair<span className="fr">Cheveux</span></> },
-  { cat: "barber", label: <>Barber<span className="fr">Barbier</span></> },
-  { cat: "nail", label: <>Nails<span className="fr">Ongles</span></> },
-  { cat: "lash", label: <>Lash & Brow<span className="fr">Cils</span></> },
-  { cat: "spa", label: <>Spa<span className="fr">Bien-être</span></> },
-  { cat: "face", label: <>Esthetics<span className="fr">Esthétique</span></> },
+  { cat: "all", label: <><span className="en-only">All</span><span className="fr">Tout</span></> },
+  { cat: "hair", label: <><span className="en-only">Hair</span><span className="fr">Cheveux</span></> },
+  { cat: "barber", label: <><span className="en-only">Barber</span><span className="fr">Barbier</span></> },
+  { cat: "nail", label: <><span className="en-only">Nails</span><span className="fr">Ongles</span></> },
+  { cat: "lash", label: <><span className="en-only">Lash & Brow</span><span className="fr">Cils</span></> },
+  { cat: "spa", label: <><span className="en-only">Spa</span><span className="fr">Bien-être</span></> },
+  { cat: "face", label: <><span className="en-only">Esthetics</span><span className="fr">Esthétique</span></> },
 ];
 
 const GALLERY_TILES = [
@@ -214,7 +214,7 @@ export default function WorkPage() {
           </div>
 
           <h1>
-            Transformations
+            <span className="en-only">Transformations</span>
             <span className="fr">Métamorphoses — du fauteuil, en silence.</span>
           </h1>
 
@@ -370,7 +370,8 @@ export default function WorkPage() {
             <div className="copy">
               <div className="idx">N° 01 · Hair · Cheveux</div>
               <h3>
-                Signature Hair Rituals<span className="fr">Le rituel des cheveux</span>
+                <span className="en-only">Signature Hair Rituals</span>
+                <span className="fr">Le rituel des cheveux</span>
               </h3>
               <p>Slow colour, custom dimensional work, and Olaplex-led repair — performed by senior stylists who treat your head of hair like an heirloom.</p>
               <div className="credits">
@@ -391,7 +392,8 @@ export default function WorkPage() {
             <div className="copy">
               <div className="idx">N° 02 · Barber · Barbier</div>
               <h3>
-                The Barbering Atelier<span className="fr">L&apos;atelier du barbier</span>
+                <span className="en-only">The Barbering Atelier</span>
+                <span className="fr">L&apos;atelier du barbier</span>
               </h3>
               <p>Hot-towel shaves, beard architecture, and the cut your grandfather used to take an hour to get right — straight razor, cedar after-balm, a tumbler of something dark.</p>
               <div className="credits">
@@ -424,7 +426,8 @@ export default function WorkPage() {
             <div className="copy">
               <div className="idx">N° 03 · Nails · Ongles</div>
               <h3>
-                Nail Couture Studio<span className="fr">Couture des ongles</span>
+                <span className="en-only">Nail Couture Studio</span>
+                <span className="fr">Couture des ongles</span>
               </h3>
               <p>Builder-gel manicures, sculpted forms, custom inlays. A glass of pét-nat, ninety minutes off the phone, hands you&apos;ll catch yourself glancing at all week.</p>
               <div className="credits">
@@ -445,7 +448,8 @@ export default function WorkPage() {
             <div className="copy">
               <div className="idx">N° 04 · Lash · Cils</div>
               <h3>
-                Lash & Brow Sanctuary<span className="fr">Sanctuaire des cils</span>
+                <span className="en-only">Lash & Brow Sanctuary</span>
+                <span className="fr">Sanctuaire des cils</span>
               </h3>
               <p>Hand-mapped lash extensions, a quiet brow lamination room, lash lift & tint by senior artists. Forty-five minutes that change the rest of your week.</p>
               <div className="credits">
@@ -478,7 +482,8 @@ export default function WorkPage() {
             <div className="copy">
               <div className="idx">N° 05 · Esthetics · Esthétique</div>
               <h3>
-                Skin Alchemy<span className="fr">L&apos;alchimie de la peau</span>
+                <span className="en-only">Skin Alchemy</span>
+                <span className="fr">L&apos;alchimie de la peau</span>
               </h3>
               <p>HydraFacials, dermaplaning, retinol-sequenced peels, LED rooms in their own low light. We read the skin first, then we treat it. Always in that order.</p>
               <div className="credits">
@@ -499,7 +504,8 @@ export default function WorkPage() {
             <div className="copy">
               <div className="idx">N° 06 · Spa · Bien-être</div>
               <h3>
-                Wellness & Body Rituals<span className="fr">Rituels du corps</span>
+                <span className="en-only">Wellness & Body Rituals</span>
+                <span className="fr">Rituels du corps</span>
               </h3>
               <p>Lymphatic drainage, body contouring, scalp rituals, and the kind of massage that resets the week. Heated stone, eucalyptus, low light, no phone.</p>
               <div className="credits">
@@ -551,7 +557,7 @@ export default function WorkPage() {
                 <div className="meta">
                   <div className="top">{tile.top}</div>
                   <h4>
-                    {tile.title}
+                    <span className="en-only">{tile.title}</span>
                     <span className="fr">{tile.fr}</span>
                   </h4>
                 </div>
@@ -582,9 +588,11 @@ export default function WorkPage() {
           <span className="dot"></span>Twelve guests per day · Douze invités par jour
         </div>
         <h2>
-          The next chair could
-          <br />
-          have your name on it.
+          <span className="en-only">
+            The next chair could
+            <br />
+            have your name on it.
+          </span>
           <span className="fr">Le prochain fauteuil — peut-être le vôtre.</span>
         </h2>
         <Link href="/contact" className="btn-gold">

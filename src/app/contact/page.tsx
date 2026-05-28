@@ -74,8 +74,10 @@ export default function ContactPage() {
               <span>Page <span className="v">06 / 06</span></span>
             </div>
             <h1>
-              Pull up<br />
-              a <em>chair.</em>
+              <span className="en-only">
+                Pull up<br />
+                a <em>chair.</em>
+              </span>
               <span className="fr">Approchez-vous — la porte est ouverte.</span>
             </h1>
             <p className="lede">Send your invitation below — pick the room you&apos;d like to begin in, the day, the hour. We&apos;ll write back the same day with the artist&apos;s name, a small confirmation, and what to bring.</p>
@@ -140,7 +142,7 @@ export default function ContactPage() {
           {/* FORM */}
           <form className="form-frame" id="booking" onSubmit={handleSubmit}>
             <div className="form-header">
-              <h2>Book Your Ritual<span className="fr">Réservez votre rituel</span></h2>
+              <h2><span className="en-only">Book Your Ritual</span><span className="fr">Réservez votre rituel</span></h2>
               <div className="stamp">
                 <span className="v">№ — Rendez-vous</span>
                 <span>Réf. · LSN-BOOK</span>
@@ -313,7 +315,12 @@ export default function ContactPage() {
         <div className="cd-inner">
           <div className="cd-copy">
             <div className="num">§ 02 — The concierge · La concierge</div>
-            <h2>If a chair is easier<br />than a form, <em>write</em> us.<span className="fr">Si le fauteuil est plus simple — écrivez.</span></h2>
+            <h2>
+              <span className="en-only">
+                If a chair is easier<br />than a form, <em>write</em> us.
+              </span>
+              <span className="fr">Si le fauteuil est plus simple — écrivez.</span>
+            </h2>
             <p>Élise, our house concierge, sits at the door from 09:00 to 22:00. She speaks French and English, holds appointments at her desk on a paper book, and will thread you to the artist most for the hour you&apos;re imagining.</p>
             <p>Open her at the bottom-right of any page — or simply call. We answer the phone before the second ring; that&apos;s the only thing we time at this address.</p>
             <ul>

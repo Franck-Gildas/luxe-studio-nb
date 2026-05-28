@@ -20,7 +20,7 @@ export function Footer() {
       <div className="footer-grid">
         <div>
           <div className="footer-tag">
-            {t("footer.tagline")}
+            <span className="en-only">{t("footer.tagline")}</span>
             <span className="fr">{t("footer.taglineFr")}</span>
           </div>
           <p className="footer-atelier">

@@ -17,8 +17,10 @@ export default function ServicesPage() {
             <span>Page <span className="v">03 / 06</span></span>
           </div>
           <h1>
-            The Beauty<br />
-            <em>Menu.</em>
+            <span className="en-only">
+              The Beauty<br />
+              <em>Menu.</em>
+            </span>
             <span className="fr">Le menu — six maisons, une seule porte.</span>
           </h1>
           <p className="lede">Every ritual below is performed by a senior artist, in a private room, on the cadence of an actual visit — never to a clock visible from where you sit. Prices in Canadian dollars; gratuity is included in every service.</p>
@@ -66,7 +68,12 @@ export default function ServicesPage() {
         <div className="cat-inner">
           <div className="cat-copy">
             <div className="num">N° 01 — Hair · Cheveux</div>
-            <h2>Signature<br />Hair Rituals<span className="fr">Le rituel des cheveux</span></h2>
+            <h2>
+              <span className="en-only">
+                Signature<br />Hair Rituals
+              </span>
+              <span className="fr">Le rituel des cheveux</span>
+            </h2>
             <p className="sensory">"Slow colour, custom dimensional work, and bond therapy at every wash. Your head of hair, treated like an heirloom."</p>
             <p className="body">All colour is mixed at the chair, by the artist who&apos;ll apply it. Cuts are dry-finished and re-checked at standing height. Olaplex No. 0 + No. 3 are folded into every chemical service at no extra cost.</p>
             <span className="room"><span className="dot"></span>Room N° 02 — North light, two chairs</span>
@@ -126,7 +133,12 @@ export default function ServicesPage() {
         <div className="cat-inner">
           <div className="cat-copy">
             <div className="num">N° 02 — Barber · Barbier</div>
-            <h2>The Barbering<br />Atelier<span className="fr">L&apos;atelier du barbier</span></h2>
+            <h2>
+              <span className="en-only">
+                The Barbering<br />Atelier
+              </span>
+              <span className="fr">L&apos;atelier du barbier</span>
+            </h2>
             <p className="sensory">"Hot-towel shaves, beard architecture, and the cut your grandfather used to take an hour to get right."</p>
             <p className="body">A single-chair atelier behind its own door. Straight razor, badger brush, cedar after-balm. The cut takes the time it takes; the conversation is yours to set the tempo of. A tumbler of something dark, on request.</p>
             <span className="room"><span className="dot"></span>Room N° 04 — The barbier, single chair</span>
@@ -181,7 +193,12 @@ export default function ServicesPage() {
         <div className="cat-inner">
           <div className="cat-copy">
             <div className="num">N° 03 — Nails · Ongles</div>
-            <h2>Nail<br />Couture Studio<span className="fr">Couture des ongles</span></h2>
+            <h2>
+              <span className="en-only">
+                Nail<br />Couture Studio
+              </span>
+              <span className="fr">Couture des ongles</span>
+            </h2>
             <p className="sensory">"Builder gel, sculpted forms, custom inlays. Ninety minutes off the phone, hands you&apos;ll catch yourself glancing at all week."</p>
             <p className="body">A two-chair atelier behind a curtain of smoked glass. Every set is sculpted, not extended — the form is built fresh from gel, sanded by hand, and finished under cold light. We don&apos;t do quick fixes here; we do hands you&apos;ll forget aren&apos;t part of you.</p>
             <span className="room"><span className="dot"></span>Room N° 03 — Smoked glass, two chairs</span>
@@ -229,7 +246,12 @@ export default function ServicesPage() {
         <div className="cat-inner">
           <div className="cat-copy">
             <div className="num">N° 04 — Lash · Cils & Sourcils</div>
-            <h2>Lash & Brow<br />Sanctuary<span className="fr">Le sanctuaire des cils</span></h2>
+            <h2>
+              <span className="en-only">
+                Lash & Brow<br />Sanctuary
+              </span>
+              <span className="fr">Le sanctuaire des cils</span>
+            </h2>
             <p className="sensory">"Hand-mapped lash extensions, a quiet brow lamination room, lash lift & tint by senior artists."</p>
             <p className="body">Every lash set begins with a paper map — one for each eye. We measure, we draw, we choose the curl by hand, then we lay each extension under low light, in our own quiet pacing. Forty-five minutes that change the rest of your week.</p>
             <span className="room"><span className="dot"></span>Room N° 05 — Low light, reclining chair</span>
@@ -283,7 +305,12 @@ export default function ServicesPage() {
         <div className="cat-inner">
           <div className="cat-copy">
             <div className="num">N° 05 — Esthetics · Esthétique</div>
-            <h2>Esthetics &<br />Skin Alchemy<span className="fr">L&apos;alchimie de la peau</span></h2>
+            <h2>
+              <span className="en-only">
+                Esthetics &<br />Skin Alchemy
+              </span>
+              <span className="fr">L&apos;alchimie de la peau</span>
+            </h2>
             <p className="sensory">"We read the skin first, then we treat it. Always in that order — never in reverse."</p>
             <p className="body">A dedicated skin room with its own dimmable light, an LED canopy, and a HydraFacial unit kept in clinical condition. Every facial begins with a fifteen-minute read — sebum, hydration, surface map — by an aesthetician trained at IDI Montréal. Then, and only then, do we begin.</p>
             <span className="room"><span className="dot"></span>Room N° 06 — Dimmable, LED canopy</span>
@@ -331,7 +358,12 @@ export default function ServicesPage() {
         <div className="cat-inner">
           <div className="cat-copy">
             <div className="num">N° 06 — Wellness · Bien-être</div>
-            <h2>Wellness &<br />Body Rituals<span className="fr">Les rituels du corps</span></h2>
+            <h2>
+              <span className="en-only">
+                Wellness &<br />Body Rituals
+              </span>
+              <span className="fr">Les rituels du corps</span>
+            </h2>
             <p className="sensory">"Lymphatic drainage, body contouring, scalp rituals, and the kind of massage that resets the week."</p>
             <p className="body">The long bath room sits at the back of the atelier, north-facing, behind two doors and a curtain of heavy linen. Heated stone, eucalyptus, candle-light. We don&apos;t take phones in this room — they wait, in a small linen pouch, on a teak shelf, by the door.</p>
             <span className="room"><span className="dot"></span>Room N° 07 — The long bath, two doors</span>
@@ -390,7 +422,12 @@ export default function ServicesPage() {
       {/* CTA */}
       <section className="cta-section" data-screen-label="10 CTA" style={{ padding: '160px 48px' }}>
         <div className="eyebrow cta-eyebrow"><span className="dot"></span>Twelve guests per day · Douze invités par jour</div>
-        <h2>The brass door is open<br />for the menu you choose.<span className="fr">La porte est ouverte — pour le menu que vous choisissez.</span></h2>
+        <h2>
+          <span className="en-only">
+            The brass door is open<br />for the menu you choose.
+          </span>
+          <span className="fr">La porte est ouverte — pour le menu que vous choisissez.</span>
+        </h2>
         <Link href="/contact" className="btn-gold">
           <span>Book Your Ritual</span>
           <span className="fr">Réservez votre rituel</span>

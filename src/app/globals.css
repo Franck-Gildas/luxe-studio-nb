@@ -113,3 +113,54 @@ a {
   font-style: italic;
   color: var(--rose);
 }
+
+/* English — show EN, hide FR */
+.lang-en .fr,
+body:not(.lang-fr) .fr {
+  display: none;
+}
+
+/* French — show FR, hide EN */
+.lang-fr .en-only {
+  display: none;
+}
+.lang-fr .fr {
+  display: inline !important;
+}
+
+/* For block-level FR elements */
+.lang-fr .fr-block {
+  display: block !important;
+}
+body:not(.lang-fr) .fr-block {
+  display: none;
+}
+
+/* Tagline (home hero) */
+body:not(.lang-fr) .tagline-fr {
+  display: none;
+}
+body.lang-fr .tagline-en {
+  display: none;
+}
+
+/* Marquee — alternate EN/FR tracks */
+body:not(.lang-fr) .marquee-item:nth-child(even) {
+  display: none;
+}
+body.lang-fr .marquee-item:nth-child(odd) {
+  display: none;
+}
+
+/* Block .fr in headings when French is active */
+body.lang-fr h1:has(> .fr) .fr,
+body.lang-fr h2:has(> .fr) .fr,
+body.lang-fr h3:has(> .fr) .fr,
+body.lang-fr h4:has(> .fr) .fr {
+  display: block !important;
+}
+
+/* Hide English element siblings next to .fr */
+body.lang-fr :is(.btn-gold, h1, h2, h3, h4, .phase-name):has(> .fr) > :not(.fr):not(.arrow) {
+  display: none !important;
+}
