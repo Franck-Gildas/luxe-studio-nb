@@ -84,7 +84,6 @@ export default function HomePage() {
               style={{
                 left: "50%",
                 transform: "translateX(-50%)",
-                whiteSpace: "nowrap",
               }}
             >
               3D · house élixir on marble pedestal · volumetric light

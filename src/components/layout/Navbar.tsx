@@ -31,12 +31,21 @@ function NavbarInner({ pathname }: { pathname: string }) {
     };
   }, [menuOpen]);
 
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [menuOpen]);
+
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
     <>
-      <nav className="nav" aria-label="Main navigation">
+      <nav className={`nav${menuOpen ? " nav--open" : ""}`} aria-label="Main navigation">
         <Link href="/" className="nav-logo">
           <span className="mark" aria-hidden />
           <span>LUXE STUDIO</span>
@@ -77,17 +86,21 @@ function NavbarInner({ pathname }: { pathname: string }) {
         id="mobile-nav"
         className={`nav-mobile-overlay${menuOpen ? " open" : ""}`}
         aria-hidden={!menuOpen}
+        onClick={(e) => {
+          if (e.target === e.currentTarget) setMenuOpen(false);
+        }}
       >
         {navItems.map(({ href, key }) => (
           <Link
             key={href}
             href={href}
             className={isActive(href) ? "active" : undefined}
+            onClick={() => setMenuOpen(false)}
           >
             {t(`nav.${key}`)}
           </Link>
         ))}
-        <Link href="/contact" className="nav-cta">
+        <Link href="/contact" className="nav-cta" onClick={() => setMenuOpen(false)}>
           <span>{t("nav.bookRitual")}</span>
           <span className="arrow">→</span>
         </Link>

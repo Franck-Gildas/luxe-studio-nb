@@ -1055,3 +1055,115 @@
 @media (max-width: 720px) {
   .services-grid { grid-template-columns: 1fr; }
 }
+
+@media (max-width: 768px) {
+  .atrium {
+    min-height: min(100vh, 640px);
+    height: auto;
+  }
+
+  .beam {
+    width: min(520px, 100vw);
+  }
+
+  .atrium-stage {
+    padding: 72px 24px 48px;
+  }
+
+  .atrium-top {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .atrium-top .r {
+    text-align: left;
+  }
+
+  .composition {
+    width: min(240px, 70vw);
+    height: min(360px, 32vh);
+  }
+
+  .pedestal {
+    width: min(240px, 70vw);
+  }
+
+  .vial-photo {
+    width: min(160px, 45vw);
+    height: min(280px, 28vh);
+    bottom: 48px;
+  }
+
+  .wordmark {
+    letter-spacing: 0.08em;
+    font-size: clamp(28px, 8vw, 56px);
+  }
+
+  .composition .placeholder-label {
+    white-space: normal;
+    text-align: center;
+    max-width: 90%;
+  }
+
+  .atrium-bottom .btn-gold {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .invitation {
+    padding: 60px 24px;
+  }
+
+  .services-section {
+    padding: 80px 24px;
+  }
+
+  .exp {
+    padding: 40px 24px 32px;
+    min-height: 360px;
+  }
+
+  .section.testimonials {
+    padding: 48px 24px 80px;
+  }
+
+  .testi {
+    padding: 36px 24px;
+  }
+
+  .transforms {
+    padding: 80px 24px 40px;
+  }
+
+  .ritual-row {
+    gap: 16px;
+    padding: 20px 0;
+  }
+
+  .ritual-row p {
+    font-size: 16px;
+  }
+
+  .atelier {
+    padding: 80px 24px;
+  }
+
+  .atelier-copy .stats {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .atelier-copy .stat .n {
+    font-size: clamp(32px, 8vw, 44px);
+  }
+
+  .cta-section {
+    padding: 80px 24px 100px;
+  }
+
+  .transforms-footer .btn-ghost {
+    width: 100%;
+    justify-content: center;
+  }
+}

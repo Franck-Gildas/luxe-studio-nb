@@ -612,7 +612,6 @@ export default function WorkPage() {
       <section
         className="cta-section"
         data-screen-label="06 CTA"
-        style={{ padding: "100px 48px 160px" }}
       >
         <div className="eyebrow cta-eyebrow">
           <span className="dot"></span>Twelve guests per day · Douze invités par jour

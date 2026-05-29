@@ -359,7 +359,7 @@ export default function ExperiencesPage() {
               <li>Hold the same hour, in the same chair</li>
             </ul>
             <div className="cta">
-              <Link href="/contact" className="btn-ghost" style={{ width: '100%', justifyContent: 'center' }}>Join ·
+              <Link href="/contact" className="btn-ghost">Join ·
                 S&apos;inscrire</Link>
             </div>
           </div>
@@ -376,8 +376,8 @@ export default function ExperiencesPage() {
               <li>A linen pouch of essentials, posted each solstice</li>
             </ul>
             <div className="cta">
-              <Link href="/contact" className="btn-gold" style={{ width: '100%', justifyContent: 'center', padding: '16px 20px' }}>
-                Join · S&apos;inscrire <span className="arrow" style={{ marginLeft: '8px' }}>→</span>
+              <Link href="/contact" className="btn-gold">
+                Join · S&apos;inscrire <span className="arrow">→</span>
               </Link>
             </div>
           </div>
@@ -394,7 +394,7 @@ export default function ExperiencesPage() {
               <li>Your own number at the chair — and at the door</li>
             </ul>
             <div className="cta">
-              <Link href="/contact" className="btn-ghost" style={{ width: '100%', justifyContent: 'center' }}>Join ·
+              <Link href="/contact" className="btn-ghost">Join ·
                 S&apos;inscrire</Link>
             </div>
           </div>
@@ -402,7 +402,7 @@ export default function ExperiencesPage() {
       </section>
 
       {/* CTA */}
-      <section className="cta-section" data-screen-label="06 CTA" style={{ padding: '160px 48px' }}>
+      <section className="cta-section" data-screen-label="06 CTA">
         <div className="eyebrow cta-eyebrow"><span className="dot"></span>The brass door is open</div>
         <h2>
           <span className="en-only">

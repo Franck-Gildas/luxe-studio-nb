@@ -324,7 +324,7 @@ export default function AboutPage() {
               <div className="row"><span className="k">Sunday — Monday</span><span className="v">Closed · Fermé</span></div>
             </div>
 
-            <Link href="/contact" className="btn-gold" style={{ alignSelf: 'start', marginTop: '12px' }}>
+            <Link href="/contact" className="btn-gold">
               <span>Visit the Atelier</span>
               <span className="fr">Visitez l&apos;atelier</span>
               <span className="arrow">→</span>

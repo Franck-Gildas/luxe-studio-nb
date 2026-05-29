@@ -474,7 +474,7 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA */}
-      <section className="cta-section" data-screen-label="10 CTA" style={{ padding: '160px 48px' }}>
+      <section className="cta-section" data-screen-label="10 CTA">
         <div className="eyebrow cta-eyebrow"><span className="dot"></span>Twelve guests per day · Douze invités par jour</div>
         <h2>
           <span className="en-only">
