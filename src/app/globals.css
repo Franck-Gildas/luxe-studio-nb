@@ -241,3 +241,10 @@ body.lang-fr p > .fr-block {
   margin-top: 12px;
   line-height: 1.35;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
