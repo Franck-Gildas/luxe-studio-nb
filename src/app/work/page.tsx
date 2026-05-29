@@ -215,19 +215,21 @@ export default function WorkPage() {
 
           <h1>
             <span className="en-only">Transformations</span>
-            <span className="fr">Métamorphoses — du fauteuil, en silence.</span>
+            <span className="fr-block">Métamorphoses</span>
           </h1>
+          <p className="hero-tagline">
+            <span className="en-only">From the chair, in silence.</span>
+            <span className="fr-block">Du fauteuil, en silence.</span>
+          </p>
 
           <div className="work-hero-blurb">
-            <p>
-              <strong>Each frame below was made at the chair</strong> — late afternoon, north light, no retouching. We photograph at the end of every ritual; the guest decides if it joins the vitrine.
-            </p>
-            <p>
-              Slide the gold handle on a reveal to see the before.{" "}
+            <p><span className="en-only"><strong>Each frame below was made at the chair</strong> — late afternoon, north light, no retouching. We photograph at the end of every ritual; the guest decides if it joins the vitrine.</span>
+<span className="fr-block">Chaque image ci-dessous a été faite au fauteuil — fin d’après-midi, lumière du nord, sans retouche. Nous photographions à la fin de chaque rituel ; l’invité décide si elle rejoint la vitrine.</span></p>
+            <p><span className="en-only">Slide the gold handle on a reveal to see the before.{" "}
               <em className="italic" style={{ color: "var(--rose)" }}>
                 Faites glisser pour voir l&apos;avant — puis lisez la suite.
-              </em>
-            </p>
+              </em></span>
+<span className="fr-block">Faites glisser la poignée dorée du volet pour découvrir l’avant. Faites glisser pour voir l’avant — puis lisez la suite.</span></p>
           </div>
         </div>
       </section>
@@ -238,9 +240,13 @@ export default function WorkPage() {
           <div className="ba-row">
             <div className="ba-side">
               <div className="idx">◇ Reveal 01 / 03 · Hair</div>
-              <h3>Élise — Slow colour, three sittings</h3>
+              <h3>
+                <span className="en-only">Élise — Slow colour, three sittings</span>
+                <span className="fr-block">Élise — Couleur lente, trois séances</span>
+              </h3>
               <div className="sub">Hair ritual · 6 hours over 3 visits</div>
-              <p>Eight years of box dye, unwound in three sittings. A bone-blonde lifted in low concentration with bond therapy at every wash, then re-warmed with the lightest hand of amber gloss. The fringe was kept; everything else was forgiven.</p>
+              <p><span className="en-only">Eight years of box dye, unwound in three sittings. A bone-blonde lifted in low concentration with bond therapy at every wash, then re-warmed with the lightest hand of amber gloss. The fringe was kept; everything else was forgiven.</span>
+<span className="fr-block">Huit ans de coloration en boîte, défaits en trois séances. Un blond osé éclairci à faible concentration avec thérapie de liaison à chaque lavage, puis réchauffé de la main la plus légère d’un gloss ambré. La frange a été conservée ; tout le reste a été pardonné.</span></p>
               <div className="ba-tags">
                 <span className="ba-tag gold">Colour</span>
                 <span className="ba-tag">Olaplex</span>
@@ -268,9 +274,13 @@ export default function WorkPage() {
           <div className="ba-row flip">
             <div className="ba-side">
               <div className="idx">◇ Reveal 02 / 03 · Barber</div>
-              <h3>Marc — The Saturday cut</h3>
+              <h3>
+                <span className="en-only">Marc — The Saturday cut</span>
+                <span className="fr-block">Marc — La coupe du samedi</span>
+              </h3>
               <div className="sub">Atelier du barbier · 1h30</div>
-              <p>A scissor cut taken low and tight, beard sculpted with a straight razor under hot towel. No clipper above the temple. Cedar after-balm, a finger of single malt, the kind of quiet that doesn&apos;t apologise for itself.</p>
+              <p><span className="en-only">A scissor cut taken low and tight, beard sculpted with a straight razor under hot towel. No clipper above the temple. Cedar after-balm, a finger of single malt, the kind of quiet that doesn&apos;t apologise for itself.</span>
+<span className="fr-block">Une coupe aux ciseaux prise bas et serrée, barbe sculptée au rasoir droit sous serviette chaude. Pas de tondeuse au-dessus de la tempe. Baume après-rasage au cèdre, un doigt de single malt, le genre de silence qui ne s’excuse pas.</span></p>
               <div className="ba-tags">
                 <span className="ba-tag gold">Hot towel</span>
                 <span className="ba-tag">Straight razor</span>
@@ -297,9 +307,13 @@ export default function WorkPage() {
           <div className="ba-row">
             <div className="ba-side">
               <div className="idx">◇ Reveal 03 / 03 · Skin</div>
-              <h3>Renée — Ninety minutes of skin</h3>
+              <h3>
+                <span className="en-only">Renée — Ninety minutes of skin</span>
+                <span className="fr-block">Renée — Quatre-vingt-dix minutes de peau</span>
+              </h3>
               <div className="sub">Esthetics · HydraFacial & LED</div>
-              <p>A two-part HydraFacial, dermaplaning at the brow line, then a quiet half-hour under red light. The skin was first read — sebum, hydration, the small map of the week — and only then approached. The glow holds for two weeks; the routine that follows for longer.</p>
+              <p><span className="en-only">A two-part HydraFacial, dermaplaning at the brow line, then a quiet half-hour under red light. The skin was first read — sebum, hydration, the small map of the week — and only then approached. The glow holds for two weeks; the routine that follows for longer.</span>
+<span className="fr-block">Un HydraFacial en deux parties, dermaplaning à la ligne des sourcils, puis une demi-heure feutrée sous lumière rouge. La peau a d’abord été lue — sébum, hydratation, la petite carte de la semaine — et seulement ensuite abordée. L’éclat tient deux semaines ; la routine qui suit, plus longtemps.</span></p>
               <div className="ba-tags">
                 <span className="ba-tag gold">HydraFacial</span>
                 <span className="ba-tag">LED</span>
@@ -350,9 +364,16 @@ export default function WorkPage() {
               Editorial
             </div>
             <h2>
-              Six rituals, six rooms,
-              <br />
-              one careful afternoon.
+              <span className="en-only">
+                Six rituals, six rooms,
+                <br />
+                one careful afternoon.
+              </span>
+              <span className="fr-block">
+                Six rituels, six salles,
+                <br />
+                un après-midi attentif.
+              </span>
             </h2>
           </div>
 
@@ -373,7 +394,8 @@ export default function WorkPage() {
                 <span className="en-only">Signature Hair Rituals</span>
                 <span className="fr">Le rituel des cheveux</span>
               </h3>
-              <p>Slow colour, custom dimensional work, and Olaplex-led repair — performed by senior stylists who treat your head of hair like an heirloom.</p>
+              <p><span className="en-only">Slow colour, custom dimensional work, and Olaplex-led repair — performed by senior stylists who treat your head of hair like an heirloom.</span>
+<span className="fr-block">Couleur lente, travail dimensionnel sur mesure et réparation guidée par Olaplex — exécutés par des stylistes seniors qui traitent votre chevelure comme un héritage.</span></p>
               <div className="credits">
                 <span className="v">◇ Stylist</span> Émilie D.
                 <br />
@@ -395,7 +417,8 @@ export default function WorkPage() {
                 <span className="en-only">The Barbering Atelier</span>
                 <span className="fr">L&apos;atelier du barbier</span>
               </h3>
-              <p>Hot-towel shaves, beard architecture, and the cut your grandfather used to take an hour to get right — straight razor, cedar after-balm, a tumbler of something dark.</p>
+              <p><span className="en-only">Hot-towel shaves, beard architecture, and the cut your grandfather used to take an hour to get right — straight razor, cedar after-balm, a tumbler of something dark.</span>
+<span className="fr-block">Rasages à serviette chaude, architecture de barbe et la coupe qu’un grand-père prenait une heure à parfaire — rasoir droit, baume après-rasage au cèdre et un verre de quelque chose de sombre.</span></p>
               <div className="credits">
                 <span className="v">◇ Barbier</span> Jean-Luc A.
                 <br />
@@ -429,7 +452,8 @@ export default function WorkPage() {
                 <span className="en-only">Nail Couture Studio</span>
                 <span className="fr">Couture des ongles</span>
               </h3>
-              <p>Builder-gel manicures, sculpted forms, custom inlays. A glass of pét-nat, ninety minutes off the phone, hands you&apos;ll catch yourself glancing at all week.</p>
+              <p><span className="en-only">Builder-gel manicures, sculpted forms, custom inlays. A glass of pét-nat, ninety minutes off the phone, hands you&apos;ll catch yourself glancing at all week.</span>
+<span className="fr-block">Manucures au gel de construction, formes sculptées, incrustations sur mesure. Un verre de pét-nat, quatre-vingt-dix minutes loin du téléphone, des mains que vous vous surprendrez à admirer toute la semaine.</span></p>
               <div className="credits">
                 <span className="v">◇ Artist</span> Camille B.
                 <br />
@@ -451,7 +475,8 @@ export default function WorkPage() {
                 <span className="en-only">Lash & Brow Sanctuary</span>
                 <span className="fr">Sanctuaire des cils</span>
               </h3>
-              <p>Hand-mapped lash extensions, a quiet brow lamination room, lash lift & tint by senior artists. Forty-five minutes that change the rest of your week.</p>
+              <p><span className="en-only">Hand-mapped lash extensions, a quiet brow lamination room, lash lift & tint by senior artists. Forty-five minutes that change the rest of your week.</span>
+<span className="fr-block">Extensions de cils cartographiées à la main, une salle feutrée de lamination des sourcils, rehaussement et teinture des cils par des artistes seniors. Quarante-cinq minutes qui transforment le reste de votre semaine.</span></p>
               <div className="credits">
                 <span className="v">◇ Artist</span> Sophie L.
                 <br />
@@ -485,7 +510,8 @@ export default function WorkPage() {
                 <span className="en-only">Skin Alchemy</span>
                 <span className="fr">L&apos;alchimie de la peau</span>
               </h3>
-              <p>HydraFacials, dermaplaning, retinol-sequenced peels, LED rooms in their own low light. We read the skin first, then we treat it. Always in that order.</p>
+              <p><span className="en-only">HydraFacials, dermaplaning, retinol-sequenced peels, LED rooms in their own low light. We read the skin first, then we treat it. Always in that order.</span>
+<span className="fr-block">HydraFacials, dermaplaning, peelings séquencés au rétinol, salles LED dans leur propre pénombre. Nous lisons la peau d’abord, puis nous la traitons. Toujours dans cet ordre.</span></p>
               <div className="credits">
                 <span className="v">◇ Aesthetician</span> Renée L.
                 <br />
@@ -507,7 +533,8 @@ export default function WorkPage() {
                 <span className="en-only">Wellness & Body Rituals</span>
                 <span className="fr">Rituels du corps</span>
               </h3>
-              <p>Lymphatic drainage, body contouring, scalp rituals, and the kind of massage that resets the week. Heated stone, eucalyptus, low light, no phone.</p>
+              <p><span className="en-only">Lymphatic drainage, body contouring, scalp rituals, and the kind of massage that resets the week. Heated stone, eucalyptus, low light, no phone.</span>
+<span className="fr-block">Drainage lymphatique, remodelage corporel, rituels du cuir chevelu et le genre de massage qui remet la semaine à zéro. Pierre chauffée, eucalyptus, lumière basse, pas de téléphone.</span></p>
               <div className="credits">
                 <span className="v">◇ Therapist</span> Marc-André D.
                 <br />
@@ -535,7 +562,10 @@ export default function WorkPage() {
               <br />
               Twenty-four frames
             </div>
-            <h2>The room, in fragments.</h2>
+            <h2>
+              <span className="en-only">The room, in fragments.</span>
+              <span className="fr-block">La pièce, en fragments.</span>
+            </h2>
           </div>
 
           <div className="gallery" id="gallery">

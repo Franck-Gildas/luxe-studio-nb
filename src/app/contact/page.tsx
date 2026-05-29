@@ -74,13 +74,15 @@ export default function ContactPage() {
               <span>Page <span className="v">06 / 06</span></span>
             </div>
             <h1>
-              <span className="en-only">
-                Pull up<br />
-                a <em>chair.</em>
-              </span>
-              <span className="fr">Approchez-vous — la porte est ouverte.</span>
+              <span className="en-only">Pull up a chair.</span>
+              <span className="fr-block">Approchez-vous.</span>
             </h1>
-            <p className="lede">Send your invitation below — pick the room you&apos;d like to begin in, the day, the hour. We&apos;ll write back the same day with the artist&apos;s name, a small confirmation, and what to bring.</p>
+            <p className="hero-tagline">
+              <span className="en-only">The door is open. We are waiting.</span>
+              <span className="fr-block">La porte est ouverte. Nous vous attendons.</span>
+            </p>
+            <p className="lede"><span className="en-only">Send your invitation below — pick the room you&apos;d like to begin in, the day, the hour. We&apos;ll write back the same day with the artist&apos;s name, a small confirmation, and what to bring.</span>
+<span className="fr-block">Envoyez votre invitation ci-dessous — choisissez la salle où vous souhaitez commencer, le jour, l’heure. Nous vous répondrons le jour même avec le nom de l’artiste, une petite confirmation et quoi apporter.</span></p>
           </div>
           <div className="chair-img">
             {/* 3D ANIMATED CHAIR — Three.js coming soon */}
@@ -126,16 +128,16 @@ export default function ContactPage() {
 
             <div className="sidebar-block">
               <h4>Direct · Directement</h4>
-              <p>
-                <a href="tel:+15065550187" style={{ color: 'var(--champagne)', borderBottom: '1px solid var(--hairline)', paddingBottom: 2 }}>(506) 555 — 0187</a><br />
+              <p><span className="en-only"><a href="tel:+15065550187" style={{ color: 'var(--champagne)', borderBottom: '1px solid var(--hairline)', paddingBottom: 2 }}>(506) 555 — 0187</a><br />
                 <a href="mailto:hello@luxestudionb.com" style={{ color: 'var(--champagne)', borderBottom: '1px solid var(--hairline)', paddingBottom: 2, display: 'inline-block', marginTop: 8 }}>hello@luxestudionb.com</a><br />
-                <a href="https://instagram.com/luxestudionb" style={{ color: 'var(--bone)', display: 'inline-block', marginTop: 10 }}>@luxestudionb</a>
-              </p>
+                <a href="https://instagram.com/luxestudionb" style={{ color: 'var(--bone)', display: 'inline-block', marginTop: 10 }}>@luxestudionb</a></span>
+<span className="fr-block">(506) 555 — 0187 hello@luxestudionb.com @luxestudionb</span></p>
             </div>
 
             <div className="sidebar-block">
               <h4>The cadence · La cadence</h4>
-              <p>Twelve guests per day across six rooms. We&apos;re taking new appointments through the summer of <strong>2026</strong>. The first ten minutes are always yours, before anything begins.</p>
+              <p><span className="en-only">Twelve guests per day across six rooms. We&apos;re taking new appointments through the summer of <strong>2026</strong>. The first ten minutes are always yours, before anything begins.</span>
+<span className="fr-block">Douze invités par jour dans six salles. Nous prenons de nouveaux rendez-vous jusqu’à l’été 2026. Les dix premières minutes sont toujours les vôtres, avant que quoi que ce soit commence.</span></p>
             </div>
           </aside>
 
@@ -207,9 +209,7 @@ export default function ContactPage() {
                       />
                       <label htmlFor={srv.id}>
                         <span className="ico">{srv.ico}</span>
-                        <span className="name">
-                          {srv.name}
-                          <span className="fr">{srv.fr}</span>
+                        <span className="name"><span className="en-only">{srv.name}</span><span className="fr">{srv.fr}</span>
                         </span>
                       </label>
                     </span>
@@ -321,8 +321,10 @@ export default function ContactPage() {
               </span>
               <span className="fr">Si le fauteuil est plus simple — écrivez.</span>
             </h2>
-            <p>Élise, our house concierge, sits at the door from 09:00 to 22:00. She speaks French and English, holds appointments at her desk on a paper book, and will thread you to the artist most for the hour you&apos;re imagining.</p>
-            <p>Open her at the bottom-right of any page — or simply call. We answer the phone before the second ring; that&apos;s the only thing we time at this address.</p>
+            <p><span className="en-only">Élise, our house concierge, sits at the door from 09:00 to 22:00. She speaks French and English, holds appointments at her desk on a paper book, and will thread you to the artist most for the hour you&apos;re imagining.</span>
+<span className="fr-block">Élise, notre concierge maison, est à la porte de 09 h à 22 h. Elle parle français et anglais, tient les rendez-vous à son bureau dans un carnet papier et vous orientera vers l’artiste le plus juste pour l’heure que vous imaginez.</span></p>
+            <p><span className="en-only">Open her at the bottom-right of any page — or simply call. We answer the phone before the second ring; that&apos;s the only thing we time at this address.</span>
+<span className="fr-block">Ouvrez-la en bas à droite de n’importe quelle page — ou appelez simplement. Nous décrochons avant la deuxième sonnerie ; c’est la seule chose que nous chronométrons à cette adresse.</span></p>
             <ul>
               <li>Replies within the hour</li>
               <li>Bilingue · EN · FR</li>

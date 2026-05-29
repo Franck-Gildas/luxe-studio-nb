@@ -33,22 +33,21 @@
   font-size: clamp(72px, 11vw, 156px);
   letter-spacing: -0.035em;
   line-height: 0.9;
+  margin-bottom: 0;
+}
+
+.exp-hero h1 .fr-block {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--bone);
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
+
+.exp-hero .hero-tagline {
   margin-bottom: 24px;
-}
-
-.exp-hero h1 em {
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--champagne);
-}
-
-.exp-hero h1 .fr {
-  display: block;
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--rose);
-  font-size: 0.42em;
-  margin-top: 18px;
 }
 
 .exp-hero .lede {

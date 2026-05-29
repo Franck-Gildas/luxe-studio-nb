@@ -27,12 +27,13 @@ export default function AboutPage() {
             <span>Page <span className="v">04 / 06</span></span>
           </div>
           <h1>
-            <span className="en-only">
-              A house of <em>quiet</em>,<br />
-              kept on Main Street.
-            </span>
-            <span className="fr">Une maison du silence, sur la rue Main.</span>
+            <span className="en-only">A house of quiet.</span>
+            <span className="fr-block">Une maison du silence.</span>
           </h1>
+          <p className="hero-tagline">
+            <span className="en-only">Kept on Main Street, since MMXXIV.</span>
+            <span className="fr-block">Sur la rue Main, depuis MMXXIV.</span>
+          </p>
         </div>
         <div className="about-hero-scroll">The story · l&apos;histoire</div>
       </section>
@@ -50,10 +51,14 @@ export default function AboutPage() {
             </h2>
           </div>
           <div className="right">
-            <p>We opened a single door on <span className="gold">Rue Main Street</span> in the winter of 2024, after fifteen years of working in other people&apos;s rooms. We had one belief between us: that the room is the treatment, and the treatment is only the most visible part of it.</p>
-            <p>So we built the room first. Six private suites, a marble apothecary, a velvet bench, one north-facing window, and a brass door heavy enough to close the day behind you. Then — only then — we filled it with twenty-two senior artists who&apos;d never compromised, and never wanted to.</p>
-            <p>We don&apos;t do walk-ins. We don&apos;t double-book. We don&apos;t have a clock visible from any chair. <strong>Every visit is held in its own pocket of time</strong> — fifteen minutes to arrive into the room, fifteen to leave it. A robe of heavy linen. A glass of cucumber water. Low Erik Satie, always.</p>
-            <p>Because the room <em>is</em> the treatment. The treatment is the most visible part of it, but never the most important one. We learned this in fifteen years of cutting hair at a window facing a parking lot. We promised, if we ever opened our own room, the window would face north — and the day would end at the door.</p>
+            <p><span className="en-only">We opened a single door on <span className="gold">Rue Main Street</span>
+<span className="fr-block">Nous avons ouvert une seule porte sur la rue Main</span> in the winter of 2024, after fifteen years of working in other people&apos;s rooms. We had one belief between us: that the room is the treatment, and the treatment is only the most visible part of it.</span></p>
+            <p><span className="en-only">So we built the room first. Six private suites, a marble apothecary, a velvet bench, one north-facing window, and a brass door heavy enough to close the day behind you. Then — only then — we filled it with twenty-two senior artists who&apos;d never compromised, and never wanted to.</span>
+<span className="fr-block">Alors nous avons bâti la salle d’abord. Six suites privées, une apothicairerie de marbre, un banc de velours, une fenêtre orientée au nord et une porte de laiton assez lourde pour refermer la journée derrière vous. Puis — seulement ensuite — nous l’avons remplie de vingt-deux artistes seniors qui n’avaient jamais transigé et n’avaient jamais voulu le faire.</span></p>
+            <p><span className="en-only">We don&apos;t do walk-ins. We don&apos;t double-book. We don&apos;t have a clock visible from any chair. <strong>Every visit is held in its own pocket of time</strong> — fifteen minutes to arrive into the room, fifteen to leave it. A robe of heavy linen. A glass of cucumber water. Low Erik Satie, always.</span>
+<span className="fr-block">Nous ne faisons pas de visites sans rendez-vous. Nous ne double-bookons pas. Nous n’avons pas d’horloge visible depuis aucun fauteuil. Chaque visite est tenue dans sa propre poche de temps — quinze minutes pour entrer dans la salle, quinze pour en sortir. Un peignoir de lin épais. Un verre d’eau au concombre. Du Satie tout bas, toujours.</span></p>
+            <p><span className="en-only">Because the room <em>is</em> the treatment. The treatment is the most visible part of it, but never the most important one. We learned this in fifteen years of cutting hair at a window facing a parking lot. We promised, if we ever opened our own room, the window would face north — and the day would end at the door.</span>
+<span className="fr-block">Parce que la salle est le soin. Le soin en est la partie la plus visible, mais jamais la plus importante. Nous l’avons appris en quinze ans à couper des cheveux devant une fenêtre sur un stationnement. Nous avons promis, si un jour nous ouvrions notre propre salle, que la fenêtre serait au nord — et que la journée se terminerait à la porte.</span></p>
 
             <div className="signature">
               With our quiet welcome,
@@ -69,22 +74,23 @@ export default function AboutPage() {
           <div className="tenet">
             <div className="roman">I.</div>
             <h4><span className="en-only">By appointment only</span><span className="fr">Sur rendez-vous</span></h4>
-            <p>We don&apos;t take walk-ins, and we never double-book. Your hour is yours; the room is yours; the artist is yours.</p>
+            <p><span className="en-only">We don&apos;t take walk-ins, and we never double-book. Your hour is yours; the room is yours; the artist is yours.</span></p>
           </div>
           <div className="tenet">
             <div className="roman">II.</div>
             <h4><span className="en-only">Twelve guests per day</span><span className="fr">Douze invités</span></h4>
-            <p>Across all six rooms — a deliberate cap. You will not pass another guest in the hall.</p>
+            <p><span className="en-only">Across all six rooms — a deliberate cap. You will not pass another guest in the hall.</span></p>
           </div>
           <div className="tenet">
             <div className="roman">III.</div>
             <h4><span className="en-only">Senior artists only</span><span className="fr">Artistes principaux</span></h4>
-            <p>Every artist has spent at least seven years at the chair. No assistants do client work. Ever.</p>
+            <p><span className="en-only">Every artist has spent at least seven years at the chair. No assistants do client work. Ever.</span></p>
           </div>
           <div className="tenet">
             <div className="roman">IV.</div>
             <h4><span className="en-only">Bilingual, always</span><span className="fr">Toujours bilingue</span></h4>
-            <p>Every artist speaks French and English at the chair. We&apos;ve been Acadian since the day we opened.</p>
+            <p><span className="en-only">Every artist speaks French and English at the chair. We&apos;ve been Acadian since the day we opened.</span>
+<span className="fr-block">Chaque artiste parle français et anglais au fauteuil. Nous sommes acadiens depuis le jour de notre ouverture.</span></p>
           </div>
         </div>
       </section>
@@ -94,7 +100,14 @@ export default function AboutPage() {
         <div className="section-inner">
           <div className="section-head">
             <div className="num">§ 02 — The artists<br />Les artistes</div>
-            <h2>Twenty-two pairs<br />of senior hands.</h2>
+            <h2>
+              <span className="en-only">
+                Twenty-two pairs<br />of senior hands.
+              </span>
+              <span className="fr-block">
+                Vingt-deux paires<br />de mains expertes.
+              </span>
+            </h2>
           </div>
 
           <div className="team-grid">
@@ -229,7 +242,14 @@ export default function AboutPage() {
               </div>
               <div className="team-info">
                 <div className="role">The rest of the house</div>
-                <h4>And sixteen more<span className="last">pairs of hands</span></h4>
+                <h4>
+                  <span className="en-only">
+                    And sixteen more<span className="last">pairs of hands</span>
+                  </span>
+                  <span className="fr-block">
+                    Et seize autres<span className="last">paires de mains</span>
+                  </span>
+                </h4>
                 <div className="bio">Stylists, colourists, lash artists, aestheticians, therapists. Every one a senior. We&apos;ll introduce you to the right pair, by name, when you book.</div>
                 <div className="craft"><span>Across all six rooms</span><span className="v">Senior · 7+ yrs</span></div>
               </div>

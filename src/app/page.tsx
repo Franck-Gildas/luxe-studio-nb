@@ -92,29 +92,35 @@ export default function HomePage() {
           </div>
 
           <div className="atrium-bottom">
-            <h1 className="wordmark" id="wordmark">
-              <span className="l">L</span>
-              <span className="l">U</span>
-              <span className="l">X</span>
-              <span className="l">E</span>
-              <span className="gap"></span>
-              <span className="l">S</span>
-              <span className="l">T</span>
-              <span className="l">U</span>
-              <span className="l">D</span>
-              <span className="l">I</span>
-              <span className="l">O</span>
-              <span className="sup">NB</span>
-            </h1>
+            <div className="atrium-hero-copy">
+              <div className="wordmark" id="wordmark">
+                <span className="l">L</span>
+                <span className="l">U</span>
+                <span className="l">X</span>
+                <span className="l">E</span>
+                <span className="gap"></span>
+                <span className="l">S</span>
+                <span className="l">T</span>
+                <span className="l">U</span>
+                <span className="l">D</span>
+                <span className="l">I</span>
+                <span className="l">O</span>
+                <span className="sup">NB</span>
+              </div>
 
-            <div className="tagline">
-              <div className="tagline-en">Where beauty becomes ritual.</div>
-              <div className="tagline-fr">Où la beauté devient rituel.</div>
+              <h1>
+                <span className="en-only">Where beauty becomes ritual.</span>
+                <span className="fr-block">Où la beauté devient rituel.</span>
+              </h1>
+              <p className="hero-tagline">
+                <span className="en-only">A house of six rooms, arranged around quiet.</span>
+                <span className="fr-block">Une maison de six salles, agencées autour du silence.</span>
+              </p>
             </div>
 
-            <Link href="/contact" className="btn-gold" style={{ marginTop: 14 }}>
-              <span>Book Your Ritual</span>
-              <span className="fr">Réservez votre rituel</span>
+            <Link href="/contact" className="btn-gold">
+              <span className="en-only">Book Your Ritual</span>
+              <span className="fr-block">Réservez votre rituel</span>
               <span className="arrow">→</span>
             </Link>
           </div>
@@ -176,9 +182,16 @@ export default function HomePage() {
               Les expériences
             </div>
             <h2>
-              Six rituals,
-              <br />
-              under one roof.
+              <span className="en-only">
+                Six rituals,
+                <br />
+                under one roof.
+              </span>
+              <span className="fr-block">
+                Six rituels,
+                <br />
+                sous un même toit.
+              </span>
             </h2>
           </div>
 
@@ -200,9 +213,8 @@ export default function HomePage() {
                 <span className="en-only">Signature Hair Rituals</span>
                 <span className="fr">Rituels de cheveux signature</span>
               </h3>
-              <p>
-                Slow colour, custom dimensional work, and Olaplex‑led repair — performed by senior stylists who treat your head of hair like an heirloom.
-              </p>
+              <p><span className="en-only">Slow colour, custom dimensional work, and Olaplex‑led repair — performed by senior stylists who treat your head of hair like an heirloom.</span>
+<span className="fr-block">Couleur lente, travail dimensionnel sur mesure et réparation guidée par Olaplex — exécutés par des stylistes seniors qui traitent votre chevelure comme un héritage.</span></p>
               <div className="menu">
                 <span className="price">
                   <span className="from">From</span>$185 · 2h30
@@ -224,9 +236,8 @@ export default function HomePage() {
                 <span className="en-only">Barbering Atelier</span>
                 <span className="fr">L&apos;atelier du barbier</span>
               </h3>
-              <p>
-                Hot‑towel shaves, beard architecture, and the cut your grandfather used to take an hour to get right — straight razor, cedar after‑balm, and a tumbler of something dark.
-              </p>
+              <p><span className="en-only">Hot‑towel shaves, beard architecture, and the cut your grandfather used to take an hour to get right — straight razor, cedar after‑balm, and a tumbler of something dark.</span>
+<span className="fr-block">Rasages à serviette chaude, architecture de barbe et la coupe qu’un grand-père prenait une heure à parfaire — rasoir droit, baume après-rasage au cèdre et un verre de quelque chose de sombre.</span></p>
               <div className="menu">
                 <span className="price">
                   <span className="from">From</span>$95 · 1h15
@@ -252,9 +263,8 @@ export default function HomePage() {
                 <span className="en-only">Nail Couture</span>
                 <span className="fr">Couture des ongles</span>
               </h3>
-              <p>
-                Builder‑gel manicures, sculpted forms, custom inlays. A glass of pét‑nat, ninety minutes off the phone, hands you&apos;ll catch yourself glancing at all week.
-              </p>
+              <p><span className="en-only">Builder‑gel manicures, sculpted forms, custom inlays. A glass of pét‑nat, ninety minutes off the phone, hands you&apos;ll catch yourself glancing at all week.</span>
+<span className="fr-block">Manucures au gel de construction, formes sculptées, incrustations sur mesure. Un verre de pét-nat, quatre-vingt-dix minutes loin du téléphone, des mains que vous vous surprendrez à admirer toute la semaine.</span></p>
               <div className="menu">
                 <span className="price">
                   <span className="from">From</span>$110 · 1h30
@@ -281,9 +291,8 @@ export default function HomePage() {
                 <span className="en-only">Lash &amp; Brow Studio</span>
                 <span className="fr">Cils &amp; sourcils</span>
               </h3>
-              <p>
-                Hand‑mapped lash extensions, a quiet brow lamination room, lash lift &amp; tint by senior artists. Forty‑five minutes that change the rest of your week.
-              </p>
+              <p><span className="en-only">Hand‑mapped lash extensions, a quiet brow lamination room, lash lift &amp; tint by senior artists. Forty‑five minutes that change the rest of your week.</span>
+<span className="fr-block">Extensions de cils cartographiées à la main, une salle feutrée de lamination des sourcils, rehaussement et teinture des cils par des artistes seniors. Quarante-cinq minutes qui transforment le reste de votre semaine.</span></p>
               <div className="menu">
                 <span className="price">
                   <span className="from">From</span>$140 · 2h
@@ -305,9 +314,8 @@ export default function HomePage() {
                 <span className="en-only">Esthetics &amp; Skin</span>
                 <span className="fr">Esthétique &amp; soins de la peau</span>
               </h3>
-              <p>
-                HydraFacials, dermaplaning, retinol‑sequenced peels, LED rooms in their own low light. We read the skin first, then we treat it. Always in that order.
-              </p>
+              <p><span className="en-only">HydraFacials, dermaplaning, retinol‑sequenced peels, LED rooms in their own low light. We read the skin first, then we treat it. Always in that order.</span>
+<span className="fr-block">HydraFacials, dermaplaning, peelings séquencés au rétinol, salles LED dans leur propre pénombre. Nous lisons la peau d’abord, puis nous la traitons. Toujours dans cet ordre.</span></p>
               <div className="menu">
                 <span className="price">
                   <span className="from">From</span>$215 · 1h45
@@ -328,9 +336,8 @@ export default function HomePage() {
                 <span className="en-only">Wellness &amp; Body</span>
                 <span className="fr">Bien‑être &amp; corps</span>
               </h3>
-              <p>
-                Lymphatic drainage, body contouring, scalp rituals, and the kind of massage that resets the week. Heated stone, eucalyptus, low light, no phone.
-              </p>
+              <p><span className="en-only">Lymphatic drainage, body contouring, scalp rituals, and the kind of massage that resets the week. Heated stone, eucalyptus, low light, no phone.</span>
+<span className="fr-block">Drainage lymphatique, remodelage corporel, rituels du cuir chevelu et le genre de massage qui remet la semaine à zéro. Pierre chauffée, eucalyptus, lumière basse, pas de téléphone.</span></p>
               <div className="menu">
                 <span className="price">
                   <span className="from">From</span>$245 · 2h
@@ -352,9 +359,16 @@ export default function HomePage() {
               Le Rituel
             </div>
             <h2>
-              Every visit, the same
-              <br />
-              five quiet movements.
+              <span className="en-only">
+                Every visit, the same
+                <br />
+                five quiet movements.
+              </span>
+              <span className="fr-block">
+                Chaque visite, les mêmes
+                <br />
+                cinq mouvements silencieux.
+              </span>
             </h2>
           </div>
 
@@ -367,9 +381,8 @@ export default function HomePage() {
                 <span className="en-only">The Welcome</span>
                 <span className="fr">L&apos;accueil</span>
               </h3>
-              <p>
-                You arrive ten minutes early to nothing. A robe of heavy linen, a glass of cucumber water, low Erik Satie. The door closes; the city ends.
-              </p>
+              <p><span className="en-only">You arrive ten minutes early to nothing. A robe of heavy linen, a glass of cucumber water, low Erik Satie. The door closes; the city ends.</span>
+<span className="fr-block">Vous arrivez dix minutes en avance dans le rien. Un peignoir de lin épais, un verre d’eau au concombre, du Satie tout bas. La porte se ferme ; la ville s’arrête.</span></p>
               <div className="meta">
                 <span className="v">— 10 min</span>Arrival · Arrivée
               </div>
@@ -383,9 +396,8 @@ export default function HomePage() {
                 <span className="en-only">The Consultation</span>
                 <span className="fr">La consultation</span>
               </h3>
-              <p>
-                Your artist sits across from you, not behind you. We talk about the week, the light at your kitchen window, the photograph in your phone you almost showed.
-              </p>
+              <p><span className="en-only">Your artist sits across from you, not behind you. We talk about the week, the light at your kitchen window, the photograph in your phone you almost showed.</span>
+<span className="fr-block">Votre artiste est en face de vous, pas derrière. Nous parlons de la semaine, de la lumière à la fenêtre de votre cuisine, de la photo dans votre téléphone que vous avez failli montrer.</span></p>
               <div className="meta">
                 <span className="v">15 min</span>Listening · Écoute
               </div>
@@ -399,9 +411,8 @@ export default function HomePage() {
                 <span className="en-only">The Ritual</span>
                 <span className="fr">Le rituel</span>
               </h3>
-              <p>
-                The treatment itself, performed slowly, by hands that have done this fifteen thousand times. No upsell at the chair, no clock visible from where you sit.
-              </p>
+              <p><span className="en-only">The treatment itself, performed slowly, by hands that have done this fifteen thousand times. No upsell at the chair, no clock visible from where you sit.</span>
+<span className="fr-block">Le soin lui-même, exécuté lentement, par des mains qui l’ont fait quinze mille fois. Pas de vente additionnelle au fauteuil, pas d’horloge visible d’où vous êtes assis.</span></p>
               <div className="meta">
                 <span className="v">60 — 150 min</span>Service · Soin
               </div>
@@ -415,9 +426,8 @@ export default function HomePage() {
                 <span className="en-only">The Finish</span>
                 <span className="fr">La touche finale</span>
               </h3>
-              <p>
-                The mirror is turned, the light is changed once, twice. A spritz of the house élixir, a final brush, a photograph for your records — only if you like.
-              </p>
+              <p><span className="en-only">The mirror is turned, the light is changed once, twice. A spritz of the house élixir, a final brush, a photograph for your records — only if you like.</span>
+<span className="fr-block">Le miroir est tourné, la lumière est modifiée une fois, deux fois. Une brume de l’élixir maison, une dernière brosse, une photographie pour vos archives — seulement si vous le souhaitez.</span></p>
               <div className="meta">
                 <span className="v">10 min</span>Reveal · Dévoilement
               </div>
@@ -431,9 +441,8 @@ export default function HomePage() {
                 <span className="en-only">The After</span>
                 <span className="fr">L&apos;après</span>
               </h3>
-              <p>
-                Tea on the velvet bench. A small linen pouch of what you&apos;ll need at home for the next two weeks. Your next visit, already softly held.
-              </p>
+              <p><span className="en-only">Tea on the velvet bench. A small linen pouch of what you&apos;ll need at home for the next two weeks. Your next visit, already softly held.</span>
+<span className="fr-block">Thé sur le banc de velours. Une petite pochette de lin de ce dont vous aurez besoin à la maison pour les deux prochaines semaines. Votre prochaine visite, déjà doucement retenue.</span></p>
               <div className="meta">
                 <span className="v">— 15 min</span>Sending‑off · Départ
               </div>
@@ -457,12 +466,10 @@ export default function HomePage() {
               </span>
               <span className="fr">Six salles, agencées autour du silence.</span>
             </h2>
-            <p>
-              The studio sits on a corner of Robinson Street, behind a heavy brass door. <strong>Six private rooms</strong>, a marble apothecary, a velvet bench, and one window facing north — the only window we open.
-            </p>
-            <p>
-              Walk‑ins are rare and gently turned away. Every guest is held, every visit is timed to its own. You will not pass another guest in the hall.
-            </p>
+            <p><span className="en-only">The studio sits on a corner of Robinson Street, behind a heavy brass door. <strong>Six private rooms</strong>, a marble apothecary, a velvet bench, and one window facing north — the only window we open.</span>
+<span className="fr-block">Le studio occupe un coin de la rue Robinson, derrière une lourde porte de laiton. Six salles privées, une apothicairerie de marbre, un banc de velours et une fenêtre orientée au nord — la seule que nous ouvrons.</span></p>
+            <p><span className="en-only">Walk‑ins are rare and gently turned away. Every guest is held, every visit is timed to its own. You will not pass another guest in the hall.</span>
+<span className="fr-block">Les visites sans rendez-vous sont rares et déclinées avec douceur. Chaque invité est tenu, chaque visite a son propre rythme. Vous ne croiserez pas un autre invité dans le corridor.</span></p>
 
             <div className="stats">
               <div className="stat">
@@ -524,9 +531,16 @@ export default function HomePage() {
               Métamorphoses
             </div>
             <h2>
-              Quiet evidence,
-              <br />
-              from the chair.
+              <span className="en-only">
+                Quiet evidence,
+                <br />
+                from the chair.
+              </span>
+              <span className="fr-block">
+                Preuves discrètes,
+                <br />
+                depuis le fauteuil.
+              </span>
             </h2>
           </div>
 
@@ -666,7 +680,7 @@ export default function HomePage() {
             </article>
           </div>
 
-          <div style={{ textAlign: "center", marginTop: 56 }}>
+          <div className="transforms-footer">
             <Link href="/work" className="btn-ghost">
               <span>Explore the Rituals</span>
               <span className="arrow" style={{ marginLeft: 8 }}>
@@ -687,18 +701,24 @@ export default function HomePage() {
               Témoignages
             </div>
             <h2>
-              What the regulars
-              <br />
-              quietly say.
+              <span className="en-only">
+                What the regulars
+                <br />
+                quietly say.
+              </span>
+              <span className="fr-block">
+                Ce que les habituées
+                <br />
+                murmurent.
+              </span>
             </h2>
           </div>
 
           <div className="testi-grid">
             <article className="testi">
               <div className="stars">★ ★ ★ ★ ★</div>
-              <blockquote>
-                I don&apos;t go to a salon. I go to LUXE. There is a difference and you feel it the moment the brass door closes behind you.
-              </blockquote>
+              <blockquote><span className="en-only">I don&apos;t go to a salon. I go to LUXE. There is a difference and you feel it the moment the brass door closes behind you.</span>
+<span className="fr-block">Je ne vais pas dans un salon. Je vais chez LUXE. Il y a une différence et vous la sentez au moment où la porte de laiton se referme derrière vous.</span></blockquote>
               <div className="who">
                 <div className="name">Émilie D.</div>
                 <div className="role">Hair · Three years a guest</div>
@@ -707,9 +727,8 @@ export default function HomePage() {
 
             <article className="testi">
               <div className="stars">★ ★ ★ ★ ★</div>
-              <blockquote>
-                Le rituel commence avant même le soin. Le calme, le linge chaud, le silence. On en ressort une autre personne — pour deux semaines au moins.
-              </blockquote>
+              <blockquote><span className="en-only">Le rituel commence avant même le soin. Le calme, le linge chaud, le silence. On en ressort une autre personne — pour deux semaines au moins.</span>
+<span className="fr-block">Le rituel commence avant même le soin. Le calme, le linge chaud, le silence. On en ressort une autre personne — pour deux semaines au moins.</span></blockquote>
               <div className="who">
                 <div className="name">Jean‑Luc A.</div>
                 <div className="role">Barbier · Caraquet</div>
@@ -718,9 +737,8 @@ export default function HomePage() {
 
             <article className="testi">
               <div className="stars">★ ★ ★ ★ ★</div>
-              <blockquote>
-                The HydraFacial I&apos;d had elsewhere was a treatment. Here, it was a ninety‑minute composition. My skin is one thing; the rest of me is the surprise.
-              </blockquote>
+              <blockquote><span className="en-only">The HydraFacial I&apos;d had elsewhere was a treatment. Here, it was a ninety‑minute composition. My skin is one thing; the rest of me is the surprise.</span>
+<span className="fr-block">L’HydraFacial que j’avais eu ailleurs était un soin. Ici, c’était une composition de quatre-vingt-dix minutes. Ma peau est une chose ; le reste de moi est la surprise.</span></blockquote>
               <div className="who">
                 <div className="name">Renée L.</div>
                 <div className="role">Esthetics · Dieppe</div>
@@ -747,7 +765,7 @@ export default function HomePage() {
             quand vous le voulez.
           </span>
         </h2>
-        <p>Twelve guests per day · Douze invités par jour</p>
+        <p><span className="en-only">Twelve guests per day · Douze invités par jour</span></p>
         <Link href="/contact" className="btn-gold">
           <span>Book Your Ritual</span>
           <span className="fr">Réservez votre rituel</span>
@@ -763,7 +781,8 @@ export default function HomePage() {
           </div>
           <div className="nl">
             <h4>The newsletter · La lettre</h4>
-            <p>Once a season — solstice, equinox. New rituals, soft openings, the hour the door is open.</p>
+            <p><span className="en-only">Once a season — solstice, equinox. New rituals, soft openings, the hour the door is open.</span>
+<span className="fr-block">Une fois par saison — solstice, équinoxe. Nouveaux rituels, ouvertures douces, l’heure où la porte est ouverte.</span></p>
             <form onSubmit={handleNewsletterSubmit}>
               <input type="email" placeholder="your address · votre courriel" required />
               <button type="submit">Subscribe →</button>

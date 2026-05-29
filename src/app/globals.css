@@ -160,7 +160,84 @@ body.lang-fr h4:has(> .fr) .fr {
   display: block !important;
 }
 
-/* Hide English element siblings next to .fr */
-body.lang-fr :is(.btn-gold, h1, h2, h3, h4, .phase-name):has(> .fr) > :not(.fr):not(.arrow) {
+body.lang-fr :is(h1, h2, h3, h4) > .fr-block {
+  display: block !important;
+}
+
+/* Hero h1: fr-block replaces headline (not inline subline) */
+body.lang-fr .about-hero h1 > .fr-block,
+body.lang-fr .contact-hero h1 > .fr-block,
+body.lang-fr .work-hero h1 > .fr-block,
+body.lang-fr .menu-hero h1 > .fr-block,
+body.lang-fr .exp-hero h1 > .fr-block,
+body.lang-fr .atrium-bottom > h1 > .fr-block,
+body.lang-fr .atrium-hero-copy > h1 > .fr-block {
+  display: block !important;
+}
+body:not(.lang-fr) .about-hero h1 > .fr-block,
+body:not(.lang-fr) .contact-hero h1 > .fr-block,
+body:not(.lang-fr) .work-hero h1 > .fr-block,
+body:not(.lang-fr) .menu-hero h1 > .fr-block,
+body:not(.lang-fr) .exp-hero h1 > .fr-block,
+body:not(.lang-fr) .atrium-bottom > h1 > .fr-block,
+body:not(.lang-fr) .atrium-hero-copy > h1 > .fr-block {
   display: none !important;
+}
+
+body.lang-fr .hero-tagline > .fr-block {
+  display: block !important;
+}
+body:not(.lang-fr) .hero-tagline > .fr-block {
+  display: none;
+}
+
+/* btn-gold: toggled label matches primary button typography */
+.btn-gold .en-only,
+.btn-gold .fr-block {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: inherit;
+  font-style: normal;
+}
+body.lang-fr .btn-gold > .fr-block {
+  display: inline !important;
+}
+body:not(.lang-fr) .btn-gold > .fr-block {
+  display: none;
+}
+body.lang-fr .btn-gold > .fr {
+  color: var(--obsidian);
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* Hide English element siblings next to .fr (legacy .fr pattern) */
+body.lang-fr :is(.btn-gold, h1, h2, h3, h4, .phase-name):has(> .fr):not(:has(> .fr-block)) > :not(.fr):not(.arrow) {
+  display: none !important;
+}
+
+/* Block-level French twins in body copy */
+body.lang-fr p > .fr-block,
+body.lang-fr .lede .fr-block,
+body.lang-fr blockquote .fr-block,
+body.lang-fr .desc + .fr-block,
+body.lang-fr p > .fr-block {
+  display: block !important;
+}
+
+.hero-tagline {
+  font-family: var(--serif-italic);
+  font-style: italic;
+  font-size: clamp(38px, 5.5vw, 82px);
+  letter-spacing: -0.01em;
+  color: var(--rose);
+  margin-top: 12px;
+  line-height: 1.35;
 }

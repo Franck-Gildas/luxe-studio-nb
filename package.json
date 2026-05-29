@@ -6,9 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "translate": "npx ts-node --project scripts/tsconfig.json scripts/translate.ts",
+    "translate:dry": "npx ts-node --project scripts/tsconfig.json scripts/translate.ts --dry-run",
+    "translate:wrap": "npx ts-node --project scripts/tsconfig.json scripts/wrap-en-only.ts"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.100.0",
     "@formspree/react": "^3.0.0",
     "@gsap/react": "^2.1.2",
     "@react-three/drei": "^10.7.7",
@@ -27,9 +31,11 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "dotenv": "^17.4.2",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
     "tailwindcss": "^4",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   }
 }
