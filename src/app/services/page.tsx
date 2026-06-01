@@ -16,7 +16,7 @@ export default function ServicesPage() {
             <span><span className="v">◇ Le menu</span> · Six houses, one roof</span>
             <span>Page <span className="v">03 / 06</span></span>
           </div>
-          <h1>
+          <h1 data-reveal>
             <span className="en-only">Six rituals. One house.</span>
             <span className="fr-block">Six rituels. Une maison.</span>
           </h1>
@@ -31,7 +31,7 @@ export default function ServicesPage() {
 
       {/* INDEX */}
       <nav className="menu-index" data-screen-label="02 Menu Index">
-        <div className="menu-index-inner">
+        <div className="menu-index-inner" data-stagger>
           <a href="#hair" className="menu-index-item">
             <span className="n">01 · Hair</span>
             <h4>
@@ -86,9 +86,9 @@ export default function ServicesPage() {
       {/* 01 HAIR */}
       <section className="cat" id="hair" data-screen-label="03 Hair">
         <div className="cat-inner">
-          <div className="cat-copy">
+          <div className="cat-copy" data-reveal-left>
             <div className="num">N° 01 — Hair · Cheveux</div>
-            <h2>
+            <h2 data-reveal>
               <span className="en-only">
                 Signature<br />Hair Rituals
               </span>
@@ -101,7 +101,7 @@ export default function ServicesPage() {
           </div>
 
           <div className="cat-right">
-            <div className="cat-img">
+            <div className="cat-img" data-reveal-scale>
               <Image
                 src="/img/hair-1.jpg"
                 alt="Hair ritual"
@@ -157,9 +157,9 @@ export default function ServicesPage() {
       {/* 02 BARBER */}
       <section className="cat flip" id="barber" data-screen-label="04 Barber">
         <div className="cat-inner">
-          <div className="cat-copy">
+          <div className="cat-copy" data-reveal-right>
             <div className="num">N° 02 — Barber · Barbier</div>
-            <h2>
+            <h2 data-reveal>
               <span className="en-only">
                 The Barbering<br />Atelier
               </span>
@@ -172,7 +172,7 @@ export default function ServicesPage() {
           </div>
 
           <div className="cat-right">
-            <div className="cat-img">
+            <div className="cat-img" data-reveal-scale>
               <Image
                 src="/img/barber-1.jpg"
                 alt="Barber atelier"
@@ -222,9 +222,9 @@ export default function ServicesPage() {
       {/* 03 NAILS */}
       <section className="cat" id="nail" data-screen-label="05 Nails">
         <div className="cat-inner">
-          <div className="cat-copy">
+          <div className="cat-copy" data-reveal-left>
             <div className="num">N° 03 — Nails · Ongles</div>
-            <h2>
+            <h2 data-reveal>
               <span className="en-only">
                 Nail<br />Couture Studio
               </span>
@@ -237,7 +237,7 @@ export default function ServicesPage() {
           </div>
 
           <div className="cat-right">
-            <div className="cat-img">
+            <div className="cat-img" data-reveal-scale>
               <Image
                 src="/img/nails-5.jpg"
                 alt="Nail couture"
@@ -280,9 +280,9 @@ export default function ServicesPage() {
       {/* 04 LASH */}
       <section className="cat flip" id="lash" data-screen-label="06 Lash">
         <div className="cat-inner">
-          <div className="cat-copy">
+          <div className="cat-copy" data-reveal-right>
             <div className="num">N° 04 — Lash · Cils & Sourcils</div>
-            <h2>
+            <h2 data-reveal>
               <span className="en-only">
                 Lash & Brow<br />Sanctuary
               </span>
@@ -295,7 +295,7 @@ export default function ServicesPage() {
           </div>
 
           <div className="cat-right">
-            <div className="cat-img">
+            <div className="cat-img" data-reveal-scale>
               <Image
                 src="/img/lash-1.jpg"
                 alt="Lash sanctuary"
@@ -344,9 +344,9 @@ export default function ServicesPage() {
       {/* 05 ESTHETICS */}
       <section className="cat" id="face" data-screen-label="07 Esthetics">
         <div className="cat-inner">
-          <div className="cat-copy">
+          <div className="cat-copy" data-reveal-left>
             <div className="num">N° 05 — Esthetics · Esthétique</div>
-            <h2>
+            <h2 data-reveal>
               <span className="en-only">
                 Esthetics &<br />Skin Alchemy
               </span>
@@ -359,7 +359,7 @@ export default function ServicesPage() {
           </div>
 
           <div className="cat-right">
-            <div className="cat-img">
+            <div className="cat-img" data-reveal-scale>
               <Image
                 src="/img/face-1.jpg"
                 alt="Skin alchemy"
@@ -402,9 +402,9 @@ export default function ServicesPage() {
       {/* 06 SPA */}
       <section className="cat flip" id="spa" data-screen-label="08 Spa">
         <div className="cat-inner">
-          <div className="cat-copy">
+          <div className="cat-copy" data-reveal-right>
             <div className="num">N° 06 — Wellness · Bien-être</div>
-            <h2>
+            <h2 data-reveal>
               <span className="en-only">
                 Wellness &<br />Body Rituals
               </span>
@@ -417,7 +417,7 @@ export default function ServicesPage() {
           </div>
 
           <div className="cat-right">
-            <div className="cat-img">
+            <div className="cat-img" data-reveal-scale>
               <Image
                 src="/img/spa-3.jpg"
                 alt="Wellness ritual"
@@ -465,7 +465,7 @@ export default function ServicesPage() {
 
       {/* HOUSE NOTE */}
       <section className="house-note" data-screen-label="09 House note">
-        <p>
+        <p data-reveal>
           <span className="en-only">
             Every visit includes a fifteen-minute <span className="gold">welcome</span>, a robe of heavy linen, a spritz of the house élixir at the end, and a small linen pouch of what you&apos;ll need at home for the next two weeks.
           </span>
@@ -476,7 +476,7 @@ export default function ServicesPage() {
       {/* CTA */}
       <section className="cta-section" data-screen-label="10 CTA">
         <div className="eyebrow cta-eyebrow"><span className="dot"></span>Twelve guests per day · Douze invités par jour</div>
-        <h2>
+        <h2 data-reveal>
           <span className="en-only">
             The brass door is open<br />for the menu you choose.
           </span>

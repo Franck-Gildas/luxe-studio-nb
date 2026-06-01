@@ -18,7 +18,7 @@ export default function ExperiencesPage() {
           </div>
           <div className="exp-hero-grid">
             <div className="exp-hero-copy">
-              <h1>
+              <h1 data-reveal>
                 <span className="en-only">The Ritual.</span>
                 <span className="fr-block">Le Rituel.</span>
               </h1>
@@ -62,7 +62,7 @@ export default function ExperiencesPage() {
         <div className="ritual-stage">
           <div className="ritual-copy">
             <div className="num">§ 01 — The Ritual · Le rituel</div>
-            <h2>
+            <h2 data-reveal>
               <span className="en-only">
                 The same five<br />quiet movements.
               </span>
@@ -73,7 +73,7 @@ export default function ExperiencesPage() {
 <span className="fr-block">« Quelle que soit la salle, quel que soit l’artiste, quel que soit le menu, bref ou long — le rythme ne change pas. La salle tient le rythme ; l’artiste tient la salle. »</span></p>
             <div className="totals">
               <div className="item">
-                <div className="n">5</div>
+                <div className="n" data-counter="5">5</div>
                 <div className="l">Movements<br />Mouvements</div>
               </div>
               <div className="item">
@@ -85,13 +85,13 @@ export default function ExperiencesPage() {
                 <div className="l">Artist · guest<br />Artiste : invité</div>
               </div>
               <div className="item">
-                <div className="n">0</div>
+                <div className="n" data-counter="0">0</div>
                 <div className="l">Phones at the chair<br />Sans téléphone</div>
               </div>
             </div>
           </div>
 
-          <div className="movements">
+          <div className="movements" data-stagger>
             <div className="movement">
               <div>
                 <div className="phase">Phase 01 · L&apos;accueil</div>
@@ -185,7 +185,7 @@ export default function ExperiencesPage() {
         <div className="gc-head">
           <div>
             <div className="num">§ 02 — Gift cards · Cartes-cadeaux</div>
-            <h2>
+            <h2 data-reveal>
               <span className="en-only">
                 Give the <em>hour</em>,<br />not the thing.
               </span>
@@ -199,7 +199,7 @@ export default function ExperiencesPage() {
 <span className="fr-block">Les cartes maison sont présentées dans une enveloppe de lin, adressées à la main par Émilie, et remises par la poste ou en personne à la porte de laiton. Le destinataire réserve à son rythme — la carte est valide deux ans à compter de la date d’émission. Vous pouvez aussi nous écrire pour un montant sur mesure.</span></p>
         </div>
 
-        <div className="gc-grid">
+        <div className="gc-grid" data-stagger>
           <article className="gc-card bronze">
             <div className="seal">N°</div>
             <div className="top"><span>Carte cadeau N° 01</span><span className="v">Bronze</span></div>
@@ -247,7 +247,7 @@ export default function ExperiencesPage() {
         <div className="seasonal-inner">
           <div className="section-head">
             <div className="num">§ 03 — Seasonal · Saisonnier</div>
-            <h2>
+            <h2 data-reveal>
               <span className="en-only">
                 What is offered now,<br />and only now.
               </span>
@@ -258,7 +258,7 @@ export default function ExperiencesPage() {
           </div>
 
           <div className="season-grid">
-            <article className="season-card">
+            <article className="season-card" data-reveal-scale>
               <div className="movement-photo">
                 <Image src="/img/spa-1.jpg" alt="Solstice ritual" fill className="object-cover" sizes="(max-width: 1100px) 100vw, 50vw" />
               </div>
@@ -277,7 +277,7 @@ export default function ExperiencesPage() {
               </div>
             </article>
 
-            <article className="season-card">
+            <article className="season-card" data-reveal-scale>
               <div className="movement-photo">
                 <Image src="/img/hair-5.jpg" alt="The colour study" fill className="object-cover" sizes="(max-width: 1100px) 100vw, 50vw" />
               </div>
@@ -296,7 +296,7 @@ export default function ExperiencesPage() {
           </div>
 
           <div className="season-grid alt">
-            <article className="season-card">
+            <article className="season-card" data-reveal-scale>
               <div className="movement-photo">
                 <Image src="/img/lash-3.jpg" alt="Wedding atelier" fill className="object-cover" sizes="(max-width: 1100px) 100vw, 50vw" />
               </div>
@@ -315,7 +315,7 @@ export default function ExperiencesPage() {
               </div>
             </article>
 
-            <article className="season-card">
+            <article className="season-card" data-reveal-scale>
               <div className="movement-photo">
                 <Image src="/img/nails-2.jpg" alt="Mother's day" fill className="object-cover" sizes="(max-width: 1100px) 100vw, 50vw" />
               </div>
@@ -339,7 +339,7 @@ export default function ExperiencesPage() {
       <section className="memberships" data-screen-label="05 Memberships">
         <div className="mem-head">
           <div className="num">§ 04 — La maison · The house circle</div>
-          <h2>
+          <h2 data-reveal>
             <span className="en-only">
               For the regulars,<br />quietly held.
             </span>
@@ -347,7 +347,7 @@ export default function ExperiencesPage() {
           </h2>
         </div>
 
-        <div className="mem-grid">
+        <div className="mem-grid" data-stagger>
           <div className="mem">
             <div className="tier">N° 01 · L&apos;invitée</div>
             <h3><span className="en-only">The Invited</span><span className="fr">L&apos;invitée</span></h3>
@@ -404,7 +404,7 @@ export default function ExperiencesPage() {
       {/* CTA */}
       <section className="cta-section" data-screen-label="06 CTA">
         <div className="eyebrow cta-eyebrow"><span className="dot"></span>The brass door is open</div>
-        <h2>
+        <h2 data-reveal>
           <span className="en-only">
             Begin your ritual,<br />at your cadence.
           </span>

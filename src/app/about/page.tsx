@@ -12,21 +12,23 @@ export default function AboutPage() {
       {/* HERO */}
       <section className="about-hero" data-screen-label="01 About Hero">
         <div className="about-hero-bg about-img">
-          <Image
-            src="/img/atelier-interior-2.jpg"
-            alt="The atelier, late afternoon"
-            fill
-            className="object-cover"
-            sizes="100vw"
-            priority
-          />
+          <div className="about-hero-media" data-parallax>
+            <Image
+              src="/img/atelier-interior-2.jpg"
+              alt="The atelier, late afternoon"
+              fill
+              className="object-cover"
+              sizes="100vw"
+              priority
+            />
+          </div>
         </div>
         <div className="about-hero-inner">
           <div className="about-hero-meta">
             <span><span className="v">◇ L&apos;atelier</span> · 214 Rue Main · Suite 201 · Moncton</span>
             <span>Page <span className="v">04 / 06</span></span>
           </div>
-          <h1>
+          <h1 data-reveal>
             <span className="en-only">A house of quiet.</span>
             <span className="fr-block">Une maison du silence.</span>
           </h1>
@@ -41,9 +43,9 @@ export default function AboutPage() {
       {/* PHILOSOPHY */}
       <section className="philo" data-screen-label="02 Philosophy">
         <div className="philo-inner">
-          <div className="left">
+          <div className="left" data-reveal-left>
             <div className="num">§ 01 — The Philosophy · La philosophie</div>
-            <h2>
+            <h2 data-reveal>
               <span className="en-only">
                 The room first,<br />then the work.
               </span>
@@ -51,13 +53,13 @@ export default function AboutPage() {
             </h2>
           </div>
           <div className="right">
-            <p><span className="en-only">We opened a single door on <span className="gold">Rue Main Street</span>
+            <p data-reveal><span className="en-only">We opened a single door on <span className="gold">Rue Main Street</span>
 <span className="fr-block">Nous avons ouvert une seule porte sur la rue Main</span> in the winter of 2024, after fifteen years of working in other people&apos;s rooms. We had one belief between us: that the room is the treatment, and the treatment is only the most visible part of it.</span></p>
-            <p><span className="en-only">So we built the room first. Six private suites, a marble apothecary, a velvet bench, one north-facing window, and a brass door heavy enough to close the day behind you. Then — only then — we filled it with twenty-two senior artists who&apos;d never compromised, and never wanted to.</span>
+            <p data-reveal><span className="en-only">So we built the room first. Six private suites, a marble apothecary, a velvet bench, one north-facing window, and a brass door heavy enough to close the day behind you. Then — only then — we filled it with twenty-two senior artists who&apos;d never compromised, and never wanted to.</span>
 <span className="fr-block">Alors nous avons bâti la salle d’abord. Six suites privées, une apothicairerie de marbre, un banc de velours, une fenêtre orientée au nord et une porte de laiton assez lourde pour refermer la journée derrière vous. Puis — seulement ensuite — nous l’avons remplie de vingt-deux artistes seniors qui n’avaient jamais transigé et n’avaient jamais voulu le faire.</span></p>
-            <p><span className="en-only">We don&apos;t do walk-ins. We don&apos;t double-book. We don&apos;t have a clock visible from any chair. <strong>Every visit is held in its own pocket of time</strong> — fifteen minutes to arrive into the room, fifteen to leave it. A robe of heavy linen. A glass of cucumber water. Low Erik Satie, always.</span>
+            <p data-reveal><span className="en-only">We don&apos;t do walk-ins. We don&apos;t double-book. We don&apos;t have a clock visible from any chair. <strong>Every visit is held in its own pocket of time</strong> — fifteen minutes to arrive into the room, fifteen to leave it. A robe of heavy linen. A glass of cucumber water. Low Erik Satie, always.</span>
 <span className="fr-block">Nous ne faisons pas de visites sans rendez-vous. Nous ne double-bookons pas. Nous n’avons pas d’horloge visible depuis aucun fauteuil. Chaque visite est tenue dans sa propre poche de temps — quinze minutes pour entrer dans la salle, quinze pour en sortir. Un peignoir de lin épais. Un verre d’eau au concombre. Du Satie tout bas, toujours.</span></p>
-            <p><span className="en-only">Because the room <em>is</em> the treatment. The treatment is the most visible part of it, but never the most important one. We learned this in fifteen years of cutting hair at a window facing a parking lot. We promised, if we ever opened our own room, the window would face north — and the day would end at the door.</span>
+            <p data-reveal><span className="en-only">Because the room <em>is</em> the treatment. The treatment is the most visible part of it, but never the most important one. We learned this in fifteen years of cutting hair at a window facing a parking lot. We promised, if we ever opened our own room, the window would face north — and the day would end at the door.</span>
 <span className="fr-block">Parce que la salle est le soin. Le soin en est la partie la plus visible, mais jamais la plus importante. Nous l’avons appris en quinze ans à couper des cheveux devant une fenêtre sur un stationnement. Nous avons promis, si un jour nous ouvrions notre propre salle, que la fenêtre serait au nord — et que la journée se terminerait à la porte.</span></p>
 
             <div className="signature">
@@ -70,7 +72,7 @@ export default function AboutPage() {
 
       {/* TENETS */}
       <section className="tenets" data-screen-label="03 Tenets">
-        <div className="tenets-grid">
+        <div className="tenets-grid" data-stagger>
           <div className="tenet">
             <div className="roman">I.</div>
             <h4><span className="en-only">By appointment only</span><span className="fr">Sur rendez-vous</span></h4>
@@ -100,7 +102,7 @@ export default function AboutPage() {
         <div className="section-inner">
           <div className="section-head">
             <div className="num">§ 02 — The artists<br />Les artistes</div>
-            <h2>
+            <h2 data-reveal>
               <span className="en-only">
                 Twenty-two pairs<br />of senior hands.
               </span>
@@ -110,9 +112,9 @@ export default function AboutPage() {
             </h2>
           </div>
 
-          <div className="team-grid">
+          <div className="team-grid" data-stagger>
             <article className="team-card span-3">
-              <div className="portrait team-photo">
+              <div className="portrait team-photo" data-reveal-scale>
                 <Image
                   src="/img/team-1.jpg"
                   alt="Émilie Doiron"
@@ -131,7 +133,7 @@ export default function AboutPage() {
             </article>
 
             <article className="team-card span-3">
-              <div className="portrait team-photo">
+              <div className="portrait team-photo" data-reveal-scale>
                 <Image
                   src="/img/team-male-1.jpg"
                   alt="Marc-André Daigle"
@@ -150,7 +152,7 @@ export default function AboutPage() {
             </article>
 
             <article className="team-card span-2">
-              <div className="portrait team-photo">
+              <div className="portrait team-photo" data-reveal-scale>
                 <Image
                   src="/img/team-2.jpg"
                   alt="Sophie Léger"
@@ -169,7 +171,7 @@ export default function AboutPage() {
             </article>
 
             <article className="team-card span-2">
-              <div className="portrait team-photo">
+              <div className="portrait team-photo" data-reveal-scale>
                 <Image
                   src="/img/team-3.jpg"
                   alt="Camille Bourque"
@@ -188,7 +190,7 @@ export default function AboutPage() {
             </article>
 
             <article className="team-card span-2">
-              <div className="portrait team-photo">
+              <div className="portrait team-photo" data-reveal-scale>
                 <Image
                   src="/img/team-male-2.jpg"
                   alt="Jean-Luc Arseneau"
@@ -207,7 +209,7 @@ export default function AboutPage() {
             </article>
 
             <article className="team-card span-3">
-              <div className="portrait team-photo">
+              <div className="portrait team-photo" data-reveal-scale>
                 <Image
                   src="/img/staff-customer.jpg"
                   alt="Renée Léblanc"
@@ -228,7 +230,7 @@ export default function AboutPage() {
             </article>
 
             <article className="team-card span-3">
-              <div className="portrait team-photo">
+              <div className="portrait team-photo" data-reveal-scale>
                 <Image
                   src="/img/team-hands.jpg"
                   alt="The atelier hands"
@@ -286,7 +288,7 @@ export default function AboutPage() {
 
           <div className="location-copy">
             <div className="num">§ 03 — Visit · La visite</div>
-            <h2>
+            <h2 data-reveal>
               <span className="en-only">
                 The brass door is on<br />Main Street, second floor.
               </span>

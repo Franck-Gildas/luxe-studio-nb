@@ -213,7 +213,7 @@ export default function WorkPage() {
             </span>
           </div>
 
-          <h1>
+          <h1 data-reveal>
             <span className="en-only">Transformations</span>
             <span className="fr-block">Métamorphoses</span>
           </h1>
@@ -238,9 +238,9 @@ export default function WorkPage() {
       <section className="ba-section" data-screen-label="03 Before After" ref={baSectionRef}>
         <div className="ba-list">
           <div className="ba-row">
-            <div className="ba-side">
+            <div className="ba-side" data-reveal-left>
               <div className="idx">◇ Reveal 01 / 03 · Hair</div>
-              <h3>
+              <h3 data-reveal>
                 <span className="en-only">Élise — Slow colour, three sittings</span>
                 <span className="fr-block">Élise — Couleur lente, trois séances</span>
               </h3>
@@ -254,7 +254,7 @@ export default function WorkPage() {
                 <span className="ba-tag">Cut</span>
               </div>
             </div>
-            <div className="ba-frame" data-ba data-clip="55">
+            <div className="ba-frame" data-ba data-clip="55" data-reveal-scale>
               <div className="ba-pane before">
                 <Image src="/img/hair-3.jpg" alt="Before" fill className="object-cover" sizes="(max-width: 1100px) 100vw, 60vw" />
               </div>
@@ -272,9 +272,9 @@ export default function WorkPage() {
           </div>
 
           <div className="ba-row flip">
-            <div className="ba-side">
+            <div className="ba-side" data-reveal-right>
               <div className="idx">◇ Reveal 02 / 03 · Barber</div>
-              <h3>
+              <h3 data-reveal>
                 <span className="en-only">Marc — The Saturday cut</span>
                 <span className="fr-block">Marc — La coupe du samedi</span>
               </h3>
@@ -287,7 +287,7 @@ export default function WorkPage() {
                 <span className="ba-tag">Beard</span>
               </div>
             </div>
-            <div className="ba-frame" data-ba data-clip="42">
+            <div className="ba-frame" data-ba data-clip="42" data-reveal-scale>
               <div className="ba-pane before">
                 <Image src="/img/barber-4.jpg" alt="Before" fill className="object-cover" sizes="(max-width: 1100px) 100vw, 60vw" />
               </div>
@@ -305,9 +305,9 @@ export default function WorkPage() {
           </div>
 
           <div className="ba-row">
-            <div className="ba-side">
+            <div className="ba-side" data-reveal-left>
               <div className="idx">◇ Reveal 03 / 03 · Skin</div>
-              <h3>
+              <h3 data-reveal>
                 <span className="en-only">Renée — Ninety minutes of skin</span>
                 <span className="fr-block">Renée — Quatre-vingt-dix minutes de peau</span>
               </h3>
@@ -320,7 +320,7 @@ export default function WorkPage() {
                 <span className="ba-tag">Dermaplane</span>
               </div>
             </div>
-            <div className="ba-frame" data-ba data-clip="50">
+            <div className="ba-frame" data-ba data-clip="50" data-reveal-scale>
               <div className="ba-pane before">
                 <Image src="/img/face-2.jpg" alt="Before" fill className="object-cover" sizes="(max-width: 1100px) 100vw, 60vw" />
               </div>
@@ -363,7 +363,7 @@ export default function WorkPage() {
               <br />
               Editorial
             </div>
-            <h2>
+            <h2 data-reveal>
               <span className="en-only">
                 Six rituals, six rooms,
                 <br />
@@ -379,6 +379,7 @@ export default function WorkPage() {
 
           <div
             className="vitrine-row"
+            data-reveal-scale
             data-cat="hair"
             style={!isVisible("hair") ? { display: "none" } : undefined}
           >
@@ -408,6 +409,7 @@ export default function WorkPage() {
 
           <div
             className="vitrine-row flip"
+            data-reveal-scale
             data-cat="barber"
             style={!isVisible("barber") ? { display: "none" } : undefined}
           >
@@ -437,6 +439,7 @@ export default function WorkPage() {
 
           <div
             className="vitrine-row"
+            data-reveal-scale
             data-cat="nail"
             style={!isVisible("nail") ? { display: "none" } : undefined}
           >
@@ -466,6 +469,7 @@ export default function WorkPage() {
 
           <div
             className="vitrine-row flip"
+            data-reveal-scale
             data-cat="lash"
             style={!isVisible("lash") ? { display: "none" } : undefined}
           >
@@ -495,6 +499,7 @@ export default function WorkPage() {
 
           <div
             className="vitrine-row"
+            data-reveal-scale
             data-cat="face"
             style={!isVisible("face") ? { display: "none" } : undefined}
           >
@@ -524,6 +529,7 @@ export default function WorkPage() {
 
           <div
             className="vitrine-row flip"
+            data-reveal-scale
             data-cat="spa"
             style={!isVisible("spa") ? { display: "none" } : undefined}
           >
@@ -562,13 +568,13 @@ export default function WorkPage() {
               <br />
               Twenty-four frames
             </div>
-            <h2>
+            <h2 data-reveal>
               <span className="en-only">The room, in fragments.</span>
               <span className="fr-block">La pièce, en fragments.</span>
             </h2>
           </div>
 
-          <div className="gallery" id="gallery">
+          <div className="gallery" id="gallery" data-stagger>
             {GALLERY_TILES.map((tile) => (
               <div
                 key={tile.num}
@@ -616,7 +622,7 @@ export default function WorkPage() {
         <div className="eyebrow cta-eyebrow">
           <span className="dot"></span>Twelve guests per day · Douze invités par jour
         </div>
-        <h2>
+        <h2 data-reveal>
           <span className="en-only">
             The next chair could
             <br />

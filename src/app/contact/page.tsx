@@ -68,12 +68,12 @@ export default function ContactPage() {
       {/* PAGE HERO */}
       <section className="contact-hero" data-screen-label="01 Contact Hero">
         <div className="contact-hero-layout">
-          <div className="contact-hero-inner">
+          <div className="contact-hero-inner" data-reveal-left>
             <div className="contact-hero-meta">
               <span><span className="v">◇ The chair</span> · 214 Rue Main · Suite 201</span>
               <span>Page <span className="v">06 / 06</span></span>
             </div>
-            <h1>
+            <h1 data-reveal>
               <span className="en-only">Pull up a chair.</span>
               <span className="fr-block">Approchez-vous.</span>
             </h1>
@@ -91,11 +91,11 @@ export default function ContactPage() {
       </section>
 
       {/* FORM SECTION */}
-      <section className="contact-section" data-screen-label="02 Booking Form">
+      <section className="contact-section" data-screen-label="02 Booking Form" data-reveal>
         <div className="contact-grid">
 
           {/* SIDEBAR */}
-          <aside className="sidebar">
+          <aside className="sidebar" data-reveal-left>
             <div className="contact-map">
               <div className="grid-lines"></div>
               <div className="road r1"></div>
@@ -313,9 +313,9 @@ export default function ContactPage() {
       {/* CONCIERGE DEMO */}
       <section className="concierge-demo" data-screen-label="03 Concierge Demo">
         <div className="cd-inner">
-          <div className="cd-copy">
+          <div className="cd-copy" data-reveal-left>
             <div className="num">§ 02 — The concierge · La concierge</div>
-            <h2>
+            <h2 data-reveal>
               <span className="en-only">
                 If a chair is easier<br />than a form, <em>write</em> us.
               </span>

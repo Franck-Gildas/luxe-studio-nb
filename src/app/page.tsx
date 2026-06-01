@@ -66,7 +66,7 @@ export default function HomePage() {
           </div>
 
           <div className="composition">
-            <div className="vial-photo">
+            <div className="vial-photo" data-reveal-scale>
               <Image
                 src="/img/apothecary-bottle.jpg"
                 alt="House élixir"
@@ -160,7 +160,7 @@ export default function HomePage() {
           <div className="eyebrow">
             <span className="dot"></span>The House
           </div>
-          <h2>
+          <h2 data-reveal>
             <span className="en-only">
               We craft <em>unforgettable</em> beauty rituals in New Brunswick — slow, sensorial, made for the way you live now.
             </span>
@@ -171,6 +171,8 @@ export default function HomePage() {
         </div>
       </section>
 
+      <div className="hairline-gold" data-line />
+
       {/* SERVICES / EXPERIENCES */}
       <section className="services-section" data-screen-label="04 Experiences">
         <div className="section-inner">
@@ -180,7 +182,7 @@ export default function HomePage() {
               <br />
               Les expériences
             </div>
-            <h2>
+            <h2 data-reveal>
               <span className="en-only">
                 Six rituals,
                 <br />
@@ -194,7 +196,7 @@ export default function HomePage() {
             </h2>
           </div>
 
-          <div className="services-grid">
+          <div className="services-grid" data-stagger>
             <article className="exp">
               <div className="exp-num">01 / 06</div>
               <div className="exp-icon">
@@ -348,6 +350,8 @@ export default function HomePage() {
         </div>
       </section>
 
+      <div className="hairline-gold" data-line />
+
       {/* THE RITUAL */}
       <section className="section ritual" data-screen-label="05 The Ritual">
         <div className="section-inner">
@@ -357,7 +361,7 @@ export default function HomePage() {
               <br />
               Le Rituel
             </div>
-            <h2>
+            <h2 data-reveal>
               <span className="en-only">
                 Every visit, the same
                 <br />
@@ -371,7 +375,7 @@ export default function HomePage() {
             </h2>
           </div>
 
-          <div className="ritual-rows">
+          <div className="ritual-rows" data-stagger>
             <div className="ritual-row">
               <div className="num">
                 <span className="sup">Phase</span>01
@@ -453,11 +457,11 @@ export default function HomePage() {
       {/* ATELIER PREVIEW */}
       <section className="atelier" data-screen-label="06 The Room">
         <div className="atelier-grid">
-          <div className="atelier-copy">
+          <div className="atelier-copy" data-reveal-left>
             <div className="eyebrow">
               <span className="dot"></span>The Room · La pièce
             </div>
-            <h2>
+            <h2 data-reveal>
               <span className="en-only">
                 A house of six rooms,
                 <br />
@@ -472,7 +476,7 @@ export default function HomePage() {
 
             <div className="stats">
               <div className="stat">
-                <div className="n">6</div>
+                <div className="n" data-counter="6">6</div>
                 <div className="l">
                   Private rooms
                   <br />
@@ -480,7 +484,7 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="stat">
-                <div className="n">22</div>
+                <div className="n" data-counter="22">22</div>
                 <div className="l">
                   Senior artists
                   <br />
@@ -498,7 +502,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="atelier-img tonal warm">
+          <div className="atelier-img tonal warm" data-reveal-right>
             <Image
               src="/img/atelier-interior.jpg"
               alt="The hair atelier, late afternoon"
@@ -529,7 +533,7 @@ export default function HomePage() {
               <br />
               Métamorphoses
             </div>
-            <h2>
+            <h2 data-reveal>
               <span className="en-only">
                 Quiet evidence,
                 <br />
@@ -543,7 +547,7 @@ export default function HomePage() {
             </h2>
           </div>
 
-          <div className="transforms-grid">
+          <div className="transforms-grid" data-stagger>
             <article className="tx-card tx-card-lg">
               <span className="tag">◇ Hair · Cheveux</span>
               <Image
@@ -611,7 +615,7 @@ export default function HomePage() {
             </article>
           </div>
 
-          <div className="transforms-grid-bottom">
+          <div className="transforms-grid-bottom" data-stagger>
             <article className="tx-card">
               <span className="tag">◇ Barber</span>
               <Image
@@ -699,7 +703,7 @@ export default function HomePage() {
               <br />
               Témoignages
             </div>
-            <h2>
+            <h2 data-reveal>
               <span className="en-only">
                 What the regulars
                 <br />
@@ -713,7 +717,7 @@ export default function HomePage() {
             </h2>
           </div>
 
-          <div className="testi-grid">
+          <div className="testi-grid" data-stagger>
             <article className="testi">
               <div className="stars">★ ★ ★ ★ ★</div>
               <blockquote><span className="en-only">I don&apos;t go to a salon. I go to LUXE. There is a difference and you feel it the moment the brass door closes behind you.</span>
@@ -752,7 +756,7 @@ export default function HomePage() {
         <div className="eyebrow cta-eyebrow">
           <span className="dot"></span>The brass door is open
         </div>
-        <h2>
+        <h2 data-reveal>
           <span className="en-only">
             The hour is yours,
             <br />
@@ -779,7 +783,7 @@ export default function HomePage() {
             LUXE STUDIO<span className="sup">NB</span>
           </div>
           <div className="nl">
-            <h4>The newsletter · La lettre</h4>
+            <h4 data-reveal>The newsletter · La lettre</h4>
             <p><span className="en-only">Once a season — solstice, equinox. New rituals, soft openings, the hour the door is open.</span>
 <span className="fr-block">Une fois par saison — solstice, équinoxe. Nouveaux rituels, ouvertures douces, l’heure où la porte est ouverte.</span></p>
             <form onSubmit={handleNewsletterSubmit}>

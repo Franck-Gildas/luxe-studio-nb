@@ -16,6 +16,7 @@ import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { Concierge } from "@/components/ui/Concierge";
 import PageTransition from "@/components/ui/PageTransition";
 import RouteOverlay from "@/components/ui/RouteOverlay";
+import GSAPAnimations from "@/components/ui/GSAPAnimations";
 import "./globals.css";
 import "@/styles/legacy.css";
 
@@ -77,6 +78,7 @@ export default function RootLayout({
             <CustomCursor />
             <ScrollProgress />
             <Navbar />
+            <GSAPAnimations />
             <NavSpacer />
             <RouteOverlay />
             <PageTransition>
