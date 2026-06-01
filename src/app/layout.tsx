@@ -10,7 +10,7 @@ import { NavSpacer } from "@/components/layout/NavSpacer";
 import { Footer } from "@/components/layout/Footer";
 import { I18nProvider } from "@/components/providers/I18nProvider";
 import { LanguageProvider } from "@/lib/LanguageContext";
-import { LoadingScreen } from "@/components/ui/LoadingScreen";
+import LoadingScreen from "@/components/ui/LoadingScreen";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { Concierge } from "@/components/ui/Concierge";
