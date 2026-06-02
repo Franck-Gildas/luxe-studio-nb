@@ -89,6 +89,76 @@ a {
   color: var(--obsidian);
 }
 
+/* Custom cursor (desktop) */
+html.custom-cursor-active,
+html.custom-cursor-active * {
+  cursor: none !important;
+}
+
+.custom-cursor {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.custom-cursor-dot,
+.custom-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  will-change: transform;
+  transition: width 0.25s ease, height 0.25s ease, border-width 0.25s ease;
+}
+
+.custom-cursor-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--champagne);
+}
+
+.custom-cursor-ring {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid var(--champagne);
+  background: transparent;
+}
+
+.custom-cursor[data-hovering="true"] .custom-cursor-dot {
+  width: 9px;
+  height: 9px;
+}
+
+.custom-cursor[data-hovering="true"] .custom-cursor-ring {
+  width: 52px;
+  height: 52px;
+  border-width: 2px;
+}
+
+/* Scroll progress */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 9998;
+  pointer-events: none;
+  background: transparent;
+}
+
+.scroll-progress-bar {
+  height: 100%;
+  background: var(--champagne);
+  box-shadow:
+    0 0 8px rgba(232, 201, 160, 0.65),
+    0 0 16px rgba(232, 201, 160, 0.35);
+  transform-origin: left center;
+  transition: width 0.08s linear;
+}
+
 .serif {
   font-family: var(--serif);
   font-weight: 400;

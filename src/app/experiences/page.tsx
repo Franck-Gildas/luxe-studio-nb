@@ -200,37 +200,76 @@ export default function ExperiencesPage() {
         </div>
 
         <div className="gc-grid" data-stagger>
-          <article className="gc-card bronze">
-            <div className="seal">N°</div>
-            <div className="top"><span>Carte cadeau N° 01</span><span className="v">Bronze</span></div>
-            <div className="amt"><span className="cur">CAD</span>185</div>
-            <h3><span className="en-only">The Hour</span><span className="fr">Une heure</span></h3>
-            <p><span className="en-only">One signature service, by the artist of their choosing. A welcome, a robe, a quiet hour, the house élixir to
-              take home.</span>
+          <article className="gc-card bronze gc-flip">
+            <div className="gc-flip-inner">
+              <div className="gc-flip-front">
+                <div className="seal">N°</div>
+                <div className="top"><span>Carte cadeau N° 01</span><span className="v">Bronze</span></div>
+                <div className="amt"><span className="cur">CAD</span>185</div>
+                <h3><span className="en-only">The Hour</span><span className="fr">Une heure</span></h3>
+                <p><span className="en-only">One signature service, by the artist of their choosing. A welcome, a robe, a quiet hour, the house élixir to
+                  take home.</span>
 <span className="fr-block">Un service signature, par l’artiste de son choix. Un accueil, un peignoir, une heure feutrée, l’élixir maison à emporter.</span></p>
-            <div className="foot"><span>◇ Holds for 24 months</span><span>Linen envelope</span></div>
+                <div className="foot"><span>◇ Holds for 24 months</span><span>Linen envelope</span></div>
+              </div>
+              <div className="gc-flip-back">
+                <div className="amt"><span className="cur">CAD</span>185</div>
+                <p><span className="en-only">One signature service, by the artist of their choosing. A welcome, a robe, a quiet hour, the house élixir to take home.</span>
+<span className="fr-block">Un service signature, par l’artiste de son choix. Un accueil, un peignoir, une heure feutrée, l’élixir maison à emporter.</span></p>
+                <Link href="/contact" className="btn-ghost gc-back-cta">
+                  <span>Order a Card</span>
+                  <span className="arrow" style={{ marginLeft: "8px" }}>→</span>
+                </Link>
+              </div>
+            </div>
           </article>
 
-          <article className="gc-card rose">
-            <div className="seal">N°</div>
-            <div className="top"><span>Carte cadeau N° 02</span><span className="v">Rose</span></div>
-            <div className="amt"><span className="cur">CAD</span>385</div>
-            <h3><span className="en-only">The Long Afternoon</span><span className="fr">Le long après-midi</span></h3>
-            <p><span className="en-only">Two services, paired by the house — hair &amp; lash, esthetics &amp; long bath. With a chilled bottle, on the
-              marble side-table.</span>
+          <article className="gc-card rose gc-flip">
+            <div className="gc-flip-inner">
+              <div className="gc-flip-front">
+                <div className="seal">N°</div>
+                <div className="top"><span>Carte cadeau N° 02</span><span className="v">Rose</span></div>
+                <div className="amt"><span className="cur">CAD</span>385</div>
+                <h3><span className="en-only">The Long Afternoon</span><span className="fr">Le long après-midi</span></h3>
+                <p><span className="en-only">Two services, paired by the house — hair &amp; lash, esthetics &amp; long bath. With a chilled bottle, on the
+                  marble side-table.</span>
 <span className="fr-block">Deux services, jumelés par la maison — cheveux et cils, esthétique et long bain. Avec une bouteille fraîche, sur la table d’appoint en marbre.</span></p>
-            <div className="foot"><span>◇ Holds for 24 months</span><span>Hand-addressed</span></div>
+                <div className="foot"><span>◇ Holds for 24 months</span><span>Hand-addressed</span></div>
+              </div>
+              <div className="gc-flip-back">
+                <div className="amt"><span className="cur">CAD</span>385</div>
+                <p><span className="en-only">Two services, paired by the house — hair &amp; lash, esthetics &amp; long bath. With a chilled bottle, on the marble side-table.</span>
+<span className="fr-block">Deux services, jumelés par la maison — cheveux et cils, esthétique et long bain. Avec une bouteille fraîche, sur la table d’appoint en marbre.</span></p>
+                <Link href="/contact" className="btn-ghost gc-back-cta">
+                  <span>Order a Card</span>
+                  <span className="arrow" style={{ marginLeft: "8px" }}>→</span>
+                </Link>
+              </div>
+            </div>
           </article>
 
-          <article className="gc-card smoke">
-            <div className="seal">N°</div>
-            <div className="top"><span>Carte cadeau N° 03</span><span className="v">Obsidian</span></div>
-            <div className="amt"><span className="cur">CAD</span>785</div>
-            <h3><span className="en-only">The Whole Day</span><span className="fr">La journée entière</span></h3>
-            <p><span className="en-only">The full house — every room visited, with a quiet lunch in between. Four artists, six hours, the brass door
-              closed behind you.</span>
+          <article className="gc-card smoke gc-flip">
+            <div className="gc-flip-inner">
+              <div className="gc-flip-front">
+                <div className="seal">N°</div>
+                <div className="top"><span>Carte cadeau N° 03</span><span className="v">Obsidian</span></div>
+                <div className="amt"><span className="cur">CAD</span>785</div>
+                <h3><span className="en-only">The Whole Day</span><span className="fr">La journée entière</span></h3>
+                <p><span className="en-only">The full house — every room visited, with a quiet lunch in between. Four artists, six hours, the brass door
+                  closed behind you.</span>
 <span className="fr-block">La maison au complet — chaque salle visitée, avec un déjeuner feutré entre les deux. Quatre artistes, six heures, la porte de laiton refermée derrière vous.</span></p>
-            <div className="foot"><span>◇ Holds for 24 months</span><span>By hand, by post</span></div>
+                <div className="foot"><span>◇ Holds for 24 months</span><span>By hand, by post</span></div>
+              </div>
+              <div className="gc-flip-back">
+                <div className="amt"><span className="cur">CAD</span>785</div>
+                <p><span className="en-only">The full house — every room visited, with a quiet lunch in between. Four artists, six hours, the brass door closed behind you.</span>
+<span className="fr-block">La maison au complet — chaque salle visitée, avec un déjeuner feutré entre les deux. Quatre artistes, six heures, la porte de laiton refermée derrière vous.</span></p>
+                <Link href="/contact" className="btn-ghost gc-back-cta">
+                  <span>Order a Card</span>
+                  <span className="arrow" style={{ marginLeft: "8px" }}>→</span>
+                </Link>
+              </div>
+            </div>
           </article>
         </div>
 
