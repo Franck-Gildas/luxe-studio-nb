@@ -1,9 +1,15 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import "@/styles/home.css";
+
+const VIAL_PARTICLES = Array.from({ length: 12 }, (_, i) => ({
+  left: 20 + ((i * 17) % 60),
+  delay: (i * 0.37) % 4,
+  duration: 3 + ((i * 0.53) % 4),
+}));
 
 function handleNewsletterSubmit(e: React.FormEvent<HTMLFormElement>) {
   e.preventDefault();
@@ -15,18 +21,41 @@ function handleNewsletterSubmit(e: React.FormEvent<HTMLFormElement>) {
 }
 
 export default function HomePage() {
+  const vialRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     document.querySelectorAll("#wordmark .l").forEach((el, i) => {
       (el as HTMLElement).style.animationDelay = `${2.4 + i * 0.06}s`;
     });
   }, []);
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (!vialRef.current) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+    vialRef.current.style.setProperty("--mx", `${x * 8}px`);
+    vialRef.current.style.setProperty("--my", `${y * -4}px`);
+  };
+
+  const handleMouseLeave = () => {
+    if (!vialRef.current) return;
+    vialRef.current.style.setProperty("--mx", "0px");
+    vialRef.current.style.setProperty("--my", "0px");
+  };
+
   return (
     <>
       <div className="grain"></div>
 
       {/* HERO / THE ATRIUM */}
-      <section className="atrium" data-screen-label="01 Home Hero">
+      <section
+        className="atrium"
+        data-screen-label="01 Home Hero"
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
         <div className="beam"></div>
         <div className="beam-line"></div>
 
@@ -53,6 +82,41 @@ export default function HomePage() {
           </div>
         </div>
 
+        <div className="composition">
+          <div className="vial-photo" ref={vialRef}>
+            <div className="vial-photo-motion">
+              <Image
+                src="/img/hero-vial.png"
+                alt="House Élixir on marble pedestal"
+                fill
+                className="object-cover"
+                priority
+                sizes="(max-width: 768px) 90vw, 520px"
+                  style={{
+                    background: "transparent",
+                    objectPosition: "center 18%",
+                  }}
+              />
+
+              <div className="vial-light-sweep" />
+
+              <div className="vial-particles">
+                {VIAL_PARTICLES.map((particle, i) => (
+                  <div
+                    key={i}
+                    className="vial-particle"
+                    style={{
+                      left: `${particle.left}%`,
+                      animationDelay: `${particle.delay}s`,
+                      animationDuration: `${particle.duration}s`,
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="atrium-stage">
           <div className="atrium-top">
             <div className="l">
@@ -62,31 +126,6 @@ export default function HomePage() {
             <div className="r">
               <span>Open today · ouvert</span>
               <span>10 — 22 · Moncton, NB</span>
-            </div>
-          </div>
-
-          <div className="composition">
-            <div className="vial-photo" data-reveal-scale>
-              <Image
-                src="/img/apothecary-bottle.jpg"
-                alt="House élixir"
-                fill
-                sizes="200px"
-                className="object-cover"
-                priority
-              />
-              <div className="vial-photo-glow"></div>
-            </div>
-            <div className="pedestal"></div>
-            <div className="pedestal-shadow"></div>
-            <div
-              className="placeholder-label"
-              style={{
-                left: "50%",
-                transform: "translateX(-50%)",
-              }}
-            >
-              3D · house élixir on marble pedestal · volumetric light
             </div>
           </div>
 
