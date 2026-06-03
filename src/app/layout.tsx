@@ -5,19 +5,9 @@ import {
   Inter,
   JetBrains_Mono,
 } from "next/font/google";
-import { Navbar } from "@/components/layout/Navbar";
-import { NavSpacer } from "@/components/layout/NavSpacer";
-import { Footer } from "@/components/layout/Footer";
+import { AdminAwareShell } from "@/components/admin/AdminAwareShell";
 import { I18nProvider } from "@/components/providers/I18nProvider";
 import { LanguageProvider } from "@/lib/LanguageContext";
-import LoadingScreen from "@/components/ui/LoadingScreen";
-import { CustomCursor } from "@/components/ui/CustomCursor";
-import { ScrollProgress } from "@/components/ui/ScrollProgress";
-import { Concierge } from "@/components/ui/Concierge";
-import { BookingScrollToForm } from "@/components/ui/BookingScrollToForm";
-import PageTransition from "@/components/ui/PageTransition";
-import RouteOverlay from "@/components/ui/RouteOverlay";
-import GSAPAnimations from "@/components/ui/GSAPAnimations";
 import "./globals.css";
 import "@/styles/legacy.css";
 
@@ -75,19 +65,7 @@ export default function RootLayout({
       <body className="flex min-h-full flex-col" suppressHydrationWarning>
         <LanguageProvider>
           <I18nProvider>
-            <LoadingScreen />
-            <CustomCursor />
-            <ScrollProgress />
-            <BookingScrollToForm />
-            <Navbar />
-            <GSAPAnimations />
-            <NavSpacer />
-            <RouteOverlay />
-            <PageTransition>
-              {children}
-            </PageTransition>
-            <Footer />
-            <Concierge />
+            <AdminAwareShell>{children}</AdminAwareShell>
           </I18nProvider>
         </LanguageProvider>
       </body>

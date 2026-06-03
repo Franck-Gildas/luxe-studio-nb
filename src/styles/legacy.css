@@ -770,11 +770,37 @@ h1.display, .display {
   border-top: 1px solid var(--hairline-soft);
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 24px;
   font-family: var(--mono);
   font-size: 10px;
   color: var(--bone-mute);
   letter-spacing: 0.2em;
   text-transform: uppercase;
+}
+
+.footer-bottom a,
+.footer-admin-link {
+  color: var(--bone-mute);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.footer-bottom a:hover,
+.footer-admin-link:hover {
+  color: var(--champagne);
+}
+
+.footer-admin-link {
+  opacity: 0.72;
+}
+
+.footer-admin-link:hover {
+  opacity: 1;
 }
 
 .footer-atelier {

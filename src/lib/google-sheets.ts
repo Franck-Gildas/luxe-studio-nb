@@ -131,10 +131,6 @@ function escapeSheetTabName(name: string): string {
   return name.includes("'") ? `'${name.replace(/'/g, "''")}'` : name
 }
 
-function formatAppendRange(tabName: string): string {
-  return `${escapeSheetTabName(tabName)}!${VALUE_RANGE_COLUMNS}`
-}
-
 function sheetsAccessError(serviceEmail: string | undefined): string {
   const shareTarget = serviceEmail ?? 'your service account email'
   return (
@@ -144,14 +140,18 @@ function sheetsAccessError(serviceEmail: string | undefined): string {
   )
 }
 
-async function resolveAppendRange(
+function formatReadRange(tabName: string): string {
+  return `${escapeSheetTabName(tabName)}!${VALUE_RANGE_COLUMNS}`
+}
+
+async function resolveSheetTabRange(
   sheetId: string,
   accessToken: string,
   serviceEmail: string | undefined,
-): Promise<string | AppendBookingRowResult> {
+): Promise<string | SheetsApiError> {
   const configuredTab = process.env.GOOGLE_SHEET_TAB_NAME?.trim()
   if (configuredTab) {
-    return formatAppendRange(configuredTab)
+    return formatReadRange(configuredTab)
   }
 
   const metaRes = await fetch(
@@ -175,8 +175,135 @@ async function resolveAppendRange(
     sheets?: Array<{ properties?: { title?: string } }>
   }
   const tabName = meta.sheets?.[0]?.properties?.title ?? DEFAULT_TAB_NAME
-  return formatAppendRange(tabName)
+  return formatReadRange(tabName)
 }
+
+async function resolveAppendRange(
+  sheetId: string,
+  accessToken: string,
+  serviceEmail: string | undefined,
+): Promise<string | AppendBookingRowResult> {
+  const result = await resolveSheetTabRange(sheetId, accessToken, serviceEmail)
+  if (typeof result !== 'string') {
+    return result
+  }
+  return result
+}
+
+type SheetsApiError = { ok: false; error: string; status: number }
+
+async function getSheetsAccessToken(): Promise<
+  { ok: true; accessToken: string; serviceEmail: string | undefined } | SheetsApiError
+> {
+  const serviceEmail = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL?.trim()
+  const serviceKey = process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY?.trim()
+  const apiKey = process.env.GOOGLE_SHEETS_API_KEY?.trim()
+
+  if (serviceEmail && serviceKey) {
+    try {
+      const accessToken = await getServiceAccountAccessToken(serviceEmail, serviceKey)
+      return { ok: true, accessToken, serviceEmail }
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Service account auth failed'
+      console.error('Google Sheets service account auth failed:', message)
+      return { ok: false, error: message, status: 500 }
+    }
+  }
+
+  if (apiKey) {
+    return {
+      ok: false,
+      error:
+        'Service account required: set GOOGLE_SERVICE_ACCOUNT_EMAIL and GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY',
+      status: 503,
+    }
+  }
+
+  return {
+    ok: false,
+    error:
+      'Google Sheets is not configured (set service account credentials or GOOGLE_SHEETS_API_KEY)',
+    status: 500,
+  }
+}
+
+export type AdminBooking = SheetsBookingPayload & { sheetRow: number }
+
+export function rowToBooking(row: string[], sheetRow: number): AdminBooking {
+  const pad = (i: number) => row[i]?.trim() ?? ''
+  return {
+    sheetRow,
+    date: pad(0),
+    name: pad(1),
+    email: pad(2),
+    phone: pad(3),
+    service: pad(4),
+    addons: pad(5),
+    total: pad(6),
+    artist: pad(7),
+    appointment_date: pad(8),
+    appointment_time: pad(9),
+    first_visit: pad(10),
+    how_heard: pad(11),
+    notes: pad(12),
+    status: pad(13) || 'New',
+  }
+}
+
+function isHeaderRow(row: string[]): boolean {
+  return row[0]?.trim().toLowerCase() === 'date'
+}
+
+export type FetchAllBookingsResult =
+  | { ok: true; bookings: AdminBooking[] }
+  | { ok: false; error: string; status: number }
+
+export async function fetchAllBookingsFromSheet(): Promise<FetchAllBookingsResult> {
+  const rawSheetId = process.env.GOOGLE_SHEET_ID?.trim()
+  if (!rawSheetId) {
+    return { ok: false, error: 'GOOGLE_SHEET_ID is not configured', status: 500 }
+  }
+  const sheetId = normalizeGoogleSheetId(rawSheetId)
+
+  const auth = await getSheetsAccessToken()
+  if (!auth.ok) {
+    return auth
+  }
+
+  const { accessToken, serviceEmail } = auth
+  const readRange = await resolveSheetTabRange(sheetId, accessToken, serviceEmail)
+  if (typeof readRange !== 'string') {
+    return readRange
+  }
+
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${encodeURIComponent(sheetId)}/values/${encodeURIComponent(readRange)}`
+  const res = await fetch(url, {
+    headers: { Authorization: `Bearer ${accessToken}` },
+  })
+
+  if (!res.ok) {
+    const detail = await res.text().catch(() => '')
+    return {
+      ok: false,
+      error: formatSheetsApiError(res.status, detail, serviceEmail),
+      status: res.status,
+    }
+  }
+
+  const json = (await res.json()) as { values?: string[][] }
+  const rows = json.values ?? []
+  const bookings: AdminBooking[] = []
+
+  rows.forEach((row, index) => {
+    const sheetRow = index + 1
+    if (index === 0 && isHeaderRow(row)) return
+    if (!row.some((cell) => cell?.trim())) return
+    bookings.push(rowToBooking(row, sheetRow))
+  })
+
+  return { ok: true, bookings }
+}
+
 
 function formatSheetsApiError(
   status: number,
@@ -202,38 +329,12 @@ export async function appendBookingRowToSheet(
   }
   const sheetId = normalizeGoogleSheetId(rawSheetId)
 
-  const serviceEmail = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL?.trim()
-  const serviceKey = process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY?.trim()
-  const apiKey = process.env.GOOGLE_SHEETS_API_KEY?.trim()
-
-  let accessToken: string | null = null
-
-  if (serviceEmail && serviceKey) {
-    try {
-      accessToken = await getServiceAccountAccessToken(serviceEmail, serviceKey)
-    } catch (err) {
-      const message = err instanceof Error ? err.message : 'Service account auth failed'
-      console.error('Google Sheets service account auth failed:', message)
-      return { ok: false, error: message, status: 500 }
-    }
-  } else if (apiKey) {
-    console.warn(
-      'Google Sheets: service account env vars not set. GOOGLE_SHEETS_API_KEY cannot append rows (Sheets API requires OAuth). Set GOOGLE_SERVICE_ACCOUNT_EMAIL and GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY, then share the sheet with the service account email as Editor.',
-    )
-    return {
-      ok: false,
-      error:
-        'Service account required: set GOOGLE_SERVICE_ACCOUNT_EMAIL and GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY',
-      status: 503,
-    }
-  } else {
-    return {
-      ok: false,
-      error:
-        'Google Sheets is not configured (set service account credentials or GOOGLE_SHEETS_API_KEY)',
-      status: 500,
-    }
+  const auth = await getSheetsAccessToken()
+  if (!auth.ok) {
+    return auth
   }
+
+  const { accessToken, serviceEmail } = auth
 
   const appendRange = await resolveAppendRange(sheetId, accessToken, serviceEmail)
   if (typeof appendRange !== 'string') {
@@ -243,14 +344,12 @@ export async function appendBookingRowToSheet(
   const params = new URLSearchParams({ valueInputOption: 'RAW' })
   const url = `https://sheets.googleapis.com/v4/spreadsheets/${encodeURIComponent(sheetId)}/values/${encodeURIComponent(appendRange)}:append?${params.toString()}`
 
-  const headers: Record<string, string> = { 'Content-Type': 'application/json' }
-  if (accessToken) {
-    headers.Authorization = `Bearer ${accessToken}`
-  }
-
   const res = await fetch(url, {
     method: 'POST',
-    headers,
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${accessToken}`,
+    },
     body: JSON.stringify({ values: [payloadToSheetRow(data)] }),
   })
 

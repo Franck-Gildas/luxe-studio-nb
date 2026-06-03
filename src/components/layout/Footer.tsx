@@ -92,6 +92,9 @@ export function Footer() {
       <div className="footer-bottom">
         <span>{t("footer.copyright")}</span>
         <a href="#">{t("footer.legal")}</a>
+        <Link href="/admin" className="footer-admin-link">
+          {t("footer.adminLink")}
+        </Link>
         <span>{t("footer.crafted")}</span>
       </div>
     </footer>

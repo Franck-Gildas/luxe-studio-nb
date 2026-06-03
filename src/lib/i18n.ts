@@ -37,6 +37,7 @@ export const resources = {
         hoursClosed: "Sun — Mon · Closed",
         copyright: "© 2026 Luxe Studio NB",
         legal: "Mentions légales · Legal",
+        adminLink: "Admin · Tableau de bord",
         crafted: "Crafted in Moncton · E1C 1B8",
       },
       pages: {
@@ -90,6 +91,7 @@ export const resources = {
         hoursClosed: "Dim — Lun · Fermé",
         copyright: "© 2026 Luxe Studio NB",
         legal: "Mentions légales",
+        adminLink: "Admin · Tableau de bord",
         crafted: "Conçu à Moncton · E1C 1B8",
       },
       pages: {
