@@ -14,6 +14,7 @@ import LoadingScreen from "@/components/ui/LoadingScreen";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { Concierge } from "@/components/ui/Concierge";
+import { BookingScrollToForm } from "@/components/ui/BookingScrollToForm";
 import PageTransition from "@/components/ui/PageTransition";
 import RouteOverlay from "@/components/ui/RouteOverlay";
 import GSAPAnimations from "@/components/ui/GSAPAnimations";
@@ -77,6 +78,7 @@ export default function RootLayout({
             <LoadingScreen />
             <CustomCursor />
             <ScrollProgress />
+            <BookingScrollToForm />
             <Navbar />
             <GSAPAnimations />
             <NavSpacer />

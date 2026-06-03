@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { BookingLink } from "@/components/ui/BookingLink";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -62,10 +63,10 @@ function NavbarInner({ pathname }: { pathname: string }) {
 
         <div className="nav-right">
           <LanguageToggle />
-          <Link href="/contact" className="nav-cta">
+          <BookingLink className="nav-cta">
             <span>{t("nav.bookRitual")}</span>
             <span className="arrow">→</span>
-          </Link>
+          </BookingLink>
 
           <button
             type="button"
@@ -100,10 +101,13 @@ function NavbarInner({ pathname }: { pathname: string }) {
             {t(`nav.${key}`)}
           </Link>
         ))}
-        <Link href="/contact" className="nav-cta" onClick={() => setMenuOpen(false)}>
+        <BookingLink
+          className="nav-cta"
+          onClick={() => setMenuOpen(false)}
+        >
           <span>{t("nav.bookRitual")}</span>
           <span className="arrow">→</span>
-        </Link>
+        </BookingLink>
       </div>
     </>
   );

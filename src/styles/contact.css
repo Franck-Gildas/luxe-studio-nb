@@ -211,7 +211,11 @@
   color: var(--bone-mute);
 }
 
-/* Right column â€” form */
+/* Right column — form */
+#booking.form-frame {
+  scroll-margin-top: 96px;
+}
+
 .form-frame {
   background: var(--charcoal);
   border: 1px solid var(--hairline-soft);

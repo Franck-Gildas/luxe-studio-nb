@@ -1,8 +1,10 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { BookingLink } from "@/components/ui/BookingLink";
+import { RitualQuiz } from "@/components/ui/RitualQuiz";
 import "@/styles/home.css";
 
 const VIAL_PARTICLES = Array.from({ length: 12 }, (_, i) => ({
@@ -21,6 +23,7 @@ function handleNewsletterSubmit(e: React.FormEvent<HTMLFormElement>) {
 }
 
 export default function HomePage() {
+  const [quizOpen, setQuizOpen] = useState(false);
   const vialRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -156,11 +159,23 @@ export default function HomePage() {
               </p>
             </div>
 
-            <Link href="/contact" className="btn-gold">
+            <BookingLink className="btn-gold">
               <span className="en-only">Book Your Ritual</span>
               <span className="fr-block">Réservez votre rituel</span>
               <span className="arrow">→</span>
-            </Link>
+            </BookingLink>
+            <button
+              type="button"
+              className="quiz-trigger"
+              onClick={() => setQuizOpen(true)}
+            >
+              <span className="quiz-trigger-label">
+                Find My Ritual · Trouver mon rituel
+              </span>
+              <span className="quiz-trigger-arrow" aria-hidden>
+                →
+              </span>
+            </button>
           </div>
         </div>
 
@@ -387,6 +402,24 @@ export default function HomePage() {
             </article>
           </div>
         </div>
+      </section>
+
+      <section className="quiz-cta" data-screen-label="04b Ritual Quiz">
+        <h2>Not sure where to begin?</h2>
+        <p className="quiz-cta-sub">
+          Answer 5 questions and Élise will find your perfect ritual.
+        </p>
+        <span className="quiz-cta-fr">
+          Pas certain par où commencer? Répondez à 5 questions et Élise
+          trouvera votre rituel parfait.
+        </span>
+        <button
+          type="button"
+          className="btn-ghost"
+          onClick={() => setQuizOpen(true)}
+        >
+          Begin the Quiz / Commencer le quiz
+        </button>
       </section>
 
       <div className="hairline-gold" data-line />
@@ -808,11 +841,11 @@ export default function HomePage() {
           </span>
         </h2>
         <p><span className="en-only">Twelve guests per day · Douze invités par jour</span></p>
-        <Link href="/contact" className="btn-gold">
+        <BookingLink className="btn-gold">
           <span>Book Your Ritual</span>
           <span className="fr">Réservez votre rituel</span>
           <span className="arrow">→</span>
-        </Link>
+        </BookingLink>
       </section>
 
       {/* NEWSLETTER */}
@@ -832,6 +865,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <RitualQuiz open={quizOpen} onClose={() => setQuizOpen(false)} />
     </>
   );
 }

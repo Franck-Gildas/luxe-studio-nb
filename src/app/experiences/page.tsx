@@ -3,6 +3,7 @@
 import '@/styles/experiences.css'
 import Image from 'next/image'
 import Link from 'next/link'
+import { BookingLink } from '@/components/ui/BookingLink'
 
 export default function ExperiencesPage() {
   return (
@@ -216,10 +217,10 @@ export default function ExperiencesPage() {
                 <div className="amt"><span className="cur">CAD</span>185</div>
                 <p><span className="en-only">One signature service, by the artist of their choosing. A welcome, a robe, a quiet hour, the house élixir to take home.</span>
 <span className="fr-block">Un service signature, par l’artiste de son choix. Un accueil, un peignoir, une heure feutrée, l’élixir maison à emporter.</span></p>
-                <Link href="/contact" className="btn-ghost gc-back-cta">
+                <BookingLink className="btn-ghost gc-back-cta">
                   <span>Order a Card</span>
                   <span className="arrow" style={{ marginLeft: "8px" }}>→</span>
-                </Link>
+                </BookingLink>
               </div>
             </div>
           </article>
@@ -240,10 +241,10 @@ export default function ExperiencesPage() {
                 <div className="amt"><span className="cur">CAD</span>385</div>
                 <p><span className="en-only">Two services, paired by the house — hair &amp; lash, esthetics &amp; long bath. With a chilled bottle, on the marble side-table.</span>
 <span className="fr-block">Deux services, jumelés par la maison — cheveux et cils, esthétique et long bain. Avec une bouteille fraîche, sur la table d’appoint en marbre.</span></p>
-                <Link href="/contact" className="btn-ghost gc-back-cta">
+                <BookingLink className="btn-ghost gc-back-cta">
                   <span>Order a Card</span>
                   <span className="arrow" style={{ marginLeft: "8px" }}>→</span>
-                </Link>
+                </BookingLink>
               </div>
             </div>
           </article>
@@ -264,20 +265,20 @@ export default function ExperiencesPage() {
                 <div className="amt"><span className="cur">CAD</span>785</div>
                 <p><span className="en-only">The full house — every room visited, with a quiet lunch in between. Four artists, six hours, the brass door closed behind you.</span>
 <span className="fr-block">La maison au complet — chaque salle visitée, avec un déjeuner feutré entre les deux. Quatre artistes, six heures, la porte de laiton refermée derrière vous.</span></p>
-                <Link href="/contact" className="btn-ghost gc-back-cta">
+                <BookingLink className="btn-ghost gc-back-cta">
                   <span>Order a Card</span>
                   <span className="arrow" style={{ marginLeft: "8px" }}>→</span>
-                </Link>
+                </BookingLink>
               </div>
             </div>
           </article>
         </div>
 
         <div style={{ textAlign: 'center', marginTop: '56px' }}>
-          <Link href="/contact" className="btn-ghost">
+          <BookingLink className="btn-ghost">
             <span>Order a Card</span>
             <span className="arrow" style={{ marginLeft: '8px' }}>→</span>
-          </Link>
+          </BookingLink>
         </div>
       </section>
 
@@ -398,8 +399,8 @@ export default function ExperiencesPage() {
               <li>Hold the same hour, in the same chair</li>
             </ul>
             <div className="cta">
-              <Link href="/contact" className="btn-ghost">Join ·
-                S&apos;inscrire</Link>
+              <BookingLink className="btn-ghost">Join ·
+                S&apos;inscrire</BookingLink>
             </div>
           </div>
 
@@ -415,9 +416,9 @@ export default function ExperiencesPage() {
               <li>A linen pouch of essentials, posted each solstice</li>
             </ul>
             <div className="cta">
-              <Link href="/contact" className="btn-gold">
+              <BookingLink className="btn-gold">
                 Join · S&apos;inscrire <span className="arrow">→</span>
-              </Link>
+              </BookingLink>
             </div>
           </div>
 
@@ -433,8 +434,8 @@ export default function ExperiencesPage() {
               <li>Your own number at the chair — and at the door</li>
             </ul>
             <div className="cta">
-              <Link href="/contact" className="btn-ghost">Join ·
-                S&apos;inscrire</Link>
+              <BookingLink className="btn-ghost">Join ·
+                S&apos;inscrire</BookingLink>
             </div>
           </div>
         </div>
@@ -449,11 +450,11 @@ export default function ExperiencesPage() {
           </span>
           <span className="fr">Commencez votre rituel — à votre rythme.</span>
         </h2>
-        <Link href="/contact" className="btn-gold">
+        <BookingLink className="btn-gold">
           <span>Begin Your Ritual</span>
           <span className="fr">Commencez le rituel</span>
           <span className="arrow">→</span>
-        </Link>
+        </BookingLink>
       </section>
     </>
   )

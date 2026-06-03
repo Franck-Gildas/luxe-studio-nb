@@ -3,6 +3,7 @@
 import '@/styles/about.css'
 import Image from 'next/image'
 import Link from 'next/link'
+import { BookingLink } from '@/components/ui/BookingLink'
 
 export default function AboutPage() {
   return (
@@ -326,11 +327,11 @@ export default function AboutPage() {
               <div className="row"><span className="k">Sunday — Monday</span><span className="v">Closed · Fermé</span></div>
             </div>
 
-            <Link href="/contact" className="btn-gold">
+            <BookingLink className="btn-gold">
               <span>Visit the Atelier</span>
               <span className="fr">Visitez l&apos;atelier</span>
               <span className="arrow">→</span>
-            </Link>
+            </BookingLink>
           </div>
         </div>
       </section>

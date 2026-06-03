@@ -141,7 +141,7 @@
   height: 100%;
   overflow: hidden;
   background: transparent;
-  pointer-events: auto;
+  pointer-events: none;
   --mx: 0px;
   --my: 0px;
 }
@@ -379,7 +379,7 @@
 
 .atrium-bottom {
   position: relative;
-  z-index: 3;
+  z-index: 5;
   grid-row: 3;
   align-self: end;
   justify-self: center;
@@ -426,9 +426,75 @@
     0 2px 20px rgba(0, 0, 0, 0.8),
     0 0 40px rgba(0, 0, 0, 0.6);
 }
-.atrium-bottom .btn-gold {
+.atrium-bottom .btn-gold,
+.atrium-bottom .quiz-trigger {
+  position: relative;
+  z-index: 1;
   flex-shrink: 0;
+}
+
+.atrium-bottom .btn-gold {
   margin-top: 22px;
+}
+
+/* Hero quiz CTA — readable on dark atrium / vial glow */
+.atrium-bottom .quiz-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 16px;
+  padding: 16px 32px;
+  background: rgba(12, 10, 9, 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1.5px solid rgba(232, 201, 160, 0.5);
+  border-radius: 2px;
+  color: var(--champagne);
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  line-height: 1.45;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.65);
+  box-shadow:
+    inset 0 1px 0 rgba(232, 201, 160, 0.14),
+    0 10px 36px rgba(0, 0, 0, 0.5),
+    0 0 28px rgba(232, 201, 160, 0.08);
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s ease;
+}
+
+.atrium-bottom .quiz-trigger:hover {
+  background: rgba(22, 18, 16, 0.92);
+  border-color: var(--champagne);
+  color: var(--bone);
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(232, 201, 160, 0.22),
+    0 14px 44px rgba(0, 0, 0, 0.55),
+    0 0 40px rgba(232, 201, 160, 0.18);
+}
+
+.atrium-bottom .quiz-trigger:focus-visible {
+  outline: 2px solid var(--champagne);
+  outline-offset: 3px;
+}
+
+.atrium-bottom .quiz-trigger-arrow {
+  font-size: 14px;
+  color: var(--brass);
+  transition: color 0.3s ease, transform 0.35s ease;
+}
+
+.atrium-bottom .quiz-trigger:hover .quiz-trigger-arrow {
+  color: var(--champagne);
+  transform: translateX(3px);
 }
 
 .atrium-bottom > h1 .fr-block,
@@ -499,6 +565,7 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 4;
+  pointer-events: none;
   font-family: var(--mono);
   font-size: 9px;
   letter-spacing: 0.3em;
@@ -1297,9 +1364,18 @@
     max-width: 90%;
   }
 
-  .atrium-bottom .btn-gold {
+  .atrium-bottom .btn-gold,
+  .atrium-bottom .quiz-trigger {
     width: 100%;
+    max-width: 360px;
     justify-content: center;
+    text-align: center;
+  }
+
+  .atrium-bottom .quiz-trigger {
+    padding: 16px 20px;
+    font-size: 11px;
+    letter-spacing: 0.16em;
   }
 
   .invitation {

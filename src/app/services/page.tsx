@@ -3,6 +3,7 @@
 import '@/styles/services.css'
 import Image from 'next/image'
 import Link from 'next/link'
+import { BookingLink } from '@/components/ui/BookingLink'
 
 export default function ServicesPage() {
   return (
@@ -482,11 +483,11 @@ export default function ServicesPage() {
           </span>
           <span className="fr">La porte est ouverte — pour le menu que vous choisissez.</span>
         </h2>
-        <Link href="/contact" className="btn-gold">
+        <BookingLink className="btn-gold">
           <span>Book Your Ritual</span>
           <span className="fr">Réservez votre rituel</span>
           <span className="arrow">→</span>
-        </Link>
+        </BookingLink>
       </section>
     </>
   )

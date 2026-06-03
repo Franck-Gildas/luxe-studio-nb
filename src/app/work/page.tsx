@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import "@/styles/work.css";
 import Image from "next/image";
 import Link from "next/link";
+import { BookingLink } from "@/components/ui/BookingLink";
 
 type Category = "all" | "hair" | "barber" | "nail" | "lash" | "spa" | "face";
 type FilterCategory = Exclude<Category, "all">;
@@ -630,11 +631,11 @@ export default function WorkPage() {
           </span>
           <span className="fr">Le prochain fauteuil — peut-être le vôtre.</span>
         </h2>
-        <Link href="/contact" className="btn-gold">
+        <BookingLink className="btn-gold">
           <span>Explore the Rituals</span>
           <span className="fr">Explorer les rituels</span>
           <span className="arrow">→</span>
-        </Link>
+        </BookingLink>
       </section>
     </>
   );

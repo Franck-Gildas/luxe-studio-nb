@@ -40,7 +40,11 @@ export default function ContactPage() {
       </section>
 
       {/* FORM SECTION */}
-      <section className="contact-section" data-screen-label="02 Booking Form">
+      <section
+        id="booking-section"
+        className="contact-section"
+        data-screen-label="02 Booking Form"
+      >
         <div className="contact-grid">
           <aside className="sidebar" data-reveal-left>
             <div className="contact-map">

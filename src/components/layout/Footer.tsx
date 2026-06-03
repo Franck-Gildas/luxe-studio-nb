@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { BookingLink } from "@/components/ui/BookingLink";
 import { usePathname } from "next/navigation";
 import { useTranslation } from "react-i18next";
 
@@ -80,9 +81,9 @@ export function Footer() {
               <a href="mailto:hello@luxestudionb.com">hello@luxestudionb.com</a>
             </li>
             <li style={{ marginTop: 16 }}>
-              <Link href="/contact" className="footer-book">
+              <BookingLink className="footer-book">
                 {t("nav.bookRitual")} →
-              </Link>
+              </BookingLink>
             </li>
           </ul>
         </div>
