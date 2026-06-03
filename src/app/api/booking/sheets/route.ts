@@ -3,6 +3,8 @@ import {
   isValidSheetsBookingPayload,
 } from '@/lib/google-sheets'
 
+export const runtime = 'nodejs'
+
 export async function POST(request: Request) {
   try {
     const body: unknown = await request.json()

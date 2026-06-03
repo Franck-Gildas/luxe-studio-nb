@@ -62,13 +62,20 @@ export function payloadToSheetRow(data: SheetsBookingPayload): string[] {
   ]
 }
 
+export function normalizeGoogleSheetId(raw: string): string {
+  const trimmed = raw.trim()
+  const fromUrl = trimmed.match(/\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/)
+  if (fromUrl) return fromUrl[1]
+  return trimmed
+}
+
 function normalizePrivateKey(key: string): string {
-  const trimmed = key.trim()
+  let trimmed = key.trim()
   if (
     (trimmed.startsWith('"') && trimmed.endsWith('"')) ||
     (trimmed.startsWith("'") && trimmed.endsWith("'"))
   ) {
-    return trimmed.slice(1, -1).replace(/\\n/g, '\n')
+    trimmed = trimmed.slice(1, -1)
   }
   return trimmed.replace(/\\n/g, '\n')
 }
@@ -128,9 +135,19 @@ function formatAppendRange(tabName: string): string {
   return `${escapeSheetTabName(tabName)}!${VALUE_RANGE_COLUMNS}`
 }
 
+function sheetsAccessError(serviceEmail: string | undefined): string {
+  const shareTarget = serviceEmail ?? 'your service account email'
+  return (
+    `Cannot access spreadsheet. Verify GOOGLE_SHEET_ID (ID only, from the sheet URL between /d/ and /edit). ` +
+    `Share the sheet with ${shareTarget} as Editor — Google often returns 404 when the service account lacks access. ` +
+    `On Vercel/production, set GOOGLE_SHEET_ID, GOOGLE_SERVICE_ACCOUNT_EMAIL, and GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY in project Environment Variables (.env.local is not deployed).`
+  )
+}
+
 async function resolveAppendRange(
   sheetId: string,
   accessToken: string,
+  serviceEmail: string | undefined,
 ): Promise<string | AppendBookingRowResult> {
   const configuredTab = process.env.GOOGLE_SHEET_TAB_NAME?.trim()
   if (configuredTab) {
@@ -145,12 +162,7 @@ async function resolveAppendRange(
   if (!metaRes.ok) {
     const detail = await metaRes.text().catch(() => '')
     if (metaRes.status === 404) {
-      return {
-        ok: false,
-        error:
-          'Spreadsheet not found. Check GOOGLE_SHEET_ID (copy from the sheet URL) and share the sheet with your service account email as Editor.',
-        status: 404,
-      }
+      return { ok: false, error: sheetsAccessError(serviceEmail), status: 404 }
     }
     return {
       ok: false,
@@ -166,9 +178,13 @@ async function resolveAppendRange(
   return formatAppendRange(tabName)
 }
 
-function formatSheetsApiError(status: number, detail: string): string {
+function formatSheetsApiError(
+  status: number,
+  detail: string,
+  serviceEmail: string | undefined,
+): string {
   if (status === 404) {
-    return 'Spreadsheet or tab not found. Verify GOOGLE_SHEET_ID and GOOGLE_SHEET_TAB_NAME, and share the sheet with the service account.'
+    return sheetsAccessError(serviceEmail)
   }
   return detail || `Sheets API request failed (${status})`
 }
@@ -180,10 +196,11 @@ export type AppendBookingRowResult =
 export async function appendBookingRowToSheet(
   data: SheetsBookingPayload,
 ): Promise<AppendBookingRowResult> {
-  const sheetId = process.env.GOOGLE_SHEET_ID?.trim()
-  if (!sheetId) {
+  const rawSheetId = process.env.GOOGLE_SHEET_ID?.trim()
+  if (!rawSheetId) {
     return { ok: false, error: 'GOOGLE_SHEET_ID is not configured', status: 500 }
   }
+  const sheetId = normalizeGoogleSheetId(rawSheetId)
 
   const serviceEmail = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL?.trim()
   const serviceKey = process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY?.trim()
@@ -218,7 +235,7 @@ export async function appendBookingRowToSheet(
     }
   }
 
-  const appendRange = await resolveAppendRange(sheetId, accessToken)
+  const appendRange = await resolveAppendRange(sheetId, accessToken, serviceEmail)
   if (typeof appendRange !== 'string') {
     return appendRange
   }
@@ -241,7 +258,7 @@ export async function appendBookingRowToSheet(
     const detail = await res.text().catch(() => '')
     return {
       ok: false,
-      error: formatSheetsApiError(res.status, detail),
+      error: formatSheetsApiError(res.status, detail, serviceEmail),
       status: res.status,
     }
   }
