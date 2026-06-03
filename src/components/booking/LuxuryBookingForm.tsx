@@ -20,6 +20,7 @@ import {
   getFormspreeEndpoint,
   getServiceById,
   isValidEmail,
+  sendBookingConfirmationEmail,
 } from '@/lib/booking'
 
 type SubmitState = 'idle' | 'submitting' | 'success' | 'error'
@@ -168,6 +169,26 @@ export function LuxuryBookingForm() {
       if (!res.ok) {
         const data = (await res.json().catch(() => null)) as { error?: string } | null
         throw new Error(data?.error ?? 'Submission failed. Please try again.')
+      }
+
+      try {
+        await sendBookingConfirmationEmail({
+          clientName: name.trim(),
+          email: email.trim(),
+          service: selectedService
+            ? `${selectedService.nameEn} — ${formatPrice(selectedService.price)}`
+            : '',
+          addons:
+            selectedAddons.length > 0
+              ? selectedAddons.map((a) => a.nameEn).join(', ')
+              : 'None',
+          total: formatPrice(total),
+          artist: selectedArtist.name,
+          appointmentDate: formatAppointmentDate(selectedDate),
+          appointmentTime: selectedTime ?? '',
+        })
+      } catch (err) {
+        console.error('Booking confirmation email failed:', err)
       }
 
       setSubmitState('success')

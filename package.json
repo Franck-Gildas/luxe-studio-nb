@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.100.0",
+    "@emailjs/browser": "^4.4.1",
     "@formspree/react": "^3.0.0",
     "@gsap/react": "^2.1.2",
     "@react-three/drei": "^10.7.7",

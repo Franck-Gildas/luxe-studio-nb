@@ -27,6 +27,56 @@ export function getFormspreeEndpoint(): string {
   return `https://formspree.io/f/${id}`
 }
 
+export type EmailJsConfig = {
+  serviceId: string
+  templateId: string
+  publicKey: string
+}
+
+export type BookingConfirmationEmailParams = {
+  clientName: string
+  email: string
+  service: string
+  addons: string
+  total: string
+  artist: string
+  appointmentDate: string
+  appointmentTime: string
+}
+
+export function getEmailJsConfig(): EmailJsConfig | null {
+  const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
+  const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
+  const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+  if (!serviceId || !templateId || !publicKey) return null
+  return { serviceId, templateId, publicKey }
+}
+
+export async function sendBookingConfirmationEmail(
+  params: BookingConfirmationEmailParams,
+): Promise<void> {
+  const config = getEmailJsConfig()
+  if (!config) return
+
+  const emailjs = await import('@emailjs/browser')
+
+  await emailjs.send(
+    config.serviceId,
+    config.templateId,
+    {
+      client_name: params.clientName,
+      email: params.email,
+      service: params.service,
+      addons: params.addons,
+      total: params.total,
+      artist: params.artist,
+      appointment_date: params.appointmentDate,
+      appointment_time: params.appointmentTime,
+    },
+    { publicKey: config.publicKey },
+  )
+}
+
 export function formatPrice(amount: number): string {
   return `$${amount}`
 }
