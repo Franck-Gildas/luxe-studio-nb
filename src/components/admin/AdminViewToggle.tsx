@@ -34,7 +34,7 @@ export function AdminViewToggle({ view, onChange }: Props) {
         onClick={() => onChange('table')}
       >
         <IconTable size={16} />
-        <span>Table</span>
+        <span className="admin-view-toggle-label">Table</span>
       </button>
       <button
         type="button"
@@ -44,7 +44,7 @@ export function AdminViewToggle({ view, onChange }: Props) {
         onClick={() => onChange('calendar')}
       >
         <IconCalendar size={16} />
-        <span>Calendar</span>
+        <span className="admin-view-toggle-label">Calendar</span>
       </button>
     </div>
   )

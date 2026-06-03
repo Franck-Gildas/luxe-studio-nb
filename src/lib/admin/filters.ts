@@ -1,3 +1,4 @@
+import { BOOKING_SERVICES } from '@/data/booking'
 import type { Lead, LeadFilters, SummaryStats } from '@/lib/admin/types'
 import { parseTotal } from '@/lib/admin/parse-total'
 
@@ -113,14 +114,19 @@ export function computeSummaryStats(leads: Lead[]): SummaryStats {
 }
 
 export function getUniqueServices(leads: Lead[]): string[] {
-  const set = new Set<string>()
+  const names = BOOKING_SERVICES.map((s) => s.nameEn)
+  const catalogLower = names.map((n) => n.toLowerCase())
+
   for (const lead of leads) {
-    if (lead.service) {
-      const name = lead.service.split('—')[0]?.split(' - ')[0]?.trim() ?? lead.service
-      set.add(name)
+    if (!lead.service) continue
+    const name = lead.service.split('—')[0]?.split(' - ')[0]?.trim() ?? lead.service
+    const known = catalogLower.some((catalog) => name.toLowerCase().includes(catalog))
+    if (!known && !names.includes(name)) {
+      names.push(name)
     }
   }
-  return Array.from(set).sort()
+
+  return names
 }
 
 export function getUniqueArtists(leads: Lead[]): string[] {
