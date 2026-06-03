@@ -21,6 +21,7 @@ import {
   getServiceById,
   isValidEmail,
   sendBookingConfirmationEmail,
+  sendToGoogleSheets,
 } from '@/lib/booking'
 
 type SubmitState = 'idle' | 'submitting' | 'success' | 'error'
@@ -190,6 +191,28 @@ export function LuxuryBookingForm() {
       } catch (err) {
         console.error('Booking confirmation email failed:', err)
       }
+
+      await sendToGoogleSheets({
+        date: new Date().toISOString(),
+        name: name.trim(),
+        email: email.trim(),
+        phone: phone.trim() || 'Not provided',
+        service: selectedService
+          ? `${selectedService.nameEn} — ${formatPrice(selectedService.price)}`
+          : '',
+        addons:
+          selectedAddons.length > 0
+            ? selectedAddons.map((a) => a.nameEn).join(', ')
+            : 'None',
+        total: formatPrice(total),
+        artist: selectedArtist.name,
+        appointment_date: formatAppointmentDate(selectedDate),
+        appointment_time: selectedTime ?? '',
+        first_visit: firstVisit === 'yes' ? 'Yes' : 'No',
+        how_heard: howHeard,
+        notes: notes.trim() || 'None',
+        status: 'New',
+      })
 
       setSubmitState('success')
     } catch (err) {

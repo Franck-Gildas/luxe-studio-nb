@@ -179,3 +179,26 @@ export function formatAppointmentDate(date: Date | null): string {
 export function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())
 }
+
+import type { SheetsBookingPayload } from '@/lib/google-sheets'
+
+export type { SheetsBookingPayload } from '@/lib/google-sheets'
+
+export async function sendToGoogleSheets(data: SheetsBookingPayload): Promise<void> {
+  try {
+    const res = await fetch('/api/booking/sheets', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    })
+    if (!res.ok) {
+      console.error(
+        'Google Sheets logging failed:',
+        res.status,
+        await res.text().catch(() => ''),
+      )
+    }
+  } catch (err) {
+    console.error('Google Sheets logging error:', err)
+  }
+}
