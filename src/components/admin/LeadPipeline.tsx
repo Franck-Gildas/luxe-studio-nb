@@ -44,7 +44,7 @@ export function LeadPipeline({ leads, onStatusChange, onViewLead }: Props) {
   }
 
   return (
-    <section className="admin-pipeline admin-animate-in admin-animate-in--4">
+    <section className="admin-pipeline admin-animate-in admin-animate-in--5">
       <h2 className="admin-section-title">Lead Pipeline</h2>
       <div className="admin-pipeline-scroll">
         {STATUS_PIPELINE.map((status) => {

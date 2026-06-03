@@ -7,6 +7,7 @@ import { EMPTY_FILTERS } from '@/lib/admin/types'
 import { AdminAuthGuard } from '@/components/admin/AdminAuthGuard'
 import { AdminHeader } from '@/components/admin/AdminHeader'
 import { SummaryCards } from '@/components/admin/SummaryCards'
+import { MarketingInsights } from '@/components/admin/MarketingInsights'
 import { FilterBar } from '@/components/admin/FilterBar'
 import { LeadPipeline } from '@/components/admin/LeadPipeline'
 import { LeadsTable } from '@/components/admin/LeadsTable'
@@ -170,6 +171,8 @@ export default function AdminDashboardPage() {
         {!loading && !error && (
           <>
             <SummaryCards stats={stats} />
+
+            <MarketingInsights bookings={leads} />
 
             <hr className="admin-divider" aria-hidden />
 

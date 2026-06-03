@@ -161,6 +161,7 @@ export const PRONOUN_OPTIONS = [
 
 export const HEARD_OPTIONS = [
   'Instagram',
+  'Facebook',
   'Google',
   'Friend referral',
   'Walk by',

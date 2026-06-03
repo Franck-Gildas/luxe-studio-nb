@@ -47,7 +47,7 @@ export function FilterBar({
   }
 
   return (
-    <section className={`admin-filters-wrap admin-animate-in admin-animate-in--3${open ? ' admin-filters-wrap--open' : ''}`}>
+    <section className={`admin-filters-wrap admin-animate-in admin-animate-in--4${open ? ' admin-filters-wrap--open' : ''}`}>
       <button
         type="button"
         className="admin-filters-toggle"
