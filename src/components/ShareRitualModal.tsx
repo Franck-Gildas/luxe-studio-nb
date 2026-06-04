@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import "@/styles/share-ritual.css";
-import { SharePlatformIcon, SHARE_PLATFORMS } from "@/components/SharePlatformIcon";
 import {
   getDisplayDescription,
   getDisplayName,
@@ -12,10 +11,7 @@ import {
 } from "@/data/services-menu";
 import { useLang } from "@/lib/LanguageContext";
 import { generateServiceCard } from "@/lib/generateServiceCard";
-import {
-  shareToPlatform,
-  type SharePlatform,
-} from "@/lib/share-ritual";
+import { shareRitualCard } from "@/lib/share-ritual";
 
 type ShareRitualModalProps = {
   open: boolean;
@@ -33,10 +29,7 @@ export default function ShareRitualModal({
   const { lang } = useLang();
   const sourceCanvasRef = useRef<HTMLCanvasElement | null>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
-  const [generating, setGenerating] = useState(false);
-  const [sharing, setSharing] = useState<SharePlatform | "download" | null>(
-    null
-  );
+  const [busy, setBusy] = useState(false);
   const [toast, setToast] = useState<ToastKind>(null);
   const [mounted, setMounted] = useState(false);
 
@@ -90,7 +83,7 @@ export default function ShareRitualModal({
       });
     }
 
-    setGenerating(true);
+    setBusy(true);
     try {
       const name = getDisplayName(service, lang);
       const desc = getDisplayDescription(service, lang);
@@ -110,13 +103,35 @@ export default function ShareRitualModal({
       console.error("Failed to generate service card:", err);
       return null;
     } finally {
-      setGenerating(false);
+      setBusy(false);
     }
   }, [service, lang]);
 
+  const handleShare = useCallback(async () => {
+    if (!service) return;
+    setBusy(true);
+    try {
+      const blob = await ensureCard();
+      if (!blob) {
+        setToast("fail");
+        return;
+      }
+      const result = await shareRitualCard(blob, service.serviceId);
+      if (result === "clipboard") {
+        setToast("copied");
+      } else if (result === "failed") {
+        setToast("fail");
+      } else if (result === "shared") {
+        onClose();
+      }
+    } finally {
+      setBusy(false);
+    }
+  }, [ensureCard, service, onClose]);
+
   const handleDownload = useCallback(async () => {
     if (!service) return;
-    setSharing("download");
+    setBusy(true);
     try {
       const blob = await ensureCard();
       if (!blob) {
@@ -130,40 +145,12 @@ export default function ShareRitualModal({
       a.click();
       URL.revokeObjectURL(url);
     } finally {
-      setSharing(null);
+      setBusy(false);
     }
   }, [ensureCard, service]);
 
-  const handlePlatformShare = useCallback(
-    async (platform: SharePlatform) => {
-      if (!service) return;
-      setSharing(platform);
-      try {
-        const blob = await ensureCard();
-        if (!blob) {
-          setToast("fail");
-          return;
-        }
-        const result = await shareToPlatform(
-          platform,
-          blob,
-          service.serviceId
-        );
-        if (result === "clipboard") {
-          setToast("copied");
-        } else if (result === "failed") {
-          setToast("fail");
-        }
-      } finally {
-        setSharing(null);
-      }
-    },
-    [ensureCard, service]
-  );
-
   if (!mounted || !open || !service) return null;
 
-  const busy = generating || sharing !== null;
   const displayName = getDisplayName(service, lang);
 
   return createPortal(
@@ -198,49 +185,42 @@ export default function ShareRitualModal({
             <p className="share-ritual-service-name">{displayName}</p>
           </header>
 
-          <div className="share-ritual-share-to">
-            <h3 className="share-ritual-share-to-label">
-              <span className="en-only">Share To</span>
-              <span className="fr-block">Partager sur</span>
-            </h3>
-            {generating && !sharing && (
-              <p className="share-ritual-loading" aria-live="polite">
-                <span className="en-only">Preparing your card…</span>
-                <span className="fr-block">Préparation de votre carte…</span>
-              </p>
-            )}
-            <div
-              className="share-ritual-platform-grid"
-              role="group"
-              aria-label="Share to platform"
+          {busy && (
+            <p className="share-ritual-loading" aria-live="polite">
+              <span className="en-only">Preparing your card…</span>
+              <span className="fr-block">Préparation de votre carte…</span>
+            </p>
+          )}
+
+          <div className="share-ritual-actions">
+            <button
+              type="button"
+              className="share-ritual-action share-ritual-action--primary"
+              disabled={busy}
+              onClick={() => void handleShare()}
             >
-              {SHARE_PLATFORMS.map(({ id, label }) => (
-                <button
-                  key={id}
-                  type="button"
-                  className="share-ritual-platform-btn"
-                  disabled={busy}
-                  aria-busy={sharing === id}
-                  onClick={() => void handlePlatformShare(id)}
-                >
-                  <span className="share-ritual-platform-icon">
-                    <SharePlatformIcon platform={id} />
-                  </span>
-                  <span className="share-ritual-platform-name">{label}</span>
-                </button>
-              ))}
-            </div>
+              <span className="en-only">Share</span>
+              <span className="fr-block">Partager</span>
+            </button>
+            <button
+              type="button"
+              className="share-ritual-action"
+              disabled={busy}
+              onClick={() => void handleDownload()}
+            >
+              <span className="en-only">Download Card</span>
+              <span className="fr-block">Télécharger la carte</span>
+            </button>
           </div>
 
-          <button
-            type="button"
-            className="share-ritual-download-link"
-            disabled={busy}
-            onClick={() => void handleDownload()}
-          >
-            <span className="en-only">Download card image</span>
-            <span className="fr-block">Télécharger l&apos;image</span>
-          </button>
+          <p className="share-ritual-hint">
+            <span className="en-only">
+              Share opens your device&apos;s apps — Messages, Instagram, and more.
+            </span>
+            <span className="fr-block">
+              Partager ouvre les applications de votre appareil — Messages, Instagram, et plus.
+            </span>
+          </p>
         </div>
       </div>
       {toast === "copied" && (
@@ -256,10 +236,10 @@ export default function ShareRitualModal({
       {toast === "fail" && (
         <div className="share-ritual-toast" role="status" aria-live="polite">
           <span className="en-only">
-            Could not share — try Download card image
+            Could not share — try Download Card instead
           </span>
           <span className="fr-block">
-            Partage impossible — essayez Télécharger l&apos;image
+            Partage impossible — essayez Télécharger la carte
           </span>
         </div>
       )}

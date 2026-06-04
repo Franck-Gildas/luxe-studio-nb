@@ -112,93 +112,50 @@
   margin: 0 0 12px;
 }
 
-.share-ritual-share-to {
+.share-ritual-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   width: 100%;
 }
 
-.share-ritual-share-to-label {
+.share-ritual-hint {
+  font-family: var(--sans);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--bone-mute);
+  text-align: center;
+  margin: 0;
+}
+
+.share-ritual-action {
   font-family: var(--mono);
   font-size: 10px;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--brass);
-  text-align: center;
-  margin: 0 0 16px;
-  font-weight: 400;
-}
-
-.share-ritual-platform-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-}
-
-.share-ritual-platform-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  min-height: 72px;
-  padding: 12px 8px;
+  padding: 14px 24px;
   border: 1px solid var(--champagne);
   background: transparent;
   color: var(--champagne);
   cursor: pointer;
-  border-radius: 2px;
   transition:
     box-shadow 0.25s ease,
-    color 0.25s ease,
-    background 0.25s ease;
+    background 0.25s ease,
+    color 0.25s ease;
 }
 
-.share-ritual-platform-btn:hover:not(:disabled) {
+.share-ritual-action:hover:not(:disabled) {
   color: var(--bone);
-  background: rgba(201, 169, 110, 0.06);
-  box-shadow: 0 0 12px rgba(232, 201, 160, 0.28);
+  box-shadow: 0 0 16px rgba(232, 201, 160, 0.35);
 }
 
-.share-ritual-platform-btn:disabled {
-  opacity: 0.45;
+.share-ritual-action:disabled {
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
-.share-ritual-platform-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 0;
-}
-
-.share-ritual-platform-name {
-  font-family: var(--sans);
-  font-size: 11px;
-  letter-spacing: 0.02em;
-  text-align: center;
-  line-height: 1.2;
-}
-
-.share-ritual-download-link {
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--bone-mute);
-  background: none;
-  border: none;
-  padding: 8px;
-  cursor: pointer;
-  text-align: center;
-  transition: color 0.2s ease;
-}
-
-.share-ritual-download-link:hover:not(:disabled) {
-  color: var(--champagne);
-}
-
-.share-ritual-download-link:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
+.share-ritual-action--primary {
+  background: rgba(201, 169, 110, 0.12);
 }
 
 .share-ritual-toast {
@@ -225,11 +182,8 @@
     padding: 32px 20px 24px;
   }
 
-  .share-ritual-platform-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .share-ritual-platform-name {
-    font-size: 10px;
+  .share-ritual-action {
+    width: 100%;
+    text-align: center;
   }
 }
