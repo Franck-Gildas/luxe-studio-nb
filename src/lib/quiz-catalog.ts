@@ -30,6 +30,11 @@ export const ADDON_PRICES: Record<string, number> = {
   Aromatherapy: 15,
   "House Élixir treatment": 45,
   "Extended consultation": 25,
+  "Soin du cuir chevelu": 30,
+  "Teinture des sourcils": 20,
+  Aromathérapie: 15,
+  "Traitement Élixir maison": 45,
+  "Consultation prolongée": 25,
 };
 
 const SERVICE_IDS: ServiceId[] = [

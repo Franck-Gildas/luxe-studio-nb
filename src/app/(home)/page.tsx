@@ -170,7 +170,8 @@ export default function HomePage() {
               onClick={() => setQuizOpen(true)}
             >
               <span className="quiz-trigger-label">
-                Find My Ritual · Trouver mon rituel
+                <span className="en-only">Find My Ritual</span>
+                <span className="fr-block">Trouver mon rituel</span>
               </span>
               <span className="quiz-trigger-arrow" aria-hidden>
                 →
@@ -405,20 +406,25 @@ export default function HomePage() {
       </section>
 
       <section className="quiz-cta" data-screen-label="04b Ritual Quiz">
-        <h2>Not sure where to begin?</h2>
+        <h2>
+          <span className="en-only">Not sure where to begin?</span>
+          <span className="fr-block">Pas certain par où commencer?</span>
+        </h2>
         <p className="quiz-cta-sub">
-          Answer 5 questions and Élise will find your perfect ritual.
+          <span className="en-only">
+            Answer 5 questions and Élise will find your perfect ritual.
+          </span>
+          <span className="fr-block">
+            Répondez à 5 questions et Élise trouvera votre rituel parfait.
+          </span>
         </p>
-        <span className="quiz-cta-fr">
-          Pas certain par où commencer? Répondez à 5 questions et Élise
-          trouvera votre rituel parfait.
-        </span>
         <button
           type="button"
           className="btn-ghost"
           onClick={() => setQuizOpen(true)}
         >
-          Begin the Quiz / Commencer le quiz
+          <span className="en-only">Begin the Quiz</span>
+          <span className="fr-block">Commencer le quiz</span>
         </button>
       </section>
 

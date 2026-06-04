@@ -3,7 +3,12 @@ import {
   isServiceId,
   type QuizRecommendation,
 } from "@/lib/quiz-catalog";
-import { QUIZ_SYSTEM_PROMPT } from "@/lib/quiz-system-prompt";
+import type { QuizLang } from "@/lib/quiz-content";
+import { getQuizSystemPrompt } from "@/lib/quiz-system-prompt";
+
+function isValidLang(lang: unknown): lang is QuizLang {
+  return lang === "en" || lang === "fr";
+}
 
 function isValidAnswers(answers: unknown): answers is string[] {
   return (
@@ -59,7 +64,8 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json();
-    const { answers } = body;
+    const { answers, lang: rawLang } = body;
+    const lang: QuizLang = isValidLang(rawLang) ? rawLang : "en";
 
     if (!isValidAnswers(answers)) {
       return Response.json(
@@ -77,7 +83,7 @@ export async function POST(request: Request) {
     const response = await client.messages.create({
       model: "claude-sonnet-4-20250514",
       max_tokens: 512,
-      system: QUIZ_SYSTEM_PROMPT,
+      system: getQuizSystemPrompt(lang),
       messages: [{ role: "user", content: userMessage }],
     });
 

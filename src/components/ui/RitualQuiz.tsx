@@ -8,68 +8,39 @@ import {
   getAddonPrice,
   type QuizRecommendation,
 } from "@/lib/quiz-catalog";
+import {
+  QUIZ_QUESTIONS,
+  QUIZ_UI,
+  TOTAL_QUIZ_QUESTIONS,
+  type QuizLang,
+} from "@/lib/quiz-content";
+import { useLang } from "@/lib/LanguageContext";
 import "@/styles/quiz.css";
 
-const QUESTIONS = [
-  {
-    question: "What brings you to Luxe Studio today?",
-    answers: [
-      "I need a hair transformation",
-      "I want to look after my skin",
-      "I need to unwind and reset",
-      "I want to look groomed and sharp",
-    ],
-  },
-  {
-    question: "How would you describe your main concern?",
-    answers: [
-      "Hair damage, colour, or growth",
-      "Skin texture, tone, or aging",
-      "Stress, tension, or fatigue",
-      "Brows, lashes, or nails",
-    ],
-  },
-  {
-    question: "How much time can you dedicate to yourself?",
-    answers: [
-      "1 hour — a focused treatment",
-      "1.5 to 2 hours — a proper ritual",
-      "2+ hours — the full experience",
-      "Surprise me — I trust your judgment",
-    ],
-  },
-  {
-    question: "What matters most to your experience?",
-    answers: [
-      "Results I can see immediately",
-      "Deep relaxation and calm",
-      "A complete transformation",
-      "Feeling put-together and confident",
-    ],
-  },
-  {
-    question: "Is this your first visit to Luxe Studio?",
-    answers: [
-      "Yes — I want to start gently",
-      "No — I know what I love",
-      "No — but I want to try something new",
-      "I'm not sure yet",
-    ],
-  },
-] as const;
-
-const TOTAL_QUESTIONS = QUESTIONS.length;
+const EMPTY_ANSWERS = Array<number | null>(TOTAL_QUIZ_QUESTIONS).fill(null);
 
 type RitualQuizProps = {
   open: boolean;
   onClose: () => void;
 };
 
+function answersToStrings(
+  indices: (number | null)[],
+  lang: QuizLang
+): string[] {
+  return indices.map((index, i) => {
+    if (index === null) return "";
+    return QUIZ_QUESTIONS[lang][i].answers[index] ?? "";
+  });
+}
+
 export function RitualQuiz({ open, onClose }: RitualQuizProps) {
+  const { lang } = useLang();
+  const ui = QUIZ_UI[lang];
+  const questions = QUIZ_QUESTIONS[lang];
+
   const [step, setStep] = useState(0);
-  const [answers, setAnswers] = useState<string[]>(
-    Array(TOTAL_QUESTIONS).fill("")
-  );
+  const [answers, setAnswers] = useState<(number | null)[]>([...EMPTY_ANSWERS]);
   const [direction, setDirection] = useState<1 | -1>(1);
   const [recommendation, setRecommendation] =
     useState<QuizRecommendation | null>(null);
@@ -82,35 +53,40 @@ export function RitualQuiz({ open, onClose }: RitualQuizProps) {
   const isError = error !== null && !loading;
   const isQuestion = !isLoading && !isResult && !isError;
 
-  const fetchRecommendation = useCallback(async (finalAnswers: string[]) => {
-    setLoading(true);
-    setError(null);
+  const fetchRecommendation = useCallback(
+    async (finalIndices: (number | null)[], quizLang: QuizLang) => {
+      setLoading(true);
+      setError(null);
 
-    try {
-      const res = await fetch("/api/quiz", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ answers: finalAnswers }),
-      });
+      const finalAnswers = answersToStrings(finalIndices, quizLang);
 
-      const data = await res.json();
+      try {
+        const res = await fetch("/api/quiz", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ answers: finalAnswers, lang: quizLang }),
+        });
 
-      if (!res.ok || !data.recommendation) {
-        setError(
-          typeof data.error === "string"
-            ? data.error
-            : "Élise could not prepare your ritual just now."
-        );
-        return;
+        const data = await res.json();
+
+        if (!res.ok || !data.recommendation) {
+          setError(
+            typeof data.error === "string"
+              ? data.error
+              : QUIZ_UI[quizLang].errorDefault
+          );
+          return;
+        }
+
+        setRecommendation(data.recommendation as QuizRecommendation);
+      } catch {
+        setError(QUIZ_UI[quizLang].errorDefault);
+      } finally {
+        setLoading(false);
       }
-
-      setRecommendation(data.recommendation as QuizRecommendation);
-    } catch {
-      setError("Élise could not prepare your ritual just now.");
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+    },
+    []
+  );
 
   useEffect(() => {
     if (!open) return;
@@ -136,7 +112,7 @@ export function RitualQuiz({ open, onClose }: RitualQuizProps) {
 
   const resetQuiz = () => {
     setStep(0);
-    setAnswers(Array(TOTAL_QUESTIONS).fill(""));
+    setAnswers([...EMPTY_ANSWERS]);
     setRecommendation(null);
     setError(null);
     setLoading(false);
@@ -148,26 +124,26 @@ export function RitualQuiz({ open, onClose }: RitualQuizProps) {
     onClose();
   };
 
-  const handleSelect = (answer: string) => {
+  const handleSelect = (index: number) => {
     setAnswers((prev) => {
       const next = [...prev];
-      next[step] = answer;
+      next[step] = index;
       return next;
     });
   };
 
   const handleNext = () => {
-    if (!answers[step]) return;
+    if (answers[step] === null) return;
 
-    if (step < TOTAL_QUESTIONS - 1) {
+    if (step < TOTAL_QUIZ_QUESTIONS - 1) {
       setDirection(1);
       setStep((s) => s + 1);
       return;
     }
 
     setDirection(1);
-    setStep(TOTAL_QUESTIONS);
-    void fetchRecommendation(answers);
+    setStep(TOTAL_QUIZ_QUESTIONS);
+    void fetchRecommendation(answers, lang);
   };
 
   const handleBack = () => {
@@ -179,19 +155,21 @@ export function RitualQuiz({ open, onClose }: RitualQuizProps) {
   const handleRetry = () => {
     setError(null);
     setRecommendation(null);
-    setStep(TOTAL_QUESTIONS);
-    void fetchRecommendation(answers);
+    setStep(TOTAL_QUIZ_QUESTIONS);
+    void fetchRecommendation(answers, lang);
   };
 
   if (!open) return null;
 
   const progressPct = isQuestion
-    ? ((step + 1) / TOTAL_QUESTIONS) * 100
+    ? ((step + 1) / TOTAL_QUIZ_QUESTIONS) * 100
     : 100;
 
   const total =
     recommendation &&
     calculateTotal(recommendation.serviceId, recommendation.addons);
+
+  const selectedIndex = answers[step];
 
   return createPortal(
     <div
@@ -209,7 +187,7 @@ export function RitualQuiz({ open, onClose }: RitualQuizProps) {
         <button
           type="button"
           className="quiz-close"
-          aria-label="Close quiz"
+          aria-label={ui.close}
           onClick={handleClose}
         >
           ✕
@@ -219,10 +197,10 @@ export function RitualQuiz({ open, onClose }: RitualQuizProps) {
           <div className="quiz-head">
             <div className="quiz-advisor">
               <span className="dot" aria-hidden />
-              Élise — Ritual Advisor
+              {ui.advisor}
             </div>
             <div className="quiz-progress-label">
-              Question {step + 1}/{TOTAL_QUESTIONS}
+              {ui.questionLabel(step + 1, TOTAL_QUIZ_QUESTIONS)}
             </div>
             <div className="quiz-progress-track">
               <div
@@ -240,15 +218,15 @@ export function RitualQuiz({ open, onClose }: RitualQuizProps) {
               className={`quiz-question-wrap ${direction === 1 ? "forward" : "backward"}`}
             >
               <h2 id="quiz-title" className="quiz-question">
-                {QUESTIONS[step].question}
+                {questions[step].question}
               </h2>
               <div className="quiz-answers">
-                {QUESTIONS[step].answers.map((answer) => (
+                {questions[step].answers.map((answer, index) => (
                   <button
-                    key={answer}
+                    key={index}
                     type="button"
-                    className={`quiz-answer${answers[step] === answer ? " selected" : ""}`}
-                    onClick={() => handleSelect(answer)}
+                    className={`quiz-answer${selectedIndex === index ? " selected" : ""}`}
+                    onClick={() => handleSelect(index)}
                   >
                     {answer}
                   </button>
@@ -260,12 +238,8 @@ export function RitualQuiz({ open, onClose }: RitualQuizProps) {
           {isLoading && (
             <div className="quiz-loading" aria-live="polite">
               <span className="quiz-elise-dot" aria-hidden />
-              <p className="quiz-loading-text">
-                Élise is composing your ritual…
-              </p>
-              <p className="quiz-loading-sub">
-                Un instant, s&apos;il vous plaît
-              </p>
+              <p className="quiz-loading-text">{ui.loadingMain}</p>
+              <p className="quiz-loading-sub">{ui.loadingSub}</p>
             </div>
           )}
 
@@ -277,7 +251,7 @@ export function RitualQuiz({ open, onClose }: RitualQuizProps) {
                 className="quiz-retry"
                 onClick={handleRetry}
               >
-                Try again
+                {ui.tryAgain}
               </button>
             </div>
           )}
@@ -292,16 +266,14 @@ export function RitualQuiz({ open, onClose }: RitualQuizProps) {
 
               {recommendation.addons.length > 0 && (
                 <div className="quiz-addons">
-                  <h4>Recommended add-ons</h4>
+                  <h4>{ui.addonsHeading}</h4>
                   <ul>
                     {recommendation.addons.map((addon) => {
                       const price = getAddonPrice(addon);
                       return (
                         <li key={addon}>
                           <span>{addon}</span>
-                          <span>
-                            {price > 0 ? `+$${price}` : ""}
-                          </span>
+                          <span>{price > 0 ? `+$${price}` : ""}</span>
                         </li>
                       );
                     })}
@@ -313,7 +285,7 @@ export function RitualQuiz({ open, onClose }: RitualQuizProps) {
               )}
 
               <div className="quiz-total">
-                <span className="quiz-total-label">Estimated total</span>
+                <span className="quiz-total-label">{ui.estimatedTotal}</span>
                 <span className="quiz-total-amount">${total}</span>
               </div>
 
@@ -328,7 +300,7 @@ export function RitualQuiz({ open, onClose }: RitualQuizProps) {
                   className="quiz-retake"
                   onClick={resetQuiz}
                 >
-                  Retake Quiz / Recommencer
+                  {ui.retake}
                 </button>
               </div>
             </div>
@@ -342,15 +314,15 @@ export function RitualQuiz({ open, onClose }: RitualQuizProps) {
               className={`quiz-nav-back${step === 0 ? " invisible" : ""}`}
               onClick={handleBack}
             >
-              Back
+              {ui.back}
             </button>
             <button
               type="button"
               className="quiz-nav-next"
-              disabled={!answers[step]}
+              disabled={selectedIndex === null}
               onClick={handleNext}
             >
-              {step === TOTAL_QUESTIONS - 1 ? "Reveal" : "Next"}
+              {step === TOTAL_QUIZ_QUESTIONS - 1 ? ui.reveal : ui.next}
             </button>
           </div>
         )}
