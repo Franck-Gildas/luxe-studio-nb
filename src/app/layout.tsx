@@ -1,4 +1,6 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import {
   Bodoni_Moda,
   Cormorant_Garamond,
@@ -110,6 +112,8 @@ export default function RootLayout({
             <AdminAwareShell>{children}</AdminAwareShell>
           </I18nProvider>
         </LanguageProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
