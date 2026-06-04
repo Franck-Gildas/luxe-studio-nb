@@ -110,36 +110,66 @@
   display: flex;
   flex-direction: column;
   min-height: min(78vh, 820px);
+  isolation: isolate;
 }
 
 .copy-ritual-spine {
   position: relative;
-  flex: 1 1 auto;
+  flex: 0 0 auto;
   display: flex;
-  flex-direction: row-reverse;
   align-items: stretch;
-  justify-content: flex-end;
-  gap: 18px;
-  margin: 24px 0 28px;
-  margin-left: auto;
-  margin-right: 0;
-  min-height: 220px;
-  max-width: 58%;
+  gap: 14px;
+  width: 88px;
+  height: 240px;
+  margin: 24px 0 20px;
+  overflow: hidden;
+  contain: layout paint;
   opacity: 0;
   pointer-events: none;
 }
 
+/* Copy on left — spine hugs inner edge (toward menu) */
+.cat:not(.flip) .copy-ritual-spine {
+  margin-left: auto;
+  margin-right: 0;
+  flex-direction: row-reverse;
+}
+
+.cat:not(.flip) .copy-ritual-track-wrap {
+  justify-content: flex-end;
+}
+
+.cat:not(.flip) .copy-ritual-watermark {
+  left: -8px;
+  right: auto;
+}
+
+/* Copy on right (.flip) — spine hugs inner edge (toward menu) */
+.cat.flip .copy-ritual-spine {
+  margin-left: 0;
+  margin-right: auto;
+  flex-direction: row;
+}
+
+.cat.flip .copy-ritual-track-wrap {
+  justify-content: flex-start;
+}
+
+.cat.flip .copy-ritual-watermark {
+  right: -8px;
+  left: auto;
+}
+
 .copy-ritual-watermark {
   position: absolute;
-  right: 0;
-  left: auto;
-  bottom: -12px;
+  bottom: 0;
+  z-index: 0;
   font-family: var(--serif);
-  font-size: clamp(100px, 12vw, 168px);
+  font-size: clamp(88px, 10vw, 140px);
   font-weight: 400;
   line-height: 0.85;
   letter-spacing: -0.04em;
-  color: rgba(232, 201, 160, 0.045);
+  color: rgba(232, 201, 160, 0.04);
   pointer-events: none;
   user-select: none;
 }
@@ -172,19 +202,22 @@
 }
 
 .copy-ritual-track-wrap {
-  flex: 0 0 14px;
+  flex: 1 1 auto;
   position: relative;
+  z-index: 1;
   display: flex;
   justify-content: flex-end;
-  padding-top: 2px;
-  min-height: 200px;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .copy-ritual-track {
   position: relative;
   width: 2px;
   height: 100%;
-  min-height: 200px;
+  min-height: 100%;
+  overflow: hidden;
   background: linear-gradient(
     180deg,
     transparent 0%,
@@ -337,6 +370,9 @@
 
 .cat-copy .room {
   margin-top: auto;
+  position: relative;
+  z-index: 3;
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -383,6 +419,117 @@
   z-index: 2;
 }
 .cat-img .label::before { content: "◇ "; color: var(--brass); margin-right: 4px; }
+
+/* Menu column — scroll-synced ritual spine beside service list */
+.service-menu-scroll {
+  display: grid;
+  grid-template-columns: 14px 1fr;
+  gap: 22px;
+  align-items: stretch;
+}
+
+.cat.flip .service-menu-scroll {
+  grid-template-columns: 1fr 14px;
+}
+
+.cat.flip .menu-ritual-spine {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.cat.flip .service-menu-body {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.menu-ritual-spine {
+  position: relative;
+  align-self: stretch;
+  height: 100%;
+  min-height: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.menu-ritual-track-wrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.menu-ritual-track {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  margin-left: -1px;
+  height: auto;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(215, 196, 158, 0.22) 8%,
+    rgba(200, 168, 112, 0.28) 92%,
+    transparent 100%
+  );
+}
+
+.menu-ritual-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(215, 196, 158, 0.5) 0%,
+    #d7c49e 40%,
+    #c8a870 100%
+  );
+  box-shadow: 0 0 20px rgba(200, 168, 112, 0.2);
+}
+
+.menu-ritual-marker {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 8px;
+  height: 28px;
+  margin-left: -4px;
+  background: linear-gradient(to bottom, #e8d4b0, #c8a870);
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow:
+    0 0 20px rgba(200, 168, 112, 0.5),
+    0 0 36px rgba(200, 168, 112, 0.18);
+}
+
+.menu-ritual-glow {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 5px;
+  height: 5px;
+  margin-left: -2.5px;
+  border-radius: 50%;
+  background: #e8c9a0;
+  box-shadow:
+    0 0 12px rgba(232, 201, 160, 0.8),
+    0 0 24px rgba(200, 168, 112, 0.35);
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 1100px) {
+  .menu-ritual-spine {
+    display: none;
+  }
+
+  .service-menu-scroll {
+    display: block;
+  }
+}
 
 /* Service list (guided ritual highlighter) */
 .service-list {

@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { BookingLink } from '@/components/ui/BookingLink'
 import ServiceHighlighter from '@/components/ui/ServiceHighlighter'
-import { CopyRitualSpine } from '@/components/ui/RitualUi'
+import { CopyRitualSpine, ServiceMenuScroll } from '@/components/ui/RitualUi'
 
 export default function ServicesPage() {
   return (
@@ -116,6 +116,7 @@ export default function ServicesPage() {
               />
               <span className="label">Hair · The slow colour, three sittings</span>
             </div>
+            <ServiceMenuScroll>
             <div className="service-list">
               <div className="service-item">
                 <span className="name"><span className="en-only">The Signature Cut</span><span className="fr">La coupe maison</span><span className="desc"><span className="en-only">Consultation, wash, scalp massage, dry-finished cut, in-chair coffee.</span>
@@ -148,6 +149,7 @@ export default function ServicesPage() {
                 <span className="price"><span className="from">From</span>$420</span>
               </div>
             </div>
+            </ServiceMenuScroll>
             <div className="addons">
               <h5>◇ House additions · Petits ajouts</h5>
               <div className="row"><span className="name"><span className="en-only">Olaplex No. 0 + No. 3 mask</span><span className="fr">masque-soin</span></span><span className="v">+ $32</span></div>
@@ -187,6 +189,7 @@ export default function ServicesPage() {
               />
               <span className="label">Barber · The chair, single seat</span>
             </div>
+            <ServiceMenuScroll>
             <div className="service-list">
               <div className="service-item">
                 <span className="name"><span className="en-only">The Saturday Cut</span><span className="fr">La coupe du samedi</span><span className="desc"><span className="en-only">Scissor over comb, dry-checked, finished with a hot towel and cedar after-balm.</span>
@@ -213,6 +216,7 @@ export default function ServicesPage() {
                 <span className="price"><span className="from">From</span>$155</span>
               </div>
             </div>
+            </ServiceMenuScroll>
             <div className="addons">
               <h5>◇ House additions · Petits ajouts</h5>
               <div className="row"><span className="name"><span className="en-only">Brow & ear groom</span><span className="fr">détails</span></span><span className="v">+ $18</span></div>
@@ -252,6 +256,7 @@ export default function ServicesPage() {
               />
               <span className="label">Nails · Gilded almond, builder gel</span>
             </div>
+            <ServiceMenuScroll>
             <div className="service-list">
               <div className="service-item">
                 <span className="name"><span className="en-only">The Couture Manicure</span><span className="fr">La manucure couture</span><span className="desc"><span className="en-only">Cuticle work, hand & arm massage, builder-gel polish or BIAB structure.</span>
@@ -278,6 +283,7 @@ export default function ServicesPage() {
                 <span className="price"><span className="from">From</span>$28<span style={{ color: 'var(--bone-mute)', fontSize: '12px' }}>/nail</span></span>
               </div>
             </div>
+            </ServiceMenuScroll>
           </div>
         </div>
       </section>
@@ -311,6 +317,7 @@ export default function ServicesPage() {
               />
               <span className="label">Lash · Doll lash, hand-mapped</span>
             </div>
+            <ServiceMenuScroll>
             <div className="service-list">
               <div className="service-item">
                 <span className="name"><span className="en-only">Classic Lash Set</span><span className="fr">Pose classique</span><span className="desc"><span className="en-only">One-to-one, hand-mapped per eye. Veil-soft, holds three weeks.</span>
@@ -337,6 +344,7 @@ export default function ServicesPage() {
                 <span className="price"><span className="from">From</span>$125</span>
               </div>
             </div>
+            </ServiceMenuScroll>
             <div className="addons">
               <h5>◇ House additions · Petits ajouts</h5>
               <div className="row"><span className="name"><span className="en-only">Two-week lash fill</span><span className="fr">remplissage</span></span><span className="v">$95</span></div>
@@ -375,6 +383,7 @@ export default function ServicesPage() {
               />
               <span className="label">Esthetics · Skin, read first</span>
             </div>
+            <ServiceMenuScroll>
             <div className="service-list">
               <div className="service-item">
                 <span className="name"><span className="en-only">The Signature HydraFacial</span><span className="fr">L&apos;HydraFacial signature</span><span className="desc"><span className="en-only">Cleanse, extract, hydrate, plump. Sixty quiet minutes, no needles.</span>
@@ -401,6 +410,7 @@ export default function ServicesPage() {
                 <span className="price"><span className="from">From</span>$245</span>
               </div>
             </div>
+            </ServiceMenuScroll>
           </div>
         </div>
       </section>
@@ -434,6 +444,7 @@ export default function ServicesPage() {
               />
               <span className="label">Wellness · The long bath, north-facing</span>
             </div>
+            <ServiceMenuScroll>
             <div className="service-list">
               <div className="service-item">
                 <span className="name"><span className="en-only">The Long Bath</span><span className="fr">Le long bain</span><span className="desc"><span className="en-only">Eucalyptus steam, hot stone, scalp ritual, herbal infusion to finish.</span>
@@ -466,6 +477,7 @@ export default function ServicesPage() {
                 <span className="price"><span className="from">From</span>$485</span>
               </div>
             </div>
+            </ServiceMenuScroll>
           </div>
         </div>
       </section>

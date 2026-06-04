@@ -1,6 +1,36 @@
+import type { ReactNode } from 'react'
+
 type CopyRitualSpineProps = {
   index: string
   treatmentCount: number
+}
+
+export function MenuRitualSpine() {
+  return (
+    <div className="menu-ritual-spine" aria-hidden="true">
+      <div className="menu-ritual-track-wrap">
+        <div className="menu-ritual-track">
+          <div className="menu-ritual-fill" />
+          <div className="menu-ritual-marker" />
+          <div className="menu-ritual-glow" />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+type ServiceMenuScrollProps = {
+  children: ReactNode
+}
+
+/** Menu column with scroll-synced ritual spine beside the service list. */
+export function ServiceMenuScroll({ children }: ServiceMenuScrollProps) {
+  return (
+    <div className="service-menu-scroll">
+      <MenuRitualSpine />
+      <div className="service-menu-body">{children}</div>
+    </div>
+  )
 }
 
 export function CopyRitualSpine({ index, treatmentCount }: CopyRitualSpineProps) {
