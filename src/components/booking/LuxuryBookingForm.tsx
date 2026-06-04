@@ -212,6 +212,7 @@ export function LuxuryBookingForm() {
         how_heard: howHeard,
         notes: notes.trim() || 'None',
         status: 'New',
+        pronouns: pronouns.trim() || '—',
       })
 
       setSubmitState('success')

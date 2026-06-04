@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { AdminBooking } from '@/lib/google-sheets'
 import type { Lead, LeadFilters, LeadStatus } from '@/lib/admin/types'
 import { EMPTY_FILTERS } from '@/lib/admin/types'
@@ -27,6 +27,9 @@ import {
   getUniqueArtists,
 } from '@/lib/admin/filters'
 
+const AUTO_REFRESH_INTERVAL_MS = 60_000
+const MIN_AUTO_REFRESH_GAP_MS = 15_000
+
 function formatSyncTime(date: Date): string {
   const now = new Date()
   const diffMs = now.getTime() - date.getTime()
@@ -46,6 +49,7 @@ export default function AdminDashboardPage() {
   const [refreshing, setRefreshing] = useState(false)
   const [leadsView, setLeadsView] = useState<AdminLeadsView>('table')
   const [tableRevealKey, setTableRevealKey] = useState(1)
+  const lastAutoRefreshRef = useRef(0)
 
   function handleLeadsViewChange(view: AdminLeadsView) {
     setLeadsView(view)
@@ -78,16 +82,46 @@ export default function AdminDashboardPage() {
         return merged.find((l) => l.sheetRow === prev.sheetRow) ?? prev
       })
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to load bookings')
+      if (!background) {
+        setError(err instanceof Error ? err.message : 'Failed to load bookings')
+      }
     } finally {
       setLoading(false)
       setRefreshing(false)
     }
   }, [])
 
+  const refreshInBackground = useCallback(() => {
+    const now = Date.now()
+    if (now - lastAutoRefreshRef.current < MIN_AUTO_REFRESH_GAP_MS) return
+    lastAutoRefreshRef.current = now
+    loadBookings({ background: true })
+  }, [loadBookings])
+
   useEffect(() => {
     loadBookings()
   }, [loadBookings])
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      if (document.visibilityState === 'visible') {
+        refreshInBackground()
+      }
+    }, AUTO_REFRESH_INTERVAL_MS)
+
+    return () => window.clearInterval(intervalId)
+  }, [refreshInBackground])
+
+  useEffect(() => {
+    function onVisibilityChange() {
+      if (document.visibilityState === 'visible') {
+        refreshInBackground()
+      }
+    }
+
+    document.addEventListener('visibilitychange', onVisibilityChange)
+    return () => document.removeEventListener('visibilitychange', onVisibilityChange)
+  }, [refreshInBackground])
 
   const filteredLeads = useMemo(
     () => filterLeads(leads, filters),
@@ -222,7 +256,7 @@ export default function AdminDashboardPage() {
             </section>
 
             <p className="admin-sync-notice admin-animate-in admin-animate-in--7">
-              All leads automatically synced to Google Sheets · Dernière sync:{' '}
+              Leads sync to Google Sheets · Auto-refresh every 60s · Dernière sync:{' '}
               {syncTime ? formatSyncTime(syncTime) : '—'}
             </p>
           </>

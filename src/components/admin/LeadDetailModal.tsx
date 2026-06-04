@@ -1,12 +1,13 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type ReactNode } from 'react'
 import type { Lead, LeadStatus, FollowUpNote } from '@/lib/admin/types'
 import { LEAD_STATUSES } from '@/lib/admin/types'
 import {
   addFollowUpNote,
   getFollowUpNotes,
 } from '@/lib/admin/storage'
+import { parseAppointmentDate } from '@/lib/admin/appointment-date'
 import { AdminSelect } from '@/components/admin/AdminSelect'
 import {
   IconChevronLeft,
@@ -18,6 +19,82 @@ import {
 
 function phoneForSms(phone: string): string {
   return phone.replace(/[^\d+]/g, '')
+}
+
+function isEmptyFieldValue(value: string | undefined): boolean {
+  const v = value?.trim()
+  return !v || v === '—' || v === 'None' || v === 'Not provided'
+}
+
+function formatAppointmentParts(date: string, time: string): { dateLine: string; timeLine: string } | null {
+  const parsed = parseAppointmentDate(date)
+  if (parsed) {
+    return {
+      dateLine: parsed.toLocaleDateString('en-US', {
+        weekday: 'long',
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+      }),
+      timeLine: time?.trim() || '',
+    }
+  }
+  if (date?.trim()) {
+    return { dateLine: date.trim(), timeLine: time?.trim() || '' }
+  }
+  return null
+}
+
+type DetailGroupProps = {
+  title: string
+  children: ReactNode
+}
+
+function DetailGroup({ title, children }: DetailGroupProps) {
+  return (
+    <div className="admin-detail-group">
+      <div className="admin-detail-group-title">{title}</div>
+      {children}
+    </div>
+  )
+}
+
+type DetailFieldProps = {
+  label: string
+  children?: ReactNode
+  value?: string
+  emptyLabel?: string
+  highlight?: boolean
+  fullWidth?: boolean
+  muted?: boolean
+}
+
+function DetailField({
+  label,
+  children,
+  value,
+  emptyLabel = 'Not provided',
+  highlight = false,
+  fullWidth = false,
+  muted = false,
+}: DetailFieldProps) {
+  const isEmpty = value !== undefined ? isEmptyFieldValue(value) : false
+  const valueClass = [
+    'admin-detail-value',
+    highlight ? 'admin-detail-value--highlight' : '',
+    isEmpty || muted ? 'admin-detail-value--empty' : '',
+  ]
+    .filter(Boolean)
+    .join(' ')
+
+  return (
+    <div className={`admin-detail-field${fullWidth ? ' admin-detail-field--full' : ''}`}>
+      <span className="admin-detail-label">{label}</span>
+      <div className={valueClass}>
+        {children ?? (isEmpty ? emptyLabel : value)}
+      </div>
+    </div>
+  )
 }
 
 type Props = {
@@ -78,6 +155,11 @@ export function LeadDetailModal({
 
   const tel = lead.phone && lead.phone !== 'Not provided' ? lead.phone : ''
   const smsPhone = tel ? phoneForSms(tel) : ''
+  const pronouns = lead.pronouns?.trim()
+  const showPronouns = Boolean(pronouns && pronouns !== '—')
+  const appointment = formatAppointmentParts(lead.appointment_date, lead.appointment_time)
+  const hasAddons = !isEmptyFieldValue(lead.addons) && lead.addons !== 'None'
+  const hasNotes = !isEmptyFieldValue(lead.notes) && lead.notes !== 'None'
 
   function persistAndNavigate(direction: 'prev' | 'next') {
     onSave(lead.sheetRow, status)
@@ -131,70 +213,112 @@ export function LeadDetailModal({
 
         <div className="admin-modal-grid">
           <div className="admin-modal-section">
-            <div className="admin-modal-section-title">Client</div>
-            <h2 className="admin-modal-client-name">{lead.name}</h2>
-            <p className="admin-modal-field">
-              <strong>Pronouns</strong>
-              —
-            </p>
-            <p className="admin-modal-field">
-              <strong>Email</strong>
-              <a href={`mailto:${lead.email}`}>{lead.email}</a>
-            </p>
-            <p className="admin-modal-field">
-              <strong>Phone</strong>
-              {tel ? (
-                <>
-                  <a href={`tel:${tel}`}>{tel}</a>
-                  {smsPhone && (
-                    <>
-                      {' · '}
-                      <a href={`sms:${smsPhone}`}>SMS</a>
-                    </>
+            <div className="admin-modal-section-head">
+              <div className="admin-modal-section-title">Client</div>
+            </div>
+
+            <div className="admin-modal-client-hero">
+              <div className="admin-modal-client-hero-main">
+                <h2 className="admin-modal-client-name">{lead.name}</h2>
+              </div>
+              {(showPronouns || lead.first_visit?.toLowerCase() === 'yes') && (
+                <div className="admin-modal-client-meta">
+                  {showPronouns && (
+                    <span className="admin-detail-chip admin-detail-chip--pronouns">{pronouns}</span>
                   )}
-                </>
-              ) : (
-                '—'
+                  {lead.first_visit?.toLowerCase() === 'yes' && (
+                    <span className="admin-detail-chip admin-detail-chip--first-visit">First visit</span>
+                  )}
+                </div>
               )}
-            </p>
-            <p className="admin-modal-field">
-              <strong>How they heard about us</strong>
-              {lead.how_heard || '—'}
-            </p>
-            {lead.first_visit?.toLowerCase() === 'yes' && (
-              <span className="admin-first-visit-badge">First visit</span>
-            )}
+            </div>
+
+            <DetailGroup title="Contact">
+              <div className="admin-detail-fields admin-detail-fields--pair">
+                <DetailField label="Email">
+                  <a className="admin-detail-link" href={`mailto:${lead.email}`}>
+                    <IconMail size={14} />
+                    <span>{lead.email}</span>
+                  </a>
+                </DetailField>
+
+                <DetailField label="Phone">
+                  {tel ? (
+                    <div className="admin-detail-contact-row">
+                      <a className="admin-detail-link" href={`tel:${tel}`}>
+                        <IconPhone size={14} />
+                        <span>{tel}</span>
+                      </a>
+                      {smsPhone && (
+                        <a className="admin-detail-link admin-detail-link--secondary" href={`sms:${smsPhone}`}>
+                          <IconMessage size={14} />
+                          <span>SMS</span>
+                        </a>
+                      )}
+                    </div>
+                  ) : (
+                    <span className="admin-detail-value admin-detail-value--empty">Not provided</span>
+                  )}
+                </DetailField>
+              </div>
+            </DetailGroup>
+
+            <DetailGroup title="Marketing">
+              <div className="admin-detail-fields">
+                <DetailField label="How they heard about us" value={lead.how_heard} fullWidth />
+              </div>
+            </DetailGroup>
           </div>
 
           <div className="admin-modal-section">
-            <div className="admin-modal-section-title">Booking</div>
-            <p className="admin-modal-field">
-              <strong>Service</strong>
-              {lead.service || '—'}
-            </p>
-            <p className="admin-modal-field">
-              <strong>Add-ons</strong>
-              {lead.addons || 'None'}
-            </p>
-            <p className="admin-modal-field">
-              <strong>Total</strong>
-              <span style={{ fontFamily: 'var(--serif)', color: 'var(--champagne)' }}>
-                {lead.total}
-              </span>
-            </p>
-            <p className="admin-modal-field">
-              <strong>Artist</strong>
-              {lead.artist || '—'}
-            </p>
-            <p className="admin-modal-field">
-              <strong>Appointment</strong>
-              {lead.appointment_date || '—'}
-              {lead.appointment_time ? ` at ${lead.appointment_time}` : ''}
-            </p>
-            <p className="admin-modal-field">
-              <strong>Special notes</strong>
-              {lead.notes || 'None'}
-            </p>
+            <div className="admin-modal-section-head">
+              <div className="admin-modal-section-title">Booking</div>
+            </div>
+
+            {appointment ? (
+              <div className="admin-detail-appointment-spotlight">
+                <span className="admin-detail-label">Appointment</span>
+                <div className="admin-detail-appointment-date">{appointment.dateLine}</div>
+                {appointment.timeLine && (
+                  <div className="admin-detail-appointment-time">{appointment.timeLine}</div>
+                )}
+              </div>
+            ) : (
+              <div className="admin-detail-appointment-spotlight admin-detail-appointment-spotlight--empty">
+                <span className="admin-detail-label">Appointment</span>
+                <div className="admin-detail-value admin-detail-value--empty">Not scheduled</div>
+              </div>
+            )}
+
+            <DetailGroup title="Service">
+              <div className="admin-detail-fields admin-detail-fields--pair">
+                <DetailField label="Service" value={lead.service} />
+                <DetailField label="Artist" value={lead.artist} />
+              </div>
+            </DetailGroup>
+
+            <div className="admin-detail-fields admin-detail-fields--summary">
+              <DetailField
+                label="Add-ons"
+                value={lead.addons}
+                muted={!hasAddons}
+              />
+              <div className="admin-detail-total-card">
+                <span className="admin-detail-label">Total</span>
+                <div className="admin-detail-total-value">{lead.total || '—'}</div>
+              </div>
+            </div>
+
+            <DetailGroup title="Notes">
+              <div className="admin-detail-fields">
+                <DetailField
+                  label="Special notes"
+                  value={lead.notes}
+                  fullWidth
+                  muted={!hasNotes}
+                />
+              </div>
+            </DetailGroup>
           </div>
         </div>
 
@@ -227,7 +351,7 @@ export function LeadDetailModal({
               ))}
             </div>
           ) : (
-            <p className="admin-modal-field" style={{ marginBottom: 0 }}>
+            <p className="admin-detail-value admin-detail-value--empty" style={{ marginBottom: 0 }}>
               No follow-up notes yet.
             </p>
           )}

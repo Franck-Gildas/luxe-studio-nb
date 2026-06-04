@@ -3,7 +3,7 @@ import { createSign } from 'crypto'
 const SHEETS_SCOPE = 'https://www.googleapis.com/auth/spreadsheets'
 const TOKEN_URL = 'https://oauth2.googleapis.com/token'
 const DEFAULT_TAB_NAME = 'Sheet1'
-const VALUE_RANGE_COLUMNS = 'A:N'
+const VALUE_RANGE_COLUMNS = 'A:O'
 
 export type SheetsBookingPayload = {
   date: string
@@ -20,6 +20,7 @@ export type SheetsBookingPayload = {
   how_heard: string
   notes: string
   status: string
+  pronouns: string
 }
 
 export function isValidSheetsBookingPayload(data: unknown): data is SheetsBookingPayload {
@@ -39,7 +40,8 @@ export function isValidSheetsBookingPayload(data: unknown): data is SheetsBookin
     typeof d.first_visit === 'string' &&
     typeof d.how_heard === 'string' &&
     typeof d.notes === 'string' &&
-    typeof d.status === 'string'
+    typeof d.status === 'string' &&
+    (typeof d.pronouns === 'string' || d.pronouns === undefined)
   )
 }
 
@@ -59,6 +61,7 @@ export function payloadToSheetRow(data: SheetsBookingPayload): string[] {
     data.how_heard,
     data.notes,
     data.status || 'New',
+    data.pronouns ?? '—',
   ]
 }
 
@@ -247,6 +250,7 @@ export function rowToBooking(row: string[], sheetRow: number): AdminBooking {
     how_heard: pad(11),
     notes: pad(12),
     status: pad(13) || 'New',
+    pronouns: pad(14),
   }
 }
 

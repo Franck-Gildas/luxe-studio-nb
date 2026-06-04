@@ -11,6 +11,7 @@ function escapeCsvField(value: string): string {
 const COLUMNS = [
   'date',
   'name',
+  'pronouns',
   'email',
   'phone',
   'service',
@@ -38,6 +39,7 @@ export function exportLeadsCsv(leads: Lead[]): void {
     const values = [
       lead.date,
       lead.name,
+      lead.pronouns,
       lead.email,
       lead.phone,
       lead.service,
