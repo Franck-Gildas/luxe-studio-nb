@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import {
   Bodoni_Moda,
   Cormorant_Garamond,
@@ -37,11 +37,53 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://luxe-studio-nb.vercel.app"),
   title: {
-    default: "Luxe Studio NB",
     template: "%s · Luxe Studio NB",
+    default: "Luxe Studio NB — Where Beauty Becomes Ritual",
   },
-  description: "Where beauty becomes ritual. Où la beauté devient rituel.",
+  description:
+    "A luxury beauty and wellness atelier in Moncton, New Brunswick. By appointment only. Hair, skin, nails, lash & brow, barbering, and wellness rituals.",
+  keywords: [
+    "luxury salon Moncton",
+    "beauty atelier NB",
+    "hair salon Moncton",
+    "spa Moncton",
+    "New Brunswick beauty",
+    "private salon Moncton",
+    "wellness rituals NB",
+  ],
+  openGraph: {
+    type: "website",
+    locale: "en_CA",
+    alternateLocale: "fr_CA",
+    siteName: "Luxe Studio NB",
+    url: "/",
+    images: ["/img/hero-vial.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@luxestudionb",
+    creator: "@luxestudionb",
+    images: ["/img/hero-vial.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    // fr-CA: '/fr' — add when /fr routes exist
+    languages: {
+      "en-CA": "/",
+    },
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({
