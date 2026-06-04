@@ -240,7 +240,7 @@ export default function WorkPage() {
         <div className="ba-list">
           <div className="ba-row">
             <div className="ba-side" data-reveal-left>
-              <div className="idx">◇ Reveal 01 / 03 · Hair</div>
+              <div className="idx">◇ Reveal 01 / 06 · Hair</div>
               <h3 data-reveal>
                 <span className="en-only">Élise — Slow colour, three sittings</span>
                 <span className="fr-block">Élise — Couleur lente, trois séances</span>
@@ -257,10 +257,10 @@ export default function WorkPage() {
             </div>
             <div className="ba-frame" data-ba data-clip="55" data-reveal-scale>
               <div className="ba-pane before">
-                <Image src="/img/hair-3.jpg" alt="Before" fill className="object-cover" sizes="(max-width: 1100px) 100vw, 60vw" />
+                <Image src="/img/hair-before-1.jpg" alt="Before" fill className="object-cover" sizes="(max-width: 1100px) 100vw, 60vw" />
               </div>
               <div className="ba-pane after">
-                <Image src="/img/hair-1.jpg" alt="After" fill className="object-cover" sizes="(max-width: 1100px) 100vw, 60vw" />
+                <Image src="/img/hair-after-1.jpg" alt="After" fill className="object-cover" sizes="(max-width: 1100px) 100vw, 60vw" />
               </div>
               <div className="ba-label before">
                 <span className="dot"></span>Avant · Before
@@ -274,7 +274,7 @@ export default function WorkPage() {
 
           <div className="ba-row flip">
             <div className="ba-side" data-reveal-right>
-              <div className="idx">◇ Reveal 02 / 03 · Barber</div>
+              <div className="idx">◇ Reveal 02 / 06 · Barber</div>
               <h3 data-reveal>
                 <span className="en-only">Marc — The Saturday cut</span>
                 <span className="fr-block">Marc — La coupe du samedi</span>
@@ -290,10 +290,10 @@ export default function WorkPage() {
             </div>
             <div className="ba-frame" data-ba data-clip="42" data-reveal-scale>
               <div className="ba-pane before">
-                <Image src="/img/barber-4.jpg" alt="Before" fill className="object-cover" sizes="(max-width: 1100px) 100vw, 60vw" />
+                <Image src="/img/barber-before-1.jpg" alt="Before" fill className="object-cover" sizes="(max-width: 1100px) 100vw, 60vw" />
               </div>
               <div className="ba-pane after">
-                <Image src="/img/barber-2.jpg" alt="After" fill className="object-cover" sizes="(max-width: 1100px) 100vw, 60vw" />
+                <Image src="/img/barber-after-1.jpg" alt="After" fill className="object-cover" sizes="(max-width: 1100px) 100vw, 60vw" />
               </div>
               <div className="ba-label before">
                 <span className="dot"></span>Avant · Before
@@ -307,7 +307,71 @@ export default function WorkPage() {
 
           <div className="ba-row">
             <div className="ba-side" data-reveal-left>
-              <div className="idx">◇ Reveal 03 / 03 · Skin</div>
+              <div className="idx">◇ Reveal 03 / 06 · Nails</div>
+              <h3 data-reveal>
+                <span className="en-only">Gilded almond</span>
+              </h3>
+              <div className="sub">Couture des ongles</div>
+              <p><span className="en-only">Builder gel sculpted to the exact shape of your hand. A glass of pét-nat, ninety minutes off the phone, hands you will catch yourself glancing at all week.</span>
+<span className="fr-block">Un gel structurant sculpté à la forme exacte de votre main. Un verre de pét-nat, quatre-vingt-dix minutes sans téléphone, des mains que vous surprendrez à regarder toute la semaine.</span></p>
+              <div className="ba-tags">
+                <span className="ba-tag gold">Couture</span>
+                <span className="ba-tag">Gel</span>
+                <span className="ba-tag">Sculpted form</span>
+              </div>
+            </div>
+            <div className="ba-frame" data-ba data-clip="50" data-reveal-scale>
+              <div className="ba-pane before">
+                <Image src="/img/nails-before-1.jpg" alt="Before" fill className="object-cover" sizes="(max-width: 1100px) 100vw, 60vw" />
+              </div>
+              <div className="ba-pane after">
+                <Image src="/img/nails-after-1.jpg" alt="After" fill className="object-cover" sizes="(max-width: 1100px) 100vw, 60vw" />
+              </div>
+              <div className="ba-label before">
+                <span className="dot"></span>Avant · Before
+              </div>
+              <div className="ba-label after">
+                <span className="dot"></span>Après · After
+              </div>
+              <div className="ba-handle"></div>
+            </div>
+          </div>
+
+          <div className="ba-row flip">
+            <div className="ba-side" data-reveal-right>
+              <div className="idx">◇ Reveal 04 / 06 · Lash & Brow</div>
+              <h3 data-reveal>
+                <span className="en-only">Doll lash, undone</span>
+              </h3>
+              <div className="sub">Cils dénoués</div>
+              <p><span className="en-only">Hand-mapped extensions placed one by one to follow the natural line of your eye. Forty-five minutes that quietly change the rest of your week.</span>
+<span className="fr-block">Des extensions posées une à une à la main pour suivre la ligne naturelle de votre œil. Quarante-cinq minutes qui changent discrètement le reste de votre semaine.</span></p>
+              <div className="ba-tags">
+                <span className="ba-tag gold">Hand-mapped</span>
+                <span className="ba-tag">Lash lift</span>
+                <span className="ba-tag">Brow lamination</span>
+              </div>
+            </div>
+            <div className="ba-frame" data-ba data-clip="50" data-reveal-scale>
+              <div className="ba-pane before">
+                <Image src="/img/lash-before-1.jpg" alt="Before" fill className="object-cover" sizes="(max-width: 1100px) 100vw, 60vw" />
+              </div>
+              <div className="ba-pane after">
+                <Image src="/img/lash-after-1.jpg" alt="After" fill className="object-cover" sizes="(max-width: 1100px) 100vw, 60vw" />
+              </div>
+              <div className="ba-label before">
+                <span className="dot"></span>Avant · Before
+              </div>
+              <div className="ba-label after">
+                <span className="dot"></span>Après · After
+              </div>
+              <div className="ba-handle"></div>
+            </div>
+          </div>
+
+          <div className="ba-row">
+            <div className="ba-side" data-reveal-left>
+              <div className="idx">◇ Reveal 05 / 06 · Skin</div>
               <h3 data-reveal>
                 <span className="en-only">Renée — Ninety minutes of skin</span>
                 <span className="fr-block">Renée — Quatre-vingt-dix minutes de peau</span>
@@ -323,10 +387,43 @@ export default function WorkPage() {
             </div>
             <div className="ba-frame" data-ba data-clip="50" data-reveal-scale>
               <div className="ba-pane before">
-                <Image src="/img/face-2.jpg" alt="Before" fill className="object-cover" sizes="(max-width: 1100px) 100vw, 60vw" />
+                <Image src="/img/skin-before-1.jpg" alt="Before" fill className="object-cover" sizes="(max-width: 1100px) 100vw, 60vw" />
               </div>
               <div className="ba-pane after">
-                <Image src="/img/face-1.jpg" alt="After" fill className="object-cover" sizes="(max-width: 1100px) 100vw, 60vw" />
+                <Image src="/img/skin-after-1.jpg" alt="After" fill className="object-cover" sizes="(max-width: 1100px) 100vw, 60vw" />
+              </div>
+              <div className="ba-label before">
+                <span className="dot"></span>Avant · Before
+              </div>
+              <div className="ba-label after">
+                <span className="dot"></span>Après · After
+              </div>
+              <div className="ba-handle"></div>
+            </div>
+          </div>
+
+          <div className="ba-row flip">
+            <div className="ba-side" data-reveal-right>
+              <div className="idx">◇ Reveal 06 / 06 · Spa</div>
+              <h3 data-reveal>
+                <span className="en-only">The long bath</span>
+                <span className="fr-block">Le long bain</span>
+              </h3>
+              <div className="sub">Wellness ritual · 2h</div>
+              <p><span className="en-only">Lymphatic drainage, heated stone, eucalyptus steam and the kind of silence that follows you home. Two hours that reset the week entirely.</span>
+<span className="fr-block">Drainage lymphatique, pierre chauffée, vapeur d&apos;eucalyptus et le genre de silence qui vous suit jusqu&apos;à la maison. Deux heures qui remettent la semaine à zéro.</span></p>
+              <div className="ba-tags">
+                <span className="ba-tag gold">Heated stone</span>
+                <span className="ba-tag">Drainage</span>
+                <span className="ba-tag">Eucalyptus</span>
+              </div>
+            </div>
+            <div className="ba-frame" data-ba data-clip="50" data-reveal-scale>
+              <div className="ba-pane before">
+                <Image src="/img/spa-before-1.jpg" alt="Before" fill className="object-cover" sizes="(max-width: 1100px) 100vw, 60vw" />
+              </div>
+              <div className="ba-pane after">
+                <Image src="/img/spa-after-1.jpg" alt="After" fill className="object-cover" sizes="(max-width: 1100px) 100vw, 60vw" />
               </div>
               <div className="ba-label before">
                 <span className="dot"></span>Avant · Before
