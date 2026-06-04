@@ -1,0 +1,74 @@
+.card {
+  background: #0f0f0f;
+  border-left: 3px solid var(--champagne);
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+  animation: serviceCardIn 0.4s ease forwards;
+}
+
+@keyframes serviceCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.name {
+  font-family: var(--serif);
+  color: var(--champagne);
+  font-size: 16px;
+  line-height: 1.35;
+  margin: 0 0 8px;
+}
+
+.reason {
+  font-family: var(--serif-italic);
+  color: var(--bone);
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0 0 12px;
+  font-style: italic;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  margin-bottom: 16px;
+}
+
+.metaItem {
+  font-family: var(--mono);
+  color: var(--brass);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.cta {
+  display: inline-block;
+  padding: 10px 18px;
+  border: 1px solid var(--champagne);
+  color: var(--champagne);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  transition:
+    box-shadow 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.cta:hover {
+  border-color: var(--champagne);
+  color: var(--bone);
+  box-shadow: 0 0 16px rgba(232, 201, 160, 0.35);
+}

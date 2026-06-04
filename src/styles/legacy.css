@@ -391,6 +391,14 @@ h1.display, .display {
   max-height: 360px;
   overflow-y: auto;
 }
+.concierge-message-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  max-width: 88%;
+  align-self: flex-start;
+}
 .concierge-msg {
   font-size: 14px;
   line-height: 1.55;

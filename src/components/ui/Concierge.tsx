@@ -2,10 +2,14 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import ServiceCard from "@/components/ui/ServiceCard";
+import { parseRecommendation } from "@/lib/parse-elise-recommendation";
+import type { ServiceRecommendation } from "@/lib/parse-elise-recommendation";
 
 type ChatMessage = {
   role: "user" | "assistant";
   content: string;
+  recommendation?: ServiceRecommendation;
 };
 
 const ELISE_GREETING =
@@ -20,6 +24,7 @@ export function Concierge() {
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const bodyRef = useRef<HTMLDivElement>(null);
+  const latestAssistantBubbleRef = useRef<HTMLDivElement | null>(null);
   const hasGreeted = useRef(false);
 
   const scrollToBottom = useCallback(() => {
@@ -37,7 +42,22 @@ export function Concierge() {
   }, [open]);
 
   useEffect(() => {
-    scrollToBottom();
+    if (isTyping) {
+      scrollToBottom();
+      return;
+    }
+    if (messages.length === 0) return;
+
+    const last = messages[messages.length - 1];
+    if (last.role === "user") {
+      scrollToBottom();
+      return;
+    }
+
+    const bubble = latestAssistantBubbleRef.current;
+    if (bubble) {
+      bubble.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   }, [messages, isTyping, scrollToBottom]);
 
   const sendMessage = useCallback(
@@ -69,9 +89,16 @@ export function Concierge() {
           return;
         }
 
+        const { displayText, recommendation } = parseRecommendation(
+          data.content
+        );
         setMessages((prev) => [
           ...prev,
-          { role: "assistant", content: data.content },
+          {
+            role: "assistant",
+            content: displayText,
+            ...(recommendation && { recommendation }),
+          },
         ]);
       } catch {
         setMessages((prev) => [
@@ -83,6 +110,11 @@ export function Concierge() {
       }
     },
     [isTyping, messages]
+  );
+
+  const lastAssistantIndex = messages.reduce(
+    (last, msg, i) => (msg.role === "assistant" ? i : last),
+    -1
   );
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -115,14 +147,29 @@ export function Concierge() {
         </div>
 
         <div className="concierge-body" ref={bodyRef}>
-          {messages.map((msg, i) => (
-            <div
-              key={i}
-              className={`concierge-msg ${msg.role === "user" ? "you" : "them"}`}
-            >
-              {msg.content}
-            </div>
-          ))}
+          {messages.map((msg, i) =>
+            msg.role === "user" ? (
+              <div key={i} className="concierge-msg you">
+                {msg.content}
+              </div>
+            ) : (
+              <div key={i} className="concierge-message-group">
+                <div
+                  className="concierge-msg them"
+                  ref={
+                    i === lastAssistantIndex
+                      ? latestAssistantBubbleRef
+                      : undefined
+                  }
+                >
+                  {msg.content}
+                </div>
+                {msg.recommendation && (
+                  <ServiceCard {...msg.recommendation} />
+                )}
+              </div>
+            )
+          )}
 
           {isTyping && (
             <div className="concierge-msg them typing" aria-label="Élise is typing">

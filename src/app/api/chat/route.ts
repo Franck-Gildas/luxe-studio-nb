@@ -1,6 +1,8 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { CAP_SYSTEM_PROMPT } from "@/lib/cap-system-prompt";
 
+// [RECOMMENDATION] blocks are parsed and stripped client-side in Concierge.tsx
+
 type ChatMessage = {
   role: "user" | "assistant";
   content: string;
