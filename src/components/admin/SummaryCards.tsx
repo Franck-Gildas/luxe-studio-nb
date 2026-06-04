@@ -3,6 +3,7 @@ import { formatCurrency } from '@/lib/admin/parse-total'
 
 type Props = {
   stats: SummaryStats
+  followUpsToday?: number
 }
 
 const CARDS: { key: keyof SummaryStats; label: string; format?: (v: number) => string }[] = [
@@ -13,7 +14,7 @@ const CARDS: { key: keyof SummaryStats; label: string; format?: (v: number) => s
   { key: 'revenuePotential', label: 'Revenue potential', format: formatCurrency },
 ]
 
-export function SummaryCards({ stats }: Props) {
+export function SummaryCards({ stats, followUpsToday = 0 }: Props) {
   return (
     <div className="admin-summary-grid admin-animate-in admin-animate-in--2">
       {CARDS.map(({ key, label, format }, index) => (
@@ -27,6 +28,14 @@ export function SummaryCards({ stats }: Props) {
           <div className="admin-summary-label">{label}</div>
         </div>
       ))}
+      <div className="admin-summary-card reminder-summary-card admin-summary-card--stagger-6">
+        <div
+          className={`admin-summary-value${followUpsToday > 0 ? ' reminder-summary-card__count' : ' reminder-summary-card__caught-up'}`}
+        >
+          {followUpsToday > 0 ? followUpsToday : 'All caught up'}
+        </div>
+        <div className="admin-summary-label">Follow-Ups Today</div>
+      </div>
     </div>
   )
 }

@@ -6,7 +6,9 @@ import { LEAD_STATUSES } from '@/lib/admin/types'
 import { StatusBadge } from '@/components/admin/StatusBadge'
 import { AdminSelect } from '@/components/admin/AdminSelect'
 import { AdminIconButton } from '@/components/admin/AdminIconButton'
-import { IconExternal, IconMail, IconMessage, IconPhone } from '@/components/admin/AdminIcons'
+import { IconBell, IconExternal, IconMail, IconMessage, IconPhone } from '@/components/admin/AdminIcons'
+import { formatReminderShort } from '@/lib/admin/followups'
+import { useFollowUps } from '@/lib/admin/use-followups'
 
 function formatDate(dateStr: string): string {
   const d = new Date(dateStr)
@@ -27,6 +29,7 @@ type Props = {
   revealKey?: number
   onStatusChange: (sheetRow: number, status: LeadStatus) => void
   onViewLead: (lead: Lead) => void
+  onReminderClick?: (lead: Lead) => void
 }
 
 const STAGGER_CAP = 28
@@ -72,7 +75,15 @@ function rowStaggerClass(): string {
   return 'admin-table-row'
 }
 
-export function LeadsTable({ leads, revealKey = 0, onStatusChange, onViewLead }: Props) {
+export function LeadsTable({
+  leads,
+  revealKey = 0,
+  onStatusChange,
+  onViewLead,
+  onReminderClick,
+}: Props) {
+  const followUps = useFollowUps()
+
   if (leads.length === 0) {
     return <p className="admin-empty">No leads match your filters.</p>
   }
@@ -92,6 +103,7 @@ export function LeadsTable({ leads, revealKey = 0, onStatusChange, onViewLead }:
               <th>Total</th>
               <th>Artist</th>
               <th>Appointment</th>
+              <th>Reminder</th>
               <th>Status</th>
               <th>Actions</th>
             </tr>
@@ -100,7 +112,9 @@ export function LeadsTable({ leads, revealKey = 0, onStatusChange, onViewLead }:
             key={revealKey}
             className={revealActive ? 'admin-table-body--reveal' : undefined}
           >
-            {leads.map((lead, index) => (
+            {leads.map((lead, index) => {
+              const reminder = followUps[String(lead.sheetRow)]
+              return (
               <tr
                 key={lead.sheetRow}
                 className={rowStaggerClass()}
@@ -121,6 +135,23 @@ export function LeadsTable({ leads, revealKey = 0, onStatusChange, onViewLead }:
                   <div className="admin-table-contact-phone">
                     {lead.appointment_time || ''}
                   </div>
+                </td>
+                <td>
+                  {reminder ? (
+                    <button
+                      type="button"
+                      className="admin-reminder-bell-btn"
+                      title={formatReminderShort(reminder.date, reminder.time)}
+                      aria-label={`Reminder: ${formatReminderShort(reminder.date, reminder.time)}`}
+                      onClick={() => onReminderClick?.(lead) ?? onViewLead(lead)}
+                    >
+                      <IconBell size={18} />
+                    </button>
+                  ) : (
+                    <span className="admin-reminder-empty" aria-hidden>
+                      —
+                    </span>
+                  )}
                 </td>
                 <td>
                   <AdminSelect
@@ -149,7 +180,7 @@ export function LeadsTable({ leads, revealKey = 0, onStatusChange, onViewLead }:
                   </button>
                 </td>
               </tr>
-            ))}
+            )})}
           </tbody>
         </table>
       </div>
@@ -158,7 +189,9 @@ export function LeadsTable({ leads, revealKey = 0, onStatusChange, onViewLead }:
         className={`admin-mobile-cards${revealActive ? ' admin-mobile-cards--reveal' : ''}`}
         key={`mobile-${revealKey}`}
       >
-        {leads.map((lead, index) => (
+        {leads.map((lead, index) => {
+          const reminder = followUps[String(lead.sheetRow)]
+          return (
           <div
             key={lead.sheetRow}
             className="admin-mobile-card"
@@ -166,7 +199,20 @@ export function LeadsTable({ leads, revealKey = 0, onStatusChange, onViewLead }:
           >
             <div className="admin-mobile-card-header">
               <span className="admin-mobile-card-name">{lead.name}</span>
-              <StatusBadge status={lead.effectiveStatus} />
+              <div className="admin-mobile-card-header-badges">
+                {reminder && (
+                  <button
+                    type="button"
+                    className="admin-reminder-bell-btn"
+                    title={formatReminderShort(reminder.date, reminder.time)}
+                    aria-label={`Reminder: ${formatReminderShort(reminder.date, reminder.time)}`}
+                    onClick={() => onReminderClick?.(lead) ?? onViewLead(lead)}
+                  >
+                    <IconBell size={18} />
+                  </button>
+                )}
+                <StatusBadge status={lead.effectiveStatus} />
+              </div>
             </div>
             <div className="admin-mobile-card-row">
               <span>Date</span>
@@ -215,7 +261,7 @@ export function LeadsTable({ leads, revealKey = 0, onStatusChange, onViewLead }:
               </button>
             </div>
           </div>
-        ))}
+        )})}
       </div>
     </>
   )

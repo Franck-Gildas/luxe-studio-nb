@@ -1,5 +1,13 @@
+'use client'
+
 import type { Lead } from '@/lib/admin/types'
 import { statusCardClass, statusDotClass } from '@/components/admin/StatusBadge'
+import {
+  getReminderUrgency,
+  reminderBadgeClass,
+  reminderBadgeLabel,
+  type ReminderRecord,
+} from '@/lib/admin/followups'
 
 function formatCreatedAt(dateStr: string): string {
   const d = new Date(dateStr)
@@ -9,6 +17,7 @@ function formatCreatedAt(dateStr: string): string {
 
 type Props = {
   lead: Lead
+  reminder?: ReminderRecord | null
   isDragging?: boolean
   onDragStart: (sheetRow: number) => void
   onDragEnd?: () => void
@@ -17,11 +26,14 @@ type Props = {
 
 export function LeadCard({
   lead,
+  reminder,
   isDragging,
   onDragStart,
   onDragEnd,
   onClick,
 }: Props) {
+  const urgency = reminder ? getReminderUrgency(reminder) : null
+
   return (
     <div
       className={`admin-lead-card ${statusCardClass(lead.effectiveStatus)}${isDragging ? ' admin-lead-card--dragging' : ''}`}
@@ -35,6 +47,9 @@ export function LeadCard({
         if (e.key === 'Enter' || e.key === ' ') onClick?.()
       }}
     >
+      {urgency && (
+        <span className={reminderBadgeClass(urgency)}>{reminderBadgeLabel(urgency)}</span>
+      )}
       <div className="admin-lead-card-name">{lead.name || 'Unknown'}</div>
       <div className="admin-lead-card-meta">
         {lead.service.split('—')[0]?.trim() || lead.service || '—'}

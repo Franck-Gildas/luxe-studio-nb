@@ -5,6 +5,7 @@ import type { Lead, LeadStatus } from '@/lib/admin/types'
 import { STATUS_PIPELINE } from '@/lib/admin/types'
 import { LeadCard } from '@/components/admin/LeadCard'
 import { statusColumnClass } from '@/components/admin/StatusBadge'
+import { useFollowUps } from '@/lib/admin/use-followups'
 
 type Props = {
   leads: Lead[]
@@ -13,6 +14,7 @@ type Props = {
 }
 
 export function LeadPipeline({ leads, onStatusChange, onViewLead }: Props) {
+  const followUps = useFollowUps()
   const [draggingRow, setDraggingRow] = useState<number | null>(null)
   const [dragOverStatus, setDragOverStatus] = useState<LeadStatus | null>(null)
 
@@ -65,16 +67,20 @@ export function LeadPipeline({ leads, onStatusChange, onViewLead }: Props) {
                 {columnLeads.length === 0 ? (
                   <p className="admin-pipeline-empty">Drop leads here</p>
                 ) : (
-                  columnLeads.map((lead) => (
-                    <LeadCard
-                      key={lead.sheetRow}
-                      lead={lead}
-                      isDragging={draggingRow === lead.sheetRow}
-                      onDragStart={handleDragStart}
-                      onDragEnd={handleDragEnd}
-                      onClick={() => onViewLead(lead)}
-                    />
-                  ))
+                  columnLeads.map((lead) => {
+                    const reminder = followUps[String(lead.sheetRow)] ?? null
+                    return (
+                      <LeadCard
+                        key={lead.sheetRow}
+                        lead={lead}
+                        reminder={reminder}
+                        isDragging={draggingRow === lead.sheetRow}
+                        onDragStart={handleDragStart}
+                        onDragEnd={handleDragEnd}
+                        onClick={() => onViewLead(lead)}
+                      />
+                    )
+                  })
                 )}
               </div>
             </div>

@@ -222,3 +222,23 @@ export function IconChevronRight({ className, size = 18 }: IconProps) {
     </IconBase>
   )
 }
+
+export function IconBell({ className, size = 18 }: IconProps) {
+  return (
+    <IconBase className={className} size={size}>
+      <path
+        d="M12 4.5a4 4 0 00-4 4v2.2c0 .6-.2 1.2-.6 1.7L6 14.5h12l-1.4-2.1c-.4-.5-.6-1.1-.6-1.7V8.5a4 4 0 00-4-4z"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M10 17a2 2 0 004 0"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </IconBase>
+  )
+}

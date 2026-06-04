@@ -12,6 +12,9 @@ import { FilterBar } from '@/components/admin/FilterBar'
 import { LeadPipeline } from '@/components/admin/LeadPipeline'
 import { LeadsTable } from '@/components/admin/LeadsTable'
 import { LeadDetailModal } from '@/components/admin/LeadDetailModal'
+import { RemindersPanel } from '@/components/admin/RemindersPanel'
+import { countFollowUpsToday, migrateFollowUpsToSheetRows } from '@/lib/admin/followups'
+import { useFollowUps } from '@/lib/admin/use-followups'
 import { AdminCalendarView } from '@/components/admin/AdminCalendarView'
 import { AdminViewToggle, type AdminLeadsView } from '@/components/admin/AdminViewToggle'
 import { parseAppointmentDate } from '@/lib/admin/appointment-date'
@@ -49,7 +52,10 @@ export default function AdminDashboardPage() {
   const [refreshing, setRefreshing] = useState(false)
   const [leadsView, setLeadsView] = useState<AdminLeadsView>('table')
   const [tableRevealKey, setTableRevealKey] = useState(1)
+  const [remindersPanelOpen, setRemindersPanelOpen] = useState(true)
   const lastAutoRefreshRef = useRef(0)
+  const followUps = useFollowUps()
+  const followUpsToday = useMemo(() => countFollowUpsToday(followUps), [followUps])
 
   function handleLeadsViewChange(view: AdminLeadsView) {
     setLeadsView(view)
@@ -101,6 +107,12 @@ export default function AdminDashboardPage() {
   useEffect(() => {
     loadBookings()
   }, [loadBookings])
+
+  useEffect(() => {
+    if (leads.length > 0) {
+      migrateFollowUpsToSheetRows(leads)
+    }
+  }, [leads])
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
@@ -184,6 +196,10 @@ export default function AdminDashboardPage() {
         <AdminHeader
           onRefresh={() => loadBookings({ background: true })}
           refreshing={refreshing}
+          onRemindersClick={() => {
+            setRemindersPanelOpen(true)
+            document.getElementById('reminders-panel')?.scrollIntoView({ behavior: 'smooth' })
+          }}
         />
 
         {loading && <div className="admin-loading">Loading bookings…</div>}
@@ -204,7 +220,7 @@ export default function AdminDashboardPage() {
 
         {!loading && !error && (
           <>
-            <SummaryCards stats={stats} />
+            <SummaryCards stats={stats} followUpsToday={followUpsToday} />
 
             <MarketingInsights bookings={leads} />
 
@@ -219,6 +235,13 @@ export default function AdminDashboardPage() {
             />
 
             <hr className="admin-divider" aria-hidden />
+
+            <RemindersPanel
+              leads={leads}
+              onViewLead={setSelectedLead}
+              collapsed={!remindersPanelOpen}
+              onToggleCollapse={() => setRemindersPanelOpen((o) => !o)}
+            />
 
             <LeadPipeline
               leads={filteredLeads}
@@ -242,6 +265,7 @@ export default function AdminDashboardPage() {
                   revealKey={tableRevealKey}
                   onStatusChange={handleStatusChange}
                   onViewLead={setSelectedLead}
+                  onReminderClick={setSelectedLead}
                 />
               </div>
               <div

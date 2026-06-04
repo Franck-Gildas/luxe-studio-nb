@@ -3,14 +3,19 @@
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { logout } from '@/lib/admin/auth'
-import { IconHome, IconRefresh } from '@/components/admin/AdminIcons'
+import { IconBell, IconHome, IconRefresh } from '@/components/admin/AdminIcons'
+import { countHeaderReminderAlerts } from '@/lib/admin/followups'
+import { useFollowUps } from '@/lib/admin/use-followups'
 
 type Props = {
   onRefresh?: () => void
   refreshing?: boolean
+  onRemindersClick?: () => void
 }
 
-export function AdminHeader({ onRefresh, refreshing = false }: Props) {
+export function AdminHeader({ onRefresh, refreshing = false, onRemindersClick }: Props) {
+  const followUps = useFollowUps()
+  const alertCount = countHeaderReminderAlerts(followUps)
   const router = useRouter()
   const today = new Date().toLocaleDateString('en-US', {
     weekday: 'long',
@@ -47,6 +52,18 @@ export function AdminHeader({ onRefresh, refreshing = false }: Props) {
           >
             <IconRefresh size={18} />
             <span className="admin-header-tool-label">Refresh</span>
+          </button>
+        )}
+        {onRemindersClick && alertCount > 0 && (
+          <button
+            type="button"
+            className="admin-header-reminder-btn"
+            onClick={onRemindersClick}
+            title="View follow-up reminders"
+            aria-label={`${alertCount} reminders due today or overdue`}
+          >
+            <IconBell size={18} />
+            <span className="admin-header-reminder-count">{alertCount}</span>
           </button>
         )}
         <button type="button" className="admin-logout-btn" onClick={handleLogout}>

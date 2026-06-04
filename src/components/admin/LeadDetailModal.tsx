@@ -7,6 +7,17 @@ import {
   addFollowUpNote,
   getFollowUpNotes,
 } from '@/lib/admin/storage'
+import {
+  REMINDER_CHANGED_EVENT,
+  defaultReminderDate,
+  defaultReminderTime,
+  deleteReminder,
+  formatReminderDateTime,
+  getReminder,
+  getReminderUrgency,
+  setReminder,
+  type ReminderRecord,
+} from '@/lib/admin/followups'
 import { parseAppointmentDate } from '@/lib/admin/appointment-date'
 import { AdminSelect } from '@/components/admin/AdminSelect'
 import {
@@ -121,12 +132,39 @@ export function LeadDetailModal({
   const [status, setStatus] = useState<LeadStatus>(lead.effectiveStatus)
   const [noteText, setNoteText] = useState('')
   const [notes, setNotes] = useState<FollowUpNote[]>([])
+  const [reminder, setReminderState] = useState<ReminderRecord | null>(null)
+  const [reminderDate, setReminderDate] = useState(defaultReminderDate())
+  const [reminderTime, setReminderTime] = useState(defaultReminderTime())
+  const [editingReminder, setEditingReminder] = useState(false)
+
+  function loadReminder() {
+    const existing = getReminder(lead.sheetRow)
+    setReminderState(existing)
+    if (existing) {
+      setReminderDate(existing.date)
+      setReminderTime(existing.time)
+    } else {
+      setReminderDate(defaultReminderDate())
+      setReminderTime(defaultReminderTime())
+    }
+    setEditingReminder(false)
+  }
 
   useEffect(() => {
     setStatus(lead.effectiveStatus)
     setNotes(getFollowUpNotes(lead.email))
     setNoteText('')
+    loadReminder()
   }, [lead])
+
+  useEffect(() => {
+    function onRemindersChanged() {
+      loadReminder()
+      setNotes(getFollowUpNotes(lead.email))
+    }
+    window.addEventListener(REMINDER_CHANGED_EVENT, onRemindersChanged)
+    return () => window.removeEventListener(REMINDER_CHANGED_EVENT, onRemindersChanged)
+  }, [lead.sheetRow, lead.email])
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
@@ -176,6 +214,24 @@ export function LeadDetailModal({
     onSave(lead.sheetRow, status)
     onClose()
   }
+
+  function handleSetReminder() {
+    if (!reminderDate || !reminderTime) return
+    const saved = setReminder(lead.sheetRow, reminderDate, reminderTime)
+    setReminderState(saved)
+    setEditingReminder(false)
+  }
+
+  function handleDeleteReminder() {
+    deleteReminder(lead.sheetRow)
+    setReminderState(null)
+    setEditingReminder(false)
+    setReminderDate(defaultReminderDate())
+    setReminderTime(defaultReminderTime())
+  }
+
+  const reminderUrgency = reminder ? getReminderUrgency(reminder) : null
+  const showReminderForm = !reminder || editingReminder
 
   return (
     <div className="admin-modal-overlay" role="dialog" aria-modal="true" aria-label={`Lead details for ${lead.name}`}>
@@ -320,6 +376,85 @@ export function LeadDetailModal({
               </div>
             </DetailGroup>
           </div>
+        </div>
+
+        <div className="admin-reminder-section">
+          <div className="admin-modal-section-title">Follow-Up Reminder</div>
+
+          {reminder && !editingReminder ? (
+            <div className="admin-reminder-display">
+              <p
+                className={`admin-reminder-display-text${
+                  reminderUrgency === 'overdue' ? ' admin-reminder-display-text--overdue' : ''
+                }`}
+              >
+                Reminder set for: {formatReminderDateTime(reminder.date, reminder.time)}
+              </p>
+              <div className="admin-reminder-display-actions">
+                <button
+                  type="button"
+                  className="admin-view-btn"
+                  onClick={() => setEditingReminder(true)}
+                >
+                  Edit Reminder
+                </button>
+                <button
+                  type="button"
+                  className="admin-clear-filters-btn"
+                  onClick={handleDeleteReminder}
+                >
+                  Delete Reminder
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className="admin-reminder-form">
+              <div className="admin-reminder-form-row">
+                <label className="admin-filter-label" htmlFor="reminder-date">
+                  Date
+                </label>
+                <input
+                  id="reminder-date"
+                  type="date"
+                  className="admin-filter-input admin-filter-input--date"
+                  value={reminderDate}
+                  onChange={(e) => setReminderDate(e.target.value)}
+                />
+              </div>
+              <div className="admin-reminder-form-row">
+                <label className="admin-filter-label" htmlFor="reminder-time">
+                  Time
+                </label>
+                <input
+                  id="reminder-time"
+                  type="time"
+                  className="admin-filter-input"
+                  value={reminderTime}
+                  onChange={(e) => setReminderTime(e.target.value)}
+                />
+              </div>
+              <div className="admin-reminder-form-actions">
+                <button type="button" className="admin-add-note-btn" onClick={handleSetReminder}>
+                  Set Reminder
+                </button>
+                {editingReminder && (
+                  <button
+                    type="button"
+                    className="admin-view-btn"
+                    onClick={() => {
+                      setEditingReminder(false)
+                      if (reminder) {
+                        setReminderDate(reminder.date)
+                        setReminderTime(reminder.time)
+                      }
+                    }}
+                  >
+                    Cancel
+                  </button>
+                )}
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="admin-notes-section">
