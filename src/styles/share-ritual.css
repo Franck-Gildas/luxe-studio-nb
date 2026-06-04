@@ -1,0 +1,235 @@
+/* ——— Share Ritual Modal ——— */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.share-ritual-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: share-ritual-fade-in 0.3s ease;
+}
+
+@keyframes share-ritual-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.share-ritual-dialog {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 24px;
+  width: 100%;
+  max-width: 400px;
+  padding: 36px 28px 28px;
+  background: var(--charcoal);
+  border: 1px solid var(--hairline);
+  animation: share-ritual-scale-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.share-ritual-header {
+  text-align: center;
+  padding-right: 32px;
+}
+
+.share-ritual-heading {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--champagne);
+  margin: 0 0 8px;
+  line-height: 1.2;
+}
+
+.share-ritual-service-name {
+  font-family: var(--serif-italic);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--bone-mute);
+  margin: 0;
+  line-height: 1.4;
+}
+
+@keyframes share-ritual-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.share-ritual-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  color: #c9a96e;
+  font-size: 28px;
+  line-height: 1;
+  padding: 8px;
+  cursor: pointer;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+  z-index: 2;
+}
+
+.share-ritual-close:hover {
+  color: #e8c9a0;
+  text-shadow: 0 0 12px rgba(201, 169, 110, 0.5);
+}
+
+.share-ritual-loading {
+  font-family: var(--serif-italic);
+  font-style: italic;
+  color: var(--bone-mute);
+  font-size: 13px;
+  text-align: center;
+  margin: 0 0 12px;
+}
+
+.share-ritual-share-to {
+  width: 100%;
+}
+
+.share-ritual-share-to-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brass);
+  text-align: center;
+  margin: 0 0 16px;
+  font-weight: 400;
+}
+
+.share-ritual-platform-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.share-ritual-platform-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 72px;
+  padding: 12px 8px;
+  border: 1px solid var(--champagne);
+  background: transparent;
+  color: var(--champagne);
+  cursor: pointer;
+  border-radius: 2px;
+  transition:
+    box-shadow 0.25s ease,
+    color 0.25s ease,
+    background 0.25s ease;
+}
+
+.share-ritual-platform-btn:hover:not(:disabled) {
+  color: var(--bone);
+  background: rgba(201, 169, 110, 0.06);
+  box-shadow: 0 0 12px rgba(232, 201, 160, 0.28);
+}
+
+.share-ritual-platform-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.share-ritual-platform-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+
+.share-ritual-platform-name {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.share-ritual-download-link {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  text-align: center;
+  transition: color 0.2s ease;
+}
+
+.share-ritual-download-link:hover:not(:disabled) {
+  color: var(--champagne);
+}
+
+.share-ritual-download-link:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.share-ritual-toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: min(90vw, 420px);
+  padding: 14px 22px;
+  background: var(--charcoal);
+  border: 1px solid var(--hairline);
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--bone);
+  text-align: center;
+  z-index: 9001;
+  animation: share-ritual-fade-in 0.25s ease;
+}
+
+@media (max-width: 600px) {
+  .share-ritual-dialog {
+    max-width: 100%;
+    padding: 32px 20px 24px;
+  }
+
+  .share-ritual-platform-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .share-ritual-platform-name {
+    font-size: 10px;
+  }
+}

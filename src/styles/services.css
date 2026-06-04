@@ -635,6 +635,41 @@
   margin-bottom: 4px;
 }
 
+.service-item .price .price-suffix {
+  color: var(--bone-mute);
+  font-size: 12px;
+}
+
+.service-item-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+  padding-top: 4px;
+}
+
+.share-ritual-btn {
+  font-family: var(--serif);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--champagne);
+  background: transparent;
+  border: 1px solid var(--champagne);
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 2px;
+  transition:
+    box-shadow 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.share-ritual-btn:hover {
+  color: var(--bone);
+  box-shadow: 0 0 16px rgba(232, 201, 160, 0.35);
+}
+
 @media (max-width: 1100px) {
   .service-item {
     opacity: 1;
