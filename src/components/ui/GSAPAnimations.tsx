@@ -169,9 +169,19 @@ export default function GSAPAnimations() {
     }
 
     const routeTimer = setTimeout(refresh, 900)
+    const servicesTimer =
+      pathname === '/services'
+        ? setTimeout(refresh, 1600)
+        : undefined
+    const servicesTimer2 =
+      pathname === '/services'
+        ? setTimeout(refresh, 2200)
+        : undefined
 
     return () => {
       clearTimeout(routeTimer)
+      if (servicesTimer) clearTimeout(servicesTimer)
+      if (servicesTimer2) clearTimeout(servicesTimer2)
       window.removeEventListener('load', refresh)
       ctx.revert()
     }
