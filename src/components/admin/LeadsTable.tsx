@@ -10,9 +10,11 @@ import { IconBell, IconExternal, IconMail, IconMessage, IconPhone } from '@/comp
 import { formatReminderShort } from '@/lib/admin/followups'
 import { useFollowUps } from '@/lib/admin/use-followups'
 
+import { parseSheetTimestamp } from '@/lib/google-sheets'
+
 function formatDate(dateStr: string): string {
-  const d = new Date(dateStr)
-  if (Number.isNaN(d.getTime())) return dateStr || '—'
+  const d = parseSheetTimestamp(dateStr)
+  if (!d) return dateStr || '—'
   return d.toLocaleDateString('en-US', {
     month: 'short',
     day: 'numeric',

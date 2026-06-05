@@ -71,3 +71,16 @@ body.lang-fr .submit-btn > .fr-block {
   text-transform: inherit !important;
   font-weight: inherit !important;
 }
+
+/* Paragraph legibility — rose italic reads smaller; bump FR body copy only */
+body.lang-fr p > .fr-block,
+body.lang-fr .body > .fr-block,
+body.lang-fr blockquote > .fr-block {
+  font-size: calc(1em + 4px) !important;
+  line-height: 1.65 !important;
+}
+
+body.lang-fr .lede > .fr-block {
+  font-size: calc(1em + 2px) !important;
+  line-height: 1.65 !important;
+}

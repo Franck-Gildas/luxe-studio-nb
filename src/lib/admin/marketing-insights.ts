@@ -1,5 +1,6 @@
-import type { AdminBooking } from '@/lib/google-sheets'
+import { parseSheetTimestamp, type AdminBooking } from '@/lib/google-sheets'
 import type { LeadStatus } from '@/lib/admin/types'
+import { HEARD_OPTIONS } from '@/data/booking'
 import { parseTotal } from '@/lib/admin/parse-total'
 
 export type MarketingBooking = AdminBooking & { effectiveStatus?: LeadStatus }
@@ -59,12 +60,6 @@ export function getRangeTitleLabel(
     default:
       return customRange.from && customRange.to ? 'Custom Range' : 'Custom Range'
   }
-}
-
-function parseCreatedAt(value: string): Date | null {
-  if (!value?.trim()) return null
-  const d = new Date(value)
-  return Number.isNaN(d.getTime()) ? null : d
 }
 
 function endOfDay(date: Date): Date {
@@ -178,7 +173,7 @@ function filterByPeriod(
   end: Date,
 ): MarketingBooking[] {
   return bookings.filter((booking) => {
-    const created = parseCreatedAt(booking.date)
+    const created = parseSheetTimestamp(booking.date)
     if (!created) return false
     return created >= start && created <= end
   })
@@ -218,7 +213,9 @@ export function computeMarketingInsights(
   const previousCounts = countBySource(previousBookings)
   const totalLeads = currentBookings.length
 
+  const knownSources = HEARD_OPTIONS as readonly string[]
   const allSources = new Set<string>([
+    ...knownSources,
     ...currentCounts.keys(),
     ...previousCounts.keys(),
   ])
@@ -230,7 +227,9 @@ export function computeMarketingInsights(
       (b) => normalizeSource(b.how_heard) === source,
     )
     const count = currentForSource.length
-    if (count === 0 && (previousCounts.get(source) ?? 0) === 0) continue
+    const previousCount = previousCounts.get(source) ?? 0
+    const isKnownSource = knownSources.includes(source)
+    if (count === 0 && previousCount === 0 && !isKnownSource) continue
 
     const bookedCount = currentForSource.filter(isBooked).length
     const revenue = currentForSource.reduce(
@@ -245,17 +244,16 @@ export function computeMarketingInsights(
       conversionRate:
         count > 0 ? Math.round((bookedCount / count) * 100) : 0,
       revenue,
-      trendDiff: count - (previousCounts.get(source) ?? 0),
+      trendDiff: count - previousCount,
     })
   }
 
   sources.sort((a, b) => b.count - a.count || a.source.localeCompare(b.source))
 
-  const activeSources = sources.filter((s) => s.count > 0)
-  const topSource = activeSources[0] ?? null
+  const topSource = sources.find((s) => s.count > 0) ?? null
 
   return {
-    sources: activeSources.length > 0 ? activeSources : sources,
+    sources,
     totalLeads,
     topSource,
     rangeReady: true,

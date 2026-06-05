@@ -1,6 +1,7 @@
 import { BOOKING_SERVICES } from '@/data/booking'
 import type { Lead, LeadFilters, SummaryStats } from '@/lib/admin/types'
 import { parseTotal } from '@/lib/admin/parse-total'
+import { parseSheetTimestamp } from '@/lib/google-sheets'
 
 function parseDate(value: string): Date | null {
   if (!value?.trim()) return null
@@ -33,11 +34,22 @@ function endOfWeek(date: Date): Date {
   return end
 }
 
+function parseFilterDateStart(iso: string): Date | null {
+  const match = iso.trim().match(/^(\d{4})-(\d{2})-(\d{2})$/)
+  if (!match) return null
+  return new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3]), 0, 0, 0, 0)
+}
+
+function parseFilterDateEnd(iso: string): Date | null {
+  const match = iso.trim().match(/^(\d{4})-(\d{2})-(\d{2})$/)
+  if (!match) return null
+  return new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3]), 23, 59, 59, 999)
+}
+
 export function filterLeads(leads: Lead[], filters: LeadFilters): Lead[] {
   const search = filters.search.trim().toLowerCase()
-  const from = filters.dateFrom ? new Date(filters.dateFrom) : null
-  const to = filters.dateTo ? new Date(filters.dateTo) : null
-  if (to) to.setHours(23, 59, 59, 999)
+  const from = filters.dateFrom ? parseFilterDateStart(filters.dateFrom) : null
+  const to = filters.dateTo ? parseFilterDateEnd(filters.dateTo) : null
 
   return leads.filter((lead) => {
     if (search) {
@@ -56,7 +68,7 @@ export function filterLeads(leads: Lead[], filters: LeadFilters): Lead[] {
     }
 
     if (from || to) {
-      const created = parseDate(lead.date)
+      const created = parseSheetTimestamp(lead.date)
       if (!created) return false
       if (from && created < from) return false
       if (to && created > to) return false
@@ -78,7 +90,7 @@ export function computeSummaryStats(leads: Lead[]): SummaryStats {
   let revenuePotential = 0
 
   for (const lead of leads) {
-    const created = parseDate(lead.date)
+    const created = parseSheetTimestamp(lead.date)
     if (created && isSameDay(created, today)) {
       newLeadsToday++
     }

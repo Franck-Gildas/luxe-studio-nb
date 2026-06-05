@@ -680,4 +680,32 @@
   .cta-section {
     padding: 80px 24px 100px;
   }
+
+  body.lang-fr .philo .right p:first-child > .fr-block {
+    font-size: clamp(22px, 4.5vw, 32px) !important;
+  }
+
+  body.lang-fr .philo .right p > .fr-block {
+    font-size: 20px !important;
+  }
+
+  body.lang-fr .tenet p > .fr-block {
+    font-size: 16px !important;
+  }
+}
+
+/* French about — paragraph legibility; typography unchanged */
+body.lang-fr .philo .right p > .fr-block {
+  font-size: 22px !important;
+  line-height: 1.75 !important;
+}
+
+body.lang-fr .philo .right p:first-child > .fr-block {
+  font-size: 32px !important;
+  line-height: 1.45 !important;
+}
+
+body.lang-fr .tenet p > .fr-block {
+  font-size: 17px !important;
+  line-height: 1.6 !important;
 }

@@ -985,4 +985,55 @@
   .cta-section {
     padding: 80px 24px 100px;
   }
+
+  body.lang-fr .exp-hero .lede > .fr-block {
+    font-size: 18px !important;
+  }
+
+  body.lang-fr .ritual-copy p > .fr-block {
+    font-size: 21px !important;
+  }
+
+  body.lang-fr .movement p > .fr-block,
+  body.lang-fr .gc-head p > .fr-block,
+  body.lang-fr .season-card p.desc > .fr-block {
+    font-size: 18px !important;
+  }
+
+  body.lang-fr .gc-card p > .fr-block,
+  body.lang-fr .gc-flip-back p > .fr-block {
+    font-size: 16px !important;
+  }
+}
+
+/* French experiences — paragraph legibility; typography unchanged */
+body.lang-fr .exp-hero .lede > .fr-block {
+  font-size: 20px !important;
+  line-height: 1.65 !important;
+}
+
+body.lang-fr .ritual-copy p > .fr-block {
+  font-size: 23px !important;
+  line-height: 1.6 !important;
+}
+
+body.lang-fr .movement p > .fr-block {
+  font-size: 19px !important;
+  line-height: 1.7 !important;
+}
+
+body.lang-fr .gc-head p > .fr-block {
+  font-size: 21px !important;
+  line-height: 1.7 !important;
+}
+
+body.lang-fr .gc-card p > .fr-block,
+body.lang-fr .gc-flip-back p > .fr-block {
+  font-size: 17px !important;
+  line-height: 1.6 !important;
+}
+
+body.lang-fr .season-card p.desc > .fr-block {
+  font-size: 19px !important;
+  line-height: 1.65 !important;
 }

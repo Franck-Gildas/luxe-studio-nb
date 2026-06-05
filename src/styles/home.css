@@ -1396,4 +1396,46 @@ body.lang-fr .atrium-hero-copy .hero-tagline > .fr-block {
     width: 100%;
     justify-content: center;
   }
+
+  body.lang-fr .exp p > .fr-block {
+    font-size: 17px !important;
+  }
+
+  body.lang-fr .ritual-row p > .fr-block {
+    font-size: 20px !important;
+  }
+
+  body.lang-fr .atelier-copy p > .fr-block {
+    font-size: 20px !important;
+  }
+
+  body.lang-fr .testi blockquote > .fr-block {
+    font-size: 24px !important;
+  }
+}
+
+/* French home — paragraph legibility; typography unchanged */
+body.lang-fr .exp p > .fr-block {
+  font-size: 18px !important;
+  line-height: 1.65 !important;
+}
+
+body.lang-fr .ritual-row p > .fr-block {
+  font-size: 19px !important;
+  line-height: 1.7 !important;
+}
+
+body.lang-fr .atelier-copy p > .fr-block {
+  font-size: 21px !important;
+  line-height: 1.7 !important;
+}
+
+body.lang-fr .testi blockquote > .fr-block {
+  font-size: 26px !important;
+  line-height: 1.45 !important;
+}
+
+body.lang-fr .footer-mark .nl p > .fr-block {
+  font-size: 20px !important;
+  line-height: 1.5 !important;
 }

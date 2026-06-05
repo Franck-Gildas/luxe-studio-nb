@@ -23,6 +23,65 @@ export type SheetsBookingPayload = {
   pronouns: string
 }
 
+const ATLANTIC_TZ = 'America/Halifax'
+
+function normalizeEnCaTime(time: string): string {
+  return time.replace(/\s*a\.?\s*m\.?/i, ' AM').replace(/\s*p\.?\s*m\.?/i, ' PM')
+}
+
+export function formatSheetTimestamp(isoOrDate?: string | Date): string {
+  const parsed = isoOrDate ? new Date(isoOrDate) : new Date()
+  const date = Number.isNaN(parsed.getTime()) ? new Date() : parsed
+
+  const datePart = date.toLocaleDateString('en-CA', {
+    timeZone: ATLANTIC_TZ,
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  })
+  const timePart = normalizeEnCaTime(
+    date.toLocaleTimeString('en-CA', {
+      timeZone: ATLANTIC_TZ,
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true,
+    }),
+  )
+
+  return `${datePart} at ${timePart}`
+}
+
+/** Parse submission timestamps from the sheet (ISO or formatted Atlantic wall clock). */
+export function parseSheetTimestamp(value: string): Date | null {
+  const trimmed = value?.trim()
+  if (!trimmed) return null
+
+  const humanMatch = trimmed.match(/^(.+?) at (.+)$/i)
+  const candidate = humanMatch
+    ? `${humanMatch[1].trim()} ${humanMatch[2].trim()}`
+    : trimmed
+
+  const d = new Date(candidate)
+  return Number.isNaN(d.getTime()) ? null : d
+}
+
+export function formatSheetPhone(phone: string): string {
+  const trimmed = phone.trim()
+  if (!trimmed || trimmed.toLowerCase() === 'not provided') {
+    return trimmed || 'Not provided'
+  }
+
+  const digits = trimmed.replace(/\D/g, '')
+  const national =
+    digits.length === 11 && digits.startsWith('1') ? digits.slice(1) : digits
+
+  if (national.length === 10) {
+    return `(${national.slice(0, 3)}) ${national.slice(3, 6)}-${national.slice(6)}`
+  }
+
+  return trimmed
+}
+
 export function isValidSheetsBookingPayload(data: unknown): data is SheetsBookingPayload {
   if (!data || typeof data !== 'object') return false
   const d = data as Record<string, unknown>
@@ -47,10 +106,10 @@ export function isValidSheetsBookingPayload(data: unknown): data is SheetsBookin
 
 export function payloadToSheetRow(data: SheetsBookingPayload): string[] {
   return [
-    data.date || new Date().toISOString(),
+    formatSheetTimestamp(data.date),
     data.name,
     data.email,
-    data.phone,
+    formatSheetPhone(data.phone),
     data.service,
     data.addons,
     data.total,
