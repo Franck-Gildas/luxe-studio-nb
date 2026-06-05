@@ -64,6 +64,7 @@ export function LeadCard({
   onCancelMove,
 }: Props) {
   const urgency = reminder ? getReminderUrgency(reminder) : null
+  const showReminderBadge = urgency && urgency !== 'upcoming'
   const showArchiveBtn = !isArchived
   const showRestoreBtn = Boolean(onRestore) && showRestore && isArchived
   const showMoveConfirm = Boolean(pendingMove)
@@ -95,7 +96,7 @@ export function LeadCard({
         if (e.key === 'Enter' || e.key === ' ') onClick?.()
       }}
     >
-      {urgency && (
+      {showReminderBadge && urgency && (
         <div className="admin-lead-card__top">
           <span className={reminderBadgeClass(urgency)}>{reminderBadgeLabel(urgency)}</span>
         </div>

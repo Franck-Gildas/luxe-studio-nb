@@ -9,15 +9,31 @@ function normalizeStatus(status: string): LeadStatus {
   return match ?? 'New'
 }
 
+function bookingToLead(
+  booking: AdminBooking,
+  statusOverrides: Record<number, LeadStatus>,
+): Lead {
+  return {
+    ...booking,
+    effectiveStatus:
+      statusOverrides[booking.sheetRow] ?? normalizeStatus(booking.status),
+  }
+}
+
 export function mergeBookingsToLeads(
   bookings: AdminBooking[],
   statusOverrides: Record<number, LeadStatus>,
 ): Lead[] {
-  return bookings.map((booking) => ({
-    ...booking,
-    effectiveStatus:
-      statusOverrides[booking.sheetRow] ?? normalizeStatus(booking.status),
-  }))
+  return bookings.map((booking) => bookingToLead(booking, statusOverrides))
+}
+
+export function mergeAllLeads(
+  bookings: AdminBooking[],
+  manualLeads: AdminBooking[],
+  statusOverrides: Record<number, LeadStatus>,
+): Lead[] {
+  const allBookings = [...bookings, ...manualLeads]
+  return allBookings.map((booking) => bookingToLead(booking, statusOverrides))
 }
 
 export function updateLeadStatus(

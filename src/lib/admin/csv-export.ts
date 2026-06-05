@@ -1,11 +1,21 @@
 import type { Lead } from '@/lib/admin/types'
 import { getFollowUpNotes } from '@/lib/admin/storage'
+import { formatSheetTimestamp, parseSheetTimestamp } from '@/lib/google-sheets'
 
 function escapeCsvField(value: string): string {
   if (value.includes('"') || value.includes(',') || value.includes('\n')) {
     return `"${value.replace(/"/g, '""')}"`
   }
   return value
+}
+
+/** Normalize sheet date values (ISO or human-readable) for CSV output. */
+function formatCsvDate(value: string): string {
+  const trimmed = value?.trim()
+  if (!trimmed) return value
+  const parsed = parseSheetTimestamp(trimmed)
+  if (!parsed) return value
+  return formatSheetTimestamp(parsed)
 }
 
 const COLUMNS = [
@@ -32,12 +42,12 @@ const COLUMNS = [
 export function exportLeadsCsv(leads: Lead[]): void {
   const header = COLUMNS.join(',')
   const rows = leads.map((lead) => {
-    const followUpNotes = getFollowUpNotes(lead.email)
-      .map((n) => `[${new Date(n.timestamp).toLocaleString()}] ${n.text}`)
+    const followUpNotes = getFollowUpNotes(lead.sheetRow)
+      .map((n) => `[${formatSheetTimestamp(n.timestamp)}] ${n.text}`)
       .join(' | ')
 
     const values = [
-      lead.date,
+      formatCsvDate(lead.date),
       lead.name,
       lead.pronouns,
       lead.email,
@@ -60,7 +70,7 @@ export function exportLeadsCsv(leads: Lead[]): void {
     return values.map(escapeCsvField).join(',')
   })
 
-  const csv = [header, ...rows].join('\n')
+  const csv = `\uFEFF${[header, ...rows].join('\n')}`
   const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' })
   const url = URL.createObjectURL(blob)
   const date = new Date().toISOString().slice(0, 10)

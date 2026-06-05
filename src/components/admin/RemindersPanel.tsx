@@ -146,7 +146,7 @@ export function RemindersPanel({
                           <button
                             type="button"
                             className="reminder-done-btn"
-                            onClick={() => completeReminder(sheetRow, email)}
+                            onClick={() => completeReminder(sheetRow)}
                           >
                             Mark as Done
                           </button>

@@ -1,12 +1,14 @@
 'use client'
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import type { AdminBooking } from '@/lib/google-sheets'
 import type { Lead, LeadStatus } from '@/lib/admin/types'
 import { STATUS_PIPELINE } from '@/lib/admin/types'
 import { LeadCard } from '@/components/admin/LeadCard'
 import { statusColumnClass } from '@/components/admin/StatusBadge'
 import { useFollowUps } from '@/lib/admin/use-followups'
 import { useArchivedLeads } from '@/lib/admin/use-archived-leads'
+import { AddLeadPanel } from '@/components/admin/AddLeadPanel'
 
 const FINAL_STATUSES: LeadStatus[] = ['Completed', 'Not Interested']
 const EDGE_SCROLL_ZONE_PX = 80
@@ -22,13 +24,14 @@ type Props = {
   leads: Lead[]
   onStatusChange: (sheetRow: number, status: LeadStatus) => void
   onViewLead: (lead: Lead) => void
+  onAddLead: (booking: AdminBooking) => void
 }
 
 function isFinalStatus(status: LeadStatus): boolean {
   return FINAL_STATUSES.includes(status)
 }
 
-export function LeadPipeline({ leads, onStatusChange, onViewLead }: Props) {
+export function LeadPipeline({ leads, onStatusChange, onViewLead, onAddLead }: Props) {
   const followUps = useFollowUps()
   const { archivedRows, isArchived, getArchivedFrom, setLeadArchived } = useArchivedLeads()
   const [showArchived, setShowArchived] = useState(false)
@@ -41,6 +44,7 @@ export function LeadPipeline({ leads, onStatusChange, onViewLead }: Props) {
     () => new Set(),
   )
   const [dragOverStatus, setDragOverStatus] = useState<LeadStatus | null>(null)
+  const [addLeadOpen, setAddLeadOpen] = useState(false)
   const scrollRef = useRef<HTMLDivElement>(null)
   const scrollDirectionRef = useRef<-1 | 0 | 1>(0)
   const scrollAnimationRef = useRef<number | null>(null)
@@ -280,14 +284,23 @@ export function LeadPipeline({ leads, onStatusChange, onViewLead }: Props) {
             </span>
           )}
         </div>
-        <label className="admin-pipeline-show-archived">
-          <input
-            type="checkbox"
-            checked={showArchived}
-            onChange={(e) => setShowArchived(e.target.checked)}
-          />
-          <span>Show Archived</span>
-        </label>
+        <div className="admin-pipeline-toolbar-right">
+          <button
+            type="button"
+            className="admin-add-lead-btn"
+            onClick={() => setAddLeadOpen(true)}
+          >
+            + Add Lead
+          </button>
+          <label className="admin-pipeline-show-archived">
+            <input
+              type="checkbox"
+              checked={showArchived}
+              onChange={(e) => setShowArchived(e.target.checked)}
+            />
+            <span>Show Archived</span>
+          </label>
+        </div>
       </div>
       <div
         ref={scrollRef}
@@ -354,6 +367,16 @@ export function LeadPipeline({ leads, onStatusChange, onViewLead }: Props) {
           )
         })}
       </div>
+
+      <p className="admin-pipeline-auto-archive-note">
+        Leads marked Completed or Not Interested are auto-archived after 30 days
+      </p>
+
+      <AddLeadPanel
+        open={addLeadOpen}
+        onClose={() => setAddLeadOpen(false)}
+        onSubmit={onAddLead}
+      />
     </section>
   )
 }

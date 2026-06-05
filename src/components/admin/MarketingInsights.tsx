@@ -73,6 +73,7 @@ function SourceBar({ stat }: { stat: SourceStats }) {
 export function MarketingInsights({ bookings }: Props) {
   const [range, setRange] = useState<InsightsRange>('30d')
   const [customRange, setCustomRange] = useState<CustomRange>({ from: null, to: null })
+  const [collapsed, setCollapsed] = useState(false)
 
   const rangeLabel = getRangeTitleLabel(range, customRange)
 
@@ -90,85 +91,100 @@ export function MarketingInsights({ bookings }: Props) {
 
   return (
     <section
-      className="marketing-insights-card admin-animate-in admin-animate-in--3"
+      className={`marketing-insights-card admin-animate-in admin-animate-in--3${collapsed ? ' marketing-insights-card--collapsed' : ''}`}
       aria-labelledby="marketing-insights-title"
+      id="marketing-insights"
     >
       <div className="marketing-insights-header">
-        <h2 id="marketing-insights-title" className="marketing-insights-title">
-          Marketing Insights · {rangeLabel}
-        </h2>
-
-        <div className="insights-header-right">
-          <label className="insights-range-label" htmlFor="insights-range">
-            Time range
-          </label>
-          <select
-            id="insights-range"
-            className="insights-range-selector"
-            value={range}
-            onChange={(e) => setRange(e.target.value as InsightsRange)}
+        <div className="marketing-insights-header-row">
+          <h2 id="marketing-insights-title" className="marketing-insights-title">
+            Marketing Insights · {rangeLabel}
+          </h2>
+          <button
+            type="button"
+            className="admin-view-btn marketing-insights-toggle"
+            onClick={() => setCollapsed((c) => !c)}
+            aria-expanded={!collapsed}
           >
-            {INSIGHTS_RANGE_OPTIONS.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-
-          {range === 'custom' && (
-            <div className="insights-custom-range">
-              <div className="insights-date-field">
-                <label className="insights-date-label" htmlFor="insights-from">
-                  From
-                </label>
-                <div className="admin-input-wrap">
-                  <span className="admin-input-icon" aria-hidden>
-                    <IconCalendar size={14} />
-                  </span>
-                  <input
-                    id="insights-from"
-                    type="date"
-                    className="insights-date-picker admin-filter-input admin-filter-input--with-icon admin-filter-input--date"
-                    value={customRange.from ?? ''}
-                    onChange={(e) =>
-                      setCustomRange((prev) => ({
-                        ...prev,
-                        from: e.target.value || null,
-                      }))
-                    }
-                  />
-                </div>
-              </div>
-              <div className="insights-date-field">
-                <label className="insights-date-label" htmlFor="insights-to">
-                  To
-                </label>
-                <div className="admin-input-wrap">
-                  <span className="admin-input-icon" aria-hidden>
-                    <IconCalendar size={14} />
-                  </span>
-                  <input
-                    id="insights-to"
-                    type="date"
-                    className="insights-date-picker admin-filter-input admin-filter-input--with-icon admin-filter-input--date"
-                    value={customRange.to ?? ''}
-                    onChange={(e) =>
-                      setCustomRange((prev) => ({
-                        ...prev,
-                        to: e.target.value || null,
-                      }))
-                    }
-                  />
-                </div>
-              </div>
-            </div>
-          )}
+            {collapsed ? 'Expand' : 'Collapse'}
+          </button>
         </div>
+
+        {!collapsed && (
+          <div className="insights-header-right">
+            <label className="insights-range-label" htmlFor="insights-range">
+              Time range
+            </label>
+            <select
+              id="insights-range"
+              className="insights-range-selector"
+              value={range}
+              onChange={(e) => setRange(e.target.value as InsightsRange)}
+            >
+              {INSIGHTS_RANGE_OPTIONS.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+
+            {range === 'custom' && (
+              <div className="insights-custom-range">
+                <div className="insights-date-field">
+                  <label className="insights-date-label" htmlFor="insights-from">
+                    From
+                  </label>
+                  <div className="admin-input-wrap">
+                    <span className="admin-input-icon" aria-hidden>
+                      <IconCalendar size={14} />
+                    </span>
+                    <input
+                      id="insights-from"
+                      type="date"
+                      className="insights-date-picker admin-filter-input admin-filter-input--with-icon admin-filter-input--date"
+                      value={customRange.from ?? ''}
+                      onChange={(e) =>
+                        setCustomRange((prev) => ({
+                          ...prev,
+                          from: e.target.value || null,
+                        }))
+                      }
+                    />
+                  </div>
+                </div>
+                <div className="insights-date-field">
+                  <label className="insights-date-label" htmlFor="insights-to">
+                    To
+                  </label>
+                  <div className="admin-input-wrap">
+                    <span className="admin-input-icon" aria-hidden>
+                      <IconCalendar size={14} />
+                    </span>
+                    <input
+                      id="insights-to"
+                      type="date"
+                      className="insights-date-picker admin-filter-input admin-filter-input--with-icon admin-filter-input--date"
+                      value={customRange.to ?? ''}
+                      onChange={(e) =>
+                        setCustomRange((prev) => ({
+                          ...prev,
+                          to: e.target.value || null,
+                        }))
+                      }
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
-      <hr className="marketing-insights-divider" aria-hidden />
+      {!collapsed && (
+        <>
+          <hr className="marketing-insights-divider" aria-hidden />
 
-      <div className="marketing-insights-body">
+          <div className="marketing-insights-body">
         <div className="marketing-insights-main">
           {!rangeReady || totalLeads === 0 ? (
             <p className="marketing-insights-empty">{emptyMessage}</p>
@@ -238,6 +254,8 @@ export function MarketingInsights({ bookings }: Props) {
           </aside>
         )}
       </div>
+        </>
+      )}
     </section>
   )
 }

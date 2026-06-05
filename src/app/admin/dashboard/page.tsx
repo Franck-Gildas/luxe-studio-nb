@@ -18,11 +18,14 @@ import { useFollowUps } from '@/lib/admin/use-followups'
 import { AdminCalendarView } from '@/components/admin/AdminCalendarView'
 import { AdminViewToggle, type AdminLeadsView } from '@/components/admin/AdminViewToggle'
 import { parseAppointmentDate } from '@/lib/admin/appointment-date'
-import { mergeBookingsToLeads, updateLeadStatus } from '@/lib/admin/merge-leads'
+import { mergeAllLeads, updateLeadStatus } from '@/lib/admin/merge-leads'
 import {
   getStatusOverrides,
   setStatusOverride,
+  migrateNotesToSheetRows,
 } from '@/lib/admin/storage'
+import { addManualLead, getManualLeads } from '@/lib/admin/manual-leads'
+import { autoArchiveStaleLeads } from '@/lib/admin/auto-archive'
 import {
   filterLeads,
   computeSummaryStats,
@@ -54,6 +57,7 @@ export default function AdminDashboardPage() {
   const [tableRevealKey, setTableRevealKey] = useState(1)
   const [remindersPanelOpen, setRemindersPanelOpen] = useState(true)
   const lastAutoRefreshRef = useRef(0)
+  const autoArchiveRanRef = useRef(false)
   const followUps = useFollowUps()
   const followUpsToday = useMemo(() => countFollowUpsToday(followUps), [followUps])
 
@@ -80,7 +84,7 @@ export default function AdminDashboardPage() {
       }
       const data = (await res.json()) as { bookings: AdminBooking[] }
       const overrides = getStatusOverrides()
-      const merged = mergeBookingsToLeads(data.bookings, overrides)
+      const merged = mergeAllLeads(data.bookings, getManualLeads(), overrides)
       setLeads(merged)
       setSyncTime(new Date())
       setSelectedLead((prev) => {
@@ -111,7 +115,14 @@ export default function AdminDashboardPage() {
   useEffect(() => {
     if (leads.length > 0) {
       migrateFollowUpsToSheetRows(leads)
+      migrateNotesToSheetRows(leads)
     }
+  }, [leads])
+
+  useEffect(() => {
+    if (leads.length === 0 || autoArchiveRanRef.current) return
+    autoArchiveRanRef.current = true
+    autoArchiveStaleLeads(leads)
   }, [leads])
 
   useEffect(() => {
@@ -154,6 +165,12 @@ export default function AdminDashboardPage() {
     setSelectedLead((prev) =>
       prev?.sheetRow === sheetRow ? { ...prev, effectiveStatus: status } : prev,
     )
+  }
+
+  function handleAddLead(booking: AdminBooking) {
+    addManualLead(booking)
+    const lead: Lead = { ...booking, effectiveStatus: 'New' }
+    setLeads((prev) => [...prev, lead])
   }
 
   const modalLeads = useMemo(() => {
@@ -247,6 +264,7 @@ export default function AdminDashboardPage() {
               leads={filteredLeads}
               onStatusChange={handleStatusChange}
               onViewLead={setSelectedLead}
+              onAddLead={handleAddLead}
             />
 
             <hr className="admin-divider" aria-hidden />

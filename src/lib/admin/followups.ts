@@ -115,7 +115,7 @@ export function deleteReminder(sheetRow: number): void {
   }
 }
 
-export function completeReminder(sheetRow: number, email: string): void {
+export function completeReminder(sheetRow: number): void {
   const key = reminderStorageKey(sheetRow)
   const store = getFollowUps()
   if (!store[key]) return
@@ -132,7 +132,7 @@ export function completeReminder(sheetRow: number, email: string): void {
 
   delete store[key]
   localStorage.setItem(FOLLOWUPS_STORAGE_KEY, JSON.stringify(store))
-  addFollowUpNote(email, noteText)
+  addFollowUpNote(sheetRow, noteText)
   notifyFollowUpsChanged()
 }
 
@@ -196,13 +196,13 @@ export function formatReminderShort(date: string, time: string): string {
 export function reminderBadgeLabel(urgency: ReminderUrgency): string {
   switch (urgency) {
     case 'overdue':
-      return '🔥 Overdue'
+      return 'Overdue'
     case 'today':
-      return '🔔 Today'
+      return 'Today'
     case 'tomorrow':
-      return '🔔 Tomorrow'
+      return 'Tomorrow'
     case 'upcoming':
-      return '🔔 Upcoming'
+      return 'Upcoming'
   }
 }
 

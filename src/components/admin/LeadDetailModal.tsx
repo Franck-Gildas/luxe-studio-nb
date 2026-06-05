@@ -6,6 +6,7 @@ import { LEAD_STATUSES } from '@/lib/admin/types'
 import {
   addFollowUpNote,
   getFollowUpNotes,
+  NOTES_CHANGED_EVENT,
 } from '@/lib/admin/storage'
 import {
   REMINDER_CHANGED_EVENT,
@@ -152,7 +153,7 @@ export function LeadDetailModal({
 
   useEffect(() => {
     setStatus(lead.effectiveStatus)
-    setNotes(getFollowUpNotes(lead.email))
+    setNotes(getFollowUpNotes(lead.sheetRow))
     setNoteText('')
     loadReminder()
   }, [lead])
@@ -160,11 +161,15 @@ export function LeadDetailModal({
   useEffect(() => {
     function onRemindersChanged() {
       loadReminder()
-      setNotes(getFollowUpNotes(lead.email))
+      setNotes(getFollowUpNotes(lead.sheetRow))
     }
     window.addEventListener(REMINDER_CHANGED_EVENT, onRemindersChanged)
-    return () => window.removeEventListener(REMINDER_CHANGED_EVENT, onRemindersChanged)
-  }, [lead.sheetRow, lead.email])
+    window.addEventListener(NOTES_CHANGED_EVENT, onRemindersChanged)
+    return () => {
+      window.removeEventListener(REMINDER_CHANGED_EVENT, onRemindersChanged)
+      window.removeEventListener(NOTES_CHANGED_EVENT, onRemindersChanged)
+    }
+  }, [lead.sheetRow])
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
@@ -205,7 +210,7 @@ export function LeadDetailModal({
   }
 
   function handleAddNote() {
-    const updated = addFollowUpNote(lead.email, noteText)
+    const updated = addFollowUpNote(lead.sheetRow, noteText)
     setNotes(updated)
     setNoteText('')
   }
