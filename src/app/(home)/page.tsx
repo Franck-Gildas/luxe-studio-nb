@@ -7,10 +7,11 @@ import { BookingLink } from "@/components/ui/BookingLink";
 import { RitualQuiz } from "@/components/ui/RitualQuiz";
 import "@/styles/home.css";
 
-const VIAL_PARTICLES = Array.from({ length: 12 }, (_, i) => ({
-  left: 20 + ((i * 17) % 60),
-  delay: (i * 0.37) % 4,
-  duration: 3 + ((i * 0.53) % 4),
+const VIAL_PARTICLES = Array.from({ length: 22 }, (_, i) => ({
+  left: 12 + ((i * 13) % 76),
+  delay: (i * 0.29) % 5,
+  duration: 2.2 + ((i * 0.41) % 2.8),
+  size: 3 + (i % 3),
 }));
 
 function handleNewsletterSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -110,6 +111,8 @@ export default function HomePage() {
                     className="vial-particle"
                     style={{
                       left: `${particle.left}%`,
+                      width: `${particle.size}px`,
+                      height: `${particle.size}px`,
                       animationDelay: `${particle.delay}s`,
                       animationDuration: `${particle.duration}s`,
                     }}

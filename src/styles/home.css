@@ -646,19 +646,18 @@ body.lang-fr .atrium-hero-copy .hero-tagline > .fr-block {
 .vial-particle {
   position: absolute;
   bottom: 10%;
-  width: 2px;
-  height: 2px;
   border-radius: 50%;
-  background: var(--champagne);
+  background: #C9A96E;
+  box-shadow: 0 0 6px rgba(201, 169, 110, 0.55), 0 0 2px rgba(244, 221, 178, 0.4);
   opacity: 0;
   animation: particleFloat linear infinite;
 }
 
 @keyframes particleFloat {
   0% { transform: translateY(0) scale(1); opacity: 0; }
-  20% { opacity: 0.8; }
-  80% { opacity: 0.4; }
-  100% { transform: translateY(-280px) scale(0.3); opacity: 0; }
+  15% { opacity: 0.95; }
+  75% { opacity: 0.6; }
+  100% { transform: translateY(-280px) scale(0.35); opacity: 0; }
 }
 
 .atrium-corners {
