@@ -4,6 +4,11 @@ export const BOOKING_FORM_HREF = `/contact#${BOOKING_FORM_ID}` as const;
 /** Offset for fixed nav when scrolling to the booking form */
 export const BOOKING_SCROLL_OFFSET = 96;
 
+function getScrollOffset(): number {
+  if (typeof window === "undefined") return BOOKING_SCROLL_OFFSET;
+  return window.matchMedia("(max-width: 768px)").matches ? 120 : BOOKING_SCROLL_OFFSET;
+}
+
 export function scrollToBookingForm(
   behavior: ScrollBehavior = "smooth"
 ): boolean {
@@ -13,7 +18,7 @@ export function scrollToBookingForm(
   const top =
     el.getBoundingClientRect().top +
     window.scrollY -
-    BOOKING_SCROLL_OFFSET;
+    getScrollOffset();
 
   window.scrollTo({ top: Math.max(0, top), behavior });
   return true;

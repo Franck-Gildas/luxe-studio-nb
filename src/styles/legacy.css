@@ -242,6 +242,7 @@ h1.display, .display {
   right: 28px;
   z-index: 250;
   font-family: var(--sans);
+  pointer-events: none;
 }
 .concierge-bubble {
   width: 64px; height: 64px;
@@ -261,6 +262,7 @@ h1.display, .display {
   transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.5s;
   animation: concierge-pulse 3.4s ease-in-out infinite;
   position: relative;
+  pointer-events: auto;
 }
 .concierge-bubble::before {
   content: "";
@@ -329,6 +331,7 @@ h1.display, .display {
   transform: translateY(8px) scale(0.98);
   opacity: 0;
   transition: opacity 0.4s, transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+  pointer-events: auto;
 }
 .concierge.open .concierge-panel {
   display: block;
@@ -535,8 +538,8 @@ h1.display, .display {
 @media (max-width: 768px) {
   .concierge {
     right: 16px;
-    left: 16px;
     bottom: 16px;
+    left: auto;
     width: auto;
   }
 
@@ -570,7 +573,7 @@ h1.display, .display {
 }
 
 @media (max-width: 640px) {
-  .concierge { right: 16px; left: 16px; bottom: 16px; }
+  .concierge { right: 16px; bottom: 16px; left: auto; }
 }
 
 /* ——— Tonal image helper ——— */
@@ -787,6 +790,10 @@ h1.display, .display {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   transition: color 0.3s;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 0;
 }
 
 .footer-bottom a:hover,
@@ -1120,7 +1127,9 @@ h1.display, .display {
   .section-head { grid-template-columns: 1fr; gap: 24px; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
   .footer-mark { flex-direction: column; align-items: start; }
-  .footer { padding: 60px 24px 30px; }
+  .footer {
+    padding: 60px 24px calc(30px + 72px);
+  }
   .newsletter-strip { padding: 60px 24px 40px; }
 }
 

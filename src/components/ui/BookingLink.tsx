@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import type { ComponentProps, MouseEvent } from "react";
 import {
   BOOKING_FORM_HREF,
+  BOOKING_FORM_ID,
   scrollToBookingForm,
 } from "@/lib/booking-link";
 
@@ -12,10 +13,23 @@ type BookingLinkProps = Omit<ComponentProps<typeof Link>, "href"> & {
   href?: ComponentProps<typeof Link>["href"];
 };
 
-function queueScrollToBooking() {
+function setBookingHash() {
+  const next = `#${BOOKING_FORM_ID}`;
+  if (window.location.hash !== next) {
+    window.history.pushState(null, "", `/contact${next}`);
+  }
+}
+
+function queueScrollToBooking(delayMs = 0) {
   const run = () => scrollToBookingForm("smooth");
-  run();
-  [50, 150, 350, 700, 1100].forEach((ms) => setTimeout(run, ms));
+  if (delayMs > 0) {
+    setTimeout(run, delayMs);
+  } else {
+    run();
+  }
+  [50, 150, 350, 700, 1100, 1600].forEach((ms) =>
+    setTimeout(run, delayMs + ms),
+  );
 }
 
 /** Navigates to /contact#booking and smooth-scrolls to the booking form. */
@@ -25,6 +39,7 @@ export function BookingLink({
   ...props
 }: BookingLinkProps) {
   const router = useRouter();
+  const pathname = usePathname();
 
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
     onClick?.(e);
@@ -34,8 +49,18 @@ export function BookingLink({
     }
 
     e.preventDefault();
+
+    const onContact = pathname === "/contact";
+
+    if (onContact) {
+      setBookingHash();
+      // Defer until mobile menu unlocks body scroll (overflow: hidden).
+      queueScrollToBooking(60);
+      return;
+    }
+
     router.push(BOOKING_FORM_HREF, { scroll: false });
-    queueScrollToBooking();
+    queueScrollToBooking(180);
   };
 
   return (
