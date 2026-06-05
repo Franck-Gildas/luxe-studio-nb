@@ -9,6 +9,7 @@ import { statusColumnClass } from '@/components/admin/StatusBadge'
 import { useFollowUps } from '@/lib/admin/use-followups'
 import { useArchivedLeads } from '@/lib/admin/use-archived-leads'
 import { AddLeadPanel } from '@/components/admin/AddLeadPanel'
+import { useMediaQuery } from '@/lib/use-media-query'
 
 const FINAL_STATUSES: LeadStatus[] = ['Completed', 'Not Interested']
 const EDGE_SCROLL_ZONE_PX = 80
@@ -32,6 +33,7 @@ function isFinalStatus(status: LeadStatus): boolean {
 }
 
 export function LeadPipeline({ leads, onStatusChange, onViewLead, onAddLead }: Props) {
+  const touchPipeline = useMediaQuery('(hover: none)')
   const followUps = useFollowUps()
   const { archivedRows, isArchived, getArchivedFrom, setLeadArchived } = useArchivedLeads()
   const [showArchived, setShowArchived] = useState(false)
@@ -179,6 +181,37 @@ export function LeadPipeline({ leads, onStatusChange, onViewLead, onAddLead }: P
     setDragOverStatus(null)
   }
 
+  function applyStatusMove(
+    sheetRow: number,
+    sourceStatus: LeadStatus,
+    targetStatus: LeadStatus,
+  ) {
+    if (sourceStatus === targetStatus) return
+
+    if (isFinalStatus(sourceStatus)) {
+      const kind: PendingMove['kind'] = isFinalStatus(targetStatus)
+        ? 'final-to-final'
+        : 'final-to-active'
+      setPendingMoves((prev) => {
+        const next = new Map(prev)
+        next.set(sheetRow, { targetStatus, sourceStatus, kind })
+        return next
+      })
+      removePendingArchive(sheetRow)
+    } else {
+      onStatusChange(sheetRow, targetStatus)
+      if (isFinalStatus(targetStatus)) {
+        addPendingArchive(sheetRow)
+      }
+    }
+  }
+
+  function handleStatusPickerChange(sheetRow: number, targetStatus: LeadStatus) {
+    const lead = leadsByRow.get(sheetRow)
+    if (!lead) return
+    applyStatusMove(sheetRow, lead.effectiveStatus, targetStatus)
+  }
+
   function handleDrop(e: React.DragEvent, targetStatus: LeadStatus) {
     e.preventDefault()
     const sheetRow = draggingRow
@@ -194,26 +227,13 @@ export function LeadPipeline({ leads, onStatusChange, onViewLead, onAddLead }: P
             return next
           })
         }
-      } else if (isFinalStatus(sourceStatus)) {
-        const kind: PendingMove['kind'] = isFinalStatus(targetStatus)
-          ? 'final-to-final'
-          : 'final-to-active'
-        setPendingMoves((prev) => {
-          const next = new Map(prev)
-          next.set(sheetRow, { targetStatus, sourceStatus, kind })
-          return next
-        })
-        removePendingArchive(sheetRow)
+      } else {
+        applyStatusMove(sheetRow, sourceStatus, targetStatus)
         setArchiveDismissedOnDrag((prev) => {
           const next = new Set(prev)
           next.delete(sheetRow)
           return next
         })
-      } else {
-        onStatusChange(sheetRow, targetStatus)
-        if (isFinalStatus(targetStatus)) {
-          addPendingArchive(sheetRow)
-        }
       }
     }
 
@@ -323,7 +343,9 @@ export function LeadPipeline({ leads, onStatusChange, onViewLead, onAddLead }: P
               </div>
               <div className="admin-pipeline-cards">
                 {columnLeads.length === 0 ? (
-                  <p className="admin-pipeline-empty">Drop leads here</p>
+                  <p className="admin-pipeline-empty">
+                    {touchPipeline ? 'No leads' : 'Drop leads here'}
+                  </p>
                 ) : (
                   columnLeads.map((lead) => {
                     const reminder = followUps[String(lead.sheetRow)] ?? null
@@ -358,6 +380,9 @@ export function LeadPipeline({ leads, onStatusChange, onViewLead, onAddLead }: P
                         onDismissArchive={handleDismissArchive}
                         onConfirmMove={handleConfirmMove}
                         onCancelMove={handleCancelMove}
+                        draggable={!touchPipeline}
+                        showStatusPicker={touchPipeline}
+                        onStatusChange={handleStatusPickerChange}
                       />
                     )
                   })

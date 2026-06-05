@@ -1610,6 +1610,22 @@
   cursor: grabbing;
 }
 
+.admin-lead-card--touch {
+  cursor: pointer;
+}
+
+.admin-lead-card--touch:active {
+  cursor: pointer;
+}
+
+.admin-lead-card__status-picker {
+  margin-top: 10px;
+}
+
+.admin-lead-card__status-picker .admin-select-wrap {
+  width: 100%;
+}
+
 .admin-lead-card--dragging {
   opacity: 0.7;
   transform: scale(1.02);

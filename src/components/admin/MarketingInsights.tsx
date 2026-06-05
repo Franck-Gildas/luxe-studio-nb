@@ -73,7 +73,7 @@ function SourceBar({ stat }: { stat: SourceStats }) {
 export function MarketingInsights({ bookings }: Props) {
   const [range, setRange] = useState<InsightsRange>('30d')
   const [customRange, setCustomRange] = useState<CustomRange>({ from: null, to: null })
-  const [collapsed, setCollapsed] = useState(false)
+  const [collapsed, setCollapsed] = useState(true)
 
   const rangeLabel = getRangeTitleLabel(range, customRange)
 

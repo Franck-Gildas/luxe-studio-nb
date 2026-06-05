@@ -1,6 +1,8 @@
 'use client'
 
 import type { Lead, LeadStatus } from '@/lib/admin/types'
+import { LEAD_STATUSES } from '@/lib/admin/types'
+import { AdminSelect } from '@/components/admin/AdminSelect'
 import { statusCardClass, statusDotClass } from '@/components/admin/StatusBadge'
 import {
   getReminderUrgency,
@@ -41,6 +43,9 @@ type Props = {
   onDismissArchive?: (sheetRow: number) => void
   onConfirmMove?: (sheetRow: number) => void
   onCancelMove?: (sheetRow: number) => void
+  draggable?: boolean
+  showStatusPicker?: boolean
+  onStatusChange?: (sheetRow: number, status: LeadStatus) => void
 }
 
 export function LeadCard({
@@ -62,6 +67,9 @@ export function LeadCard({
   onDismissArchive,
   onConfirmMove,
   onCancelMove,
+  draggable = true,
+  showStatusPicker = false,
+  onStatusChange,
 }: Props) {
   const urgency = reminder ? getReminderUrgency(reminder) : null
   const showReminderBadge = urgency && urgency !== 'upcoming'
@@ -85,10 +93,11 @@ export function LeadCard({
         isArchived ? ' admin-lead-card--archived' : '',
         isArchivingOut ? ' admin-lead-card--archiving-out' : '',
         promptOpen ? ' admin-lead-card--prompt-open' : '',
+        !draggable ? ' admin-lead-card--touch' : '',
       ].join('')}
-      draggable
-      onDragStart={() => onDragStart(lead.sheetRow)}
-      onDragEnd={onDragEnd}
+      draggable={draggable}
+      onDragStart={draggable ? () => onDragStart(lead.sheetRow) : undefined}
+      onDragEnd={draggable ? onDragEnd : undefined}
       onClick={onClick}
       role="button"
       tabIndex={0}
@@ -111,6 +120,27 @@ export function LeadCard({
         {lead.service.split('—')[0]?.trim() || lead.service || '—'}
       </div>
       <div className="admin-lead-card-meta">{lead.how_heard || '—'}</div>
+      {showStatusPicker && onStatusChange && (
+        <div
+          className="admin-lead-card__status-picker"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <AdminSelect
+            variant="status"
+            value={lead.effectiveStatus}
+            onChange={(e) =>
+              onStatusChange(lead.sheetRow, e.target.value as LeadStatus)
+            }
+            aria-label={`Move ${lead.name || 'lead'} to`}
+          >
+            {LEAD_STATUSES.map((s) => (
+              <option key={s} value={s}>
+                {s}
+              </option>
+            ))}
+          </AdminSelect>
+        </div>
+      )}
       <div className="admin-lead-card-footer">
         <span className="admin-lead-card-meta">{formatCreatedAt(lead.date)}</span>
         <div className="admin-lead-card-footer-actions">
@@ -138,7 +168,9 @@ export function LeadCard({
               Archive
             </button>
           )}
-          <span className={statusDotClass(lead.effectiveStatus)} aria-hidden />
+          {!showStatusPicker && (
+            <span className={statusDotClass(lead.effectiveStatus)} aria-hidden />
+          )}
         </div>
       </div>
 
