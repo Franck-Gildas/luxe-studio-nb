@@ -9,6 +9,7 @@ import { CustomCursor } from '@/components/ui/CustomCursor'
 import { ScrollProgress } from '@/components/ui/ScrollProgress'
 import { Concierge } from '@/components/ui/Concierge'
 import { BookingScrollToForm } from '@/components/ui/BookingScrollToForm'
+import { ScrollToTop } from '@/components/ui/ScrollToTop'
 import PageTransition from '@/components/ui/PageTransition'
 import RouteOverlay from '@/components/ui/RouteOverlay'
 import GSAPAnimations from '@/components/ui/GSAPAnimations'
@@ -27,6 +28,7 @@ export function AdminAwareShell({ children }: { children: React.ReactNode }) {
       <CustomCursor />
       <ScrollProgress />
       <BookingScrollToForm />
+      <ScrollToTop />
       <Navbar />
       <GSAPAnimations />
       <NavSpacer />
