@@ -753,7 +753,7 @@
   line-height: 1;
   letter-spacing: -0.025em;
   max-width: 980px;
-  margin: 0 auto 16px;
+  margin: 0 auto 48px;
   text-wrap: pretty;
 }
 @media (max-width: 768px) {
@@ -791,6 +791,18 @@
     font-size: clamp(18px, 4.5vw, 22px);
   }
 
+  body.lang-fr .service-item .name .desc > .fr-block {
+    font-size: 15px !important;
+  }
+
+  body.lang-fr .cat-copy .body > .fr-block {
+    font-size: 16px !important;
+  }
+
+  body.lang-fr .menu-hero .lede > .fr-block {
+    font-size: 18px !important;
+  }
+
   .service-item .price {
     font-size: clamp(18px, 4.5vw, 24px);
   }
@@ -802,4 +814,36 @@
   .cta-section {
     padding: 80px 24px 100px;
   }
+
+  .cta-section h2 {
+    margin-bottom: 40px;
+  }
+}
+
+/* French menu — legibility tweaks; typography matches site-wide .fr / .fr-block */
+body.lang-fr .service-item:not(.active) {
+  opacity: 0.72;
+}
+
+body.lang-fr .service-item .name .desc > .fr-block {
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+}
+
+body.lang-fr .cat-copy .body > .fr-block {
+  font-size: 17px !important;
+  line-height: 1.75 !important;
+}
+
+body.lang-fr .menu-hero .lede > .fr-block {
+  font-size: 20px !important;
+  line-height: 1.65 !important;
+}
+
+body.lang-fr .service-item.active .name > .fr {
+  color: var(--petal) !important;
+}
+
+body.lang-fr .share-ritual-btn > .fr-block {
+  font-size: 16px !important;
 }

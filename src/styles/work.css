@@ -518,4 +518,29 @@
   .cta-section {
     padding: 80px 24px 100px;
   }
+
+  body.lang-fr .work-hero-blurb p > .fr-block {
+    font-size: 17px !important;
+  }
+
+  body.lang-fr .ba-side p > .fr-block,
+  body.lang-fr .vitrine-row .copy p > .fr-block {
+    font-size: 15px !important;
+  }
+}
+
+/* French work page — legibility; typography matches site-wide .fr / .fr-block */
+body.lang-fr .work-hero-blurb p > .fr-block {
+  font-size: 19px !important;
+  line-height: 1.65 !important;
+}
+
+body.lang-fr .ba-side p > .fr-block {
+  font-size: 16px !important;
+  line-height: 1.65 !important;
+}
+
+body.lang-fr .vitrine-row .copy p > .fr-block {
+  font-size: 16px !important;
+  line-height: 1.65 !important;
 }
