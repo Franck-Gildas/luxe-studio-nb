@@ -1,0 +1,73 @@
+/**
+ * French mode — consistent rose italic accent at inherited size (legible).
+ * Loaded after legacy.css; overrides per-page .fr subline shrinking.
+ */
+
+body.lang-fr .fr:not(.lang-switch),
+body.lang-fr .fr-block {
+  font-family: var(--serif-italic) !important;
+  font-style: italic !important;
+  color: var(--rose) !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  font-weight: inherit !important;
+  letter-spacing: inherit !important;
+  text-transform: inherit !important;
+}
+
+/* Heading & tagline replacements — full size, no subline offset */
+body.lang-fr :is(h1, h2, h3, h4, h5, h6) > .fr,
+body.lang-fr :is(h1, h2, h3, h4, h5, h6) > .fr-block,
+body.lang-fr .hero-tagline > .fr-block,
+body.lang-fr .lede > .fr-block,
+body.lang-fr .cta-section h2 > .fr,
+body.lang-fr .cta-section h2 > .fr-block,
+body.lang-fr .phase-name > .fr,
+body.lang-fr .form-header h2 > .fr,
+body.lang-fr .invitation h2 > .fr,
+body.lang-fr .tenet h4 > .fr {
+  display: block !important;
+  margin-top: 0 !important;
+}
+
+/* Body & card copy */
+body.lang-fr p > .fr-block,
+body.lang-fr .body > .fr-block,
+body.lang-fr blockquote > .fr-block,
+body.lang-fr .house-note p > .fr,
+body.lang-fr .sidebar .address > .fr,
+body.lang-fr .footer-tag > .fr,
+body.lang-fr .service-item .name > .fr,
+body.lang-fr .addons .row .name > .fr,
+body.lang-fr .service-pick .name > .fr,
+body.lang-fr .tile .meta > .fr,
+body.lang-fr .tx-card .meta > .fr,
+body.lang-fr .address-card .line .v > .fr,
+body.lang-fr .filter > .fr {
+  display: block !important;
+  margin-top: 0 !important;
+  margin-left: 0 !important;
+}
+
+/* Buttons — sans label typography, not rose accent */
+body.lang-fr .btn-gold > .fr,
+body.lang-fr .btn-gold > .fr-block {
+  font-family: var(--sans) !important;
+  font-style: normal !important;
+  color: var(--obsidian) !important;
+  font-size: 13px !important;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+}
+
+body.lang-fr .submit-btn > .fr,
+body.lang-fr .submit-btn > .fr-block {
+  font-family: inherit !important;
+  font-style: normal !important;
+  color: rgba(10, 9, 8, 0.55) !important;
+  font-size: inherit !important;
+  letter-spacing: inherit !important;
+  text-transform: inherit !important;
+  font-weight: inherit !important;
+}

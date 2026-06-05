@@ -26,15 +26,6 @@
   line-height: 0.9;
   margin-bottom: 0;
 }
-.work-hero h1 .fr-block {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-style: normal;
-  color: var(--bone);
-  font-size: inherit;
-  line-height: inherit;
-  letter-spacing: inherit;
-}
 .work-hero .hero-tagline {
   font-size: clamp(44px, 6.5vw, 92px);
   margin-bottom: 24px;
@@ -89,15 +80,6 @@
   border-color: var(--champagne);
   color: var(--champagne);
   background: rgba(232, 201, 160, 0.06);
-}
-.filter .fr {
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--rose);
-  text-transform: none;
-  letter-spacing: 0;
-  margin-left: 6px;
-  font-size: 11px;
 }
 
 /* Before / After hero piece */
@@ -297,14 +279,6 @@
   letter-spacing: -0.015em;
   color: var(--bone);
 }
-.tile .meta .fr {
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--rose);
-  font-size: 12px;
-  display: block;
-  margin-top: 3px;
-}
 .tile .num {
   position: absolute;
   top: 16px; right: 18px;
@@ -406,14 +380,6 @@
   line-height: 1;
   margin-bottom: 16px;
 }
-.vitrine-row .copy h3 .fr {
-  display: block;
-  font-family: var(--serif-italic);
-  font-style: italic;
-  font-size: 0.5em;
-  color: var(--rose);
-  margin-top: 10px;
-}
 .vitrine-row .copy p {
   font-size: 14px;
   color: var(--bone-dim);
@@ -486,15 +452,6 @@
   margin: 0 auto 16px;
   text-wrap: pretty;
 }
-.cta-section h2 .fr {
-  display: block;
-  font-size: 0.55em;
-  color: var(--rose);
-  margin-top: 16px;
-  font-family: var(--serif-italic);
-  font-style: italic;
-}
-
 @media (max-width: 768px) {
   .work-hero {
     padding: 120px 24px 48px;

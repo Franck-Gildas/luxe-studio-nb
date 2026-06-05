@@ -12,6 +12,7 @@ import { I18nProvider } from "@/components/providers/I18nProvider";
 import { LanguageProvider } from "@/lib/LanguageContext";
 import "./globals.css";
 import "@/styles/legacy.css";
+import "@/styles/french-typography.css";
 
 const bodoni = Bodoni_Moda({
   variable: "--font-bodoni",

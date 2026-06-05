@@ -402,7 +402,15 @@
   gap: 12px;
   width: 100%;
   max-width: 760px;
-  text-shadow: 0 2px 28px rgba(5, 4, 3, 0.75);
+  padding: 28px 36px 32px;
+  background: rgba(5, 4, 3, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(232, 201, 160, 0.12);
+  border-radius: 2px;
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(232, 201, 160, 0.08);
 }
 
 .atrium-bottom > h1,
@@ -415,16 +423,29 @@
   color: var(--bone);
   max-width: 760px;
   text-wrap: pretty;
+  text-shadow:
+    0 1px 2px rgba(5, 4, 3, 0.9),
+    0 2px 18px rgba(5, 4, 3, 0.75);
 }
 .atrium-hero-copy .hero-tagline {
   font-size: clamp(18px, 2.6vw, 28px);
   letter-spacing: 0.01em;
   margin-top: 0;
-  line-height: 1.3;
+  line-height: 1.35;
   color: var(--bone);
   text-shadow:
-    0 2px 20px rgba(0, 0, 0, 0.8),
-    0 0 40px rgba(0, 0, 0, 0.6);
+    0 1px 2px rgba(5, 4, 3, 0.9),
+    0 2px 18px rgba(5, 4, 3, 0.75);
+}
+
+/* French hero copy — rose italic on scrim, brighter petal for contrast */
+body.lang-fr .atrium-hero-copy > h1 > .fr-block,
+body.lang-fr .atrium-hero-copy .hero-tagline > .fr-block {
+  color: var(--petal) !important;
+  text-shadow:
+    0 1px 3px rgba(5, 4, 3, 0.95),
+    0 2px 20px rgba(5, 4, 3, 0.85),
+    0 0 36px rgba(5, 4, 3, 0.65);
 }
 .atrium-bottom .btn-gold,
 .atrium-bottom .quiz-trigger {
@@ -495,16 +516,6 @@
 .atrium-bottom .quiz-trigger:hover .quiz-trigger-arrow {
   color: var(--champagne);
   transform: translateX(3px);
-}
-
-.atrium-bottom > h1 .fr-block,
-.atrium-hero-copy > h1 .fr-block {
-  font-family: var(--serif);
-  font-style: normal;
-  font-size: inherit;
-  line-height: inherit;
-  letter-spacing: inherit;
-  color: inherit;
 }
 
 .wordmark {
@@ -708,16 +719,6 @@
   font-style: italic;
   color: var(--champagne);
 }
-.invitation .fr {
-  display: block;
-  margin-top: 18px;
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--rose);
-  font-size: 0.55em;
-  line-height: 1.4;
-}
-
 /* â€”â€”â€” Services / Experiences â€”â€”â€” */
 .services-section {
   padding: 140px 48px;
@@ -792,14 +793,6 @@
   font-size: 30px;
   line-height: 1.05;
   letter-spacing: -0.015em;
-}
-.exp h3 .fr {
-  display: block;
-  font-size: 17px;
-  margin-top: 6px;
-  font-style: italic;
-  font-family: var(--serif-italic);
-  color: var(--rose);
 }
 .exp p {
   font-size: 14px;
@@ -877,14 +870,6 @@
   font-size: 34px;
   line-height: 1.1;
   letter-spacing: -0.015em;
-}
-.ritual-row h3 .fr {
-  display: block;
-  font-size: 17px;
-  font-style: italic;
-  font-family: var(--serif-italic);
-  color: var(--rose);
-  margin-top: 4px;
 }
 .ritual-row p {
   font-size: 15px;
@@ -1009,15 +994,6 @@
   line-height: 1.05;
   letter-spacing: -0.015em;
 }
-.tx-card .meta .fr {
-  display: block;
-  font-size: 13px;
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--rose);
-  margin-top: 4px;
-}
-
 .tx-card .tag {
   position: absolute;
   top: 18px; left: 18px;
@@ -1148,15 +1124,6 @@
   margin-bottom: 24px;
   text-wrap: pretty;
 }
-.atelier-copy h2 .fr {
-  display: block;
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--rose);
-  font-size: 0.5em;
-  margin-top: 14px;
-  letter-spacing: -0.01em;
-}
 .atelier-copy p {
   font-size: 17px;
   color: var(--bone-dim);
@@ -1279,14 +1246,6 @@
   margin: 0 auto 16px;
   text-wrap: pretty;
 }
-.cta-section h2 .fr {
-  display: block;
-  font-size: 0.55em;
-  color: var(--rose);
-  margin-top: 16px;
-  font-family: var(--serif-italic);
-  font-style: italic;
-}
 .cta-section p {
   font-family: var(--mono);
   font-size: 11px;
@@ -1356,6 +1315,11 @@
   .wordmark {
     letter-spacing: 0.08em;
     font-size: clamp(28px, 8vw, 56px);
+  }
+
+  .atrium-hero-copy {
+    padding: 22px 20px 26px;
+    max-width: 100%;
   }
 
   .composition .placeholder-label {

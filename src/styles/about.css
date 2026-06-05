@@ -62,15 +62,6 @@
   font-style: italic;
   color: var(--champagne);
 }
-.about-hero h1 .fr-block {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-style: normal;
-  color: var(--bone);
-  font-size: inherit;
-  line-height: inherit;
-  letter-spacing: inherit;
-}
 .about-hero .hero-tagline {
   max-width: 980px;
   margin-top: 6px;
@@ -144,14 +135,6 @@
   margin-bottom: 12px;
   position: sticky;
   top: 110px;
-}
-.philo .left h2 .fr {
-  display: block;
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--rose);
-  font-size: 0.42em;
-  margin-top: 18px;
 }
 .philo .right {
   display: flex;
@@ -237,14 +220,6 @@
   font-weight: 400;
   letter-spacing: -0.005em;
   line-height: 1.1;
-}
-.tenet h4 .fr {
-  display: block;
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--rose);
-  font-size: 13px;
-  margin-top: 4px;
 }
 .tenet p {
   font-size: 13px;
@@ -531,14 +506,6 @@
   letter-spacing: -0.025em;
   line-height: 1;
 }
-.location-copy h2 .fr {
-  display: block;
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--rose);
-  font-size: 0.42em;
-  margin-top: 14px;
-}
 .address-card {
   border-top: 1px solid var(--hairline-soft);
   padding-top: 28px;
@@ -572,14 +539,6 @@
   font-size: 14px;
   color: var(--bone-dim);
   letter-spacing: 0;
-}
-.address-card .line .v .fr {
-  display: block;
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--rose);
-  font-size: 13px;
-  margin-top: 2px;
 }
 .hours-card {
   border-top: 1px solid var(--hairline-soft);
@@ -646,15 +605,6 @@
   margin: 0 auto 16px;
   text-wrap: pretty;
 }
-.cta-section h2 .fr {
-  display: block;
-  font-size: 0.55em;
-  color: var(--rose);
-  margin-top: 16px;
-  font-family: var(--serif-italic);
-  font-style: italic;
-}
-
 /* Next/Image wrappers */
 .about-hero-media > span:has(img),
 .team-photo > span:has(img),

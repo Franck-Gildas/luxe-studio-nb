@@ -282,18 +282,8 @@ body.lang-fr .btn-gold > .fr-block {
 body:not(.lang-fr) .btn-gold > .fr-block {
   display: none;
 }
-body.lang-fr .btn-gold > .fr {
-  color: var(--obsidian);
-  font-family: var(--sans);
-  font-style: normal;
-  font-size: 13px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  font-weight: 500;
-}
-
 /* Hide English element siblings next to .fr (legacy .fr pattern) */
-body.lang-fr :is(.btn-gold, h1, h2, h3, h4, .phase-name):has(> .fr):not(:has(> .fr-block)) > :not(.fr):not(.arrow) {
+body.lang-fr :is(.btn-gold, h1, h2, h3, h4, .phase-name, .submit-btn):has(> .fr):not(:has(> .fr-block)) > :not(.fr):not(.arrow) {
   display: none !important;
 }
 

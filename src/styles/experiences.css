@@ -36,15 +36,6 @@
   margin-bottom: 0;
 }
 
-.exp-hero h1 .fr-block {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-style: normal;
-  color: var(--bone);
-  font-size: inherit;
-  line-height: inherit;
-  letter-spacing: inherit;
-}
 
 .exp-hero .hero-tagline {
   margin-bottom: 24px;
@@ -127,15 +118,6 @@
   line-height: 1.05;
 }
 
-.hero-timeline-item .phase-name .fr {
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--rose);
-  display: block;
-  font-size: 0.5em;
-  margin-top: 4px;
-}
-
 /* The Ritual â€” 5 movements, vertical timeline */
 .ritual-section {
   padding: 140px 48px;
@@ -176,15 +158,6 @@
   letter-spacing: -0.025em;
   line-height: 0.98;
   margin-bottom: 24px;
-}
-
-.ritual-copy h2 .fr {
-  display: block;
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--rose);
-  font-size: 0.42em;
-  margin-top: 16px;
 }
 
 .ritual-copy p {
@@ -283,15 +256,6 @@
   letter-spacing: -0.02em;
   line-height: 1.0;
   margin-bottom: 8px;
-}
-
-.movement h3 .fr {
-  display: block;
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--rose);
-  font-size: 0.5em;
-  margin-top: 6px;
 }
 
 .movement p {
@@ -396,15 +360,6 @@
   font-family: var(--serif-italic);
   font-style: italic;
   color: var(--champagne);
-}
-
-.gc-head h2 .fr {
-  display: block;
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--rose);
-  font-size: 0.42em;
-  margin-top: 14px;
 }
 
 .gc-head p {
@@ -593,15 +548,6 @@
   line-height: 1;
 }
 
-.gc-card h3 .fr {
-  display: block;
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--rose);
-  font-size: 15px;
-  margin-top: 6px;
-}
-
 .gc-card p {
   font-size: 13px;
   color: var(--bone-dim);
@@ -735,15 +681,6 @@
   color: var(--champagne);
 }
 
-.season-card h3 .fr {
-  display: block;
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--rose);
-  font-size: 0.5em;
-  margin-top: 8px;
-}
-
 .season-card .desc {
   font-size: 15px;
   color: var(--bone-dim);
@@ -806,15 +743,6 @@
   line-height: 1;
 }
 
-.mem-head h2 .fr {
-  display: block;
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--rose);
-  font-size: 0.5em;
-  margin-top: 14px;
-}
-
 .mem-grid {
   max-width: 1320px;
   margin: 0 auto;
@@ -868,15 +796,6 @@
   font-weight: 400;
   letter-spacing: -0.02em;
   line-height: 1;
-}
-
-.mem h3 .fr {
-  display: block;
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--rose);
-  font-size: 15px;
-  margin-top: 4px;
 }
 
 .mem .price {
@@ -1006,15 +925,6 @@
   margin: 0 auto 16px;
   text-wrap: pretty;
 }
-.cta-section h2 .fr {
-  display: block;
-  font-size: 0.55em;
-  color: var(--rose);
-  margin-top: 16px;
-  font-family: var(--serif-italic);
-  font-style: italic;
-}
-
 /* Next/Image wrappers */
 .exp-hero-img > span:has(img),
 .movement-img > span:has(img),

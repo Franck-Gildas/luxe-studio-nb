@@ -33,15 +33,6 @@
   font-style: italic;
   color: var(--champagne);
 }
-.contact-hero h1 .fr-block {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-style: normal;
-  color: var(--bone);
-  font-size: inherit;
-  line-height: inherit;
-  letter-spacing: inherit;
-}
 .contact-hero .lede {
   max-width: 720px;
   font-size: 19px;
@@ -116,15 +107,6 @@
   letter-spacing: -0.005em;
   margin-bottom: 14px;
 }
-.sidebar .address .fr {
-  display: block;
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--rose);
-  font-size: 14px;
-  margin-top: 6px;
-}
-
 /* Map */
 .contact-map {
   position: relative;
@@ -251,14 +233,6 @@
   letter-spacing: -0.025em;
   line-height: 1;
 }
-.form-header h2 .fr {
-  display: block;
-  font-size: 20px;
-  color: var(--rose);
-  font-family: var(--serif-italic);
-  font-style: italic;
-  margin-top: 8px;
-}
 .form-header .stamp {
   text-align: right;
   font-family: var(--mono);
@@ -291,12 +265,12 @@
   justify-content: space-between;
 }
 .form-field label .opt {
-  color: var(--bone-mute);
+  color: var(--petal);
   font-style: italic;
   font-family: var(--serif-italic);
-  letter-spacing: 0;
+  letter-spacing: 0.01em;
   text-transform: none;
-  font-size: 12px;
+  font-size: 14px;
 }
 .form-field input,
 .form-field select,
@@ -394,15 +368,6 @@
   letter-spacing: -0.01em;
   line-height: 1.1;
 }
-.service-pick .name .fr {
-  display: block;
-  font-family: var(--serif-italic);
-  font-style: italic;
-  font-size: 13px;
-  color: var(--rose);
-  margin-top: 4px;
-}
-
 /* Day picker */
 .day-pick {
   display: flex;
@@ -519,14 +484,6 @@
   transition: transform 0.4s, box-shadow 0.4s;
 }
 .submit-btn:hover { transform: translateY(-2px); }
-.submit-btn .fr {
-  color: rgba(10, 9, 8, 0.55);
-  font-family: var(--serif-italic);
-  font-style: italic;
-  font-size: 14px;
-  letter-spacing: 0;
-  text-transform: none;
-}
 .submit-btn .arrow { font-size: 14px; }
 
 /* Concierge demo â€” open-state panel as a "screenshot" */
@@ -568,14 +525,6 @@
   margin-bottom: 18px;
 }
 .cd-copy h2 em { font-family: var(--serif-italic); font-style: italic; color: var(--champagne); }
-.cd-copy h2 .fr {
-  display: block;
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--rose);
-  font-size: 0.42em;
-  margin-top: 14px;
-}
 .cd-copy p {
   font-size: 16px;
   color: var(--bone-dim);
@@ -803,15 +752,6 @@
   margin: 0 auto 16px;
   text-wrap: pretty;
 }
-.cta-section h2 .fr {
-  display: block;
-  font-size: 0.55em;
-  color: var(--rose);
-  margin-top: 16px;
-  font-family: var(--serif-italic);
-  font-style: italic;
-}
-
 @media (max-width: 768px) {
   .contact-hero {
     padding: 120px 24px 24px;
@@ -982,17 +922,6 @@
   margin-bottom: 20px;
   font-weight: 400;
 }
-.booking-section-label .fr-block {
-  display: block;
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--rose);
-  letter-spacing: 0;
-  text-transform: none;
-  font-size: 12px;
-  margin-top: 6px;
-}
-
 .booking-service-pick {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   width: 100%;
@@ -1049,8 +978,9 @@
 .service-card-fr {
   font-family: var(--serif-italic);
   font-style: italic;
-  font-size: 13px;
-  color: var(--rose);
+  font-size: 17px;
+  line-height: 1.35;
+  color: var(--petal);
 }
 .service-card-meta {
   font-family: var(--mono);
@@ -1131,9 +1061,10 @@
   display: block;
   font-family: var(--serif-italic);
   font-style: italic;
-  font-size: 13px;
-  color: var(--rose);
-  margin-top: 2px;
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--petal);
+  margin-top: 4px;
 }
 .addon-price {
   font-family: var(--mono);
@@ -1378,12 +1309,58 @@
   color: var(--bone-dim);
   line-height: 1.6;
 }
-.form-status-sub.fr {
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--rose);
-  margin-top: 8px;
+
+/* Booking form — toggled EN/FR labels (respect site lang); bilingual only on cards/field hints */
+body.lang-fr #booking .form-header h2 > .fr {
+  display: block !important;
+  font-family: var(--serif-italic) !important;
+  font-style: italic !important;
+  font-size: 44px !important;
+  color: var(--petal) !important;
+  letter-spacing: -0.025em !important;
+  text-transform: none !important;
+  margin-top: 0 !important;
+  line-height: 1 !important;
 }
+
+body.lang-fr #booking .booking-section-label > .fr-block {
+  font-family: var(--serif-italic) !important;
+  font-style: italic !important;
+  font-size: 12px !important;
+  color: var(--petal) !important;
+  letter-spacing: 0.08em !important;
+  text-transform: none !important;
+  margin-top: 0 !important;
+}
+
+#booking .submit-btn .en-only,
+#booking .submit-btn .fr {
+  font-family: inherit !important;
+  font-size: inherit !important;
+  font-style: normal !important;
+  font-weight: inherit !important;
+  letter-spacing: inherit !important;
+  text-transform: inherit !important;
+  color: inherit !important;
+}
+
+body:not(.lang-fr) #booking .submit-btn .fr {
+  display: none !important;
+}
+
+body.lang-fr #booking .submit-btn .en-only {
+  display: none !important;
+}
+
+body.lang-fr #booking .submit-btn .fr {
+  display: inline !important;
+}
+
+#booking .time-period-label {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+}
+
 .form-status--error {
   color: var(--rose);
   font-size: 14px;

@@ -25,15 +25,6 @@
   line-height: 0.9;
   margin-bottom: 0;
 }
-.menu-hero h1 .fr-block {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-style: normal;
-  color: var(--bone);
-  font-size: inherit;
-  line-height: inherit;
-  letter-spacing: inherit;
-}
 .menu-hero .hero-tagline {
   margin-bottom: 24px;
 }
@@ -340,15 +331,6 @@
   line-height: 0.95;
   margin-bottom: 18px;
 }
-.cat-copy h2 .fr {
-  display: block;
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--rose);
-  font-size: 0.48em;
-  margin-top: 14px;
-  letter-spacing: -0.005em;
-}
 .cat-copy .sensory {
   font-family: var(--serif-italic);
   font-style: italic;
@@ -582,15 +564,6 @@
   transition: color 0.45s ease;
 }
 
-.service-item .name .fr {
-  display: block;
-  font-family: var(--serif-italic);
-  font-style: italic;
-  font-size: 14px;
-  color: var(--rose);
-  margin-top: 4px;
-}
-
 .service-item .name .desc {
   display: block;
   font-family: var(--sans);
@@ -705,13 +678,6 @@
   color: var(--bone-dim);
 }
 .addons .row .name { color: var(--bone); }
-.addons .row .name .fr {
-  font-family: var(--serif-italic);
-  font-style: italic;
-  color: var(--rose);
-  margin-left: 8px;
-  font-size: 13px;
-}
 .addons .row .v { color: var(--champagne); font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; }
 
 /* House note (bottom of each cat) */
@@ -732,13 +698,6 @@
   text-wrap: pretty;
 }
 .house-note p .gold { color: var(--champagne); font-style: normal; font-family: var(--serif); }
-.house-note p .fr {
-  display: block;
-  font-size: 0.65em;
-  color: var(--rose);
-  margin-top: 16px;
-}
-
 @media (max-width: 1100px) {
   .menu-index-inner { grid-template-columns: 1fr 1fr; }
   .menu-index-item { border-right: 0; border-bottom: 1px solid var(--hairline-soft); }
@@ -797,15 +756,6 @@
   margin: 0 auto 16px;
   text-wrap: pretty;
 }
-.cta-section h2 .fr {
-  display: block;
-  font-size: 0.55em;
-  color: var(--rose);
-  margin-top: 16px;
-  font-family: var(--serif-italic);
-  font-style: italic;
-}
-
 @media (max-width: 768px) {
   .menu-hero {
     padding: 120px 24px 40px;

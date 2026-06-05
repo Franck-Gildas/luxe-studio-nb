@@ -6,7 +6,7 @@ export function LanguageToggle() {
   const { lang, setLang } = useLang();
 
   return (
-    <div className={`lang-switch${lang === "fr" ? " fr" : ""}`} role="group" aria-label="Language">
+    <div className={`lang-switch${lang === "fr" ? " lang-fr-active" : ""}`} role="group" aria-label="Language">
       <span className="knob" aria-hidden />
       <button
         type="button"

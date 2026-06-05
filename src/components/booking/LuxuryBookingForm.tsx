@@ -246,7 +246,7 @@ export function LuxuryBookingForm() {
           <p className="form-status-title">
             ✓ Your ritual is reserved. / Votre rituel est réservé.
           </p>
-          <p className="form-status-sub">We will confirm within the hour.</p>
+          <p className="form-status-sub en-only">We will confirm within the hour.</p>
           <p className="form-status-sub fr">Nous confirmerons dans l&apos;heure.</p>
         </div>
       ) : (
@@ -588,12 +588,12 @@ export function LuxuryBookingForm() {
             >
               {submitState === 'submitting' ? (
                 <>
-                  <span>Sending...</span>
+                  <span className="en-only">Sending...</span>
                   <span className="fr">Envoi...</span>
                 </>
               ) : (
                 <>
-                  <span>Confirm Your Ritual</span>
+                  <span className="en-only">Confirm Your Ritual</span>
                   <span className="fr">Confirmer votre rituel</span>
                   <span className="arrow">→</span>
                 </>
