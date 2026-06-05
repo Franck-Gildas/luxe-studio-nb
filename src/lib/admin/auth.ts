@@ -13,7 +13,11 @@ export function logout(): void {
   sessionStorage.removeItem(AUTH_KEY)
 }
 
+export function isAdminPasswordConfigured(): boolean {
+  return (process.env.NEXT_PUBLIC_ADMIN_PASSWORD ?? '').length > 0
+}
+
 export function checkPassword(password: string): boolean {
   const expected = process.env.NEXT_PUBLIC_ADMIN_PASSWORD ?? ''
-  return password === expected && expected.length > 0
+  return expected.length > 0 && password.trim() === expected.trim()
 }

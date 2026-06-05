@@ -2,7 +2,7 @@
 
 import { useEffect, useState, FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
-import { checkPassword, isAuthenticated, login } from '@/lib/admin/auth'
+import { checkPassword, isAdminPasswordConfigured, isAuthenticated, login } from '@/lib/admin/auth'
 
 export default function AdminLoginPage() {
   const router = useRouter()
@@ -24,6 +24,10 @@ export default function AdminLoginPage() {
     if (checkPassword(password)) {
       login()
       router.push('/admin/dashboard')
+    } else if (!isAdminPasswordConfigured()) {
+      setError(
+        'Admin login is not configured. Set NEXT_PUBLIC_ADMIN_PASSWORD in your environment and redeploy.',
+      )
     } else {
       setError('Incorrect password. Please try again.')
     }

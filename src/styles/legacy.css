@@ -544,10 +544,10 @@ h1.display, .display {
   }
 
   .concierge-panel {
-    width: 100%;
+    width: min(420px, calc(100vw - 32px));
     max-width: none;
     right: 0;
-    left: 0;
+    left: auto;
   }
 
   .concierge-foot {
