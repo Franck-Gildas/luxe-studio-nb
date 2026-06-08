@@ -1,6 +1,7 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
+import LoadingScreen from '@/components/ui/LoadingScreen'
 import { Navbar } from '@/components/layout/Navbar'
 import { NavSpacer } from '@/components/layout/NavSpacer'
 import { Footer } from '@/components/layout/Footer'
@@ -23,6 +24,7 @@ export function AdminAwareShell({ children }: { children: React.ReactNode }) {
 
   return (
     <>
+      {pathname === '/' && <LoadingScreen />}
       <CustomCursor />
       <ScrollProgress />
       <BookingScrollToForm />

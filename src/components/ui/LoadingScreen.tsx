@@ -5,7 +5,6 @@ const CHARS = 'LUXE STUDIO NB'.split('')
 
 function finishIntro() {
   document.documentElement.classList.remove('luxe-intro-pending')
-  sessionStorage.setItem('luxe-loaded', '1')
 }
 
 export default function LoadingScreen() {

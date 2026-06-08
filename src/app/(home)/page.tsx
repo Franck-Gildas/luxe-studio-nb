@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { BookingLink } from "@/components/ui/BookingLink";
 import { RitualQuiz } from "@/components/ui/RitualQuiz";
-import LoadingScreen from "@/components/ui/LoadingScreen";
 import "@/styles/home.css";
 
 const VIAL_PARTICLES = Array.from({ length: 22 }, (_, i) => ({
@@ -52,7 +51,6 @@ export default function HomePage() {
 
   return (
     <>
-      <LoadingScreen />
       <div className="grain"></div>
 
       {/* HERO / THE ATRIUM */}

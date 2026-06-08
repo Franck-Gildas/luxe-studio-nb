@@ -113,6 +113,26 @@ html.luxe-intro-pending::before {
   pointer-events: all;
 }
 
+/* Static preload element — visible from SSR HTML while JS is loading on slow connections */
+.intro-preload {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--obsidian);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--champagne);
+  pointer-events: none;
+}
+html.luxe-intro-pending .intro-preload {
+  display: flex;
+}
+
 .custom-cursor {
   position: fixed;
   inset: 0;

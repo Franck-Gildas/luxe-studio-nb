@@ -1,6 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "@/styles/work.css";
 import Image from "next/image";
 import Link from "next/link";
@@ -145,18 +146,17 @@ const GALLERY_TILES = [
 export default function WorkPage() {
   const [activeFilter, setActiveFilter] = useState<Category>("all");
   const baSectionRef = useRef<HTMLElement>(null);
-  const savedScrollY = useRef<number | null>(null);
 
-  const handleFilterChange = useCallback((cat: Category) => {
-    savedScrollY.current = window.scrollY;
+  const handleFilterChange = (cat: Category) => {
+    document.documentElement.style.scrollBehavior = "auto";
     setActiveFilter(cat);
-  }, []);
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      document.documentElement.style.scrollBehavior = "";
+    }));
+  };
 
-  useLayoutEffect(() => {
-    if (savedScrollY.current !== null) {
-      window.scrollTo(0, savedScrollY.current);
-      savedScrollY.current = null;
-    }
+  useEffect(() => {
+    ScrollTrigger.refresh();
   }, [activeFilter]);
 
   const isVisible = (cat: FilterCategory) =>

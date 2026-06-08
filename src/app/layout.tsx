@@ -104,11 +104,12 @@ export default function RootLayout({
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){var l=localStorage.getItem('luxe-lang');if(l==='fr'){document.documentElement.lang='fr';document.body.classList.add('lang-fr');}if(window.location.pathname==='/'&&!sessionStorage.getItem('luxe-loaded')){document.documentElement.classList.add('luxe-intro-pending');}})();`,
+            __html: `(function(){var l=localStorage.getItem('luxe-lang');if(l==='fr'){document.documentElement.lang='fr';document.body.classList.add('lang-fr');}if(window.location.pathname==='/'){document.documentElement.classList.add('luxe-intro-pending');}})();`,
           }}
         />
       </head>
       <body className="flex min-h-full flex-col" suppressHydrationWarning>
+        <div className="intro-preload" aria-hidden="true">Luxe Studio NB</div>
         <LanguageProvider>
           <I18nProvider>
             <AdminAwareShell>{children}</AdminAwareShell>
