@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import "@/styles/work.css";
 import Image from "next/image";
 import Link from "next/link";
@@ -145,6 +145,19 @@ const GALLERY_TILES = [
 export default function WorkPage() {
   const [activeFilter, setActiveFilter] = useState<Category>("all");
   const baSectionRef = useRef<HTMLElement>(null);
+  const savedScrollY = useRef<number | null>(null);
+
+  const handleFilterChange = useCallback((cat: Category) => {
+    savedScrollY.current = window.scrollY;
+    setActiveFilter(cat);
+  }, []);
+
+  useLayoutEffect(() => {
+    if (savedScrollY.current !== null) {
+      window.scrollTo(0, savedScrollY.current);
+      savedScrollY.current = null;
+    }
+  }, [activeFilter]);
 
   const isVisible = (cat: FilterCategory) =>
     activeFilter === "all" || activeFilter === cat;
@@ -452,7 +465,7 @@ export default function WorkPage() {
             type="button"
             className={`filter${activeFilter === cat ? " on" : ""}`}
             data-cat={cat}
-            onClick={() => setActiveFilter(cat)}
+            onClick={() => handleFilterChange(cat)}
           >
             {label}
           </button>

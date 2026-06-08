@@ -327,21 +327,24 @@ body.lang-fr p > .fr-block {
   }
 }
 
-.loading-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--champagne);
-  animation: pulse 1.2s ease-in-out infinite;
+.intro-letter {
+  animation: introLetterIn 0.35s ease both;
 }
 
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.3;
-    transform: scale(0.6);
-  }
+@keyframes introLetterIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.intro-underline {
+  width: 100%;
+  height: 1px;
+  background: var(--champagne);
+  transform-origin: left;
+  animation: introLineGrow 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes introLineGrow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
 }

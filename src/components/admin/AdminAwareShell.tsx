@@ -4,7 +4,6 @@ import { usePathname } from 'next/navigation'
 import { Navbar } from '@/components/layout/Navbar'
 import { NavSpacer } from '@/components/layout/NavSpacer'
 import { Footer } from '@/components/layout/Footer'
-import LoadingScreen from '@/components/ui/LoadingScreen'
 import { CustomCursor } from '@/components/ui/CustomCursor'
 import { ScrollProgress } from '@/components/ui/ScrollProgress'
 import { Concierge } from '@/components/ui/Concierge'
@@ -24,7 +23,6 @@ export function AdminAwareShell({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      <LoadingScreen />
       <CustomCursor />
       <ScrollProgress />
       <BookingScrollToForm />

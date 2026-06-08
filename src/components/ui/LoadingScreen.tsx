@@ -1,6 +1,8 @@
 'use client'
 import { useLayoutEffect, useRef, useState } from 'react'
 
+const CHARS = 'LUXE STUDIO NB'.split('')
+
 function finishIntro() {
   document.documentElement.classList.remove('luxe-intro-pending')
   sessionStorage.setItem('luxe-loaded', '1')
@@ -18,10 +20,7 @@ export default function LoadingScreen() {
 
     el.style.display = 'flex'
 
-    const fadeTimer = window.setTimeout(() => {
-      setFading(true)
-    }, 1600)
-
+    const fadeTimer = window.setTimeout(() => setFading(true), 1700)
     const hideTimer = window.setTimeout(() => {
       finishIntro()
       el.style.display = 'none'
@@ -45,27 +44,29 @@ export default function LoadingScreen() {
         alignItems: 'center',
         justifyContent: 'center',
         opacity: fading ? 0 : 1,
-        transition: 'opacity 0.6s cubic-bezier(0.16,1,0.3,1)',
+        transition: 'opacity 0.5s cubic-bezier(0.16,1,0.3,1)',
         pointerEvents: fading ? 'none' : 'all',
       }}
     >
-      <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: '24px',
-      }}>
-        <div className="loading-dot" />
-        <p style={{
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+        <div style={{
+          display: 'flex',
           fontFamily: 'var(--mono)',
-          fontSize: '11px',
-          letterSpacing: '0.2em',
-          textTransform: 'uppercase',
-          color: 'var(--brass)',
-          opacity: 0.6,
+          fontSize: '13px',
+          letterSpacing: '0.28em',
+          color: 'var(--champagne)',
         }}>
-          Luxe Studio NB
-        </p>
+          {CHARS.map((char, i) => (
+            <span
+              key={i}
+              className="intro-letter"
+              style={{ animationDelay: `${i * 80}ms`, whiteSpace: 'pre' }}
+            >
+              {char}
+            </span>
+          ))}
+        </div>
+        <div className="intro-underline" style={{ animationDelay: '1050ms' }} />
       </div>
     </div>
   )

@@ -104,7 +104,7 @@ export default function RootLayout({
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){var l=localStorage.getItem('luxe-lang');if(l==='fr'){document.documentElement.lang='fr';document.body.classList.add('lang-fr');}if(!sessionStorage.getItem('luxe-loaded')){document.documentElement.classList.add('luxe-intro-pending');}})();`,
+            __html: `(function(){var l=localStorage.getItem('luxe-lang');if(l==='fr'){document.documentElement.lang='fr';document.body.classList.add('lang-fr');}if(window.location.pathname==='/'&&!sessionStorage.getItem('luxe-loaded')){document.documentElement.classList.add('luxe-intro-pending');}})();`,
           }}
         />
       </head>
