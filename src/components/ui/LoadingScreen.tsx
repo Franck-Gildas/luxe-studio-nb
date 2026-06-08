@@ -1,46 +1,54 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useLayoutEffect, useRef, useState } from 'react'
+
+function finishIntro() {
+  document.documentElement.classList.remove('luxe-intro-pending')
+  sessionStorage.setItem('luxe-loaded', '1')
+}
 
 export default function LoadingScreen() {
-  const [visible, setVisible] = useState(false)
+  const overlayRef = useRef<HTMLDivElement>(null)
   const [fading, setFading] = useState(false)
 
-  useEffect(() => {
-    const seen = sessionStorage.getItem('luxe-loaded')
-    if (seen) return
-    
-    setVisible(true)
-    
-    const fadeTimer = setTimeout(() => {
+  useLayoutEffect(() => {
+    const el = overlayRef.current
+    if (!document.documentElement.classList.contains('luxe-intro-pending') || !el) {
+      return
+    }
+
+    el.style.display = 'flex'
+
+    const fadeTimer = window.setTimeout(() => {
       setFading(true)
     }, 1600)
-    
-    const hideTimer = setTimeout(() => {
-      setVisible(false)
-      sessionStorage.setItem('luxe-loaded', '1')
+
+    const hideTimer = window.setTimeout(() => {
+      finishIntro()
+      el.style.display = 'none'
     }, 2200)
 
     return () => {
-      clearTimeout(fadeTimer)
-      clearTimeout(hideTimer)
+      window.clearTimeout(fadeTimer)
+      window.clearTimeout(hideTimer)
     }
   }, [])
 
-  if (!visible) return null
-
   return (
-    <div style={{
-      position: 'fixed',
-      inset: 0,
-      background: 'var(--obsidian)',
-      zIndex: 1000,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      opacity: fading ? 0 : 1,
-      transition: 'opacity 0.6s cubic-bezier(0.16,1,0.3,1)',
-      pointerEvents: fading ? 'none' : 'all',
-    }}>
+    <div
+      ref={overlayRef}
+      style={{
+        display: 'none',
+        position: 'fixed',
+        inset: 0,
+        background: 'var(--obsidian)',
+        zIndex: 10000,
+        alignItems: 'center',
+        justifyContent: 'center',
+        opacity: fading ? 0 : 1,
+        transition: 'opacity 0.6s cubic-bezier(0.16,1,0.3,1)',
+        pointerEvents: fading ? 'none' : 'all',
+      }}
+    >
       <div style={{
         display: 'flex',
         flexDirection: 'column',

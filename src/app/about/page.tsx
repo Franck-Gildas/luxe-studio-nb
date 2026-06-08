@@ -77,17 +77,20 @@ export default function AboutPage() {
           <div className="tenet">
             <div className="roman">I.</div>
             <h4><span className="en-only">By appointment only</span><span className="fr">Sur rendez-vous</span></h4>
-            <p><span className="en-only">We don&apos;t take walk-ins, and we never double-book. Your hour is yours; the room is yours; the artist is yours.</span></p>
+            <p><span className="en-only">We don&apos;t take walk-ins, and we never double-book. Your hour is yours; the room is yours; the artist is yours.</span>
+<span className="fr-block">Nous n&apos;acceptons pas les visites sans rendez-vous et ne double-bookons jamais. Votre heure est la vôtre ; la salle est la vôtre ; l&apos;artiste est le vôtre.</span></p>
           </div>
           <div className="tenet">
             <div className="roman">II.</div>
             <h4><span className="en-only">Twelve guests per day</span><span className="fr">Douze invités</span></h4>
-            <p><span className="en-only">Across all six rooms — a deliberate cap. You will not pass another guest in the hall.</span></p>
+            <p><span className="en-only">Across all six rooms — a deliberate cap. You will not pass another guest in the hall.</span>
+<span className="fr-block">Dans les six salles — un plafond volontaire. Vous ne croiserez aucun autre invité dans le couloir.</span></p>
           </div>
           <div className="tenet">
             <div className="roman">III.</div>
             <h4><span className="en-only">Senior artists only</span><span className="fr">Artistes principaux</span></h4>
-            <p><span className="en-only">Every artist has spent at least seven years at the chair. No assistants do client work. Ever.</span></p>
+            <p><span className="en-only">Every artist has spent at least seven years at the chair. No assistants do client work. Ever.</span>
+<span className="fr-block">Chaque artiste a passé au moins sept ans au fauteuil. Aucun assistant ne touche aux clients. Jamais.</span></p>
           </div>
           <div className="tenet">
             <div className="roman">IV.</div>
@@ -123,13 +126,13 @@ export default function AboutPage() {
                   className="object-cover"
                   sizes="(max-width: 1100px) 50vw, 720px"
                 />
-                <span className="badge">◇ Founder · Hair</span>
+                <span className="badge"><span className="en-only">◇ Founder · Hair</span><span className="fr-block">◇ Fondatrice · Cheveux</span></span>
               </div>
               <div className="team-info">
-                <div className="role">Founder · Senior Stylist</div>
+                <div className="role"><span className="en-only">Founder · Senior Stylist</span><span className="fr-block">Fondatrice · Styliste senior</span></div>
                 <h4>Émilie<span className="last">Doiron</span></h4>
-                <div className="bio">Eighteen years at the chair. Trained at Toni &amp; Guy London, then Paris under Tournier. Specialises in slow colour and the cut you don&apos;t notice for two weeks.</div>
-                <div className="craft"><span>Cheveux · Couleur</span><span className="v">Room N° 02</span></div>
+                <div className="bio"><span className="en-only">Eighteen years at the chair. Trained at Toni &amp; Guy London, then Paris under Tournier. Specialises in slow colour and the cut you don&apos;t notice for two weeks.</span><span className="fr-block">Dix-huit ans au fauteuil. Formée chez Toni &amp; Guy London, puis à Paris sous Tournier. Spécialiste de la couleur lente et de la coupe qu&apos;on ne remarque pas pendant deux semaines.</span></div>
+                <div className="craft"><span>Cheveux · Couleur</span><span className="v"><span className="en-only">Room N° 02</span><span className="fr-block">Salle N° 02</span></span></div>
               </div>
             </article>
 
@@ -142,13 +145,13 @@ export default function AboutPage() {
                   className="object-cover"
                   sizes="(max-width: 1100px) 50vw, 720px"
                 />
-                <span className="badge">◇ Founder · Spa</span>
+                <span className="badge"><span className="en-only">◇ Founder · Spa</span><span className="fr-block">◇ Fondateur · Spa</span></span>
               </div>
               <div className="team-info">
-                <div className="role">Founder · Senior Therapist</div>
+                <div className="role"><span className="en-only">Founder · Senior Therapist</span><span className="fr-block">Fondateur · Thérapeute senior</span></div>
                 <h4>Marc-André<span className="last">Daigle</span></h4>
-                <div className="bio">Trained at the Banff Centre &amp; in Kyoto. Master of lymphatic drainage and the long-bath ritual. Holds the room&apos;s silence like a second instrument.</div>
-                <div className="craft"><span>Bien-être · Massage</span><span className="v">Room N° 07</span></div>
+                <div className="bio"><span className="en-only">Trained at the Banff Centre &amp; in Kyoto. Master of lymphatic drainage and the long-bath ritual. Holds the room&apos;s silence like a second instrument.</span><span className="fr-block">Formé au Banff Centre et à Kyoto. Maître du drainage lymphatique et du rituel du long bain. Tient le silence de la salle comme un second instrument.</span></div>
+                <div className="craft"><span>Bien-être · Massage</span><span className="v"><span className="en-only">Room N° 07</span><span className="fr-block">Salle N° 07</span></span></div>
               </div>
             </article>
 
@@ -161,12 +164,12 @@ export default function AboutPage() {
                   className="object-cover"
                   sizes="(max-width: 1100px) 50vw, 480px"
                 />
-                <span className="badge">◇ Lash</span>
+                <span className="badge"><span className="en-only">◇ Lash</span><span className="fr-block">◇ Cils</span></span>
               </div>
               <div className="team-info">
-                <div className="role">Lash &amp; Brow Artist</div>
+                <div className="role"><span className="en-only">Lash &amp; Brow Artist</span><span className="fr-block">Artiste cils et sourcils</span></div>
                 <h4>Sophie<span className="last">Léger</span></h4>
-                <div className="bio">Eleven years. Drew the lash maps the whole house uses, by hand, on butter paper.</div>
+                <div className="bio"><span className="en-only">Eleven years. Drew the lash maps the whole house uses, by hand, on butter paper.</span><span className="fr-block">Onze ans. A tracé à la main, sur papier beurre, les cartes de cils que toute la maison utilise.</span></div>
                 <div className="craft"><span>Cils · Mapping</span><span className="v">N° 05</span></div>
               </div>
             </article>
@@ -180,12 +183,12 @@ export default function AboutPage() {
                   className="object-cover"
                   sizes="(max-width: 1100px) 50vw, 480px"
                 />
-                <span className="badge">◇ Nails</span>
+                <span className="badge"><span className="en-only">◇ Nails</span><span className="fr-block">◇ Ongles</span></span>
               </div>
               <div className="team-info">
-                <div className="role">Nail Couturier</div>
+                <div className="role"><span className="en-only">Nail Couturier</span><span className="fr-block">Couturière des ongles</span></div>
                 <h4>Camille<span className="last">Bourque</span></h4>
-                <div className="bio">Sculpts free-hand from gel. Studied applied arts at NSCAD. Three-time NB nail-art winner.</div>
+                <div className="bio"><span className="en-only">Sculpts free-hand from gel. Studied applied arts at NSCAD. Three-time NB nail-art winner.</span><span className="fr-block">Sculpte à main levée au gel. Études en arts appliqués à NSCAD. Triple lauréate d&apos;art des ongles au NB.</span></div>
                 <div className="craft"><span>Ongles · Couture</span><span className="v">N° 03</span></div>
               </div>
             </article>
@@ -204,7 +207,7 @@ export default function AboutPage() {
               <div className="team-info">
                 <div className="role">Maître Barbier</div>
                 <h4>Jean-Luc<span className="last">Arseneau</span></h4>
-                <div className="bio">Caraquet-born. Straight razor &amp; cedar after-balm. Won&apos;t use a clipper above the temple.</div>
+                <div className="bio"><span className="en-only">Caraquet-born. Straight razor &amp; cedar after-balm. Won&apos;t use a clipper above the temple.</span><span className="fr-block">Né à Caraquet. Rasoir droit et baume après-rasage au cèdre. Refuse la tondeuse au-dessus de la tempe.</span></div>
                 <div className="craft"><span>Barbier · Rasage</span><span className="v">N° 04</span></div>
               </div>
             </article>
@@ -220,13 +223,13 @@ export default function AboutPage() {
                   sizes="(max-width: 1100px) 50vw, 720px"
                   quality={90}
                 />
-                <span className="badge">◇ Esthetics</span>
+                <span className="badge"><span className="en-only">◇ Esthetics</span><span className="fr-block">◇ Esthétique</span></span>
               </div>
               <div className="team-info">
-                <div className="role">Senior Aesthetician</div>
+                <div className="role"><span className="en-only">Senior Aesthetician</span><span className="fr-block">Esthéticienne senior</span></div>
                 <h4>Renée<span className="last">Léblanc</span></h4>
-                <div className="bio">IDI Montréal, then four years at La Mer&apos;s atelier in Montréal. Reads skin like a card-reader reads light — first, then never in reverse.</div>
-                <div className="craft"><span>Esthétique · HydraFacial · LED</span><span className="v">Room N° 06</span></div>
+                <div className="bio"><span className="en-only">IDI Montréal, then four years at La Mer&apos;s atelier in Montréal. Reads skin like a card-reader reads light — first, then never in reverse.</span><span className="fr-block">IDI Montréal, puis quatre ans à l&apos;atelier La Mer à Montréal. Lit la peau comme un lecteur de cartes lit la lumière — d&apos;abord, puis jamais à l&apos;envers.</span></div>
+                <div className="craft"><span>Esthétique · HydraFacial · LED</span><span className="v"><span className="en-only">Room N° 06</span><span className="fr-block">Salle N° 06</span></span></div>
               </div>
             </article>
 
@@ -241,10 +244,10 @@ export default function AboutPage() {
                   sizes="(max-width: 1100px) 50vw, 720px"
                   quality={90}
                 />
-                <span className="badge">◇ + 16 artists</span>
+                <span className="badge"><span className="en-only">◇ + 16 artists</span><span className="fr-block">◇ + 16 artistes</span></span>
               </div>
               <div className="team-info">
-                <div className="role">The rest of the house</div>
+                <div className="role"><span className="en-only">The rest of the house</span><span className="fr-block">Le reste de la maison</span></div>
                 <h4>
                   <span className="en-only">
                     And sixteen more<span className="last">pairs of hands</span>
@@ -253,8 +256,8 @@ export default function AboutPage() {
                     Et seize autres<span className="last">paires de mains</span>
                   </span>
                 </h4>
-                <div className="bio">Stylists, colourists, lash artists, aestheticians, therapists. Every one a senior. We&apos;ll introduce you to the right pair, by name, when you book.</div>
-                <div className="craft"><span>Across all six rooms</span><span className="v">Senior · 7+ yrs</span></div>
+                <div className="bio"><span className="en-only">Stylists, colourists, lash artists, aestheticians, therapists. Every one a senior. We&apos;ll introduce you to the right pair, by name, when you book.</span><span className="fr-block">Stylistes, coloristes, artistes cils, esthéticiennes, thérapeutes. Chacun est senior. Nous vous présenterons la bonne paire, par son nom, lors de la réservation.</span></div>
+                <div className="craft"><span><span className="en-only">Across all six rooms</span><span className="fr-block">Dans les six salles</span></span><span className="v"><span className="en-only">Senior · 7+ yrs</span><span className="fr-block">Senior · 7+ ans</span></span></div>
               </div>
             </article>
           </div>

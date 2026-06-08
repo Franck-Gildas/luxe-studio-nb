@@ -148,6 +148,8 @@
   border: 1px solid var(--hairline-soft);
   user-select: none;
   cursor: ew-resize;
+  touch-action: none;
+  -webkit-user-select: none;
 }
 .ba-pane { position: absolute; inset: 0; overflow: hidden; }
 .ba-pane img {

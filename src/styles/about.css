@@ -709,3 +709,50 @@ body.lang-fr .tenet p > .fr-block {
   font-size: 17px !important;
   line-height: 1.6 !important;
 }
+
+/* Team section — bilingual toggles */
+body:not(.lang-fr) .team-info .role > .fr-block,
+body:not(.lang-fr) .team-info .bio > .fr-block,
+body:not(.lang-fr) .team-card .badge > .fr-block,
+body:not(.lang-fr) .team-info .craft .v > .fr-block,
+body:not(.lang-fr) .team-info .craft > span:first-child > .fr-block {
+  display: none;
+}
+
+body.lang-fr .team-info .role > .fr-block,
+body.lang-fr .team-info .bio > .fr-block,
+body.lang-fr .team-card .badge > .fr-block {
+  display: block !important;
+}
+
+body.lang-fr .team-info .craft .v > .fr-block,
+body.lang-fr .team-info .craft > span:first-child > .fr-block {
+  display: inline !important;
+}
+
+/* Team bios — legible body copy, not rose accent */
+body.lang-fr .team-info .role > .fr-block,
+body.lang-fr .team-card .badge > .fr-block,
+body.lang-fr .team-info .craft .v > .fr-block,
+body.lang-fr .team-info .craft > span:first-child > .fr-block {
+  font-family: var(--mono) !important;
+  font-style: normal !important;
+  color: inherit !important;
+  font-size: inherit !important;
+  letter-spacing: inherit !important;
+  text-transform: inherit !important;
+}
+
+body.lang-fr .team-info .bio > .fr-block {
+  font-family: inherit !important;
+  font-style: normal !important;
+  color: var(--bone-dim) !important;
+  font-size: 13px !important;
+  line-height: 1.55 !important;
+}
+
+@media (max-width: 768px) {
+  body.lang-fr .team-info .bio > .fr-block {
+    font-size: 15px !important;
+  }
+}

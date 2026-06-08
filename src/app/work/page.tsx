@@ -171,25 +171,32 @@ export default function WorkPage() {
       };
 
       const onPointerDown = (e: PointerEvent) => {
+        if (e.pointerType === "touch") e.preventDefault();
         dragging = true;
         frame.setPointerCapture(e.pointerId);
         move(e.clientX);
       };
       const onPointerMove = (e: PointerEvent) => {
-        if (dragging) move(e.clientX);
+        if (!dragging) return;
+        if (e.pointerType === "touch") e.preventDefault();
+        move(e.clientX);
       };
-      const onPointerUp = () => {
+      const onPointerUp = (e: PointerEvent) => {
         dragging = false;
+        if (frame.hasPointerCapture(e.pointerId)) {
+          frame.releasePointerCapture(e.pointerId);
+        }
       };
 
-      frame.addEventListener("pointerdown", onPointerDown);
-      frame.addEventListener("pointermove", onPointerMove);
+      const pointerOpts = { passive: false } as AddEventListenerOptions;
+      frame.addEventListener("pointerdown", onPointerDown, pointerOpts);
+      frame.addEventListener("pointermove", onPointerMove, pointerOpts);
       frame.addEventListener("pointerup", onPointerUp);
       frame.addEventListener("pointercancel", onPointerUp);
 
       cleanups.push(() => {
-        frame.removeEventListener("pointerdown", onPointerDown);
-        frame.removeEventListener("pointermove", onPointerMove);
+        frame.removeEventListener("pointerdown", onPointerDown, pointerOpts);
+        frame.removeEventListener("pointermove", onPointerMove, pointerOpts);
         frame.removeEventListener("pointerup", onPointerUp);
         frame.removeEventListener("pointercancel", onPointerUp);
       });

@@ -99,6 +99,20 @@ html.custom-cursor-active * {
   cursor: none !important;
 }
 
+/* First-visit intro — blocks flash before React loading screen mounts */
+html.luxe-intro-pending body {
+  overflow: hidden;
+}
+
+html.luxe-intro-pending::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: var(--obsidian);
+  z-index: 9998;
+  pointer-events: all;
+}
+
 .custom-cursor {
   position: fixed;
   inset: 0;
