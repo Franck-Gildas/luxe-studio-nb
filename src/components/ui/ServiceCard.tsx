@@ -1,6 +1,8 @@
 "use client";
 
+import { usePathname, useRouter } from "next/navigation";
 import { BookingLink } from "@/components/ui/BookingLink";
+import { BOOKING_FORM_HREF, scrollToBookingForm } from "@/lib/booking-link";
 import styles from "./ServiceCard.module.css";
 
 export type ServiceCardProps = {
@@ -20,6 +22,21 @@ export default function ServiceCard({
   reason,
   onBook,
 }: ServiceCardProps) {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const handleBook = () => {
+    onBook?.();
+    if (pathname === "/contact") {
+      scrollToBookingForm("smooth");
+    } else {
+      router.push(BOOKING_FORM_HREF, { scroll: false });
+      [180, 230, 380, 530, 880, 1300].forEach((ms) =>
+        setTimeout(() => scrollToBookingForm("smooth"), ms),
+      );
+    }
+  };
+
   return (
     <article
       className={styles.card}
@@ -32,7 +49,13 @@ export default function ServiceCard({
         <span className={styles.metaItem}>From ${price}</span>
         <span className={styles.metaItem}>{duration}</span>
       </div>
-      <BookingLink className={styles.cta} onClick={onBook ? () => onBook() : undefined}>Book This Ritual</BookingLink>
+      {onBook ? (
+        <button type="button" className={styles.cta} onClick={handleBook}>
+          Book This Ritual
+        </button>
+      ) : (
+        <BookingLink className={styles.cta}>Book This Ritual</BookingLink>
+      )}
     </article>
   );
 }
