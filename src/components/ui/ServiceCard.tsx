@@ -9,6 +9,7 @@ export type ServiceCardProps = {
   price: number;
   duration: string;
   reason: string;
+  onBook?: () => void;
 };
 
 export default function ServiceCard({
@@ -17,6 +18,7 @@ export default function ServiceCard({
   price,
   duration,
   reason,
+  onBook,
 }: ServiceCardProps) {
   return (
     <article
@@ -30,7 +32,7 @@ export default function ServiceCard({
         <span className={styles.metaItem}>From ${price}</span>
         <span className={styles.metaItem}>{duration}</span>
       </div>
-      <BookingLink className={styles.cta}>Book This Ritual</BookingLink>
+      <BookingLink className={styles.cta} onClick={onBook ? () => onBook() : undefined}>Book This Ritual</BookingLink>
     </article>
   );
 }

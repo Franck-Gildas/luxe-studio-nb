@@ -165,7 +165,7 @@ export function Concierge() {
                   {msg.content}
                 </div>
                 {msg.recommendation && (
-                  <ServiceCard {...msg.recommendation} />
+                  <ServiceCard {...msg.recommendation} onBook={() => setOpen(false)} />
                 )}
               </div>
             )
